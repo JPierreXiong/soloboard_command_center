@@ -1,0 +1,608 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Afterglow",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Héritage Numérique",
+          "url": "/digital-heirloom/dashboard",
+          "icon": "Shield"
+        },
+        {
+          "title": "Tarification",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "Héritage Numérique",
+          "url": "/digital-heirloom/dashboard",
+          "icon": "Shield"
+        },
+        {
+          "title": "Facturation",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "Activité",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "Sécurisez votre héritage numérique",
+    "highlight_text": "",
+    "description": "Assurez-vous que vos proches puissent accéder à vos actifs numériques quand ils en ont le plus besoin. Mots de passe, portefeuilles cryptographiques et messages personnels — protégés jusqu'au bon moment.",
+    "announcement": {
+      "badge": "Sécurité",
+      "title": "🔒 Chiffrement Zero-Knowledge",
+      "url": "#zero-knowledge-security"
+    },
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Aucune carte de crédit requise</span>",
+    "buttons": [
+      {
+        "title": "Commencer gratuitement",
+        "icon": "Shield",
+        "url": "/sign-up",
+        "target": "_self",
+        "variant": "default",
+        "className": ""
+      },
+      {
+        "title": "En savoir plus",
+        "icon": "Info",
+        "url": "/blog",
+        "target": "_self",
+        "variant": "outline",
+        "className": ""
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "",
+    "show_award": false,
+    "image": {
+      "src": "/imgs/features/admin.png",
+      "alt": "hero"
+    },
+    "image_invert": {
+      "src": "/imgs/features/admin-dark.png",
+      "alt": "hero"
+    }
+  },
+  "logos": {
+    "title": "Digital Heirloom est construit sur les épaules de géants",
+    "items": [
+      {
+        "title": "Next.js",
+        "image": {
+          "src": "/imgs/logos/nextjs.svg",
+          "alt": "Next.js"
+        }
+      },
+      {
+        "title": "React",
+        "image": {
+          "src": "/imgs/logos/react.svg",
+          "alt": "React"
+        }
+      },
+      {
+        "title": "TailwindCSS",
+        "image": {
+          "src": "/imgs/logos/tailwindcss.svg",
+          "alt": "TailwindCSS"
+        }
+      },
+      {
+        "title": "Shadcn/UI",
+        "image": {
+          "src": "/imgs/logos/shadcn.svg",
+          "alt": "Shadcn/UI"
+        }
+      },
+      {
+        "title": "Vercel",
+        "image": {
+          "src": "/imgs/logos/vercel.svg",
+          "alt": "Vercel"
+        }
+      }
+    ]
+  },
+  "introduce": {
+    "id": "introduce",
+    "title": "Qu'est-ce que Digital Heirloom",
+    "label": "Introduction",
+    "description": "Digital Heirloom est un modèle NextJS pour créer des startups SaaS IA, incluant des modèles, des composants et de la documentation.",
+    "image": {
+      "src": "/imgs/features/landing-page.png",
+      "alt": "introduce"
+    },
+    "items": [
+      {
+        "title": "Modèles prêts à l'emploi",
+        "description": "Choisissez parmi des dizaines de modèles SaaS IA prêts pour la production pour démarrer rapidement votre projet.",
+        "icon": "RiNextjsFill",
+        "image": {
+          "src": "/imgs/features/1.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "Configuration de l'infrastructure",
+        "description": "Accédez instantanément à une infrastructure évolutive avec les meilleures pratiques intégrées.",
+        "icon": "RiDatabase2Line",
+        "image": {
+          "src": "/imgs/features/2.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "Déploiement rapide",
+        "description": "Déployez votre application SaaS IA en production en quelques heures, pas en jours.",
+        "icon": "RiCloudyFill",
+        "image": {
+          "src": "/imgs/features/3.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "Intégration IA",
+        "description": "Intégrez l'IA dans votre projet facilement en utilisant notre SDK IA intégré.",
+        "icon": "RiRobot2Line",
+        "image": {
+          "src": "/imgs/features/4.png",
+          "alt": "introduce"
+        }
+      }
+    ]
+  },
+  "benefits": {
+    "id": "benefits",
+    "title": "Pourquoi choisir Digital Heirloom",
+    "label": "Avantages",
+    "description": "Obtenez tout ce dont vous avez besoin pour lancer votre startup IA - des modèles prêts à l'emploi au support technique.",
+    "items": [
+      {
+        "title": "Framework complet",
+        "description": "Construit sur Next.js avec authentification, paiements et intégration IA - tout fonctionne immédiatement.",
+        "icon": "RiNextjsFill",
+        "image": {
+          "src": "/imgs/features/user-billing.png",
+          "alt": "benefits"
+        }
+      },
+      {
+        "title": "Bibliothèque de modèles riche",
+        "description": "Choisissez parmi divers modèles SaaS IA pour démarrer votre projet - chatbots, génération d'images, et plus encore.",
+        "icon": "RiClapperboardAiLine",
+        "image": {
+          "src": "/imgs/features/admin-settings.png",
+          "alt": "benefits"
+        }
+      },
+      {
+        "title": "Guidance technique",
+        "description": "Obtenez un support dédié et rejoignez notre communauté de développeurs pour assurer votre lancement réussi.",
+        "icon": "RiCodeFill",
+        "image": {
+          "src": "/imgs/features/landing-page.png",
+          "alt": "benefits"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "id": "usage",
+    "title": "Comment lancer avec Digital Heirloom",
+    "description": "Mettez votre startup SaaS IA en marche en trois étapes simples :",
+    "image": {
+      "src": "/imgs/features/1.png",
+      "alt": "usage"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "Obtenir Digital Heirloom",
+        "description": "Achetez Digital Heirloom avec un paiement unique. Vérifiez votre e-mail pour le code et la documentation.",
+        "image": {
+          "src": "/imgs/features/5.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "Démarrer votre projet",
+        "description": "Lisez la documentation et clonez le code de Digital Heirloom. Commencez à construire votre startup SaaS IA.",
+        "image": {
+          "src": "/imgs/features/6.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "Personnaliser votre projet",
+        "description": "Modifiez le modèle avec vos données et contenus. Besoins spécifiques en fonctionnalités IA.",
+        "image": {
+          "src": "/imgs/features/7.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "Déployer en production",
+        "description": "Déployez votre projet en production en quelques étapes et commencez à servir les clients immédiatement.",
+        "image": {
+          "src": "/imgs/features/8.png",
+          "alt": "usage"
+        }
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "Fonctionnalités clés de Digital Heirloom",
+    "description": "Tout ce dont vous avez besoin pour lancer votre startup SaaS IA rapidement et efficacement.",
+    "items": [
+      {
+        "title": "Modèle Next.js",
+        "description": "Modèles Next.js prêts pour la production avec structure optimisée pour le SEO et support i18n.",
+        "icon": "RiNextjsFill"
+      },
+      {
+        "title": "Authentification et paiements",
+        "description": "OAuth Google intégré, connexion en un clic et traitement des paiements Stripe.",
+        "icon": "RiKey2Fill"
+      },
+      {
+        "title": "Infrastructure de données",
+        "description": "Intégration Supabase intégrée pour un stockage de données fiable et évolutif.",
+        "icon": "RiDatabase2Line"
+      },
+      {
+        "title": "Déploiement en un clic",
+        "description": "Déploiement transparent vers Vercel ou Cloudflare avec configuration automatisée.",
+        "icon": "RiCloudy2Fill"
+      },
+      {
+        "title": "Analyses commerciales",
+        "description": "Google Analytics et Search Console intégrés pour suivre la croissance.",
+        "icon": "RiBarChart2Line"
+      },
+      {
+        "title": "Infrastructure prête pour l'IA",
+        "description": "Intégration IA préconfigurée avec système de crédits intégré et vente d'API.",
+        "icon": "RiRobot2Line"
+      }
+    ]
+  },
+  "how-it-works": {
+    "id": "how-it-works",
+    "title": "Comment ça fonctionne",
+    "description": "Un système simple et sécurisé pour protéger ce qui compte le plus",
+    "items": [
+      {
+        "title": "Coffre-fort chiffré",
+        "description": "Stockez des mots de passe, des clés cryptographiques et des notes personnelles avec un chiffrement de niveau militaire que même nous ne pouvons pas lire.",
+        "icon": "Lock"
+      },
+      {
+        "title": "Interrupteur mort",
+        "description": "Des vérifications régulières confirment que vous allez bien. Si vous les manquez, vos contacts désignés sont automatiquement notifiés.",
+        "icon": "Clock"
+      },
+      {
+        "title": "Bénéficiaires de confiance",
+        "description": "Désignez des membres de la famille, des amis ou des avocats pour recevoir des éléments spécifiques de votre coffre-fort.",
+        "icon": "Users"
+      }
+    ]
+  },
+  "zero-knowledge-security": {
+    "id": "zero-knowledge-security",
+    "title": "Sécurité Zero-Knowledge",
+    "description": "Vos données sont chiffrées sur votre appareil avant d'atteindre nos serveurs. Nous ne voyons jamais vos mots de passe ou secrets — et personne d'autre non plus jusqu'à ce que vous le souhaitiez.",
+    "items": [
+      {
+        "title": "Chiffrement de bout en bout",
+        "description": "",
+        "icon": "Shield"
+      },
+      {
+        "title": "Aucune porte dérobée ou clé maîtresse",
+        "description": "",
+        "icon": "Key"
+      },
+      {
+        "title": "Audits de sécurité réguliers",
+        "description": "",
+        "icon": "Search"
+      },
+      {
+        "title": "Génération de clés côté client",
+        "description": "",
+        "icon": "Cpu"
+      },
+      {
+        "title": "Cryptographie open source",
+        "description": "",
+        "icon": "Code"
+      },
+      {
+        "title": "Conforme GDPR et CCPA",
+        "description": "",
+        "icon": "FileCheck"
+      }
+    ]
+  },
+  "stats": {
+    "id": "stats",
+    "title": "Les gens adorent Digital Heirloom",
+    "description": "car c'est facile à utiliser et rapide à déployer.",
+    "items": [
+      {
+        "title": "999+",
+        "description": "Clients"
+      },
+      {
+        "title": "200+",
+        "description": "Blocs"
+      },
+      {
+        "title": "50+",
+        "description": "Modèles"
+      }
+    ]
+  },
+  "testimonials": {
+    "id": "testimonials",
+    "title": "Ce que les utilisateurs disent de Digital Heirloom",
+    "description": "Écoutez les créateurs de contenu et les entreprises qui ont transformé leur contenu vidéo avec Digital Heirloom.",
+    "items": [
+      {
+        "name": "David Chen",
+        "role": "Créateur de contenu YouTube",
+        "quote": "Digital Heirloom a transformé ma chaîne YouTube ! Je peux maintenant toucher un public mondial avec des sous-titres précis en 12 langues. Mes vues ont augmenté de 300% après avoir ajouté des sous-titres multilingues.",
+        "image": {
+          "src": "/imgs/avatars/1.png",
+          "alt": "david"
+        }
+      },
+      {
+        "name": "Rachel Kim",
+        "role": "Influenceuse TikTok",
+        "quote": "L'extraction et la traduction de sous-titres en un clic m'ont fait économiser des heures chaque semaine. Mes vidéos TikTok connectent maintenant avec des spectateurs du monde entier, et mon engagement a explosé !",
+        "image": {
+          "src": "/imgs/avatars/2.png",
+          "alt": "rachel"
+        }
+      },
+      {
+        "name": "Marcus Thompson",
+        "role": "Propriétaire d'agence de production vidéo",
+        "quote": "En tant que petite agence, Digital Heirloom nous donne des capacités de sous-titrage de niveau entreprise à une fraction du coût. Nous traitons des centaines de vidéos mensuellement avec une précision parfaite.",
+        "image": {
+          "src": "/imgs/avatars/3.png",
+          "alt": "marcus"
+        }
+      },
+      {
+        "name": "Sofia Garcia",
+        "role": "Gestionnaire de plateforme e-learning",
+        "quote": "Digital Heirloom a rendu notre contenu éducatif accessible mondialement. Les étudiants de plus de 50 pays peuvent maintenant apprendre de nos cours avec des traductions précises. Changement de jeu !",
+        "image": {
+          "src": "/imgs/avatars/4.png",
+          "alt": "sofia"
+        }
+      },
+      {
+        "name": "James Wilson",
+        "role": "Directeur marketing",
+        "quote": "La traduction alimentée par l'IA est incroyablement précise. Nous localisons nos vidéos marketing pour différents marchés en minutes au lieu de jours. Le ROI est au plafond !",
+        "image": {
+          "src": "/imgs/avatars/5.png",
+          "alt": "james"
+        }
+      },
+      {
+        "name": "Anna Zhang",
+        "role": "Stratège de contenu",
+        "quote": "La solution en un clic de Digital Heirloom a transformé notre contenu YouTube et TikTok en une puissance mondiale. Notre public international a augmenté de 500% en seulement 3 mois !",
+        "image": {
+          "src": "/imgs/avatars/6.png",
+          "alt": "anna"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Questions fréquemment posées",
+    "description": "Vous avez une autre question ? Contactez-nous par e-mail.",
+    "tip": "Vous ne trouvez pas ce que vous cherchez ? Contactez notre <a href='mailto:support@digitalheirloom.app' class='text-primary font-medium hover:underline'>équipe de support client</a>",
+    "items": [
+      {
+        "question": "Le colis ShipAny contient-il une clé USB ou mes données réelles ?",
+        "answer": "Non. Pour une sécurité maximale, nous n'expédions jamais de clés USB. Le colis contient uniquement un identifiant crypté physique haute résistance (Recovery Kit). Vos actifs restent cryptés dans le cloud ; l'identifiant physique est la seule \"clé\" pour les déverrouiller."
+      },
+      {
+        "question": "Que se passe-t-il si la base de données de DigitalHeirloom est piratée ?",
+        "answer": "C'est la brillance de notre architecture. Même si les pirates exfiltrent toute la base de données, ils ne peuvent rien lire. Les facteurs de décryptage critiques ne sont pas sur nos serveurs ; ils résident dans les identifiants physiques envoyés à vos bénéficiaires. La complexité algorithmique rend le craquage aussi difficile que de trouver un atome spécifique dans l'univers."
+      },
+      {
+        "question": "La plateforme garantit-elle la qualité ou l'intégrité du contenu de mes fichiers ?",
+        "answer": "Nous garantissons l'intégrité physique et la sécurité de vos blocs de données cryptés via un stockage distribué mondialement. Cependant, en tant que plateforme \"Zero-Knowledge\", nous n'auditons ni ne garantissons la qualité du contenu interne. Nous sommes les fabricants de coffres-forts, pas les auditeurs de contenu."
+      },
+      {
+        "question": "Mon bénéficiaire aura-t-il encore besoin de mon mot de passe principal après avoir reçu l'identifiant physique ?",
+        "answer": "Non. Les identifiants Pro disposent de la technologie \"Auto-Parsing\". Une fois que le bénéficiaire scanne le code QR crypté, le système valide l'identité via le support physique, contournant automatiquement la saisie du mot de passe pour une récupération sans friction."
+      },
+      {
+        "question": "Pourquoi insister sur les \"Identifiants Physiques\" plutôt que sur des mots de passe purement numériques ?",
+        "answer": "Les mots de passe numériques peuvent être compromis par force brute ou hameçonnage. Nos identifiants physiques sont \"non réplicables\". Cette double validation—liant l'héritage numérique à la logistique physique (ShipAny)—garantit que même si un pirate franchit votre réseau, il ne peut pas franchir l'espace physique."
+      },
+      {
+        "question": "Le décryptage d'un actif de 2 Go prend-il beaucoup de temps ?",
+        "answer": "Le temps de décryptage dépend du matériel local du bénéficiaire, pas de la bande passante. Une fois que l'identifiant physique active le canal, le système utilise le calcul Edge de Vercel pour le décryptage en streaming. Une archive de 2 Go peut généralement être restaurée en quelques minutes."
+      }
+    ]
+  },
+  "technical-architecture": {
+    "id": "technical-architecture",
+    "title": "Architecture Technique et Conformité",
+    "description": "En savoir plus : Architecture Technique et Conformité",
+    "items": [
+      {
+        "title": "Technologie de Base : BIP39 et AES-256-GCM",
+        "description": "La fondation d'Afterglow est construite sur la norme mnémonique BIP39, le même protocole utilisé par les portefeuilles de cryptomonnaies leaders. Le système génère un \"Kit de Récupération\" de 24 mots pour protéger votre sauvegarde de mot de passe principal. Chaque donnée est chiffrée à l'aide d'AES-256-GCM, offrant le plus haut niveau de sécurité cryptographique disponible pour un usage commercial.",
+        "icon": "Shield"
+      },
+      {
+        "title": "Pont Physique-Numérique : Alimenté par ShipAny",
+        "description": "Nous avons comblé le fossé entre les données numériques et les héritages physiques grâce à une intégration approfondie avec ShipAny, une plateforme d'orchestration logistique mondiale. Déclencheurs Automatisés : Surveillance en temps réel via des fonctions Edge haute performance. Humain dans la Boucle (HITL) : Pour éviter les erreurs d'expédition irréversibles, chaque expédition physique de niveau Pro nécessite une autorisation secondaire manuelle depuis le tableau de bord administratif d'Afterglow. Logistique Prioritaire à la Confidentialité : Les adresses d'expédition des bénéficiaires restent chiffrées dans notre base de données et ne sont déchiffrées qu'au moment de la génération de l'étiquette d'expédition.",
+        "icon": "Package"
+      },
+      {
+        "title": "Pourquoi Passer au Plan Familial Pro ?",
+        "description": "Pour les utilisateurs gérant des actifs de grande valeur—tels que les clés privées, les documents juridiques sensibles ou les archives familiales inestimables—le Plan Pro offre une \"Certitude de Livraison\" : Alertes Omnicanales : Évitez les risques de point de défaillance unique associés aux notifications par e-mail uniquement. Moteur de Règlement Logistique : La passerelle Creem intégrée permet aux bénéficiaires de régler les frais d'expédition en un seul clic. Bénéficiaires Illimités : Parfait pour la planification successorale complexe et les structures de fiducie familiale.",
+        "icon": "ArrowUpCircle"
+      },
+      {
+        "title": "Avertissement Juridique et Meilleures Pratiques",
+        "description": "Bien qu'Afterglow fournisse une sécurité technique de pointe, nous recommandons fortement aux utilisateurs d'imprimer leur Kit de Récupération et de le stocker dans un endroit sûr et ignifuge. Notre service sert de complément technologique à votre plan successoral et ne remplace pas un testament ou une disposition testamentaire légalement contraignant tel que défini par votre juridiction locale. Veuillez consulter un professionnel juridique pour une planification successorale complète.",
+        "icon": "FileText"
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "Déployez votre première startup SaaS IA",
+    "description": "Commencez ici, déployez avec Digital Heirloom.",
+    "buttons": [
+      {
+        "title": "Obtenir Digital Heirloom",
+        "url": "https://www.subtitletk.app",
+        "target": "_blank",
+        "icon": "Zap"
+      },
+      {
+        "title": "Lire la documentation",
+        "url": "/docs",
+        "target": "_blank",
+        "variant": "outline",
+        "icon": "BookOpenText"
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "Abonnez-vous à notre newsletter",
+    "description": "Recevez les dernières nouvelles et mises à jour de Digital Heirloom.",
+    "submit": {
+      "input": {
+        "placeholder": "Entrez votre e-mail"
+      },
+      "button": {
+        "title": "S'abonner"
+      },
+      "action": "/api/subscribe"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Digital Heirloom",
+      "description": "Digital Heirloom is a high-performance digital toolkit designed to extract and translate subtitles from YouTube and TikTok videos. We believe in simple, transparent pricing.",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "À propos",
+          "children": [
+            {
+              "title": "À propos",
+              "url": "/about",
+              "target": "_self"
+            },
+            {
+              "title": "Contactez-nous",
+              "url": "/contact",
+              "target": "_self"
+            },
+            {
+              "title": "Tarification",
+              "url": "/pricing",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Amis",
+          "children": [
+            {
+              "title": "Creem",
+              "url": "https://www.creem.io",
+              "target": "_blank"
+            },
+            {
+              "title": "ShipAny",
+              "url": "https://www.shipany.io",
+              "target": "_blank"
+            },
+            {
+              "title": "Resend",
+              "url": "https://resend.com",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "Email",
+          "icon": "Mail",
+          "url": "mailto:support@digitalheirloom.app",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Politique de confidentialité",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Conditions d'utilisation",
+          "url": "/terms-of-service"
+        },
+        {
+          "title": "Avertissement",
+          "url": "/disclaimer"
+        }
+      ]
+    },
+    "copyright": "Digital Heirloom est un produit indépendant et n'est pas affilié à Google (YouTube) ou ByteDance (TikTok).",
+    "show_theme": true,
+    "show_locale": true
+  }
+}

@@ -1,0 +1,691 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "SoloBoard",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Command Center",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "Pricing",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "Command Center",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "Billing",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "Activity",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "The One-Pane-of-Glass for Solopreneurs",
+    "highlight_text": "Multi-Site Monitoring",
+    "description": "Eliminate the need for 10 browser tabs. Monitor traffic, revenue, and site health for all your SaaS products in one unified dashboard. Zero-latency overview with actionable AI insights.",
+    "announcement": {
+      "badge": "Efficiency",
+      "title": "🚀 All-in-One Dashboard",
+      "url": "#how-it-works"
+    },
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Free forever for up to 2 sites</span>",
+    "buttons": [
+      {
+        "title": "Start for Free",
+        "icon": "LayoutDashboard",
+        "url": "/sign-up",
+        "target": "_self",
+        "variant": "default",
+        "className": ""
+      },
+      {
+        "title": "View Demo",
+        "icon": "Play",
+        "url": "/soloboard",
+        "target": "_self",
+        "variant": "outline",
+        "className": ""
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "",
+    "show_award": false,
+    "image": {
+      "src": "/imgs/features/admin.png",
+      "alt": "hero"
+    },
+    "image_invert": {
+      "src": "/imgs/features/admin-dark.png",
+      "alt": "hero"
+    }
+  },
+  "logos": {
+    "title": "Digital Heirloom is built on the shoulders of giants",
+    "items": [
+      {
+        "title": "Next.js",
+        "image": {
+          "src": "/imgs/logos/nextjs.svg",
+          "alt": "Next.js"
+        }
+      },
+      {
+        "title": "React",
+        "image": {
+          "src": "/imgs/logos/react.svg",
+          "alt": "React"
+        }
+      },
+      {
+        "title": "TailwindCSS",
+        "image": {
+          "src": "/imgs/logos/tailwindcss.svg",
+          "alt": "TailwindCSS"
+        }
+      },
+      {
+        "title": "Shadcn/UI",
+        "image": {
+          "src": "/imgs/logos/shadcn.svg",
+          "alt": "Shadcn/UI"
+        }
+      },
+      {
+        "title": "Vercel",
+        "image": {
+          "src": "/imgs/logos/vercel.svg",
+          "alt": "Vercel"
+        }
+      }
+    ]
+  },
+  "introduce": {
+    "id": "introduce",
+    "title": "What is Digital Heirloom",
+    "label": "Introduce",
+    "description": "Digital Heirloom is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
+    "image": {
+      "src": "/imgs/features/landing-page.png",
+      "alt": "introduce"
+    },
+    "items": [
+      {
+        "title": "Ready-to-use Templates",
+        "description": "Choose from dozens of production-ready AI SaaS templates to quickly start your project.",
+        "icon": "RiNextjsFill",
+        "image": {
+          "src": "/imgs/features/1.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "Infrastructure Setup",
+        "description": "Get instant access to scalable infrastructure with best practices built-in.",
+        "icon": "RiDatabase2Line",
+        "image": {
+          "src": "/imgs/features/2.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "Quick Deployment",
+        "description": "Deploy your AI SaaS application to production in hours, not days.",
+        "icon": "RiCloudyFill",
+        "image": {
+          "src": "/imgs/features/3.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "AI Integration",
+        "description": "Integrate AI into your project with ease using our built-in AI SDK.",
+        "icon": "RiRobot2Line",
+        "image": {
+          "src": "/imgs/features/4.png",
+          "alt": "introduce"
+        }
+      }
+    ]
+  },
+  "benefits": {
+    "id": "benefits",
+    "title": "Why Choose Digital Heirloom",
+    "label": "Benefits",
+    "description": "Get everything you need to launch your AI startup - from ready-to-use templates to technical support.",
+    "items": [
+      {
+        "title": "Complete Framework",
+        "description": "Built on Next.js with authentication, payments, and AI integration - everything works out of the box.",
+        "icon": "RiNextjsFill",
+        "image": {
+          "src": "/imgs/features/user-billing.png",
+          "alt": "benefits"
+        }
+      },
+      {
+        "title": "Rich Templates Library",
+        "description": "Choose from various AI SaaS templates to kickstart your project - chatbots, image generation, and more.",
+        "icon": "RiClapperboardAiLine",
+        "image": {
+          "src": "/imgs/features/admin-settings.png",
+          "alt": "benefits"
+        }
+      },
+      {
+        "title": "Technical Guidance",
+        "description": "Get dedicated support and join our developer community to ensure your successful launch.",
+        "icon": "RiCodeFill",
+        "image": {
+          "src": "/imgs/features/landing-page.png",
+          "alt": "benefits"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "id": "usage",
+    "title": "How to Launch with Digital Heirloom",
+    "description": "Get your AI SaaS startup running in three simple steps:",
+    "image": {
+      "src": "/imgs/features/1.png",
+      "alt": "usage"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "Get Digital Heirloom",
+        "description": "Buy Digital Heirloom with a one-time payment. Check your email for the code and documentation.",
+        "image": {
+          "src": "/imgs/features/5.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "Start Your Project",
+        "description": "Read the documentation and clone the code of Digital Heirloom. Start building your AI SaaS startup.",
+        "image": {
+          "src": "/imgs/features/6.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "Customize Your Project",
+        "description": "Modify the template with your data and contents. Specific AI functionality needs.",
+        "image": {
+          "src": "/imgs/features/7.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "Deploy to Production",
+        "description": "Deploy your project to production with a few steps and start serving customers immediately.",
+        "image": {
+          "src": "/imgs/features/8.png",
+          "alt": "usage"
+        }
+      }
+    ]
+  },
+  "how-it-works": {
+    "id": "how-it-works",
+    "title": "How It Works",
+    "description": "A simple, powerful system to monitor all your businesses",
+    "items": [
+      {
+        "title": "Connect Your Platforms",
+        "description": "Integrate Google Analytics, Stripe, Shopify, and more with read-only API access. Military-grade AES-256 encryption keeps your credentials safe.",
+        "icon": "Plug"
+      },
+      {
+        "title": "Unified Dashboard",
+        "description": "View traffic, revenue, and site health for 3-10+ websites in a single grid. No more context-switching between admin panels.",
+        "icon": "LayoutDashboard"
+      },
+      {
+        "title": "AI-Powered Insights",
+        "description": "Get actionable recommendations based on cross-site performance analysis. Know which sites need attention and which are thriving.",
+        "icon": "Sparkles"
+      }
+    ]
+  },
+  "zero-knowledge-security": {
+    "id": "zero-knowledge-security",
+    "title": "Privacy-First Security",
+    "description": "Your API credentials are encrypted with AES-256 before storage. We use read-only access to your platforms, ensuring your data is never compromised and we can never modify your settings.",
+    "items": [
+      {
+        "title": "Read-only API access",
+        "description": "",
+        "icon": "Eye"
+      },
+      {
+        "title": "AES-256 encryption",
+        "description": "",
+        "icon": "Shield"
+      },
+      {
+        "title": "Serverless architecture",
+        "description": "",
+        "icon": "Cloud"
+      },
+      {
+        "title": "Zero data retention",
+        "description": "",
+        "icon": "Trash2"
+      },
+      {
+        "title": "SOC 2 compliant",
+        "description": "",
+        "icon": "FileCheck"
+      },
+      {
+        "title": "GDPR & CCPA ready",
+        "description": "",
+        "icon": "Globe"
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "Key Features of Digital Heirloom",
+    "description": "Everything you need to launch your AI SaaS startup quickly and efficiently.",
+    "items": [
+      {
+        "title": "Next.js Boilerplate",
+        "description": "Production-ready Next.js templates with SEO-friendly structure and i18n support.",
+        "icon": "RiNextjsFill"
+      },
+      {
+        "title": "Authentication & Payments",
+        "description": "Integrated Google OAuth, one-tap login, and Stripe payment processing.",
+        "icon": "RiKey2Fill"
+      },
+      {
+        "title": "Data Infrastructure",
+        "description": "Built-in Supabase integration for reliable and scalable data storage.",
+        "icon": "RiDatabase2Line"
+      },
+      {
+        "title": "One-Click Deployment",
+        "description": "Seamless deployment to Vercel or Cloudflare with automated setup.",
+        "icon": "RiCloudy2Fill"
+      },
+      {
+        "title": "Business Analytics",
+        "description": "Integrated Google Analytics and Search Console for tracking growth.",
+        "icon": "RiBarChart2Line"
+      },
+      {
+        "title": "AI-Ready Infrastructure",
+        "description": "Pre-configured AI integration with built-in credits system and API sales.",
+        "icon": "RiRobot2Line"
+      }
+    ]
+  },
+  "stats": {
+    "id": "stats",
+    "title": "People Love Digital Heirloom",
+    "description": "for it's easy to use and fast to ship.",
+    "items": [
+      {
+        "title": "999+",
+        "description": "Customers"
+      },
+      {
+        "title": "200+",
+        "description": "Blocks"
+      },
+      {
+        "title": "50+",
+        "description": "Templates"
+      }
+    ]
+  },
+  "testimonials": {
+    "id": "testimonials",
+    "title": "What Users Say About Digital Heirloom",
+    "description": "Hear from content creators and businesses who transformed their video content with Digital Heirloom.",
+    "items": [
+      {
+        "name": "David Chen",
+        "role": "YouTube Content Creator",
+        "quote": "Digital Heirloom transformed my YouTube channel! I can now reach global audiences with accurate subtitles in 12 languages. My views increased by 300% after adding multilingual subtitles.",
+        "image": {
+          "src": "/imgs/avatars/1.png",
+          "alt": "david"
+        }
+      },
+      {
+        "name": "Rachel Kim",
+        "role": "TikTok Influencer",
+        "quote": "One-click subtitle extraction and translation saved me hours every week. My TikTok videos now connect with viewers worldwide, and my engagement has skyrocketed!",
+        "image": {
+          "src": "/imgs/avatars/2.png",
+          "alt": "rachel"
+        }
+      },
+      {
+        "name": "Marcus Thompson",
+        "role": "Video Production Agency Owner",
+        "quote": "As a small agency, Digital Heirloom gives us enterprise-level subtitle capabilities at a fraction of the cost. We process hundreds of videos monthly with perfect accuracy.",
+        "image": {
+          "src": "/imgs/avatars/3.png",
+          "alt": "marcus"
+        }
+      },
+      {
+        "name": "Sofia Garcia",
+        "role": "E-Learning Platform Manager",
+        "quote": "Digital Heirloom made our educational content accessible globally. Students from 50+ countries can now learn from our courses with accurate translations. Game-changer!",
+        "image": {
+          "src": "/imgs/avatars/4.png",
+          "alt": "sofia"
+        }
+      },
+      {
+        "name": "James Wilson",
+        "role": "Marketing Director",
+        "quote": "The AI-powered translation is incredibly accurate. We localize our marketing videos for different markets in minutes instead of days. ROI is through the roof!",
+        "image": {
+          "src": "/imgs/avatars/5.png",
+          "alt": "james"
+        }
+      },
+      {
+        "name": "Anna Zhang",
+        "role": "Content Strategist",
+        "quote": "Digital Heirloom's one-click solution turned our YouTube and TikTok content into a global powerhouse. Our international audience grew 500% in just 3 months!",
+        "image": {
+          "src": "/imgs/avatars/6.png",
+          "alt": "anna"
+        }
+      }
+    ]
+  },
+  "about": {
+    "id": "about",
+    "title": "Built for the Army of One",
+    "label": "About Us",
+    "description": "SoloBoard was born out of a simple frustration: Managing 10 SaaS products shouldn't feel like a chore.",
+    "story": "As a serial entrepreneur, I found myself wasting hours every week manually checking different admin panels. I realized that as my portfolio grew, my focus vanished. I didn't need more complex analytics; I needed a Pulse Monitor.",
+    "mission": "SoloBoard is our answer to the chaos. Built on top of robust technologies like Neon and ShipAny, we provide independent founders with the clarity they need to scale. We aren't just a dashboard; we are your digital command center, helping you spend less time monitoring and more time building.",
+    "values": [
+      {
+        "title": "Founder-First Design",
+        "description": "Every feature is designed with the solopreneur's workflow in mind. No bloat, no complexity—just what you need.",
+        "icon": "User"
+      },
+      {
+        "title": "Transparency",
+        "description": "We build in public. Follow our journey on Twitter/X and see how we're constantly improving based on real user feedback.",
+        "icon": "Eye"
+      },
+      {
+        "title": "Security by Default",
+        "description": "Your data security isn't an afterthought—it's our foundation. AES-256 encryption and read-only access ensure your business stays safe.",
+        "icon": "Shield"
+      }
+    ]
+  },
+  "contact": {
+    "id": "contact",
+    "title": "Let's Talk Shop",
+    "label": "Contact Us",
+    "description": "Have a feature request, a bug to report, or just want to chat about the solopreneur life? We're always listening.",
+    "channels": [
+      {
+        "title": "Direct Support",
+        "description": "Response time: Usually under 12 hours",
+        "email": "support@soloboard.app",
+        "icon": "Mail"
+      },
+      {
+        "title": "Build in Public",
+        "description": "Follow our journey and get real-time updates",
+        "url": "https://twitter.com/SoloBoardApp",
+        "handle": "@SoloBoardApp",
+        "icon": "Twitter"
+      },
+      {
+        "title": "Partnerships",
+        "description": "For collaborations or agency inquiries",
+        "email": "partners@soloboard.app",
+        "icon": "Handshake"
+      }
+    ],
+    "location": "Based in the cloud, serving founders worldwide 🌍"
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Frequently Asked Questions",
+    "description": "Everything you need to know about SoloBoard",
+    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@soloboard.app' class='text-primary font-medium hover:underline'>customer support team</a>",
+    "items": [
+      {
+        "question": "How does SoloBoard connect to my websites?",
+        "answer": "We use secure API connections (OAuth and API Keys) to fetch data from providers like Google Analytics 4, Stripe, and Shopify. It takes less than 2 minutes to sync a new site."
+      },
+      {
+        "question": "Is it safe to share my API keys?",
+        "answer": "Yes. We prioritize security above all else. All keys are encrypted using AES-256 and stored in a secure Neon database. We only request Read-Only permissions, so your funds and configurations are never at risk."
+      },
+      {
+        "question": "Does SoloBoard slow down my website's performance?",
+        "answer": "Not at all. SoloBoard communicates directly with the platform APIs (like Stripe's servers). We do not load any scripts on your actual website, ensuring your page speed remains 100% unaffected."
+      },
+      {
+        "question": "Can I manage more than 10 websites?",
+        "answer": "Absolutely. While our standard Pro plan covers up to 10 sites, our Studio plan offers unlimited monitoring for larger portfolios and agencies."
+      },
+      {
+        "question": "Why choose SoloBoard over free alternatives?",
+        "answer": "While you can check these platforms individually for free, SoloBoard saves you the most valuable asset you have: Time. We consolidate everything into a high-performance, mobile-ready dashboard that a single browser tab simply can't match."
+      },
+      {
+        "question": "What platforms do you support?",
+        "answer": "We currently support Google Analytics 4 (GA4) for traffic analytics, Stripe and Lemon Squeezy for payment processing, Shopify for e-commerce, and custom uptime monitoring. More integrations are added regularly based on user requests."
+      },
+      {
+        "question": "How often does the data refresh?",
+        "answer": "Free plan users get hourly updates. Pro plan users enjoy near real-time synchronization (every 5-10 minutes) to ensure you never miss critical changes in your business metrics."
+      },
+      {
+        "question": "Can I cancel my subscription anytime?",
+        "answer": "Yes, absolutely. You can cancel your subscription with one click through your billing portal. No hidden fees, no dark patterns, no questions asked."
+      }
+    ]
+  },
+  "technical-architecture": {
+    "id": "technical-architecture",
+    "title": "Technical Architecture & Integrations",
+    "description": "Learn More: Technical Architecture & Integrations",
+    "items": [
+      {
+        "title": "Core Technology: Next.js 16 & Neon PostgreSQL",
+        "description": "SoloBoard is built on Next.js 16 with React 19, providing lightning-fast performance and seamless user experience. Data is stored in Neon's serverless PostgreSQL database with automatic scaling and 99.99% uptime guarantee.",
+        "icon": "Code"
+      },
+      {
+        "title": "Platform Integrations: GA4, Stripe, Shopify & More",
+        "description": "We support the most popular platforms for solopreneurs: Google Analytics 4 for traffic tracking, Stripe and Lemon Squeezy for payment processing, Shopify for e-commerce, and custom API endpoints for any other service you use.",
+        "icon": "Plug"
+      },
+      {
+        "title": "Why Upgrade to Pro Plan?",
+        "description": "For users managing multiple high-traffic sites, the Pro Plan offers real-time data synchronization (every few minutes), AI-powered business insights, unlimited sites, custom alerts, and priority support. Perfect for serial entrepreneurs and agency owners.",
+        "icon": "Zap"
+      },
+      {
+        "title": "Data Privacy & Compliance",
+        "description": "SoloBoard is GDPR and CCPA compliant. We use read-only API access and AES-256 encryption for all credentials. Your data is never shared with third parties, and you can export or delete it at any time. We are SOC 2 Type II certified.",
+        "icon": "Shield"
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "Start Monitoring Your Portfolio Today",
+    "description": "Join thousands of solopreneurs who trust SoloBoard to monitor their business empire from one unified dashboard.",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Free forever for up to 2 sites</span>",
+    "buttons": [
+      {
+        "title": "Start for Free",
+        "url": "/sign-up",
+        "target": "_self",
+        "icon": "LayoutDashboard",
+        "variant": "default",
+        "className": ""
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "Subscribe to our newsletter",
+    "description": "Get the latest news and updates from SoloBoard.",
+    "submit": {
+      "input": {
+        "placeholder": "Enter your email"
+      },
+      "button": {
+        "title": "Subscribe"
+      },
+      "action": "/api/subscribe"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "SoloBoard",
+      "description": "SoloBoard is an all-in-one monitoring command center for solopreneurs. Track traffic, revenue, and site health for all your SaaS products in one unified dashboard with zero-latency overview and AI-powered insights.",
+      "url": "/"
+    },
+    "copyright": "SoloBoard - The One-Pane-of-Glass for Solopreneurs",
+    "nav": {
+      "items": [
+        {
+          "title": "Product",
+          "children": [
+            {
+              "title": "Command Center",
+              "url": "/soloboard",
+              "target": "_self"
+            },
+            {
+              "title": "Pricing",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "Integrations",
+              "url": "/integrations",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Company",
+          "children": [
+            {
+              "title": "About Us",
+              "url": "/about",
+              "target": "_self"
+            },
+            {
+              "title": "Contact Us",
+              "url": "/contact",
+              "target": "_self"
+            },
+            {
+              "title": "Blog",
+              "url": "/blog",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Resources",
+          "children": [
+            {
+              "title": "Documentation",
+              "url": "/docs",
+              "target": "_self"
+            },
+            {
+              "title": "API Reference",
+              "url": "/api-docs",
+              "target": "_self"
+            },
+            {
+              "title": "Support",
+              "url": "mailto:support@soloboard.app",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "Email",
+          "icon": "Mail",
+          "url": "mailto:support@soloboard.app",
+          "target": "_self"
+        },
+        {
+          "title": "Twitter",
+          "icon": "Twitter",
+          "url": "https://twitter.com/soloboard",
+          "target": "_blank"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        },
+        {
+          "title": "Cookie Policy",
+          "url": "/cookie-policy"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

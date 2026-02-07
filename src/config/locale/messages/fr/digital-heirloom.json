@@ -1,0 +1,356 @@
+{
+  "print": {
+    "title": "Héritage Numérique - Kit de Récupération Physique",
+    "fragmentA": "Fragment A",
+    "fragmentB": "Fragment B",
+    "documentId": "ID du document",
+    "generatedAt": "Généré le",
+    "expiresAt": "Expire le",
+    "beneficiary": "Bénéficiaire",
+    "shardA": "FRAGMENT A : CLÉ D'INDEX",
+    "shardB": "FRAGMENT B : LE SECRET CENTRAL",
+    "greeting": "Cher Bénéficiaire,",
+    "letterContent": "Ce document est la clé physique pour décrypter votre héritage numérique. Veuillez le conserver en sécurité et l'utiliser avec le Fragment B.",
+    "important": "Important :",
+    "warning1": "Ce document se compose de deux parties : Fragment A (Index) et Fragment B (Secret)",
+    "warning2": "Les deux parties doivent être utilisées ensemble pour décrypter l'héritage numérique",
+    "warning3": "Stockez les deux parties séparément pour la sécurité",
+    "warning4": "Ne permettez pas à des personnes non autorisées de consulter ce document",
+    "indexKey": "Clé d'index :",
+    "mnemonicPhraseA": "Phrase mnémonique (Partie A) :",
+    "mnemonicPhraseB": "Phrase mnémonique (Partie B) :",
+    "securityWarning": "⚠️ AVERTISSEMENT : OUVERTURE NON AUTORISÉE INTERDITE | CONSERVEZ DANS UN COFFRE-FORT APRÈS CONSULTATION",
+    "scratchInstruction": "[Appliquer le revêtement argenté à gratter ici par l'administrateur]",
+    "coreSecret": "Secret central (visible après grattage) :",
+    "securityNotice": "Avis de sécurité :",
+    "security1": "Cette clé doit être utilisée avec le Fragment A pour décrypter l'héritage numérique",
+    "security2": "Assurez-vous que le revêtement à gratter est intact et non endommagé",
+    "security3": "Recommandation : stockez les deux fragments dans des emplacements sécurisés séparés",
+    "security4": "Recommandation : utilisez un coffre-fort ou un coffre de banque",
+    "checksum": "Somme de contrôle (SHA256) :",
+    "footerText": "Cette page a été vérifiée manuellement et expédiée par l'administrateur",
+    "printDate": "Date d'impression",
+    "vaultId": "ID du coffre",
+    "proEdition": "ÉDITION PRO"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Votre héritage numérique est sécurisé. Voici un aperçu de votre compte.",
+    "dead_mans_switch": {
+      "title": "Interrupteur de sécurité",
+      "next_check_in": "Prochain check-in dans {days} jours",
+      "im_still_here": "Je suis toujours là"
+    },
+    "vault_items": {
+      "title": "Éléments du coffre",
+      "description": "Secrets chiffrés stockés"
+    },
+    "beneficiaries": {
+      "title": "Bénéficiaires",
+      "description": "Contacts de confiance"
+    },
+    "security_status": {
+      "title": "Statut de sécurité",
+      "protected": "Protégé",
+      "description": "Chiffrement Zero-Knowledge"
+    },
+    "check_in_streak": {
+      "title": "Série de check-in",
+      "weeks": "{count} semaines",
+      "last": "Dernier: {date}",
+      "never": "Jamais"
+    },
+    "recent_activity": {
+      "title": "Activité récente",
+      "updated_vault_item": "Élément du coffre mis à jour",
+      "added_beneficiary": "Bénéficiaire ajouté"
+    },
+    "quick_actions": {
+      "title": "Actions rapides",
+      "add_vault_item": "Ajouter un élément au coffre",
+      "add_beneficiary": "Ajouter un bénéficiaire",
+      "configure_switch": "Configurer l'interrupteur de sécurité"
+    }
+  },
+  "vault": {
+    "title": "Coffre",
+    "subtitle": "Gérez vos actifs numériques chiffrés",
+    "upload_title": "Télécharger et chiffrer",
+    "upload_desc": "Sélectionnez une catégorie pour télécharger votre actif",
+    "physical_sync": "Synchronisation physique ShipAny active",
+    "status": "Protection AES 256 bits",
+    "add_asset": "Ajouter un actif",
+    "asset_entry": {
+      "step1_title": "Définir l'actif",
+      "step1_desc": "Sélectionner les fichiers à protéger",
+      "step2_title": "Chiffrement sécurisé",
+      "step2_desc": "Chiffrement Zero-Knowledge local",
+      "step3_title": "Associer les bénéficiaires",
+      "step3_desc": "Spécifier les destinataires",
+      "prepare_title": "Préparez votre héritage numérique",
+      "prepare_desc": "Sélectionnez les fichiers sensibles, vidéos ou clés à protéger (jusqu'à 2GB)",
+      "click_or_drag": "Cliquez ou glissez les fichiers ici",
+      "local_encryption_note": "Vos fichiers seront chiffrés localement par blocs avant le téléchargement",
+      "file_selected": "Fichier sélectionné",
+      "next_to_encryption": "Suivant : Entrer dans le sandbox de chiffrement",
+      "zero_knowledge_active": "Protection Zero-Knowledge activée",
+      "zero_knowledge_desc": "Génération d'une clé AES 256 bits dans la mémoire du navigateur. Personne d'autre que vous ne peut voir ce contenu.",
+      "encrypting": "Chiffrement en cours...",
+      "encrypting_desc": "Votre fichier original ne quittera pas cet appareil",
+      "master_password_label": "Définir le mot de passe principal (pour générer des fragments)",
+      "master_password_hint": "Au moins 8 caractères, veuillez conserver ce mot de passe en sécurité",
+      "confirm_password_label": "Confirmer le mot de passe principal",
+      "confirm_and_encrypt": "Confirmer et chiffrer le fichier",
+      "file_encrypted": "Fichier chiffré en toute sécurité",
+      "file_encrypted_desc": "Maintenant, veuillez spécifier qui a le droit de demander l'accès à cet actif en cas d'urgence",
+      "no_beneficiaries": "Aucun bénéficiaire",
+      "no_beneficiaries_desc": "Veuillez d'abord aller à la page Bénéficiaires pour ajouter des bénéficiaires",
+      "physical_fragment": "Générer un fragment de récupération physique",
+      "physical_fragment_desc": "Expédier une enveloppe physique contenant les informations de déchiffrement via ShipAny",
+      "back": "Retour",
+      "complete_config": "Terminer la configuration",
+      "file_too_large": "La taille du fichier dépasse la limite de 2GB",
+      "file_selected_success": "Fichier sélectionné : {name}",
+      "select_file_first": "Veuillez d'abord sélectionner un fichier",
+      "password_too_short": "Le mot de passe principal doit contenir au moins 8 caractères",
+      "passwords_mismatch": "Les mots de passe ne correspondent pas",
+      "select_beneficiary": "Veuillez sélectionner au moins un bénéficiaire",
+      "shipping_request_created": "Demande d'expédition créée pour {name}",
+      "shipping_request_failed": "Échec de la création de la demande d'expédition, mais l'actif a été sauvegardé",
+      "asset_config_complete": "Configuration de l'actif terminée !",
+      "vault_not_found": "Impossible de récupérer les informations du coffre",
+      "upload_failed": "Échec du téléchargement",
+      "encryption_failed": "Échec du chiffrement"
+    },
+    "setup_required": {
+      "title": "Votre coffre n'a pas été activé",
+      "description": "Configurez votre coffre numérique pour commencer à protéger vos actifs chiffrés. Votre mot de passe principal générera des fragments de récupération physiques livrés via ShipAny.",
+      "step1_title": "Définir le mot de passe principal",
+      "step1_desc": "Créez un mot de passe principal sécurisé pour le chiffrement local",
+      "step2_title": "Ajouter des actifs",
+      "step2_desc": "Téléchargez et chiffrez vos actifs numériques",
+      "step3_title": "Configurer les bénéficiaires",
+      "step3_desc": "Configurez les contacts de confiance et la livraison physique",
+      "physical_sync_title": "Synchronisation physique ShipAny",
+      "physical_sync_desc": "Votre mot de passe principal générera des fragments de récupération physiques qui seront livrés en toute sécurité via ShipAny à votre adresse spécifiée. Cela fournit une couche de sécurité supplémentaire qui ne peut pas être compromise par des attaques numériques.",
+      "start_setup": "Commencer la configuration sécurisée",
+      "security_note": "🔒 Vos données sont chiffrées localement avant de quitter votre appareil. Nous ne pouvons pas accéder à votre mot de passe principal ou au contenu déchiffré."
+    }
+  },
+  "setup": {
+    "step1": {
+      "title": "Définir le mot de passe principal",
+      "subtitle": "C'est la seule clé de votre héritage numérique. Veuillez définir un mot de passe fort et conserver le kit de récupération en sécurité.",
+      "card_title": "Paramètres du mot de passe principal",
+      "card_description": "Le mot de passe sera utilisé pour chiffrer vos actifs numériques. Nous ne stockons pas votre mot de passe et il ne peut pas être récupéré s'il est perdu.",
+      "password_label": "Mot de passe principal",
+      "password_placeholder": "Veuillez entrer un mot de passe fort d'au moins 8 caractères",
+      "confirm_password_label": "Confirmer le mot de passe",
+      "confirm_password_placeholder": "Veuillez ré-entrer le mot de passe",
+      "hint_label": "Indice de mot de passe (Optionnel)",
+      "hint_placeholder": "Par exemple : La ville où nous nous sommes rencontrés pour la première fois ?",
+      "hint_description": "Cet indice vous aidera, vous ou le bénéficiaire, à vous rappeler le mot de passe, mais ne contient pas le mot de passe lui-même",
+      "password_strength": "Force du mot de passe",
+      "password_too_short": "Trop court",
+      "password_weak": "Faible",
+      "password_medium": "Moyen",
+      "password_strong": "Fort",
+      "passwords_match": "Les mots de passe correspondent",
+      "passwords_mismatch": "Les mots de passe ne correspondent pas",
+      "generate_kit": "Générer le kit de récupération",
+      "generating_kit": "Génération du kit de récupération...",
+      "confirm_saved": "J'ai sauvegardé le kit de récupération en sécurité et je comprends les conséquences de perdre mon mot de passe. Je comprends que si je ne sauvegarde pas le kit de récupération, je ne pourrai pas récupérer mes actifs numériques.",
+      "continue_next": "Continuer à l'étape suivante",
+      "password_requirements": {
+        "title": "Exigences du mot de passe",
+        "min_length": "Au moins 8 caractères",
+        "recommended": "Recommandé :",
+        "length_12": "12+ caractères pour une meilleure sécurité",
+        "uppercase": "Inclure des lettres majuscules (A-Z)",
+        "lowercase": "Inclure des lettres minuscules (a-z)",
+        "numbers": "Inclure des chiffres (0-9)",
+        "special": "Inclure des caractères spéciaux (!@#$%^&*)",
+        "note": "Un mot de passe fort combine plusieurs types de caractères et fait au moins 12 caractères de long."
+      },
+      "hint_questions": {
+        "label": "Sélectionner une question d'indice (optionnel)",
+        "custom": "Indice personnalisé",
+        "question1": "Dans quelle ville êtes-vous né ?",
+        "question2": "Quel était le nom de votre premier animal de compagnie ?",
+        "question3": "Quel était le nom de jeune fille de votre mère ?",
+        "question4": "Quel était le nom de votre école primaire ?",
+        "question5": "Quel était votre surnom d'enfance ?"
+      }
+    },
+    "step2": {
+      "title": "Ajouter des actifs numériques",
+      "subtitle": "Entrez les informations sur les actifs numériques que vous souhaitez protéger. Toutes les données seront chiffrées dans votre navigateur.",
+      "encryption_status": {
+        "encrypted": "✅ Données chiffrées",
+        "encrypting": "⏳ Chiffrement...",
+        "ready": "🔒 Chiffrement AES-256 prêt",
+        "idle": "⚪ En attente de saisie"
+      },
+      "encryption_description": {
+        "encrypted": "Vos données ont été chiffrées en toute sécurité et sont prêtes à être sauvegardées",
+        "encrypting": "Chiffrement de vos données avec AES-256-GCM",
+        "ready": "Les données seront automatiquement chiffrées dans le navigateur après la saisie",
+        "idle": "Commencez à ajouter vos actifs numériques"
+      },
+      "quick_start": {
+        "title": "Démarrage rapide",
+        "description": "Sélectionnez un modèle pour ajouter rapidement des types d'actifs courants"
+      },
+      "templates": {
+        "social": "📱 Compte de réseau social",
+        "wallet": "💰 Portefeuille de cryptomonnaie",
+        "bank": "💳 Compte bancaire",
+        "document": "📄 Document important",
+        "custom": "➕ Personnalisé"
+      },
+      "asset": {
+        "title": "Actif #{index}",
+        "type": "Type",
+        "platform": "Plateforme/Service",
+        "platform_placeholder": "Par ex. : Facebook, Gmail, Portefeuille Bitcoin",
+        "username": "Nom d'utilisateur/Compte",
+        "username_placeholder": "Nom d'utilisateur ou compte",
+        "password": "Mot de passe/Clé",
+        "password_placeholder": "Mot de passe ou code de récupération",
+        "notes": "Notes",
+        "notes_placeholder": "Autres informations importantes...",
+        "types": {
+          "account": "Compte",
+          "wallet": "Portefeuille",
+          "document": "Document",
+          "message": "Message",
+          "other": "Autre"
+        }
+      },
+      "empty_state": "Cliquez sur les modèles ci-dessus pour ajouter rapidement des actifs, ou utilisez le bouton ci-dessous pour ajouter manuellement",
+      "final_message": {
+        "title": "Dernier message (Optionnel)",
+        "description": "Mots pour votre famille, souhaits funéraires ou autres instructions",
+        "placeholder": "Entrez ce que vous voulez dire à votre famille..."
+      },
+      "actions": {
+        "back": "Retour à l'étape précédente",
+        "encrypt_and_continue": "Chiffrer et continuer",
+        "encrypting": "Chiffrement et sauvegarde...",
+        "error_no_password": "Mot de passe principal non trouvé, veuillez revenir à l'étape précédente",
+        "error_no_assets": "Veuillez ajouter au moins un actif ou entrer un dernier message",
+        "success": "Données chiffrées, prêtes à être sauvegardées"
+      }
+    },
+    "step3": {
+      "title": "Qui héritera de vos actifs numériques ?",
+      "subtitle": "Après la libération des actifs, nous enverrons les instructions de déchiffrement au personnel suivant",
+      "beneficiary": {
+        "title": "Bénéficiaire #{index}",
+        "name": "Nom *",
+        "name_placeholder": "Entrer le nom",
+        "email": "Email du destinataire *",
+        "email_placeholder": "example@mail.com",
+        "language": "Langue de notification",
+        "relationship": "Relation",
+        "phone": "Numéro de téléphone (Optionnel)",
+        "phone_placeholder": "+1 234 567 8900",
+        "logistics_title": "Informations logistiques (Optionnel, pour la livraison future d'articles physiques)",
+        "receiver_name": "Nom du destinataire",
+        "receiver_name_placeholder": "Nom du destinataire",
+        "address": "Adresse",
+        "address_placeholder": "Adresse de rue",
+        "city": "Ville",
+        "city_placeholder": "Ville",
+        "zip_code": "Code postal",
+        "zip_code_placeholder": "Code postal"
+      },
+      "relationships": {
+        "spouse": "Conjoint",
+        "child": "Enfant",
+        "parent": "Parent",
+        "sibling": "Frère/Sœur",
+        "lawyer": "Avocat",
+        "friend": "Ami",
+        "other": "Autre"
+      },
+      "languages": {
+        "zh": "中文 (Chinois simplifié)",
+        "en": "English",
+        "fr": "Français"
+      },
+      "actions": {
+        "add_beneficiary": "Ajouter un autre bénéficiaire",
+        "back": "Étape précédente",
+        "next": "Suivant : Logique de déclenchement",
+        "error_min_one": "Au moins un bénéficiaire doit être conservé",
+        "error_required": "Veuillez remplir les noms et emails de tous les bénéficiaires",
+        "error_email": "Veuillez vérifier si le format de l'email est correct"
+      }
+    },
+    "step4": {
+      "title": "Dernière étape : Définir les règles de déclenchement",
+      "subtitle": "Configurez précisément la logique d'automatisation de l'interrupteur de sécurité",
+      "heartbeat": {
+        "title": "Période de surveillance du rythme cardiaque",
+        "description": "Si vous ne vous connectez pas pendant plus de ce nombre de jours, le programme d'alerte démarrera",
+        "threshold": "Seuil de déconnexion",
+        "days": "{days} Jours",
+        "labels": {
+          "1_month": "1 Mois",
+          "3_months": "3 Mois",
+          "6_months": "6 Mois",
+          "1_year": "1 An"
+        }
+      },
+      "grace_period": {
+        "title": "Paramètres de période de grâce",
+        "description": "Nombre de jours de période de grâce après l'envoi de l'alerte",
+        "label": "Période de grâce",
+        "days": "{days} Jours",
+        "labels": {
+          "1_day": "1 Jour",
+          "7_days": "7 Jours",
+          "15_days": "15 Jours",
+          "30_days": "30 Jours"
+        }
+      },
+      "preview": {
+        "title": "Aperçu du processus de déclenchement",
+        "step1": "Aucune activité détectée pendant {days} jours consécutifs",
+        "step1_desc": "Nous arrêterons la surveillance silencieuse et entrerons en état d'alerte",
+        "step2": "{days} jours de période de grâce et alertes multi-canaux",
+        "step2_desc": "Envoyer des emails en chinois/anglais/français à votre email enregistré et aux contacts de secours",
+        "step3": "Libération des actifs",
+        "step3_desc": "Envoyer les jetons de déchiffrement et les instructions d'extraction aux bénéficiaires"
+      },
+      "actions": {
+        "submit": "Terminer la configuration et activer le coffre numérique",
+        "submitting": "Archivage sécurisé des données...",
+        "submitting_desc": "🔒 Vos données sont chiffrées avec AES-256-GCM et stockées en toute sécurité...",
+        "loading": "Chargement...",
+        "error_incomplete": "Données incomplètes, veuillez recommencer",
+        "error_no_data": "Veuillez commencer à l'étape 1",
+        "success": "Coffre numérique créé avec succès !"
+      }
+    }
+  },
+  "recovery_kit": {
+    "title": "Kit de récupération généré",
+    "description": "C'est le seul moyen de récupérer vos actifs numériques. Veuillez le télécharger et le conserver en sécurité immédiatement.",
+    "important_title": "Avis important :",
+    "important_points": {
+      "point1": "Nous ne stockons pas votre mot de passe principal ; il ne peut pas être récupéré s'il est perdu",
+      "point2": "Veuillez sauvegarder le kit de récupération dans un endroit sûr (par ex. un coffre-fort)",
+      "point3": "Ne partagez pas le kit de récupération avec d'autres",
+      "point4": "Il est recommandé d'imprimer une sauvegarde papier"
+    },
+    "mnemonic_title": "24 mots mnémoniques (Veuillez copier dans l'ordre) :",
+    "download_button": "Télécharger le kit de récupération (PDF)",
+    "downloading": "Génération...",
+    "downloaded": "Téléchargé",
+    "download_success": "✅ Kit de récupération téléchargé, veuillez le conserver en sécurité"
+  }
+}
+
+

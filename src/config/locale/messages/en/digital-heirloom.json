@@ -1,0 +1,358 @@
+{
+  "print": {
+    "title": "Digital Heirloom - Physical Recovery Kit",
+    "fragmentA": "Fragment A",
+    "fragmentB": "Fragment B",
+    "documentId": "Document ID",
+    "generatedAt": "Generated",
+    "expiresAt": "Expires",
+    "beneficiary": "Beneficiary",
+    "shardA": "SHARD A: INDEX KEY",
+    "shardB": "SHARD B: THE CORE SECRET",
+    "greeting": "Dear Beneficiary,",
+    "letterContent": "This document is the physical key to decrypt your digital legacy. Please keep it safe and use it together with Fragment B.",
+    "important": "Important:",
+    "warning1": "This document consists of two parts: Fragment A (Index) and Fragment B (Secret)",
+    "warning2": "Both parts must be used together to decrypt the digital legacy",
+    "warning3": "Store both parts separately for security",
+    "warning4": "Do not allow unauthorized persons to view this document",
+    "indexKey": "Index Key:",
+    "mnemonicPhraseA": "Mnemonic Phrase (Part A):",
+    "mnemonicPhraseB": "Mnemonic Phrase (Part B):",
+    "securityWarning": "⚠️ WARNING: UNAUTHORIZED OPENING PROHIBITED | STORE IN SAFE AFTER VIEWING",
+    "scratchInstruction": "[Apply scratch-off silver coating here by administrator]",
+    "coreSecret": "Core Secret (visible after scratching):",
+    "securityNotice": "Security Notice:",
+    "security1": "This key must be used together with Fragment A to decrypt the digital legacy",
+    "security2": "Ensure the scratch-off coating is intact and undamaged",
+    "security3": "Recommend storing both fragments in separate secure locations",
+    "security4": "Recommend using a safe or bank safety deposit box",
+    "checksum": "Checksum (SHA256):",
+    "footerText": "This page has been manually verified and shipped by administrator",
+    "printDate": "Print Date",
+    "vaultId": "Vault ID",
+    "proEdition": "PRO EDITION"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Your digital legacy is secure. Here's an overview of your account.",
+    "dead_mans_switch": {
+      "title": "Dead Man's Switch",
+      "next_check_in": "Next check-in due in {days} days",
+      "im_still_here": "I'm Still Here"
+    },
+    "vault_items": {
+      "title": "Vault Items",
+      "description": "Encrypted secrets stored"
+    },
+    "beneficiaries": {
+      "title": "Beneficiaries",
+      "description": "Trusted contacts"
+    },
+    "security_status": {
+      "title": "Security Status",
+      "protected": "Protected",
+      "description": "Zero-knowledge encryption"
+    },
+    "check_in_streak": {
+      "title": "Check-in Streak",
+      "weeks": "{count} weeks",
+      "last": "Last: {date}",
+      "never": "Never"
+    },
+    "recent_activity": {
+      "title": "Recent Activity",
+      "updated_vault_item": "Updated vault item",
+      "added_beneficiary": "Added beneficiary"
+    },
+    "quick_actions": {
+      "title": "Quick Actions",
+      "add_vault_item": "Add Vault Item",
+      "add_beneficiary": "Add Beneficiary",
+      "configure_switch": "Configure Dead Man's Switch"
+    }
+  },
+  "vault": {
+    "title": "Vault",
+    "subtitle": "Manage your encrypted digital assets",
+    "upload_title": "Upload & Encrypt",
+    "upload_desc": "Select a category to upload your asset",
+    "physical_sync": "ShipAny Physical Sync Active",
+    "status": "256-bit AES Protected",
+    "add_asset": "Add Asset",
+    "asset_entry": {
+      "step1_title": "Define Asset",
+      "step1_desc": "Select files to protect",
+      "step2_title": "Secure Encryption",
+      "step2_desc": "Local zero-knowledge encryption",
+      "step3_title": "Associate Beneficiaries",
+      "step3_desc": "Specify recipients",
+      "prepare_title": "Prepare Your Digital Legacy",
+      "prepare_desc": "Select sensitive files, videos, or keys that need protection (supports up to 2GB)",
+      "click_or_drag": "Click or drag files here",
+      "local_encryption_note": "Your files will be locally chunked and encrypted before uploading",
+      "file_selected": "File Selected",
+      "file_selected_title": "File Selected",
+      "next_to_encryption": "Next: Enter Encryption Sandbox",
+      "next_step_encryption": "Next Step: Enter Encryption Sandbox",
+      "zero_knowledge_active": "Zero-Knowledge Protection Activated",
+      "zero_knowledge_desc": "Generating 256-bit AES key in browser memory. No one but you can see this content.",
+      "encrypting": "Encrypting...",
+      "encrypting_desc": "Your original file will not leave this device",
+      "master_password_label": "Set Master Password (for generating fragments)",
+      "master_password_hint": "At least 8 characters, please keep this password safe",
+      "confirm_password_label": "Confirm Master Password",
+      "confirm_and_encrypt": "Confirm and Encrypt File",
+      "file_encrypted": "File Securely Encrypted",
+      "file_encrypted_desc": "Now, please specify who has the right to request access to this asset in an emergency",
+      "no_beneficiaries": "No Beneficiaries",
+      "no_beneficiaries_desc": "Please go to the Beneficiaries page to add beneficiaries first",
+      "physical_fragment": "Generate Physical Recovery Fragment",
+      "physical_fragment_desc": "Ship a physical envelope containing decryption information via ShipAny",
+      "back": "Back",
+      "complete_config": "Complete Configuration",
+      "file_too_large": "File size exceeds 2GB limit",
+      "file_selected_success": "File selected: {name}",
+      "select_file_first": "Please select a file first",
+      "password_too_short": "Master password must be at least 8 characters",
+      "passwords_mismatch": "Passwords do not match",
+      "select_beneficiary": "Please select at least one beneficiary",
+      "shipping_request_created": "Shipping request created for {name}",
+      "shipping_request_failed": "Failed to create shipping request, but asset has been saved",
+      "asset_config_complete": "Asset configuration complete!",
+      "vault_not_found": "Unable to retrieve vault information",
+      "upload_failed": "Upload failed",
+      "encryption_failed": "Encryption failed"
+    },
+    "setup_required": {
+      "title": "Your Vault Has Not Been Activated",
+      "description": "Set up your digital vault to start protecting your encrypted assets. Your master password will generate physical recovery fragments delivered via ShipAny.",
+      "step1_title": "Set Master Password",
+      "step1_desc": "Create a secure master password for local encryption",
+      "step2_title": "Add Assets",
+      "step2_desc": "Upload and encrypt your digital assets",
+      "step3_title": "Configure Beneficiaries",
+      "step3_desc": "Set up trusted contacts and physical delivery",
+      "physical_sync_title": "ShipAny Physical Sync",
+      "physical_sync_desc": "Your master password will generate physical recovery fragments that will be securely delivered via ShipAny to your specified address. This provides an additional layer of security that cannot be compromised through digital attacks.",
+      "start_setup": "Start Secure Setup",
+      "security_note": "🔒 Your data is encrypted locally before leaving your device. We cannot access your master password or decrypted content."
+    }
+  },
+  "setup": {
+    "step1": {
+      "title": "Set Master Password",
+      "subtitle": "This is the only key to your digital legacy. Please set a strong password and keep the recovery package safe.",
+      "card_title": "Master Password Settings",
+      "card_description": "The password will be used to encrypt your digital assets. We do not store your password, and it cannot be recovered if lost.",
+      "password_label": "Master Password",
+      "password_placeholder": "Please enter a strong password of at least 8 characters",
+      "confirm_password_label": "Confirm Password",
+      "confirm_password_placeholder": "Please re-enter the password",
+      "hint_label": "Password Hint (Optional)",
+      "hint_placeholder": "For example: The city where we first met?",
+      "hint_description": "This hint will help you or the beneficiary recall the password, but does not contain the password itself",
+      "password_strength": "Password Strength",
+      "password_too_short": "Too Short",
+      "password_weak": "Weak",
+      "password_medium": "Medium",
+      "password_strong": "Strong",
+      "passwords_match": "Passwords match",
+      "passwords_mismatch": "Passwords do not match",
+      "generate_kit": "Generate Recovery Package",
+      "generating_kit": "Generating Recovery Package...",
+      "confirm_saved": "I have safely saved the recovery package and understand the consequences of losing my password. I understand that if I do not save the recovery package, I will not be able to recover my digital assets.",
+      "continue_next": "Continue to Next Step",
+      "password_requirements": {
+        "title": "Password Requirements",
+        "min_length": "At least 8 characters",
+        "recommended": "Recommended:",
+        "length_12": "12+ characters for better security",
+        "uppercase": "Include uppercase letters (A-Z)",
+        "lowercase": "Include lowercase letters (a-z)",
+        "numbers": "Include numbers (0-9)",
+        "special": "Include special characters (!@#$%^&*)",
+        "note": "A strong password combines multiple character types and is at least 12 characters long."
+      },
+      "hint_questions": {
+        "label": "Select a hint question (optional)",
+        "custom": "Custom hint",
+        "question1": "What city were you born in?",
+        "question2": "What was the name of your first pet?",
+        "question3": "What was your mother's maiden name?",
+        "question4": "What was the name of your elementary school?",
+        "question5": "What was your childhood nickname?"
+      }
+    },
+    "step2": {
+      "title": "Add Digital Assets",
+      "subtitle": "Enter the digital asset information you want to protect. All data will be encrypted in your browser.",
+      "encryption_status": {
+        "encrypted": "✅ Data Encrypted",
+        "encrypting": "⏳ Encrypting...",
+        "ready": "🔒 AES-256 Encryption Ready",
+        "idle": "⚪ Waiting for Input"
+      },
+      "encryption_description": {
+        "encrypted": "Your data has been securely encrypted and is ready to save",
+        "encrypting": "Encrypting your data using AES-256-GCM",
+        "ready": "Data will be automatically encrypted in the browser after input",
+        "idle": "Start adding your digital assets"
+      },
+      "quick_start": {
+        "title": "Quick Start",
+        "description": "Select a template to quickly add common types of assets"
+      },
+      "templates": {
+        "social": "📱 Social Media Account",
+        "wallet": "💰 Cryptocurrency Wallet",
+        "bank": "💳 Bank Account",
+        "document": "📄 Important Document",
+        "custom": "➕ Custom"
+      },
+      "asset": {
+        "title": "Asset #{index}",
+        "type": "Type",
+        "platform": "Platform/Service",
+        "platform_placeholder": "e.g., Facebook, Gmail, Bitcoin Wallet",
+        "username": "Username/Account",
+        "username_placeholder": "Username or account",
+        "password": "Password/Key",
+        "password_placeholder": "Password or recovery code",
+        "notes": "Notes",
+        "notes_placeholder": "Other important information...",
+        "types": {
+          "account": "Account",
+          "wallet": "Wallet",
+          "document": "Document",
+          "message": "Message",
+          "other": "Other"
+        }
+      },
+      "empty_state": "Click the templates above to quickly add assets, or use the button below to add manually",
+      "final_message": {
+        "title": "Final Message (Optional)",
+        "description": "Words for your family, funeral wishes, or other instructions",
+        "placeholder": "Enter what you want to say to your family..."
+      },
+      "actions": {
+        "back": "Back to Previous Step",
+        "encrypt_and_continue": "Encrypt and Continue",
+        "encrypting": "Encrypting and Saving...",
+        "error_no_password": "Master password not found, please go back to previous step",
+        "error_no_assets": "Please add at least one asset or enter a final message",
+        "success": "Data encrypted, ready to save"
+      }
+    },
+    "step3": {
+      "title": "Who Will Inherit Your Digital Assets?",
+      "subtitle": "After the assets are released, we will send decryption instructions to the following personnel",
+      "beneficiary": {
+        "title": "Beneficiary #{index}",
+        "name": "Name *",
+        "name_placeholder": "Enter name",
+        "email": "Recipient Email *",
+        "email_placeholder": "example@mail.com",
+        "language": "Notification Language",
+        "relationship": "Relationship",
+        "phone": "Phone Number (Optional)",
+        "phone_placeholder": "+1 234 567 8900",
+        "logistics_title": "Logistics Information (Optional, for future physical item delivery)",
+        "receiver_name": "Recipient Name",
+        "receiver_name_placeholder": "Recipient Name",
+        "address": "Address",
+        "address_placeholder": "Street Address",
+        "city": "City",
+        "city_placeholder": "City",
+        "zip_code": "Zip Code",
+        "zip_code_placeholder": "Zip Code"
+      },
+      "relationships": {
+        "spouse": "Spouse",
+        "child": "Child",
+        "parent": "Parent",
+        "sibling": "Sibling",
+        "lawyer": "Lawyer",
+        "friend": "Friend",
+        "other": "Other"
+      },
+      "languages": {
+        "zh": "中文 (Simplified Chinese)",
+        "en": "English",
+        "fr": "Français"
+      },
+      "actions": {
+        "add_beneficiary": "Add Another Beneficiary",
+        "back": "Previous Step",
+        "next": "Next: Trigger Logic",
+        "error_min_one": "At least one beneficiary must be retained",
+        "error_required": "Please fill in all beneficiaries' names and emails",
+        "error_email": "Please check if the email format is correct"
+      }
+    },
+    "step4": {
+      "title": "Last Step: Set Trigger Rules",
+      "subtitle": "Precisely configure the automation logic for the dead letter switch",
+      "heartbeat": {
+        "title": "Heartbeat Monitoring Period",
+        "description": "If you do not log in for more than this number of days, the warning program will start",
+        "threshold": "Disconnection Threshold",
+        "days": "{days} Days",
+        "labels": {
+          "1_month": "1 Month",
+          "3_months": "3 Months",
+          "6_months": "6 Months",
+          "1_year": "1 Year"
+        }
+      },
+      "grace_period": {
+        "title": "Grace Period Settings",
+        "description": "Number of grace period days after the warning is sent",
+        "label": "Grace Period",
+        "days": "{days} Days",
+        "labels": {
+          "1_day": "1 Day",
+          "7_days": "7 Days",
+          "15_days": "15 Days",
+          "30_days": "30 Days"
+        }
+      },
+      "preview": {
+        "title": "Trigger Process Preview",
+        "step1": "No activity detected for {days} consecutive days",
+        "step1_desc": "We will stop silent monitoring and enter warning status",
+        "step2": "{days} days grace period and multi-channel warnings",
+        "step2_desc": "Send emails in Chinese/English/French to your registered email and backup contacts",
+        "step3": "Asset Release",
+        "step3_desc": "Send decryption tokens and extraction instructions to beneficiaries"
+      },
+      "actions": {
+        "submit": "Complete Setup and Activate Digital Vault",
+        "submitting": "Securely Archiving Data...",
+        "submitting_desc": "🔒 Your data is being encrypted using AES-256-GCM and securely stored...",
+        "loading": "Loading...",
+        "error_incomplete": "Incomplete data, please start over",
+        "error_no_data": "Please start from step 1",
+        "success": "Digital vault created successfully!"
+      }
+    }
+  },
+  "recovery_kit": {
+    "title": "Recovery Package Generated",
+    "description": "This is the only way to recover your digital assets. Please download and keep it safe immediately.",
+    "important_title": "Important Notice:",
+    "important_points": {
+      "point1": "We do not store your master password; it cannot be recovered if lost",
+      "point2": "Please save the recovery package in a safe place (e.g., a safe deposit box)",
+      "point3": "Do not share the recovery package with others",
+      "point4": "It is recommended to print a paper backup"
+    },
+    "mnemonic_title": "24 Mnemonic Words (Please copy in order):",
+    "download_button": "Download Recovery Package (PDF)",
+    "downloading": "Generating...",
+    "downloaded": "Downloaded",
+    "download_success": "✅ Recovery package downloaded, please keep it safe"
+  }
+}
+
+

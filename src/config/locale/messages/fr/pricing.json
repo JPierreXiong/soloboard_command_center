@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "title": "Tarification",
+    "description": "Choisissez votre plan Digital Heirloom"
+  },
+  "pricing": {
+    "id": "pricing",
+    "sr_only_title": "Tarification Digital Heirloom",
+    "title": "Tarification",
+    "description": "Sécurisez votre héritage numérique avec nos plans à plusieurs niveaux. Commencez gratuitement, mettez à niveau quand vous êtes prêt.",
+    "groups": [
+      {
+        "name": "annual",
+        "title": "Annuel",
+        "is_featured": true,
+        "label": "Recommandé"
+      }
+    ],
+    "items": [
+      {
+        "title": "Gratuit",
+        "description": "Essayez avec sauvegarde de base",
+        "label": "Commencer",
+        "features_title": "Inclus",
+        "features": [
+          "Stockage texte uniquement (10KB)",
+          "1 bénéficiaire",
+          "Rythme cardiaque fixe (180 jours)",
+          "Notifications par e-mail uniquement",
+          "Kit de récupération PDF de base",
+          "❌ Interrupteur mort-vivant (exportation manuelle uniquement)"
+        ],
+        "interval": "year",
+        "amount": 0,
+        "currency": "USD",
+        "price": "Gratuit",
+        "original_price": "",
+        "unit": "/ pour toujours",
+        "is_featured": false,
+        "tip": "Parfait pour essayer le service !",
+        "button": {
+          "title": "Commencer gratuitement",
+          "url": "/digital-heirloom/setup/step-1-master-password",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-free",
+        "product_name": "Digital Heirloom Gratuit",
+        "group": "annual",
+        "plan_name": "Gratuit"
+      },
+      {
+        "title": "Base",
+        "description": "Héritage d'actifs numériques essentiels",
+        "label": "Populaire",
+        "features_title": "Tout dans Gratuit, plus",
+        "features": [
+          "Stockage 50MB (petites pièces jointes/images)",
+          "✅ Interrupteur mort-vivant automatique",
+          "Jusqu'à 3 bénéficiaires",
+          "Rythme cardiaque ajustable (30-365 jours)",
+          "Notifications par e-mail + SMS (mondial)",
+          "Kit de récupération PDF de base",
+          "Support prioritaire"
+        ],
+        "interval": "year",
+        "amount": 4900,
+        "currency": "USD",
+        "price": "$49",
+        "original_price": "",
+        "unit": "/ an",
+        "is_featured": true,
+        "tip": "Idéal pour l'héritage numérique personnel !",
+        "button": {
+          "title": "Obtenir Base",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-base-annual",
+        "product_name": "Digital Heirloom Base (Annuel)",
+        "payment_product_id": "prod_4oN2BFtSPSpAnYcvUN0uoi",
+        "group": "annual",
+        "plan_name": "Base"
+      },
+      {
+        "title": "Pro",
+        "description": "Planification approfondie de l'héritage avec intégration physique",
+        "label": "Premium",
+        "features_title": "Tout dans Base, plus",
+        "features": [
+          "Stockage 2GB (vidéos/documents importants)",
+          "✅ Interrupteur mort-vivant prioritaire + alertes instantanées",
+          "Bénéficiaires illimités (mode fiducie familiale)",
+          "Rythme cardiaque granulaire (1 jour - 10 ans)",
+          "E-mail + SMS + vérification humaine",
+          "✅ Déclenchement automatique de la logistique ShipAny",
+          "Envoi de carte de sauvegarde physique (frais supplémentaires)",
+          "Support prioritaire 24/7"
+        ],
+        "interval": "year",
+        "amount": 14900,
+        "currency": "USD",
+        "price": "$149",
+        "original_price": "",
+        "unit": "/ an",
+        "is_featured": false,
+        "tip": "Parfait pour les familles et les successions !",
+        "button": {
+          "title": "Obtenir Pro",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-pro-annual",
+        "product_name": "Digital Heirloom Pro (Annuel)",
+        "payment_product_id": "prod_4epepOcgUjSjPoWmAnBaFt",
+        "group": "annual",
+        "plan_name": "Pro"
+      }
+    ]
+  },
+  "page": {
+    "current_plan": "Plan actuel",
+    "processing": "Traitement en cours"
+  }
+}

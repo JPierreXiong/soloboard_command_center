@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "title": "Pricing",
+    "description": "Choose your Digital Heirloom plan"
+  },
+  "pricing": {
+    "id": "pricing",
+    "sr_only_title": "Digital Heirloom Pricing",
+    "title": "Pricing",
+    "description": "Secure your digital legacy with our tiered plans. Start free, upgrade when ready.",
+    "groups": [
+      {
+        "name": "annual",
+        "title": "Annual",
+        "is_featured": true,
+        "label": "Recommended"
+      }
+    ],
+    "items": [
+      {
+        "title": "Free",
+        "description": "Try it out with basic backup",
+        "label": "Get Started",
+        "features_title": "Includes",
+        "features": [
+          "Text-only storage (10KB)",
+          "1 beneficiary",
+          "Fixed heartbeat (180 days)",
+          "Email notifications only",
+          "Basic PDF recovery kit",
+          "❌ Dead Man's Switch (manual export only)"
+        ],
+        "interval": "year",
+        "amount": 0,
+        "currency": "USD",
+        "price": "$0",
+        "original_price": "",
+        "unit": "/ forever",
+        "is_featured": false,
+        "tip": "Perfect for trying out the service!",
+        "button": {
+          "title": "Start Free",
+          "url": "/digital-heirloom/setup/step-1-master-password",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-free",
+        "product_name": "Digital Heirloom Free",
+        "group": "annual",
+        "plan_name": "Free"
+      },
+      {
+        "title": "Base",
+        "description": "Core digital asset inheritance",
+        "label": "Popular",
+        "features_title": "Everything in Free, plus",
+        "features": [
+          "50MB storage (small attachments/images)",
+          "✅ Automatic Dead Man's Switch",
+          "Up to 3 beneficiaries",
+          "Adjustable heartbeat (30-365 days)",
+          "Email + SMS notifications (global)",
+          "Basic PDF recovery kit",
+          "Priority support"
+        ],
+        "interval": "year",
+        "amount": 4900,
+        "currency": "USD",
+        "price": "$49",
+        "original_price": "",
+        "unit": "/ year",
+        "is_featured": true,
+        "tip": "Best for personal digital legacy!",
+        "button": {
+          "title": "Get Base",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-base-annual",
+        "product_name": "Digital Heirloom Base (Annual)",
+        "payment_product_id": "prod_4oN2BFtSPSpAnYcvUN0uoi",
+        "group": "annual",
+        "plan_name": "Base"
+      },
+      {
+        "title": "Pro",
+        "description": "Deep legacy planning with physical integration",
+        "label": "Premium",
+        "features_title": "Everything in Base, plus",
+        "features": [
+          "2GB storage (videos/important documents)",
+          "✅ Priority Dead Man's Switch + instant alerts",
+          "Unlimited beneficiaries (family trust mode)",
+          "Granular heartbeat (1 day - 10 years)",
+          "Email + SMS + human verification",
+          "✅ ShipAny logistics auto-trigger",
+          "Physical backup card mailing (extra fee)",
+          "24/7 priority support"
+        ],
+        "interval": "year",
+        "amount": 14900,
+        "currency": "USD",
+        "price": "$149",
+        "original_price": "",
+        "unit": "/ year",
+        "is_featured": false,
+        "tip": "Perfect for families and estates!",
+        "button": {
+          "title": "Get Pro",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-pro-annual",
+        "product_name": "Digital Heirloom Pro (Annual)",
+        "payment_product_id": "prod_4epepOcgUjSjPoWmAnBaFt",
+        "group": "annual",
+        "plan_name": "Pro"
+      }
+    ]
+  },
+  "page": {
+    "current_plan": "Current Plan",
+    "processing": "Processing"
+  }
+}

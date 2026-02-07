@@ -1,0 +1,608 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Afterglow",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "数字遗产",
+          "url": "/digital-heirloom/dashboard",
+          "icon": "Shield"
+        },
+        {
+          "title": "价格",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "数字遗产",
+          "url": "/digital-heirloom/dashboard",
+          "icon": "Shield"
+        },
+        {
+          "title": "账单",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "活动",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "守护您的数字遗产",
+    "highlight_text": "",
+    "description": "确保您所爱的人在需要时能够访问您的数字资产。密码、加密货币钱包和个人消息——在合适的时机之前都受到保护。",
+    "announcement": {
+      "badge": "安全",
+      "title": "🔒 零知识加密",
+      "url": "#zero-knowledge-security"
+    },
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">无需信用卡</span>",
+    "buttons": [
+      {
+        "title": "免费开始",
+        "icon": "Shield",
+        "url": "/sign-up",
+        "target": "_self",
+        "variant": "default",
+        "className": ""
+      },
+      {
+        "title": "了解更多",
+        "icon": "Info",
+        "url": "/blog",
+        "target": "_self",
+        "variant": "outline",
+        "className": ""
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "",
+    "show_award": false,
+    "image": {
+      "src": "/imgs/features/admin.png",
+      "alt": "hero"
+    },
+    "image_invert": {
+      "src": "/imgs/features/admin-dark.png",
+      "alt": "hero"
+    }
+  },
+  "logos": {
+    "title": "Digital Heirloom 使用以下技术栈构建",
+    "items": [
+      {
+        "title": "Next.js",
+        "image": {
+          "src": "/imgs/logos/nextjs.svg",
+          "alt": "Next.js"
+        }
+      },
+      {
+        "title": "React",
+        "image": {
+          "src": "/imgs/logos/react.svg",
+          "alt": "React"
+        }
+      },
+      {
+        "title": "TailwindCSS",
+        "image": {
+          "src": "/imgs/logos/tailwindcss.svg",
+          "alt": "TailwindCSS"
+        }
+      },
+      {
+        "title": "Shadcn/UI",
+        "image": {
+          "src": "/imgs/logos/shadcn.svg",
+          "alt": "Shadcn/UI"
+        }
+      },
+      {
+        "title": "Vercel",
+        "image": {
+          "src": "/imgs/logos/vercel.svg",
+          "alt": "Vercel"
+        }
+      }
+    ]
+  },
+  "introduce": {
+    "id": "introduce",
+    "title": "Digital Heirloom 是什么？",
+    "label": "产品简介",
+    "description": "Digital Heirloom 是专为 AI SaaS 创业项目打造的 NextJS 脚手架，包括丰富模板、组件及文档。",
+    "image": {
+      "src": "/imgs/features/landing-page.png",
+      "alt": "introduce"
+    },
+    "items": [
+      {
+        "title": "开箱即用的模板",
+        "description": "从数十款生产级 AI SaaS 模板中选择，快速开启你的项目。",
+        "icon": "RiNextjsFill",
+        "image": {
+          "src": "/imgs/features/1.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "基础设施搭建",
+        "description": "内置最佳实践，即刻拥有可扩展的基础设施。",
+        "icon": "RiDatabase2Line",
+        "image": {
+          "src": "/imgs/features/2.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "极速部署",
+        "description": "AI SaaS 产品快速上线，助力小时级交付。",
+        "icon": "RiCloudyFill",
+        "image": {
+          "src": "/imgs/features/3.png",
+          "alt": "introduce"
+        }
+      },
+      {
+        "title": "AI 集成",
+        "description": "通过内置的 AI SDK，轻松为你的项目集成 AI 能力。",
+        "icon": "RiRobot2Line",
+        "image": {
+          "src": "/imgs/features/4.png",
+          "alt": "introduce"
+        }
+      }
+    ]
+  },
+  "benefits": {
+    "id": "benefits",
+    "title": "为何选择 Digital Heirloom",
+    "label": "产品优势",
+    "description": "你获得一切 AI 创业所需——从开箱即用的模板到专业技术支持。",
+    "items": [
+      {
+        "title": "全栈解决方案",
+        "description": "基于 Next.js，集成认证、支付、AI，一站式开箱即用。",
+        "icon": "RiNextjsFill",
+        "image": {
+          "src": "/imgs/features/user-billing.png",
+          "alt": "benefits"
+        }
+      },
+      {
+        "title": "丰富模板库",
+        "description": "多样的 AI SaaS 模板，点击即用，涵盖聊天、图像生成等多场景。",
+        "icon": "RiClapperboardAiLine",
+        "image": {
+          "src": "/imgs/features/admin-settings.png",
+          "alt": "benefits"
+        }
+      },
+      {
+        "title": "专属技术指导",
+        "description": "享受专属技术支持与开发者社区，为你的成功保驾护航。",
+        "icon": "RiCodeFill",
+        "image": {
+          "src": "/imgs/features/landing-page.png",
+          "alt": "benefits"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "id": "usage",
+    "title": "三步使用 Digital Heirloom 极速上线",
+    "description": "只需三步，快速开启你的 AI SaaS 创业之路：",
+    "image": {
+      "src": "/imgs/features/1.png",
+      "alt": "usage"
+    },
+    "image_position": "left",
+    "text_align": "center",
+    "items": [
+      {
+        "title": "获取 Digital Heirloom",
+        "description": "一次性购买 Digital Heirloom，查收邮件获取代码与文档。",
+        "image": {
+          "src": "/imgs/features/5.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "启动你的项目",
+        "description": "阅读说明文档，克隆 Digital Heirloom 代码，开始开发你的 AI SaaS 项目。",
+        "image": {
+          "src": "/imgs/features/6.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "个性化定制",
+        "description": "根据需求修改模板内容和数据，配置专属 AI 能力。",
+        "image": {
+          "src": "/imgs/features/7.png",
+          "alt": "usage"
+        }
+      },
+      {
+        "title": "部署上线",
+        "description": "简单几步将你的项目推向生产环境，立刻为客户提供服务。",
+        "image": {
+          "src": "/imgs/features/8.png",
+          "alt": "usage"
+        }
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "Digital Heirloom 核心功能",
+    "description": "一切你需要的工具，助力 AI SaaS 项目高效上线。",
+    "items": [
+      {
+        "title": "Next.js 项目模板",
+        "description": "生产就绪、支持 SEO 与多语言的 Next.js 脚手架。",
+        "icon": "RiNextjsFill"
+      },
+      {
+        "title": "身份认证与支付",
+        "description": "集成谷歌 OAuth、一键登录，以及 Stripe 支付。",
+        "icon": "RiKey2Fill"
+      },
+      {
+        "title": "数据基础设施",
+        "description": "内置 Supabase，稳定可靠的数据存储。",
+        "icon": "RiDatabase2Line"
+      },
+      {
+        "title": "一键部署",
+        "description": "自动化部署到 Vercel 或 Cloudflare，极速上线。",
+        "icon": "RiCloudy2Fill"
+      },
+      {
+        "title": "商业分析",
+        "description": "集成 Google Analytics、Search Console，助力业务增长。",
+        "icon": "RiBarChart2Line"
+      },
+      {
+        "title": "AI 原生基础设施",
+        "description": "预置 AI 集成、积分系统和 API 售卖能力。",
+        "icon": "RiRobot2Line"
+      }
+    ]
+  },
+  "how-it-works": {
+    "id": "how-it-works",
+    "title": "工作原理",
+    "description": "简单、安全的系统，保护您最珍贵的数字资产",
+    "items": [
+      {
+        "title": "加密保险箱",
+        "description": "使用军用级加密存储密码、加密货币密钥和个人笔记，即使我们也无法读取。",
+        "icon": "Lock"
+      },
+      {
+        "title": "死信开关",
+        "description": "定期打卡确认您的安全。如果错过打卡，系统会自动通知您指定的联系人。",
+        "icon": "Clock"
+      },
+      {
+        "title": "可信受益人",
+        "description": "指定家庭成员、朋友或律师，让他们在需要时接收您保险箱中的特定物品。",
+        "icon": "Users"
+      }
+    ]
+  },
+  "zero-knowledge-security": {
+    "id": "zero-knowledge-security",
+    "title": "零知识安全架构",
+    "description": "您的数据在到达我们的服务器之前就在您的设备上加密。我们永远看不到您的密码或秘密——在您希望之前，任何人都看不到。",
+    "items": [
+      {
+        "title": "端到端加密",
+        "description": "",
+        "icon": "Shield"
+      },
+      {
+        "title": "无后门或主密钥",
+        "description": "",
+        "icon": "Key"
+      },
+      {
+        "title": "定期安全审计",
+        "description": "",
+        "icon": "Search"
+      },
+      {
+        "title": "客户端密钥生成",
+        "description": "",
+        "icon": "Cpu"
+      },
+      {
+        "title": "开源加密算法",
+        "description": "",
+        "icon": "Code"
+      },
+      {
+        "title": "符合 GDPR 和 CCPA 规范",
+        "description": "",
+        "icon": "FileCheck"
+      }
+    ]
+  },
+  "stats": {
+    "id": "stats",
+    "title": "用户喜爱 Digital Heirloom",
+    "description": "因其易用且上线飞快。",
+    "items": [
+      {
+        "title": "999+",
+        "description": "位用户"
+      },
+      {
+        "title": "200+",
+        "description": "组件块"
+      },
+      {
+        "title": "50+",
+        "description": "专业模板"
+      }
+    ]
+  },
+  "testimonials": {
+    "id": "testimonials",
+    "title": "用户对 Digital Heirloom 的评价",
+    "description": "听听内容创作者和企业如何用 Digital Heirloom 改变他们的视频内容。",
+    "items": [
+      {
+        "name": "David Chen",
+        "role": "YouTube 内容创作者",
+        "quote": "Digital Heirloom 改变了我的 YouTube 频道！现在我可以为全球观众提供 12 种语言的准确字幕。添加多语言字幕后，我的观看量增长了 300%。",
+        "image": {
+          "src": "/imgs/avatars/1.png",
+          "alt": "david"
+        }
+      },
+      {
+        "name": "Rachel Kim",
+        "role": "TikTok 网红",
+        "quote": "一键字幕提取和翻译每周为我节省数小时。我的 TikTok 视频现在可以连接全球观众，参与度大幅提升！",
+        "image": {
+          "src": "/imgs/avatars/2.png",
+          "alt": "rachel"
+        }
+      },
+      {
+        "name": "Marcus Thompson",
+        "role": "视频制作机构负责人",
+        "quote": "作为小型机构，Digital Heirloom 以极低成本为我们提供了企业级的字幕能力。我们每月处理数百个视频，准确度完美。",
+        "image": {
+          "src": "/imgs/avatars/3.png",
+          "alt": "marcus"
+        }
+      },
+      {
+        "name": "Sofia Garcia",
+        "role": "在线教育平台经理",
+        "quote": "Digital Heirloom 让我们的教育内容走向全球。来自 50 多个国家的学生现在可以通过准确的翻译学习我们的课程。改变游戏规则！",
+        "image": {
+          "src": "/imgs/avatars/4.png",
+          "alt": "sofia"
+        }
+      },
+      {
+        "name": "James Wilson",
+        "role": "营销总监",
+        "quote": "AI 驱动的翻译准确度极高。我们可以在几分钟内为不同市场本地化营销视频，而不是几天。投资回报率超高！",
+        "image": {
+          "src": "/imgs/avatars/5.png",
+          "alt": "james"
+        }
+      },
+      {
+        "name": "Anna Zhang",
+        "role": "内容策略师",
+        "quote": "Digital Heirloom 的一键解决方案将我们的 YouTube 和 TikTok 内容变成了全球力量。我们的国际观众在短短 3 个月内增长了 500%！",
+        "image": {
+          "src": "/imgs/avatars/6.png",
+          "alt": "anna"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "常见问题",
+    "description": "还有其他问题？请通过邮件联系我们。",
+    "tip": "没有找到想要的答案？请联系 <a href='mailto:support@digitalheirloom.app' class='text-primary font-medium hover:underline'>我们的客服团队</a>",
+    "items": [
+      {
+        "question": "ShipAny 寄送的包裹里有我的 U 盘和数据吗？",
+        "answer": "不包含。为了极致安全，我们从不寄送 U 盘。包裹内仅含有一份高强度物理加密凭证（Recovery Kit）。资产始终以加密状态安全存在于云端，物理凭证是解锁它们的唯一\"钥匙\"。"
+      },
+      {
+        "question": "如果 DigitalHeirloom 的数据库被黑客攻击了怎么办？",
+        "answer": "这正是我们架构的精妙之处。即便黑客搬走了整个数据库，他们也无法读取任何信息。因为解密所需的关键因子并不在服务器上，而是在寄送给受益人的物理凭证中。由于采用了高级保密算法，破解难度等同于在宇宙中寻找一颗特定的原子。"
+      },
+      {
+        "question": "平台会保证我的文件内容不丢失或损坏吗？",
+        "answer": "我们承诺通过全球分布式存储保证您加密数据块的物理完整性与安全性。但作为\"零知识\"平台，我们无法感知也无法保证数据内部的内容质量（如文件是否损坏或密码是否正确）。我们是保险箱的制造者，而非内容的审计者。"
+      },
+      {
+        "question": "受益人拿到物理凭证后，还需要输入我的主密码吗？",
+        "answer": "不需要。Pro 用户的物理凭证集成了\"自解析引导\"技术。受益人扫描凭证上的加密二维码后，系统将通过物理媒介直接验证身份，自动跳过繁琐的密码环节，实现\"零门槛\"资产恢复。"
+      },
+      {
+        "question": "为什么你们强调\"物理凭证\"比纯数字密码更安全？",
+        "answer": "数字密码可以通过暴力破解、钓鱼或暴力测试获取。而我们的物理凭证具有\"不可复制性\"。这种将数字遗产与物理物流（ShipAny）绑定的双重校验，确保了黑客即便跨越了网络防线，也无法跨越物理空间的阻隔。"
+      },
+      {
+        "question": "解密 2GB 的大型资产需要很长时间吗？",
+        "answer": "解密时间取决于受益人的本地设备性能，而非网络带宽。一旦物理凭证激活了解密通道，系统将利用 Vercel 边缘计算能力进行流式解密。2GB 的资产通常在几分钟内即可完成物理还原。"
+      }
+    ]
+  },
+  "technical-architecture": {
+    "id": "technical-architecture",
+    "title": "技术架构与合规性",
+    "description": "了解更多：技术架构与合规性",
+    "items": [
+      {
+        "title": "核心技术：BIP39 与 AES-256-GCM",
+        "description": "Afterglow 的基础建立在 BIP39 助记词标准之上，这是领先的加密货币钱包使用的相同协议。系统生成一个 24 词的\"恢复包\"来保护您的主密码备份。每个数据片段都使用 AES-256-GCM 加密，提供商业用途中最高级别的加密安全性。",
+        "icon": "Shield"
+      },
+      {
+        "title": "物理-数字桥梁：由 ShipAny 驱动",
+        "description": "我们通过与 ShipAny（全球物流编排平台）的深度集成，弥合了数字数据与物理遗产之间的差距。自动化触发：通过高性能边缘函数进行实时监控。人工介入（HITL）：为防止不可逆的寄送错误，每个 Pro 级别的物理寄送都需要 Afterglow 管理后台的手动二次授权。隐私优先物流：受益人的寄送地址在我们的数据库中保持加密状态，仅在生成寄送标签时才解密。",
+        "icon": "Package"
+      },
+      {
+        "title": "为什么升级到 Pro 家庭计划？",
+        "description": "对于管理高价值资产的用户——如私钥、敏感法律文件或珍贵的家庭档案——Pro 计划提供\"交付确定性\"：全渠道警报：避免仅依赖电子邮件通知的单点故障风险。物流结算引擎：集成的 Creem 网关允许受益人一键结算寄送费用。无限受益人：非常适合复杂的遗产规划和家庭信托结构。",
+        "icon": "ArrowUpCircle"
+      },
+      {
+        "title": "法律免责声明与最佳实践",
+        "description": "虽然 Afterglow 提供最先进的技术安全性，但我们强烈建议用户打印其恢复包并将其存储在安全、防火的位置。我们的服务作为您遗产计划的技术补充，不能替代您当地司法管辖区定义的具有法律约束力的遗嘱或遗书。请咨询法律专业人士以进行全面的遗产规划。",
+        "icon": "FileText"
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "发布你的第一个 AI SaaS 项目",
+    "description": "从这里出发，用 Digital Heirloom 极速交付。",
+    "buttons": [
+      {
+        "title": "获取 Digital Heirloom",
+        "url": "https://www.subtitletk.app",
+        "target": "_blank",
+        "icon": "Zap"
+      },
+      {
+        "title": "阅读文档",
+        "url": "/docs",
+        "target": "_blank",
+        "variant": "outline",
+        "icon": "BookOpenText"
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "订阅我们的邮件通知",
+    "description": "获取 Digital Heirloom 最新资讯与产品动态。",
+    "submit": {
+      "input": {
+        "placeholder": "输入邮箱"
+      },
+      "button": {
+        "title": "订阅"
+      },
+      "action": "/api/subscribe"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Digital Heirloom",
+      "description": "Digital Heirloom is a high-performance digital toolkit designed to extract and translate subtitles from YouTube and TikTok videos. We believe in simple, transparent pricing.",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "关于我们",
+          "children": [
+            {
+              "title": "关于我们",
+              "url": "/about",
+              "target": "_self"
+            },
+            {
+              "title": "联系我们",
+              "url": "/contact",
+              "target": "_self"
+            },
+            {
+              "title": "价格",
+              "url": "/pricing",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "合作伙伴",
+          "children": [
+            {
+              "title": "Creem",
+              "url": "https://www.creem.io",
+              "target": "_blank"
+            },
+            {
+              "title": "ShipAny",
+              "url": "https://www.shipany.io",
+              "target": "_blank"
+            },
+            {
+              "title": "Resend",
+              "url": "https://resend.com",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "邮箱",
+          "icon": "Mail",
+          "url": "mailto:support@digitalheirloom.app",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        },
+        {
+          "title": "免责声明",
+          "url": "/disclaimer"
+        }
+      ]
+    },
+    "copyright": "Digital Heirloom 是独立产品，与 Google (YouTube) 或 ByteDance (TikTok) 无关联。",
+    "show_theme": true,
+    "show_locale": true
+  }
+}

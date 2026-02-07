@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "title": "SoloBoard - All-in-One Dashboard for Solopreneurs",
+    "description": "Monitor traffic, revenue, and site health for all your SaaS products in one unified dashboard. Connect Google Analytics, Stripe, Shopify, and more. Free for up to 2 sites.",
+    "keywords": "saas dashboard, multi-site monitoring, solopreneur tools, business analytics, stripe dashboard, google analytics dashboard, shopify analytics, unified dashboard, saas metrics, indie hacker tools"
+  },
+  "sign": {
+    "sign_in_title": "Sign In",
+    "sign_in_description": "Sign in to your account",
+    "sign_up_title": "Sign Up",
+    "sign_up_description": "Create an account",
+    "email_title": "Email",
+    "email_placeholder": "Input your email here",
+    "password_title": "Password",
+    "password_placeholder": "Input your password here",
+    "forgot_password": "Forgot password?",
+    "or": "Or",
+    "continue": "Continue",
+    "no_account": "Don't have an account?",
+    "already_have_account": "Already have an account?",
+    "email_sign_in": "Sign in with Email",
+    "google_sign_in_title": "Sign in with Google",
+    "github_sign_in_title": "Sign in with GitHub",
+    "close_title": "Close",
+    "cancel_title": "Cancel",
+    "sign_out_title": "Sign Out",
+    "billing_title": "Billing",
+    "name_title": "Name",
+    "name_placeholder": "Input your name here",
+    "admin_title": "Admin System",
+    "credits_title": "Credits: {credits}",
+    "email_already_registered": "This email is already registered",
+    "redirecting_to_signin": "Redirecting to sign in page...",
+    "password_requirements_error": "Password must be at least 8 characters long",
+    "email_invalid_error": "Please enter a valid email address"
+  },
+  "payment": {
+    "choose_payment_method": "Choose Payment Method",
+    "choose_payment_method_description": "",
+    "cancel_title": "Cancel"
+  },
+  "locale_detector": {
+    "title": "We detected your browser language is {locale}. Switch to it?",
+    "switch_to": "Switch to {locale}"
+  }
+}

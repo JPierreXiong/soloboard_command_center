@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "title": "价格",
+    "description": "选择方案，立即开始"
+  },
+  "pricing": {
+    "id": "pricing",
+    "sr_only_title": "Digital Heirloom 价格表",
+    "title": "价格",
+    "description": "用我们的分级方案保护您的数字遗产。免费开始，随时升级。",
+    "groups": [
+      {
+        "name": "annual",
+        "title": "年付",
+        "is_featured": true,
+        "label": "推荐"
+      }
+    ],
+    "items": [
+      {
+        "title": "免费版",
+        "description": "试试看与极简备份",
+        "label": "立即开始",
+        "features_title": "包含",
+        "features": [
+          "仅限文本存储 (10KB)",
+          "1 位受益人",
+          "固定心跳频率 (180天)",
+          "仅 Email 通知",
+          "基础 PDF 恢复包",
+          "❌ 死信开关（仅手动导出）"
+        ],
+        "interval": "year",
+        "amount": 0,
+        "currency": "USD",
+        "price": "免费",
+        "original_price": "",
+        "unit": "/ 永久",
+        "is_featured": false,
+        "tip": "适合体验服务！",
+        "button": {
+          "title": "免费开始",
+          "url": "/digital-heirloom/setup/step-1-master-password",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-free",
+        "product_name": "Digital Heirloom 免费版",
+        "group": "annual",
+        "plan_name": "免费版"
+      },
+      {
+        "title": "标准版",
+        "description": "核心数字资产传承",
+        "label": "热门",
+        "features_title": "包含免费版功能，此外",
+        "features": [
+          "50MB 存储（支持小附件/图片）",
+          "✅ 自动死信开关",
+          "最多 3 位受益人",
+          "可调节心跳频率 (30-365天)",
+          "Email + 短信通知（全球）",
+          "基础 PDF 恢复包",
+          "优先支持"
+        ],
+        "interval": "year",
+        "amount": 4900,
+        "currency": "USD",
+        "price": "$49",
+        "original_price": "",
+        "unit": "/ 年",
+        "is_featured": true,
+        "tip": "适合个人数字遗产！",
+        "button": {
+          "title": "获取标准版",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-base-annual",
+        "product_name": "Digital Heirloom 标准版（年付）",
+        "payment_product_id": "prod_4oN2BFtSPSpAnYcvUN0uoi",
+        "group": "annual",
+        "plan_name": "标准版"
+      },
+      {
+        "title": "尊享版",
+        "description": "深度遗产规划与物理联动",
+        "label": "尊享",
+        "features_title": "包含标准版功能，此外",
+        "features": [
+          "2GB 存储（支持视频/重要文档）",
+          "✅ 优先死信开关 + 极速通知",
+          "无限制受益人（支持家族信托模式）",
+          "极细化心跳调节 (1天-10年)",
+          "Email + 短信 + 人工核验",
+          "✅ ShipAny 物流自动触发",
+          "物理备份卡邮寄（额外收费）",
+          "24/7 优先支持"
+        ],
+        "interval": "year",
+        "amount": 14900,
+        "currency": "USD",
+        "price": "$149",
+        "original_price": "",
+        "unit": "/ 年",
+        "is_featured": false,
+        "tip": "适合家庭和遗产规划！",
+        "button": {
+          "title": "获取尊享版",
+          "url": "/#pricing",
+          "icon": "RiFlashlightFill"
+        },
+        "product_id": "digital-heirloom-pro-annual",
+        "product_name": "Digital Heirloom 尊享版（年付）",
+        "payment_product_id": "prod_4epepOcgUjSjPoWmAnBaFt",
+        "group": "annual",
+        "plan_name": "尊享版"
+      }
+    ]
+  },
+  "page": {
+    "current_plan": "当前方案",
+    "processing": "处理中"
+  }
+}

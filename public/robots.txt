@@ -1,0 +1,30 @@
+# https://www.digitalheirloom.app/robots.txt
+
+User-agent: *
+# 允许抓取营销核心页面
+Allow: /
+Allow: /*/pricing
+Allow: /*/faq
+Allow: /*/about
+Allow: /*/blog
+Allow: /_next/static/
+Allow: /static/
+
+# 隐私禁区：绝对屏蔽用户私有数据和操作逻辑
+Disallow: /api/
+Disallow: /*/dashboard/
+Disallow: /*/vault/
+Disallow: /*/setup/
+Disallow: /*/settings/
+Disallow: /*/admin/
+Disallow: /*/onboarding/
+Disallow: /inherit/*
+
+# 屏蔽搜索参数页面，防止权重分散 (如：?ref=, ?source=)
+Disallow: /*?*
+
+# 站点地图：使用绝对地址
+Sitemap: https://www.digitalheirloom.app/sitemap.xml
+
+# 建议爬虫抓取间隔 (部分搜索引擎适用)
+Crawl-delay: 1
