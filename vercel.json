@@ -1,8 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api/cron/check-alerts",
-      "schedule": "0 */6 * * *"
+      "path": "/api/cron/sync-sites",
+      "schedule": "0 0 * * *"
     }
   ]
 }
