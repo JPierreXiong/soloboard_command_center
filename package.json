@@ -17,7 +17,7 @@
     "ai-saas-development"
   ],
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 3003",
     "build": "next build && node scripts/generate-middleware-nft.js",
     "build:fast": "NODE_OPTIONS='--max-old-space-size=4096' next build && node scripts/generate-middleware-nft.js",
     "start": "next start",
