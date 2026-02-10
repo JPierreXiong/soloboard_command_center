@@ -1,6 +1,6 @@
 /**
  * SEO Data Configuration
- * Multi-language structured data for Afterglow Digital Heirloom
+ * Multi-language structured data for SoloBoard Command Center
  */
 
 export const getFaqSchema = (locale: string) => {
@@ -30,10 +30,10 @@ export const getFaqSchema = (locale: string) => {
       {
         '@type': 'Question',
         name: isZh
-          ? 'Afterglow 真的无法看到我的密码吗？'
+          ? 'SoloBoard 真的无法看到我的密码吗？'
           : isFr
-            ? 'Afterglow peut-il vraiment voir mon mot de passe ?'
-            : 'Is my master password truly safe with Afterglow?',
+            ? 'SoloBoard peut-il vraiment voir mon mot de passe ?'
+            : 'Is my master password truly safe with SoloBoard?',
         acceptedAnswer: {
           '@type': 'Answer',
           text: isZh
@@ -86,21 +86,21 @@ export const getOrgSchema = (locale: string) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Afterglow',
+    name: 'SoloBoard',
     description: isZh
-      ? '领先的数字遗产与资产传承平台'
+      ? '领先的多站点监控与管理平台'
       : isFr
-        ? "Plateforme leader d'héritage numérique et de transmission d'actifs"
-        : 'Leading Digital Heirloom & Asset Inheritance Platform',
-    url: 'https://www.digitalheirloom.app',
-    logo: 'https://www.digitalheirloom.app/logo.png',
+        ? "Plateforme leader de surveillance et de gestion multi-sites"
+        : 'Leading Multi-Site Monitoring & Management Platform',
+    url: 'https://www.soloboard.app',
+    logo: 'https://www.soloboard.app/logo.png',
     sameAs: [
       // Add your social media links here when available
-      // 'https://twitter.com/afterglow_app',
+      // 'https://twitter.com/soloboard_app',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'support@digitalheirloom.app',
+      email: 'support@soloboard.app',
       contactType: 'customer service',
     },
   };
@@ -113,7 +113,7 @@ export const getSoftwareSchema = (locale: string) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: isZh ? 'Afterglow 数字遗产' : isFr ? 'Afterglow Héritage Numérique' : 'Afterglow Digital Heirloom',
+    name: isZh ? 'SoloBoard 命令中心' : isFr ? 'SoloBoard Centre de Commande' : 'SoloBoard Command Center',
     operatingSystem: 'Web',
     applicationCategory: 'SecurityApplication',
     offers: {

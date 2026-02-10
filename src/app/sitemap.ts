@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { envConfigs } from '@/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = envConfigs.app_url || 'https://www.digitalheirloom.app';
+  const baseUrl = envConfigs.app_url || 'https://www.soloboard.app';
   const locales = ['en', 'zh', 'fr'];
   
   // Core marketing pages

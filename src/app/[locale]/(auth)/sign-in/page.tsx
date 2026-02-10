@@ -34,6 +34,6 @@ export default async function SignInPage({
 
   const configs = await getConfigs();
 
-  // Default redirect to Digital Heirloom Dashboard after sign in
-  return <SignIn configs={configs} callbackUrl={callbackUrl || '/digital-heirloom/dashboard'} />;
+  // Default redirect to SoloBoard Dashboard after sign in
+  return <SignIn configs={configs} callbackUrl={callbackUrl || '/soloboard'} />;
 }

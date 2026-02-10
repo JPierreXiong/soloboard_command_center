@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Digital Heirloom Template Two",
-    "description": "Digital Heirloom est un modèle NextJS pour créer des startups SaaS IA. Déployez rapidement avec une variété de modèles et de composants.",
-    "keywords": "digital heirloom, digital-heirloom, digital-heirloom-demo"
+    "title": "Command Center - Tableau de bord tout-en-un pour solopreneurs",
+    "description": "Surveillez le trafic, les revenus et la santé du site pour tous vos produits SaaS dans un tableau de bord unifié. Connectez Google Analytics, Stripe, Shopify et plus encore. Gratuit pour jusqu'à 2 sites.",
+    "keywords": "tableau de bord saas, surveillance multi-sites, outils solopreneur, analyse commerciale, tableau de bord stripe, tableau de bord google analytics, analyse shopify, tableau de bord unifié, métriques saas, outils indie hacker"
   },
   "sign": {
     "sign_in_title": "Se connecter",

@@ -18,16 +18,16 @@ export default async function LandingPage({
   page: Landing;
 }) {
   // JSON-LD structured data for SEO
-  const appUrl = envConfigs.app_url || 'https://afterglow.app';
+  const appUrl = envConfigs.app_url || 'https://soloboard.app';
   
   // SoftwareApplication JSON-LD
   const jsonLdSoftware = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Afterglow',
+    name: 'SoloBoard',
     description:
-      'High-security digital asset custody and automated distribution platform. Protect your digital legacy with zero-knowledge encryption, ensuring your loved ones can access your digital assets when they need them most.',
-    applicationCategory: 'SecurityApplication',
+      'All-in-one dashboard for solopreneurs. Monitor traffic, revenue, and site health for all your SaaS products in one unified dashboard. Connect Google Analytics, Stripe, Shopify, and more.',
+    applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web Browser',
     offers: {
       '@type': 'Offer',
@@ -35,12 +35,12 @@ export default async function LandingPage({
       priceCurrency: 'USD',
     },
     featureList: [
-      'Zero-knowledge encryption',
-      'Dead man\'s switch',
-      'Automated asset distribution',
-      'Beneficiary management',
-      'End-to-end encryption',
-      'GDPR & CCPA compliant',
+      'Multi-site monitoring',
+      'Real-time analytics',
+      'Revenue tracking',
+      'Site health monitoring',
+      'Google Analytics integration',
+      'Stripe integration',
     ],
     url: appUrl,
   };

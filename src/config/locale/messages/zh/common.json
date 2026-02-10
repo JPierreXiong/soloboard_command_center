@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Digital Heirloom 模板二",
-    "description": "Digital Heirloom 是用于构建 AI SaaS 创业项目的 NextJS 脚手架。提供丰富模板和组件，助您快速上线产品。",
-    "keywords": "digital heirloom, digital-heirloom, digital-heirloom-demo"
+    "title": "Command Center - 独立创业者的全能仪表盘",
+    "description": "在一个统一的仪表盘中监控所有 SaaS 产品的流量、收入和站点健康状况。连接 Google Analytics、Stripe、Shopify 等。最多 2 个站点免费。",
+    "keywords": "saas 仪表盘, 多站点监控, 独立创业者工具, 商业分析, stripe 仪表盘, google analytics 仪表盘, shopify 分析, 统一仪表盘, saas 指标, 独立开发者工具"
   },
   "sign": {
     "sign_in_title": "登录",

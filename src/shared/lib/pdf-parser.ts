@@ -121,7 +121,7 @@ export async function parseRecoveryKitPDF(file: File): Promise<ParsedRecoveryKit
       const tokenPatterns = [
         /RELEASE\s*TOKEN[:\s]+([A-Z0-9-]+)/i,
         /TOKEN[:\s]+([A-Z0-9-]{20,})/i,
-        /AFTERGLOW-PRO-(\d{4}-[A-Z0-9]+)/i,
+        /SOLOBOARD-PRO-(\d{4}-[A-Z0-9]+)/i,
       ];
       for (const pattern of tokenPatterns) {
         const match = fullText.match(pattern);
