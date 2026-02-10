@@ -1,8 +1,6 @@
 {
-  "crons": [
-    {
-      "path": "/api/cron/sync-sites",
-      "schedule": "0 0 * * *"
-    }
-  ]
+  "buildCommand": "pnpm postinstall && pnpm run build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
 }

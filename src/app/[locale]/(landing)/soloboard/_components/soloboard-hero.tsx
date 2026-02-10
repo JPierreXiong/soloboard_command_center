@@ -11,8 +11,8 @@ import { useState } from 'react';
 import { Plus, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import useSWR from 'swr';
-import { SiteGrid } from './site-grid';
-import { AddSiteDialog } from './add-site-dialog';
+import { SiteGrid } from '@/app/[locale]/(dashboard)/dashboard/_components/site-grid';
+import { AddSiteDialog } from '@/app/[locale]/(dashboard)/dashboard/_components/add-site-dialog';
 
 interface Site {
   id: string;
