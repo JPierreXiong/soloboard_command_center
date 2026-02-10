@@ -50,7 +50,7 @@ export interface AlertRuleConfig {
 export async function checkAllSitesForAlerts() {
   try {
     // 获取所有启用的报警规则
-    const rules = await db
+    const rules = await db()
       .select()
       .from(alertRules)
       .where(eq(alertRules.enabled, true));
@@ -85,7 +85,7 @@ async function checkSiteAlert(rule: any) {
     }
 
     // 获取站点信息
-    const site = await db
+    const site = await db()
       .select()
       .from(monitoredSites)
       .where(eq(monitoredSites.id, rule.siteId))
@@ -185,7 +185,7 @@ async function checkSlowResponse(site: any, threshold: any) {
   };
 
   // 获取最近的响应时间数据
-  const recentMetrics = await db
+  const recentMetrics = await db()
     .select()
     .from(siteMetricsHistory)
     .where(eq(siteMetricsHistory.siteId, site.id))
@@ -193,7 +193,7 @@ async function checkSlowResponse(site: any, threshold: any) {
     .limit(5);
 
   if (recentMetrics.length > 0) {
-    const avgResponseTime = recentMetrics.reduce((sum, m) => {
+    const avgResponseTime = recentMetrics.reduce((sum: number, m: any) => {
       return sum + ((m.metrics as any).responseTime || 0);
     }, 0) / recentMetrics.length;
 
@@ -226,7 +226,7 @@ async function checkRevenueDrop(site: any, threshold: any) {
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const yesterdayStart = new Date(todayStart.getTime() - 24 * 60 * 60 * 1000);
 
-  const todayMetrics = await db
+  const todayMetrics = await db()
     .select()
     .from(siteMetricsHistory)
     .where(
@@ -236,7 +236,7 @@ async function checkRevenueDrop(site: any, threshold: any) {
       )
     );
 
-  const yesterdayMetrics = await db
+  const yesterdayMetrics = await db()
     .select()
     .from(siteMetricsHistory)
     .where(
@@ -248,8 +248,8 @@ async function checkRevenueDrop(site: any, threshold: any) {
     );
 
   if (yesterdayMetrics.length > 0) {
-    const todayRevenue = todayMetrics.reduce((sum, m) => sum + ((m.metrics as any).revenue || 0), 0);
-    const yesterdayRevenue = yesterdayMetrics.reduce((sum, m) => sum + ((m.metrics as any).revenue || 0), 0);
+    const todayRevenue = todayMetrics.reduce((sum: number, m: any) => sum + ((m.metrics as any).revenue || 0), 0);
+    const yesterdayRevenue = yesterdayMetrics.reduce((sum: number, m: any) => sum + ((m.metrics as any).revenue || 0), 0);
 
     if (yesterdayRevenue > 0) {
       const dropPercent = ((yesterdayRevenue - todayRevenue) / yesterdayRevenue) * 100;
@@ -283,7 +283,7 @@ async function checkTrafficSpike(site: any, threshold: any) {
   const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000);
   const fourHoursAgo = new Date(now.getTime() - 4 * 60 * 60 * 1000);
 
-  const recentMetrics = await db
+  const recentMetrics = await db()
     .select()
     .from(siteMetricsHistory)
     .where(
@@ -293,7 +293,7 @@ async function checkTrafficSpike(site: any, threshold: any) {
       )
     );
 
-  const previousMetrics = await db
+  const previousMetrics = await db()
     .select()
     .from(siteMetricsHistory)
     .where(
@@ -305,8 +305,8 @@ async function checkTrafficSpike(site: any, threshold: any) {
     );
 
   if (previousMetrics.length > 0) {
-    const recentTraffic = recentMetrics.reduce((sum, m) => sum + ((m.metrics as any).pageViews || 0), 0);
-    const previousTraffic = previousMetrics.reduce((sum, m) => sum + ((m.metrics as any).pageViews || 0), 0);
+    const recentTraffic = recentMetrics.reduce((sum: number, m: any) => sum + ((m.metrics as any).pageViews || 0), 0);
+    const previousTraffic = previousMetrics.reduce((sum: number, m: any) => sum + ((m.metrics as any).pageViews || 0), 0);
 
     if (previousTraffic > 0) {
       const spikePercent = ((recentTraffic - previousTraffic) / previousTraffic) * 100;
@@ -363,7 +363,7 @@ async function triggerAlert(
     }
 
     // 保存报警历史
-    await db.insert(alertHistory).values({
+    await db().insert(alertHistory).values({
       id: alertId,
       ruleId: rule.id,
       siteId: site.id,
@@ -377,7 +377,7 @@ async function triggerAlert(
     });
 
     // 更新规则的最后触发时间
-    await db
+    await db()
       .update(alertRules)
       .set({ lastTriggeredAt: new Date() })
       .where(eq(alertRules.id, rule.id));
@@ -466,7 +466,7 @@ export async function createAlertRule(
 ) {
   const ruleId = nanoid();
 
-  await db.insert(alertRules).values({
+  await db().insert(alertRules).values({
     id: ruleId,
     userId,
     siteId,
@@ -486,7 +486,7 @@ export async function createAlertRule(
  * 获取用户的报警规则
  */
 export async function getUserAlertRules(userId: string) {
-  return await db
+  return await db()
     .select()
     .from(alertRules)
     .where(eq(alertRules.userId, userId))
@@ -497,7 +497,7 @@ export async function getUserAlertRules(userId: string) {
  * 获取站点的报警历史
  */
 export async function getSiteAlertHistory(siteId: string, limit = 50) {
-  return await db
+  return await db()
     .select()
     .from(alertHistory)
     .where(eq(alertHistory.siteId, siteId))
@@ -509,11 +509,15 @@ export async function getSiteAlertHistory(siteId: string, limit = 50) {
  * 标记报警为已解决
  */
 export async function resolveAlert(alertId: string) {
-  await db
+  await db()
     .update(alertHistory)
     .set({ resolved: true, resolvedAt: new Date() })
     .where(eq(alertHistory.id, alertId));
 }
+
+
+
+
 
 
 

@@ -8,9 +8,7 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-const withNextIntl = createNextIntlPlugin({
-  requestConfig: './src/core/i18n/request.ts',
-});
+const withNextIntl = createNextIntlPlugin('./src/core/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -44,13 +42,16 @@ const nextConfig = {
     },
   },
   experimental: {
-    turbopackFileSystemCacheForDev: true,
     // Disable mdxRs for Vercel deployment compatibility with fumadocs-mdx
     ...(process.env.VERCEL ? {} : { mdxRs: true }),
   },
-  reactCompiler: true,
   // Webpack 配置：忽略可选依赖 jsqr（如果未安装）
   webpack: (config, { isServer }) => {
+    // ⬇️ 关键修复：解决 D 盘根目录监听导致的编译挂起和 EINVAL 错误
+    config.watchOptions = {
+      ignored: ['**/node_modules', 'D:/*.sys', 'D:/*.log', 'D:/*.tmp', 'D:/pagefile.sys', 'D:/hiberfil.sys', 'D:/swapfile.sys'],
+    };
+
     if (!isServer) {
       // 客户端构建：忽略 jsqr 模块解析错误
       config.resolve.fallback = {
@@ -69,3 +70,4 @@ const nextConfig = {
 };
 
 export default withBundleAnalyzer(withNextIntl(withMDX(nextConfig)));
+

@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     }
     
     // 4. 检查用户的站点数量限制（免费版最多 2 个）
-    const userSitesCount = await db
+    const userSitesCount = await db()
       .select({ count: count() })
       .from(monitoredSites)
       .where(eq(monitoredSites.userId, session.user.id));
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
     // 7. 插入数据库
     const siteId = nanoid();
     
-    await db.insert(monitoredSites).values({
+    await db().insert(monitoredSites).values({
       id: siteId,
       userId: session.user.id,
       name,
@@ -155,6 +155,8 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+
 
 
 

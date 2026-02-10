@@ -33,13 +33,13 @@ export async function GET(request: NextRequest) {
     }
     
     // 2. 查询用户的所有站点
-    const sites = await db.query.monitoredSites.findMany({
+    const sites = await db().query.monitoredSites.findMany({
       where: eq(monitoredSites.userId, session.user.id),
       orderBy: [desc(monitoredSites.displayOrder)],
     });
     
     // 3. 移除敏感信息（不返回加密的 API 配置）
-    const sanitizedSites = sites.map((site) => ({
+    const sanitizedSites = sites.map((site: any) => ({
       id: site.id,
       name: site.name,
       url: site.url,
@@ -72,6 +72,8 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+
 
 
 

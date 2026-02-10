@@ -1,21 +1,6 @@
-// Load .env files for scripts (tsx/ts-node) - but NOT in Edge Runtime or browser
-// This ensures scripts can read DATABASE_URL and other env vars
-// Check for real Node.js environment by looking at global 'process' properties
-if (
-  typeof process !== 'undefined' &&
-  typeof process.cwd === 'function' &&
-  !process.env.NEXT_RUNTIME // Skip if in Next.js runtime (already loaded)
-) {
-  try {
-    const dotenv = require('dotenv');
-    // Load .env.local first (highest priority), then .env.development, then .env
-    dotenv.config({ path: '.env.local', override: false });
-    dotenv.config({ path: '.env.development', override: false });
-    dotenv.config({ path: '.env', override: false });
-  } catch (e) {
-    // Silently fail - dotenv might not be available in some environments
-  }
-}
+// Next.js automatically loads .env files, so we don't need manual dotenv loading
+// This file is safe for Edge Runtime, Node.js, and browser environments
+// DO NOT add any Node.js APIs here as this file is imported by middleware
 
 export type ConfigMap = Record<string, string>;
 

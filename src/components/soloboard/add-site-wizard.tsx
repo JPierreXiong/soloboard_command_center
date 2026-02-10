@@ -8,11 +8,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shared/components/ui/card';
+import { Button } from '@/shared/components/ui/button';
+import { Input } from '@/shared/components/ui/input';
+import { Label } from '@/shared/components/ui/label';
+import { Badge } from '@/shared/components/ui/badge';
 import { 
   Globe, 
   CreditCard, 
@@ -307,6 +307,7 @@ export function AddSiteWizard() {
           number={3} 
           label="确认添加" 
           active={step === 'confirm'} 
+          completed={false}
         />
       </div>
 
@@ -450,13 +451,13 @@ function PlatformCard({
 }) {
   const Icon = platform.icon;
   
-  const difficultyColors = {
+  const difficultyColors: Record<string, string> = {
     easy: 'bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300',
     medium: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300',
     hard: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300'
   };
 
-  const difficultyLabels = {
+  const difficultyLabels: Record<string, string> = {
     easy: '简单',
     medium: '中等',
     hard: '复杂'

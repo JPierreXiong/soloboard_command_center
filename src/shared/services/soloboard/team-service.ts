@@ -75,7 +75,7 @@ export async function createTeam(
   const teamId = nanoid();
 
   // 创建团队
-  await db.insert(teams).values({
+  await db().insert(teams).values({
     id: teamId,
     name,
     ownerId,
@@ -86,7 +86,7 @@ export async function createTeam(
   });
 
   // 添加创建者为团队所有者
-  await db.insert(teamMembers).values({
+  await db().insert(teamMembers).values({
     id: nanoid(),
     teamId,
     userId: ownerId,
@@ -115,7 +115,7 @@ export async function inviteTeamMember(
   }
 
   // 查找被邀请用户
-  const invitedUser = await db
+  const invitedUser = await db()
     .select()
     .from(user)
     .where(eq(user.email, userEmail))
@@ -135,7 +135,7 @@ export async function inviteTeamMember(
 
   // 添加成员
   const memberId = nanoid();
-  await db.insert(teamMembers).values({
+  await db().insert(teamMembers).values({
     id: memberId,
     teamId,
     userId: invitedUserId,
@@ -165,7 +165,7 @@ export async function updateMemberRole(
   }
 
   // 不能修改所有者角色
-  const member = await db
+  const member = await db()
     .select()
     .from(teamMembers)
     .where(eq(teamMembers.id, memberId))
@@ -176,7 +176,7 @@ export async function updateMemberRole(
   }
 
   // 更新角色和权限
-  await db
+  await db()
     .update(teamMembers)
     .set({
       role: newRole,
@@ -202,7 +202,7 @@ export async function removeTeamMember(
   }
 
   // 不能移除所有者
-  const member = await db
+  const member = await db()
     .select()
     .from(teamMembers)
     .where(eq(teamMembers.id, memberId))
@@ -213,7 +213,7 @@ export async function removeTeamMember(
   }
 
   // 删除成员
-  await db.delete(teamMembers).where(eq(teamMembers.id, memberId));
+  await db().delete(teamMembers).where(eq(teamMembers.id, memberId));
 
   console.log(`[Team Service] Member removed: ${memberId}`);
 }
@@ -233,7 +233,7 @@ export async function shareSiteToTeam(
   }
 
   // 验证站点所有权
-  const site = await db
+  const site = await db()
     .select()
     .from(monitoredSites)
     .where(eq(monitoredSites.id, siteId))
@@ -244,7 +244,7 @@ export async function shareSiteToTeam(
   }
 
   // 检查是否已共享
-  const existingShare = await db
+  const existingShare = await db()
     .select()
     .from(teamSites)
     .where(
@@ -261,7 +261,7 @@ export async function shareSiteToTeam(
 
   // 共享站点
   const shareId = nanoid();
-  await db.insert(teamSites).values({
+  await db().insert(teamSites).values({
     id: shareId,
     teamId,
     siteId,
@@ -288,7 +288,7 @@ export async function unshareSiteFromTeam(
   }
 
   // 删除共享
-  await db
+  await db()
     .delete(teamSites)
     .where(
       and(
@@ -304,7 +304,7 @@ export async function unshareSiteFromTeam(
  * 获取团队成员信息
  */
 async function getTeamMember(teamId: string, userId: string) {
-  const members = await db
+  const members = await db()
     .select()
     .from(teamMembers)
     .where(
@@ -322,27 +322,27 @@ async function getTeamMember(teamId: string, userId: string) {
  * 获取用户的所有团队
  */
 export async function getUserTeams(userId: string) {
-  const memberRecords = await db
+  const memberRecords = await db()
     .select()
     .from(teamMembers)
     .where(eq(teamMembers.userId, userId));
 
-  const teamIds = memberRecords.map(m => m.teamId);
+  const teamIds = memberRecords.map((m: any) => m.teamId);
 
   if (teamIds.length === 0) {
     return [];
   }
 
-  const teamRecords = await db
+  const teamRecords = await db()
     .select()
     .from(teams)
     .where(
-      or(...teamIds.map(id => eq(teams.id, id)))
+      or(...teamIds.map((id: string) => eq(teams.id, id)))
     );
 
-  return teamRecords.map(team => ({
+  return teamRecords.map((team: any) => ({
     ...team,
-    role: memberRecords.find(m => m.teamId === team.id)?.role,
+    role: memberRecords.find((m: any) => m.teamId === team.id)?.role,
   }));
 }
 
@@ -350,7 +350,7 @@ export async function getUserTeams(userId: string) {
  * 获取团队的所有成员
  */
 export async function getTeamMembers(teamId: string) {
-  const members = await db
+  const members = await db()
     .select({
       id: teamMembers.id,
       userId: teamMembers.userId,
@@ -372,7 +372,7 @@ export async function getTeamMembers(teamId: string) {
  * 获取团队共享的站点
  */
 export async function getTeamSites(teamId: string) {
-  const sites = await db
+  const sites = await db()
     .select({
       id: teamSites.id,
       siteId: teamSites.siteId,
@@ -396,7 +396,7 @@ export async function getTeamSites(teamId: string) {
  */
 export async function checkSiteAccess(userId: string, siteId: string): Promise<boolean> {
   // 检查是否是站点所有者
-  const site = await db
+  const site = await db()
     .select()
     .from(monitoredSites)
     .where(eq(monitoredSites.id, siteId))
@@ -408,19 +408,19 @@ export async function checkSiteAccess(userId: string, siteId: string): Promise<b
 
   // 检查是否通过团队共享访问
   const userTeams = await getUserTeams(userId);
-  const teamIds = userTeams.map(t => t.id);
+  const teamIds = userTeams.map((t: any) => t.id);
 
   if (teamIds.length === 0) {
     return false;
   }
 
-  const sharedSites = await db
+  const sharedSites = await db()
     .select()
     .from(teamSites)
     .where(
       and(
         eq(teamSites.siteId, siteId),
-        or(...teamIds.map(id => eq(teamSites.teamId, id)))
+        or(...teamIds.map((id: string) => eq(teamSites.teamId, id)))
       )
     )
     .limit(1);
@@ -433,27 +433,27 @@ export async function checkSiteAccess(userId: string, siteId: string): Promise<b
  */
 export async function getUserAccessibleSites(userId: string) {
   // 获取用户自己的站点
-  const ownSites = await db
+  const ownSites = await db()
     .select()
     .from(monitoredSites)
     .where(eq(monitoredSites.userId, userId));
 
   // 获取团队共享的站点
   const userTeams = await getUserTeams(userId);
-  const teamIds = userTeams.map(t => t.id);
+  const teamIds = userTeams.map((t: any) => t.id);
 
   let sharedSites: any[] = [];
   if (teamIds.length > 0) {
-    const teamSiteRecords = await db
+    const teamSiteRecords = await db()
       .select({
         site: monitoredSites,
         teamId: teamSites.teamId,
       })
       .from(teamSites)
       .leftJoin(monitoredSites, eq(teamSites.siteId, monitoredSites.id))
-      .where(or(...teamIds.map(id => eq(teamSites.teamId, id))));
+      .where(or(...teamIds.map((id: string) => eq(teamSites.teamId, id))));
 
-    sharedSites = teamSiteRecords.map(record => ({
+    sharedSites = teamSiteRecords.map((record: any) => ({
       ...record.site,
       isShared: true,
       teamId: record.teamId,
@@ -466,6 +466,10 @@ export async function getUserAccessibleSites(userId: string) {
     allSites: [...ownSites, ...sharedSites],
   };
 }
+
+
+
+
 
 
 

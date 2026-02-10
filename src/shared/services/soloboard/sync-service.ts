@@ -18,7 +18,7 @@ import { nanoid } from 'nanoid';
 import { decryptSiteConfigObject } from '@/shared/lib/site-crypto';
 import { fetchGA4Metrics } from './platform-fetchers/ga4-fetcher';
 import { fetchStripeMetrics } from './platform-fetchers/stripe-fetcher';
-import { fetchUptimeMetrics } from './platform-fetchers/uptime-fetcher';
+import { fetchUptimeMetrics } from './uptime-fetcher';
 import { fetchLemonSqueezyMetrics } from './lemonsqueezy-fetcher';
 import { fetchShopifyMetrics } from './shopify-fetcher';
 import { fetchCustomApiMetrics } from './custom-api-service';
@@ -34,7 +34,7 @@ export async function syncSiteData(siteId: string) {
   
   try {
     // 1. 查询站点配置
-    const site = await db.query.monitoredSites.findFirst({
+    const site = await db().query.monitoredSites.findFirst({
       where: eq(monitoredSites.id, siteId),
     });
     
@@ -57,7 +57,13 @@ export async function syncSiteData(siteId: string) {
         if (!config.ga4) {
           throw new Error('GA4 configuration not found');
         }
-        metrics = await fetchGA4Metrics(config.ga4);
+        // 解析 Service Account credentials
+        const ga4Credentials = JSON.parse(config.ga4.credentials);
+        metrics = await fetchGA4Metrics({
+          clientEmail: ga4Credentials.client_email,
+          privateKey: ga4Credentials.private_key,
+          propertyId: config.ga4.propertyId,
+        });
         break;
         
       case 'STRIPE':
@@ -100,7 +106,7 @@ export async function syncSiteData(siteId: string) {
     }
     
     // 4. 更新站点快照
-    await db
+    await db()
       .update(monitoredSites)
       .set({
         lastSnapshot: {
@@ -116,7 +122,7 @@ export async function syncSiteData(siteId: string) {
       .where(eq(monitoredSites.id, siteId));
     
     // 5. 保存历史数据
-    await db.insert(siteMetricsHistory).values({
+    await db().insert(siteMetricsHistory).values({
       id: nanoid(),
       siteId,
       metrics,
@@ -125,7 +131,7 @@ export async function syncSiteData(siteId: string) {
     
     // 6. 记录同步日志
     const duration = Date.now() - startTime;
-    await db.insert(syncLogs).values({
+    await db().insert(syncLogs).values({
       id: nanoid(),
       siteId,
       status: 'success',
@@ -145,7 +151,7 @@ export async function syncSiteData(siteId: string) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     
     // 记录错误日志
-    await db.insert(syncLogs).values({
+    await db().insert(syncLogs).values({
       id: nanoid(),
       siteId,
       status: 'failed',
@@ -154,7 +160,7 @@ export async function syncSiteData(siteId: string) {
     });
     
     // 更新站点错误状态
-    await db
+    await db()
       .update(monitoredSites)
       .set({
         status: 'error',
@@ -181,13 +187,13 @@ export async function syncSiteData(siteId: string) {
  */
 export async function syncUserSites(userId: string) {
   // 查询用户的所有活跃站点
-  const sites = await db.query.monitoredSites.findMany({
+  const sites = await db().query.monitoredSites.findMany({
     where: eq(monitoredSites.userId, userId),
   });
   
   // 并行同步所有站点
   const results = await Promise.allSettled(
-    sites.map((site) => syncSiteData(site.id))
+    sites.map((site: any) => syncSiteData(site.id))
   );
   
   return results.map((result, index) => ({
@@ -206,7 +212,7 @@ export async function syncAllSites() {
   const startTime = Date.now();
   
   // 查询所有活跃站点
-  const sites = await db.query.monitoredSites.findMany({
+  const sites = await db().query.monitoredSites.findMany({
     where: eq(monitoredSites.status, 'active'),
   });
   
@@ -219,7 +225,7 @@ export async function syncAllSites() {
   for (let i = 0; i < sites.length; i += batchSize) {
     const batch = sites.slice(i, i + batchSize);
     const batchResults = await Promise.allSettled(
-      batch.map((site) => syncSiteData(site.id))
+      batch.map((site: any) => syncSiteData(site.id))
     );
     results.push(...batchResults);
   }

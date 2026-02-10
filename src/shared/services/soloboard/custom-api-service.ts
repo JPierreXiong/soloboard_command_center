@@ -64,15 +64,15 @@ export async function addCustomApiSite(
   }
 
   // 加密配置
-  const encryptedConfig = encryptApiConfig({
+  const encryptedConfig = encryptApiConfig(JSON.stringify({
     customApi: {
       ...config,
       metrics,
     },
-  });
+  }));
 
   // 保存到数据库
-  await db.insert(monitoredSites).values({
+  await db().insert(monitoredSites).values({
     id: siteId,
     userId,
     name,
@@ -246,7 +246,7 @@ export function formatCustomMetric(
 export async function syncCustomApiSite(siteId: string) {
   try {
     // 获取站点配置
-    const site = await db
+    const site = await db()
       .select()
       .from(monitoredSites)
       .where(eq(monitoredSites.id, siteId))
@@ -259,7 +259,8 @@ export async function syncCustomApiSite(siteId: string) {
     const siteData = site[0];
 
     // 解密配置
-    const config = decryptApiConfig(siteData.encryptedConfig);
+    const configStr = decryptApiConfig(siteData.encryptedConfig);
+    const config = JSON.parse(configStr);
     if (!config.customApi) {
       throw new Error('No custom API configuration found');
     }
@@ -268,7 +269,7 @@ export async function syncCustomApiSite(siteId: string) {
     const metrics = await fetchCustomApiMetrics(config.customApi);
 
     // 保存历史数据
-    await db.insert(siteMetricsHistory).values({
+    await db().insert(siteMetricsHistory).values({
       id: nanoid(),
       siteId,
       metrics,
@@ -277,7 +278,7 @@ export async function syncCustomApiSite(siteId: string) {
     });
 
     // 更新站点快照
-    await db
+    await db()
       .update(monitoredSites)
       .set({
         lastSnapshot: {
@@ -295,7 +296,7 @@ export async function syncCustomApiSite(siteId: string) {
     console.error(`[Custom API] Sync error for site ${siteId}:`, error);
 
     // 更新错误状态
-    await db
+    await db()
       .update(monitoredSites)
       .set({
         status: 'error',
@@ -390,6 +391,10 @@ export const CUSTOM_API_TEMPLATES = {
     ],
   },
 };
+
+
+
+
 
 
 

@@ -35,12 +35,11 @@ export interface GA4Metrics {
 export async function fetchGA4Metrics(config: GA4Config): Promise<GA4Metrics> {
   try {
     // 1. 创建 JWT 认证
-    const auth = new google.auth.JWT(
-      config.clientEmail,
-      undefined,
-      config.privateKey.replace(/\\n/g, '\n'), // 处理环境变量中的换行符
-      ['https://www.googleapis.com/auth/analytics.readonly']
-    );
+    const auth = new google.auth.JWT({
+      email: config.clientEmail,
+      key: config.privateKey.replace(/\\n/g, '\n'), // 处理环境变量中的换行符
+      scopes: ['https://www.googleapis.com/auth/analytics.readonly'],
+    });
 
     // 2. 初始化 Analytics Data API
     const analyticsData = google.analyticsdata({
@@ -117,5 +116,9 @@ export async function validateGA4Config(config: GA4Config): Promise<boolean> {
     return false;
   }
 }
+
+
+
+
 
 

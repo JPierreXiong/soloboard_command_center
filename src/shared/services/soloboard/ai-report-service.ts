@@ -53,7 +53,7 @@ export async function generateAIReport(
     const { startDate, endDate } = getReportDateRange(reportType);
 
     // 2. 获取用户的所有站点
-    const sites = await db
+    const sites = await db()
       .select()
       .from(monitoredSites)
       .where(eq(monitoredSites.userId, userId));
@@ -80,7 +80,7 @@ export async function generateAIReport(
 
     // 5. 保存报告到数据库
     const reportId = nanoid();
-    await db.insert(aiReports).values({
+    await db().insert(aiReports).values({
       id: reportId,
       userId,
       reportType,
@@ -134,7 +134,7 @@ async function collectSiteData(
   endDate: Date
 ) {
   // 获取时间范围内的历史数据
-  const metrics = await db
+  const metrics = await db()
     .select()
     .from(siteMetricsHistory)
     .where(
@@ -192,7 +192,7 @@ async function collectSiteData(
   const daysDiff = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
   previousStartDate.setDate(previousStartDate.getDate() - daysDiff);
 
-  const previousMetrics = await db
+  const previousMetrics = await db()
     .select()
     .from(siteMetricsHistory)
     .where(
@@ -407,7 +407,7 @@ function generateRuleBasedReport(siteSummaries: SiteSummary[], reportType: Repor
 export async function sendAIReportEmail(reportId: string, userEmail: string) {
   try {
     // 获取报告数据
-    const report = await db
+    const report = await db()
       .select()
       .from(aiReports)
       .where(eq(aiReports.id, reportId))
@@ -433,7 +433,7 @@ export async function sendAIReportEmail(reportId: string, userEmail: string) {
     // });
 
     // 标记为已发送
-    await db
+    await db()
       .update(aiReports)
       .set({ sent: true, sentAt: new Date() })
       .where(eq(aiReports.id, reportId));
@@ -500,13 +500,17 @@ function generateReportHTML(report: any): string {
  * 获取用户的报告历史
  */
 export async function getUserReports(userId: string, limit = 10) {
-  return await db
+  return await db()
     .select()
     .from(aiReports)
     .where(eq(aiReports.userId, userId))
     .orderBy(desc(aiReports.createdAt))
     .limit(limit);
 }
+
+
+
+
 
 
 

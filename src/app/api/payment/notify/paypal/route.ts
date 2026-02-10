@@ -37,7 +37,8 @@ export async function POST(req: NextRequest) {
     console.log('PayPal event type:', event.eventType);
 
     // 处理不同的事件类型
-    switch (event.eventType) {
+    const eventType = event.eventType as string;
+    switch (eventType) {
       case 'PAYMENT.CAPTURE.COMPLETED':
         await handlePaymentCompleted(event);
         break;
@@ -59,7 +60,7 @@ export async function POST(req: NextRequest) {
         break;
 
       default:
-        console.log('Unhandled event type:', event.eventType);
+        console.log('Unhandled event type:', eventType);
     }
 
     return Response.json({ received: true });

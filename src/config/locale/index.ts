@@ -10,7 +10,7 @@ export const locales = ['en', 'zh', 'fr'];
 
 export const defaultLocale = envConfigs.locale;
 
-export const localePrefix = 'as-needed';
+export const localePrefix = 'always';
 
 export const localeDetection = false;
 

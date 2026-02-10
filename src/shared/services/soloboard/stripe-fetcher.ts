@@ -33,7 +33,7 @@ export async function fetchStripeMetrics(
 ): Promise<StripeMetrics> {
   try {
     const stripe = new Stripe(config.secretKey, {
-      apiVersion: '2024-12-18.acacia',
+      apiVersion: '2025-08-27.basil',
     });
     
     // 获取今日开始时间戳（UTC）
@@ -93,7 +93,7 @@ export async function validateStripeConfig(
 ): Promise<boolean> {
   try {
     const stripe = new Stripe(config.secretKey, {
-      apiVersion: '2024-12-18.acacia',
+      apiVersion: '2025-08-27.basil',
     });
     
     // 尝试获取账户信息来验证 API Key
@@ -139,6 +139,10 @@ function getCurrencySymbol(currency: string): string {
   
   return symbols[currency.toLowerCase()] || currency.toUpperCase();
 }
+
+
+
+
 
 
 

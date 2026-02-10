@@ -40,9 +40,12 @@ export async function GET(
     const range = searchParams.get('range') || '24h';
     
     // 2. 验证站点所有权
-    const site = await db.query.monitoredSites.findFirst({
-      where: eq(monitoredSites.id, siteId),
-    });
+    const site = await db()
+      .select()
+      .from(monitoredSites)
+      .where(eq(monitoredSites.id, siteId))
+      .limit(1)
+      .then((rows: any[]) => rows[0]);
     
     if (!site || site.userId !== session.user.id) {
       return NextResponse.json(
@@ -70,11 +73,12 @@ export async function GET(
     }
     
     // 4. 查询历史数据
-    const history = await db.query.siteMetricsHistory.findMany({
-      where: gte(siteMetricsHistory.recordedAt, startTime),
-      orderBy: [desc(siteMetricsHistory.recordedAt)],
-      limit: 100, // 最多返回 100 个数据点
-    });
+    const history = await db()
+      .select()
+      .from(siteMetricsHistory)
+      .where(gte(siteMetricsHistory.recordedAt, startTime))
+      .orderBy(desc(siteMetricsHistory.recordedAt))
+      .limit(100);
     
     return NextResponse.json({
       success: true,

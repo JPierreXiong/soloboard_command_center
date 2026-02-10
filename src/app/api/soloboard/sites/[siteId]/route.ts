@@ -38,7 +38,7 @@ export async function DELETE(
     const { siteId } = params;
     
     // 2. 验证站点所有权并删除
-    const result = await db
+    const result = await db()
       .delete(monitoredSites)
       .where(
         and(
@@ -71,6 +71,8 @@ export async function DELETE(
     );
   }
 }
+
+
 
 
 

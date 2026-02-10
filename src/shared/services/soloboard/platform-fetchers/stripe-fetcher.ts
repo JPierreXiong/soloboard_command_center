@@ -37,7 +37,7 @@ export async function fetchStripeMetrics(config: StripeConfig): Promise<StripeMe
   try {
     // 1. 初始化 Stripe 客户端
     const stripe = new Stripe(config.secretKey, {
-      apiVersion: '2024-12-18.acacia',
+      apiVersion: '2025-08-27.basil',
     });
 
     // 2. 计算时间范围
@@ -121,7 +121,7 @@ export async function fetchStripeMetrics(config: StripeConfig): Promise<StripeMe
 export async function validateStripeConfig(config: StripeConfig): Promise<boolean> {
   try {
     const stripe = new Stripe(config.secretKey, {
-      apiVersion: '2024-12-18.acacia',
+      apiVersion: '2025-08-27.basil',
     });
     
     // 尝试获取账户信息来验证 API Key
@@ -132,5 +132,9 @@ export async function validateStripeConfig(config: StripeConfig): Promise<boolea
     return false;
   }
 }
+
+
+
+
 
 

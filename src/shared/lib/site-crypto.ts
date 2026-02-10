@@ -144,6 +144,32 @@ export interface SiteApiConfig {
     url: string; // 要监控的 URL
     interval?: number; // 检查间隔（秒）
   };
+  
+  // Custom API
+  customApi?: {
+    url: string;
+    method?: 'GET' | 'POST';
+    headers?: Record<string, string>;
+    body?: string;
+    auth?: {
+      type: 'bearer' | 'basic' | 'apikey';
+      token?: string;
+      username?: string;
+      password?: string;
+      apiKey?: string;
+      apiKeyHeader?: string;
+    };
+    dataPath?: string;
+    transform?: string;
+    metrics?: Array<{
+      name: string;
+      label: string;
+      jsonPath: string;
+      type: 'number' | 'string' | 'boolean';
+      format?: 'currency' | 'percentage' | 'number';
+      unit?: string;
+    }>;
+  };
 }
 
 /**
@@ -210,5 +236,8 @@ export function testEncryption(): void {
   console.log('✅ Test result:', isMatch ? 'PASSED' : 'FAILED');
 }
 
+// Aliases for backward compatibility
+export const encryptApiConfig = encryptSiteConfig;
+export const decryptApiConfig = decryptSiteConfig;
 
 
