@@ -10,11 +10,11 @@ interface StructuredDataProps {
   data?: any;
 }
 
-export function StructuredData({ type, data }: StructuredDataProps) {
+function StructuredData({ type, data }: StructuredDataProps) {
   const baseUrl = envConfigs.app_url || 'https://www.soloboard.app';
   const appName = envConfigs.app_name || 'SoloBoard';
 
-  let structuredData: any = {};
+  let structuredData: Record<string, any> = {};
 
   switch (type) {
     case 'website':
@@ -126,11 +126,56 @@ export function StructuredData({ type, data }: StructuredDataProps) {
  * 预设的结构化数据组件
  */
 export function WebsiteStructuredData() {
-  return <StructuredData type="website" />;
+  const baseUrl = envConfigs.app_url || 'https://www.soloboard.app';
+  const appName = envConfigs.app_name || 'SoloBoard';
+  
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: appName,
+    url: baseUrl,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+  
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
 }
 
 export function OrganizationStructuredData() {
-  return <StructuredData type="organization" />;
+  const baseUrl = envConfigs.app_url || 'https://www.soloboard.app';
+  const appName = envConfigs.app_name || 'SoloBoard';
+  
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: appName,
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    sameAs: [],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      url: `${baseUrl}/contact`,
+    },
+  };
+  
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
 }
 
 export function ProductStructuredData(props: {
