@@ -2,15 +2,15 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Afterglow",
+      "title": "SoloBoard",
       "url": "/"
     },
     "nav": {
       "items": [
         {
-          "title": "Digital Heirloom",
-          "url": "/digital-heirloom/dashboard",
-          "icon": "Shield"
+          "title": "Dashboard",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
         },
         {
           "title": "Pricing",
@@ -26,9 +26,9 @@
       "show_sign_out": true,
       "items": [
         {
-          "title": "Digital Heirloom",
-          "url": "/digital-heirloom/dashboard",
-          "icon": "Shield"
+          "title": "Dashboard",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
         },
         {
           "title": "Billing",
@@ -48,28 +48,28 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Secure Your Digital Legacy",
+    "title": "Monitor All Your Sites in One Dashboard",
     "highlight_text": "",
-    "description": "Ensure your loved ones can access your digital assets when they need them most. Passwords, crypto wallets, and personal messages — protected until the right moment.",
+    "description": "Stop switching between tabs. Track GA4 analytics, Stripe revenue, and uptime status for up to 10 websites in a single, beautiful dashboard. Built for solo entrepreneurs.",
     "announcement": {
-      "badge": "Security",
-      "title": "🔒 Zero-Knowledge Encryption",
-      "url": "#zero-knowledge-security"
+      "badge": "Productivity",
+      "title": "⚡ Save 2 Hours Daily",
+      "url": "#how-it-works"
     },
     "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">No credit card required</span>",
     "buttons": [
       {
         "title": "Start for Free",
-        "icon": "Shield",
+        "icon": "LayoutDashboard",
         "url": "/sign-up",
         "target": "_self",
         "variant": "default",
         "className": ""
       },
       {
-        "title": "Learn More",
-        "icon": "Info",
-        "url": "/blog",
+        "title": "View Demo",
+        "icon": "Play",
+        "url": "/soloboard",
         "target": "_self",
         "variant": "outline",
         "className": ""
@@ -80,354 +80,69 @@
     "show_award": false,
     "image": {
       "src": "/imgs/features/admin.png",
-      "alt": "hero"
+      "alt": "SoloBoard Dashboard"
     },
     "image_invert": {
       "src": "/imgs/features/admin-dark.png",
-      "alt": "hero"
+      "alt": "SoloBoard Dashboard"
     }
-  },
-  "logos": {
-    "title": "Digital Heirloom is built on the shoulders of giants",
-    "items": [
-      {
-        "title": "Next.js",
-        "image": {
-          "src": "/imgs/logos/nextjs.svg",
-          "alt": "Next.js"
-        }
-      },
-      {
-        "title": "React",
-        "image": {
-          "src": "/imgs/logos/react.svg",
-          "alt": "React"
-        }
-      },
-      {
-        "title": "TailwindCSS",
-        "image": {
-          "src": "/imgs/logos/tailwindcss.svg",
-          "alt": "TailwindCSS"
-        }
-      },
-      {
-        "title": "Shadcn/UI",
-        "image": {
-          "src": "/imgs/logos/shadcn.svg",
-          "alt": "Shadcn/UI"
-        }
-      },
-      {
-        "title": "Vercel",
-        "image": {
-          "src": "/imgs/logos/vercel.svg",
-          "alt": "Vercel"
-        }
-      }
-    ]
-  },
-  "introduce": {
-    "id": "introduce",
-    "title": "What is Digital Heirloom",
-    "label": "Introduce",
-    "description": "Digital Heirloom is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
-    "image": {
-      "src": "/imgs/features/landing-page.png",
-      "alt": "introduce"
-    },
-    "items": [
-      {
-        "title": "Ready-to-use Templates",
-        "description": "Choose from dozens of production-ready AI SaaS templates to quickly start your project.",
-        "icon": "RiNextjsFill",
-        "image": {
-          "src": "/imgs/features/1.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "Infrastructure Setup",
-        "description": "Get instant access to scalable infrastructure with best practices built-in.",
-        "icon": "RiDatabase2Line",
-        "image": {
-          "src": "/imgs/features/2.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "Quick Deployment",
-        "description": "Deploy your AI SaaS application to production in hours, not days.",
-        "icon": "RiCloudyFill",
-        "image": {
-          "src": "/imgs/features/3.png",
-          "alt": "introduce"
-        }
-      },
-      {
-        "title": "AI Integration",
-        "description": "Integrate AI into your project with ease using our built-in AI SDK.",
-        "icon": "RiRobot2Line",
-        "image": {
-          "src": "/imgs/features/4.png",
-          "alt": "introduce"
-        }
-      }
-    ]
-  },
-  "benefits": {
-    "id": "benefits",
-    "title": "Why Choose Digital Heirloom",
-    "label": "Benefits",
-    "description": "Get everything you need to launch your AI startup - from ready-to-use templates to technical support.",
-    "items": [
-      {
-        "title": "Complete Framework",
-        "description": "Built on Next.js with authentication, payments, and AI integration - everything works out of the box.",
-        "icon": "RiNextjsFill",
-        "image": {
-          "src": "/imgs/features/user-billing.png",
-          "alt": "benefits"
-        }
-      },
-      {
-        "title": "Rich Templates Library",
-        "description": "Choose from various AI SaaS templates to kickstart your project - chatbots, image generation, and more.",
-        "icon": "RiClapperboardAiLine",
-        "image": {
-          "src": "/imgs/features/admin-settings.png",
-          "alt": "benefits"
-        }
-      },
-      {
-        "title": "Technical Guidance",
-        "description": "Get dedicated support and join our developer community to ensure your successful launch.",
-        "icon": "RiCodeFill",
-        "image": {
-          "src": "/imgs/features/landing-page.png",
-          "alt": "benefits"
-        }
-      }
-    ]
-  },
-  "usage": {
-    "id": "usage",
-    "title": "How to Launch with Digital Heirloom",
-    "description": "Get your AI SaaS startup running in three simple steps:",
-    "image": {
-      "src": "/imgs/features/1.png",
-      "alt": "usage"
-    },
-    "image_position": "left",
-    "text_align": "center",
-    "items": [
-      {
-        "title": "Get Digital Heirloom",
-        "description": "Buy Digital Heirloom with a one-time payment. Check your email for the code and documentation.",
-        "image": {
-          "src": "/imgs/features/5.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "Start Your Project",
-        "description": "Read the documentation and clone the code of Digital Heirloom. Start building your AI SaaS startup.",
-        "image": {
-          "src": "/imgs/features/6.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "Customize Your Project",
-        "description": "Modify the template with your data and contents. Specific AI functionality needs.",
-        "image": {
-          "src": "/imgs/features/7.png",
-          "alt": "usage"
-        }
-      },
-      {
-        "title": "Deploy to Production",
-        "description": "Deploy your project to production with a few steps and start serving customers immediately.",
-        "image": {
-          "src": "/imgs/features/8.png",
-          "alt": "usage"
-        }
-      }
-    ]
   },
   "how-it-works": {
     "id": "how-it-works",
     "title": "How It Works",
-    "description": "A simple, secure system to protect what matters most",
+    "description": "One dashboard to rule them all",
     "items": [
       {
-        "title": "Encrypted Vault",
-        "description": "Store passwords, crypto keys, and personal notes with military-grade encryption that even we can't read.",
-        "icon": "Lock"
+        "title": "Connect Your Sites",
+        "description": "Add your websites and connect GA4, Stripe, and uptime monitoring with secure API keys.",
+        "icon": "Link"
       },
       {
-        "title": "Dead Man's Switch",
-        "description": "Regular check-ins confirm you're okay. Miss them, and your designated contacts are notified automatically.",
-        "icon": "Clock"
+        "title": "Real-Time Sync",
+        "description": "Data syncs automatically every 15 minutes. See today's visitors, revenue, and uptime at a glance.",
+        "icon": "RefreshCw"
       },
       {
-        "title": "Trusted Beneficiaries",
-        "description": "Designate family members, friends, or attorneys to receive specific items from your vault.",
-        "icon": "Users"
-      }
-    ]
-  },
-  "zero-knowledge-security": {
-    "id": "zero-knowledge-security",
-    "title": "Zero-Knowledge Security",
-    "description": "Your data is encrypted on your device before it ever reaches our servers. We never see your passwords or secrets — and neither does anyone else until you want them to.",
-    "items": [
-      {
-        "title": "End-to-end encryption",
-        "description": "",
-        "icon": "Shield"
-      },
-      {
-        "title": "No backdoors or master keys",
-        "description": "",
-        "icon": "Key"
-      },
-      {
-        "title": "Regular security audits",
-        "description": "",
-        "icon": "Search"
-      },
-      {
-        "title": "Client-side key generation",
-        "description": "",
-        "icon": "Cpu"
-      },
-      {
-        "title": "Open-source cryptography",
-        "description": "",
-        "icon": "Code"
-      },
-      {
-        "title": "GDPR & CCPA compliant",
-        "description": "",
-        "icon": "FileCheck"
+        "title": "Stay Focused",
+        "description": "No more context switching. Monitor all your projects from one beautiful 3x3 grid dashboard.",
+        "icon": "Target"
       }
     ]
   },
   "features": {
     "id": "features",
-    "title": "Key Features of Digital Heirloom",
-    "description": "Everything you need to launch your AI SaaS startup quickly and efficiently.",
+    "title": "Key Features",
+    "description": "Everything you need to monitor your online empire",
     "items": [
       {
-        "title": "Next.js Boilerplate",
-        "description": "Production-ready Next.js templates with SEO-friendly structure and i18n support.",
-        "icon": "RiNextjsFill"
+        "title": "GA4 Analytics",
+        "description": "Track visitors, page views, and user behavior across all your sites in real-time.",
+        "icon": "BarChart3"
       },
       {
-        "title": "Authentication & Payments",
-        "description": "Integrated Google OAuth, one-tap login, and Stripe payment processing.",
-        "icon": "RiKey2Fill"
+        "title": "Stripe Revenue",
+        "description": "Monitor today's sales, MRR, and transaction counts without opening Stripe dashboard.",
+        "icon": "DollarSign"
       },
       {
-        "title": "Data Infrastructure",
-        "description": "Built-in Supabase integration for reliable and scalable data storage.",
-        "icon": "RiDatabase2Line"
+        "title": "Uptime Monitoring",
+        "description": "Get instant alerts when your sites go down. Track response times and availability.",
+        "icon": "Activity"
       },
       {
-        "title": "One-Click Deployment",
-        "description": "Seamless deployment to Vercel or Cloudflare with automated setup.",
-        "icon": "RiCloudy2Fill"
+        "title": "9-Grid Layout",
+        "description": "Beautiful 3x3 dashboard layout. Drag and drop to reorder your sites by priority.",
+        "icon": "LayoutGrid"
       },
       {
-        "title": "Business Analytics",
-        "description": "Integrated Google Analytics and Search Console for tracking growth.",
-        "icon": "RiBarChart2Line"
+        "title": "Historical Data",
+        "description": "View trends and compare performance over time with interactive charts.",
+        "icon": "TrendingUp"
       },
       {
-        "title": "AI-Ready Infrastructure",
-        "description": "Pre-configured AI integration with built-in credits system and API sales.",
-        "icon": "RiRobot2Line"
-      }
-    ]
-  },
-  "stats": {
-    "id": "stats",
-    "title": "People Love Digital Heirloom",
-    "description": "for it's easy to use and fast to ship.",
-    "items": [
-      {
-        "title": "999+",
-        "description": "Customers"
-      },
-      {
-        "title": "200+",
-        "description": "Blocks"
-      },
-      {
-        "title": "50+",
-        "description": "Templates"
-      }
-    ]
-  },
-  "testimonials": {
-    "id": "testimonials",
-    "title": "What Users Say About Digital Heirloom",
-    "description": "Hear from content creators and businesses who transformed their video content with Digital Heirloom.",
-    "items": [
-      {
-        "name": "David Chen",
-        "role": "YouTube Content Creator",
-        "quote": "Digital Heirloom transformed my YouTube channel! I can now reach global audiences with accurate subtitles in 12 languages. My views increased by 300% after adding multilingual subtitles.",
-        "image": {
-          "src": "/imgs/avatars/1.png",
-          "alt": "david"
-        }
-      },
-      {
-        "name": "Rachel Kim",
-        "role": "TikTok Influencer",
-        "quote": "One-click subtitle extraction and translation saved me hours every week. My TikTok videos now connect with viewers worldwide, and my engagement has skyrocketed!",
-        "image": {
-          "src": "/imgs/avatars/2.png",
-          "alt": "rachel"
-        }
-      },
-      {
-        "name": "Marcus Thompson",
-        "role": "Video Production Agency Owner",
-        "quote": "As a small agency, Digital Heirloom gives us enterprise-level subtitle capabilities at a fraction of the cost. We process hundreds of videos monthly with perfect accuracy.",
-        "image": {
-          "src": "/imgs/avatars/3.png",
-          "alt": "marcus"
-        }
-      },
-      {
-        "name": "Sofia Garcia",
-        "role": "E-Learning Platform Manager",
-        "quote": "Digital Heirloom made our educational content accessible globally. Students from 50+ countries can now learn from our courses with accurate translations. Game-changer!",
-        "image": {
-          "src": "/imgs/avatars/4.png",
-          "alt": "sofia"
-        }
-      },
-      {
-        "name": "James Wilson",
-        "role": "Marketing Director",
-        "quote": "The AI-powered translation is incredibly accurate. We localize our marketing videos for different markets in minutes instead of days. ROI is through the roof!",
-        "image": {
-          "src": "/imgs/avatars/5.png",
-          "alt": "james"
-        }
-      },
-      {
-        "name": "Anna Zhang",
-        "role": "Content Strategist",
-        "quote": "Digital Heirloom's one-click solution turned our YouTube and TikTok content into a global powerhouse. Our international audience grew 500% in just 3 months!",
-        "image": {
-          "src": "/imgs/avatars/6.png",
-          "alt": "anna"
-        }
+        "title": "Secure & Private",
+        "description": "Your API keys are encrypted with AES-256. We never see your actual data.",
+        "icon": "Shield"
       }
     ]
   },
@@ -435,72 +150,45 @@
     "id": "faq",
     "title": "Frequently Asked Questions",
     "description": "Have another question? Contact us by email.",
-    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@digitalheirloom.app' class='text-primary font-medium hover:underline'>customer support team</a>",
+    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@soloboard.app' class='text-primary font-medium hover:underline'>customer support team</a>",
     "items": [
       {
-        "question": "Does the ShipAny package contain a USB drive or my actual data?",
-        "answer": "No. For ultimate security, we never ship USB drives. The package contains only a high-strength physical encrypted credential (Recovery Kit). Your assets remain encrypted in the cloud; the physical credential is the sole \"key\" to unlock them."
+        "question": "How many sites can I monitor?",
+        "answer": "Free plan: 3 sites. Base plan ($19.9/mo): 5 sites. Pro plan ($39.9/mo): 10 sites. Perfect for solo entrepreneurs managing multiple projects."
       },
       {
-        "question": "What happens if DigitalHeirloom's database is hacked?",
-        "answer": "This is the brilliance of our architecture. Even if hackers exfiltrated the entire database, they could read nothing. The critical decryption factors are not on our servers; they reside in the physical credentials sent to your beneficiaries. The algorithmic complexity makes cracking as difficult as finding a specific atom in the universe."
+        "question": "Which platforms do you support?",
+        "answer": "Currently: Google Analytics 4, Stripe, and Uptime monitoring. We're adding Lemon Squeezy, Shopify, and Cloudflare Analytics soon."
       },
       {
-        "question": "Does the platform guarantee the quality or integrity of my file content?",
-        "answer": "We guarantee the physical integrity and security of your encrypted data blocks via globally distributed storage. However, as a \"Zero-Knowledge\" platform, we do not audit or guarantee the internal content quality. We are the vault manufacturers, not content auditors."
+        "question": "How often does data sync?",
+        "answer": "Free: Every 48 hours. Base: Every 6 hours. Pro: Every 60 minutes. All plans show real-time data once synced."
       },
       {
-        "question": "Will my beneficiary still need my Master Password after receiving the physical credential?",
-        "answer": "No. Pro credentials feature \"Auto-Parsing\" technology. Once the beneficiary scans the encrypted QR code, the system validates identity via the physical medium, automatically bypassing the password input for a friction-less recovery."
+        "question": "Is my data secure?",
+        "answer": "Yes! Your API keys are encrypted with AES-256-CBC before storage. We use industry-standard security practices and never access your actual data."
       },
       {
-        "question": "Why emphasize \"Physical Credentials\" over pure digital passwords?",
-        "answer": "Digital passwords can be compromised via brute force or phishing. Our physical credentials are \"non-replicable.\" This dual-validation—binding digital legacy with physical logistics (ShipAny)—ensures that even if a hacker breaches your network, they cannot cross physical space."
+        "question": "Can I export my data?",
+        "answer": "Yes! Pro plan includes CSV and Excel export. Perfect for monthly reports or sharing with clients."
       },
       {
-        "question": "Does decrypting a 2GB asset take a long time?",
-        "answer": "Decryption time depends on the beneficiary's local hardware, not bandwidth. Once the physical credential activates the channel, the system uses Vercel Edge computing for streaming decryption. A 2GB archive can typically be restored within minutes."
-      }
-    ]
-  },
-  "technical-architecture": {
-    "id": "technical-architecture",
-    "title": "Technical Architecture & Compliance",
-    "description": "Learn More: Technical Architecture & Compliance",
-    "items": [
-      {
-        "title": "Core Technology: BIP39 & AES-256-GCM",
-        "description": "Afterglow's foundation is built upon the BIP39 Mnemonic standard, the same protocol used by leading cryptocurrency wallets. The system generates a 24-word \"Recovery Kit\" to protect your Master Password backup. Every piece of data is encrypted using AES-256-GCM, providing the highest level of cryptographic security available for commercial use.",
-        "icon": "Shield"
-      },
-      {
-        "title": "Physical-Digital Bridge: Powered by ShipAny",
-        "description": "We have bridged the gap between digital data and physical heirlooms through deep integration with ShipAny, a global logistics orchestration platform. Automated Triggers: Real-time monitoring via high-performance Edge Functions. Human-in-the-Loop (HITL): To prevent irreversible shipping errors, every Pro-tier physical dispatch requires manual secondary authorization from the Afterglow administrative dashboard. Privacy-First Logistics: Beneficiary shipping addresses remain encrypted in our database and are only decrypted at the moment the shipping label is generated.",
-        "icon": "Package"
-      },
-      {
-        "title": "Why Upgrade to Pro Family Plan?",
-        "description": "For users managing high-value assets—such as private keys, sensitive legal documents, or priceless family archives—the Pro Plan offers \"Certainty of Delivery\": Omni-channel Alerts: Avoid single-point-of-failure risks associated with email-only notifications. Logistics Settlement Engine: Integrated Creem gateway allows beneficiaries to settle shipping fees with a single click. Unlimited Beneficiaries: Perfect for complex estate planning and family trust structures.",
-        "icon": "ArrowUpCircle"
-      },
-      {
-        "title": "Legal Disclaimer & Best Practices",
-        "description": "While Afterglow provides state-of-the-art technical security, we strongly recommend that users print their Recovery Kit and store it in a secure, fireproof location. Our service serves as a technological supplement to your estate plan and does not replace a legally binding will or testament as defined by your local jurisdiction. Please consult with a legal professional for comprehensive estate planning.",
-        "icon": "FileText"
+        "question": "Do you offer refunds?",
+        "answer": "Yes! We offer a 14-day money-back guarantee. If you're not satisfied, we'll refund your payment, no questions asked."
       }
     ]
   },
   "cta": {
     "id": "cta",
-    "title": "Start Protecting Your Digital Legacy Today",
-    "description": "Join thousands of users who trust Afterglow to secure their most important digital assets.",
-    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">No credit card required</span>",
+    "title": "Start Monitoring Your Sites Today",
+    "description": "Join solo entrepreneurs who saved hours by consolidating their dashboards.",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">No credit card required • Free plan available</span>",
     "buttons": [
       {
-        "title": "Start for Free",
+        "title": "Get Started Free",
         "url": "/sign-up",
         "target": "_self",
-        "icon": "Shield",
+        "icon": "LayoutDashboard",
         "variant": "default",
         "className": ""
       }
@@ -509,7 +197,7 @@
   "subscribe": {
     "id": "subscribe",
     "title": "Subscribe to our newsletter",
-    "description": "Get the latest news and updates from Digital Heirloom.",
+    "description": "Get productivity tips and product updates from SoloBoard.",
     "submit": {
       "input": {
         "placeholder": "Enter your email"
@@ -523,15 +211,35 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "Afterglow",
-      "description": "Afterglow is a high-security digital asset custody and automated distribution platform. We protect your digital legacy with zero-knowledge encryption, ensuring your loved ones can access your digital assets when they need them most.",
+      "title": "SoloBoard",
+      "description": "SoloBoard is a unified monitoring dashboard for solo entrepreneurs. Track GA4 analytics, Stripe revenue, and uptime status for all your websites in one beautiful interface.",
       "url": "/"
     },
-    "copyright": "Afterglow - Secure Your Digital Legacy",
+    "copyright": "SoloBoard - Monitor All Your Sites in One Place",
     "nav": {
       "items": [
         {
-          "title": "About",
+          "title": "Product",
+          "children": [
+            {
+              "title": "Dashboard",
+              "url": "/soloboard",
+              "target": "_self"
+            },
+            {
+              "title": "Pricing",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "FAQ",
+              "url": "/#faq",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Company",
           "children": [
             {
               "title": "About Us",
@@ -544,14 +252,14 @@
               "target": "_self"
             },
             {
-              "title": "Pricing",
-              "url": "/pricing",
+              "title": "Blog",
+              "url": "/blog",
               "target": "_self"
             }
           ]
         },
         {
-          "title": "Friends",
+          "title": "Partners",
           "children": [
             {
               "title": "Creem",
@@ -559,13 +267,13 @@
               "target": "_blank"
             },
             {
-              "title": "ShipAny",
-              "url": "https://www.shipany.io",
+              "title": "Vercel",
+              "url": "https://vercel.com",
               "target": "_blank"
             },
             {
-              "title": "Resend",
-              "url": "https://resend.com",
+              "title": "Neon",
+              "url": "https://neon.tech",
               "target": "_blank"
             }
           ]
@@ -577,7 +285,7 @@
         {
           "title": "Email",
           "icon": "Mail",
-          "url": "mailto:support@digitalheirloom.app",
+          "url": "mailto:support@soloboard.app",
           "target": "_self"
         }
       ]

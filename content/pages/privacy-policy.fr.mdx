@@ -1,65 +1,85 @@
 ---
-title: Politique de Confidentialité
-description: Politique de confidentialité pour Afterglow Digital Heirloom
-created_at: 2025-10-24
+title: Politique de confidentialité
+description: Politique de confidentialité de SoloBoard
+created_at: 2025-02-11
 ---
 
-**Date d'entrée en vigueur : 15 janvier 2026**
+**Date d'entrée en vigueur : 11 février 2026**
 
 ## 1. Introduction
 
-Afterglow ("nous", "notre" ou "nos") s'engage à protéger votre vie privée. Nous fonctionnons sur une architecture de Chiffrement Zero-Knowledge, garantissant que vos données sensibles restent privées et accessibles uniquement à vous et à vos bénéficiaires désignés. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre plateforme.
+SoloBoard (« nous », « notre » ou « nos ») s'engage à protéger votre vie privée. Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre plateforme de tableau de bord de surveillance unifiée.
 
-## 2. Données que Nous Collectons
+## 2. Données que nous collectons
 
-Selon le principe de minimisation des données, nous ne collectons que les informations essentielles à notre service :
+Nous collectons uniquement les informations essentielles à la fourniture de notre service :
 
-**Données d'Identité et de Contact** : Adresse e-mail. Objectif : Création de compte, authentification et alertes de battement de cœur.
+**Données d'identité et de contact** : Adresse e-mail, nom. Objectif : Création de compte, authentification et notifications de service.
 
-**Données Financières** : Historique des paiements et niveau d'abonnement (Gratuit/Base/Pro). Nous ne stockons pas les numéros de carte de crédit complets ; les paiements sont traités via des tiers sécurisés (par exemple, Stripe).
+**Données financières** : Historique des paiements et niveau d'abonnement (Gratuit/Base/Pro). Nous ne stockons pas les numéros de carte de crédit complets ; les paiements sont traités par des tiers sécurisés (Stripe, Creem).
 
-**Données Techniques** : Adresse IP, type de navigateur et journaux de connexion. Objectif : Surveillance de la sécurité et prévention de la fraude.
+**Données techniques** : Adresse IP, type de navigateur et journaux de connexion. Objectif : Surveillance de la sécurité et prévention de la fraude.
 
-**Données de Coffre-Fort Chiffrées** : Il s'agit de votre contenu téléchargé. Important : Ces données sont chiffrées localement sur votre appareil avant la transmission. Nous ne détenons pas votre mot de passe principal ou vos clés privées, ce qui signifie que nous ne pouvons pas déchiffrer ou voir vos actifs.
+**Identifiants API** : Vos clés API tierces (Google Analytics, Stripe, etc.). Important : Ces identifiants sont chiffrés à l'aide d'AES-256-CBC avant le stockage. Nous les utilisons uniquement pour récupérer des données en votre nom et ne les partageons jamais avec des tiers.
 
-## 3. Architecture Zero-Knowledge
+**Données d'utilisation** : Vues du tableau de bord, configurations de sites et journaux de synchronisation. Objectif : Fournir et améliorer notre service.
 
-Notre service est construit sur le chiffrement local :
+## 3. Sécurité des données
 
-Le chiffrement/déchiffrement se produit uniquement dans votre navigateur ou application cliente.
+Vos clés API et données sensibles sont protégées par :
 
-Votre Mot de Passe Principal n'est jamais transmis à nos serveurs.
+**Chiffrement** : Toutes les clés API sont chiffrées à l'aide d'AES-256-CBC avant le stockage.
 
-Avertissement de Risque : Si vous perdez votre Mot de Passe Principal ou vos fragments physiques (Fragment A/B), nous ne pouvons pas récupérer vos données.
+**Transmission sécurisée** : Toutes les données sont transmises via HTTPS.
 
-## 4. Base Légale du Traitement (RGPD)
+**Contrôle d'accès** : Seuls les systèmes autorisés peuvent accéder aux identifiants chiffrés, et uniquement dans le but de synchroniser vos données.
+
+**Pas de partage de données** : Nous ne vendons ni ne partageons jamais vos données avec des tiers à des fins marketing.
+
+## 4. Base juridique du traitement (RGPD)
 
 Nous traitons vos données sur la base de :
 
-Nécessité Contractuelle : Pour fournir des services d'hébergement de coffre-fort et d'héritage.
+**Nécessité contractuelle** : Pour fournir des services de surveillance de tableau de bord et de synchronisation de données.
 
-Obligation Légale : Pour les dossiers fiscaux ou la conformité réglementaire.
+**Obligation légale** : Pour les dossiers fiscaux ou la conformité réglementaire.
 
-Intérêts Légitimes : Pour maintenir la sécurité et l'intégrité de notre plateforme.
+**Intérêts légitimes** : Pour maintenir la sécurité et l'intégrité de notre plateforme.
 
-## 5. Cookies et Technologies Tierces
+## 5. Cookies et technologies tierces
 
 Nous utilisons des cookies pour améliorer votre expérience :
 
-Cookies Essentiels : Pour maintenir votre session.
+**Cookies essentiels** : Pour maintenir votre session et votre authentification.
 
-Cookies d'Analyse et de Publicité : Nous utilisons Google AdSense et Analytics. Ces tiers peuvent utiliser des cookies pour diffuser des publicités basées sur vos visites sur ce site et d'autres sites web. Vous pouvez vous désinscrire via les paramètres de votre navigateur.
+**Cookies analytiques** : Nous utilisons des analyses pour comprendre comment les utilisateurs interagissent avec notre plateforme. Vous pouvez vous désinscrire via les paramètres de votre navigateur.
 
-## 6. Conservation des Données
+## 6. Conservation des données
 
-Comptes Actifs : Les données sont conservées tant que votre compte est actif.
+**Comptes actifs** : Les données sont conservées tant que votre compte est actif.
 
-Comptes Inactifs : Pour les utilisateurs du niveau Gratuit, si une vérification de battement de cœur est manquée pendant plus de 180 jours, les métadonnées peuvent être marquées pour suppression selon nos protocoles d'assainissement.
+**Comptes inactifs** : Si un compte reste inactif pendant plus de 12 mois, nous pouvons supprimer les données associées conformément à nos politiques de conservation des données.
 
-## 7. Vos Droits
+**Clés API** : Supprimées immédiatement lors de la suppression du compte ou lorsque vous supprimez une source de données.
 
-Selon le RGPD, vous avez le droit d'accéder, de rectifier ou d'effacer vos données personnelles ("Droit à l'Oubli"). Vous pouvez également demander la portabilité des données.
+## 7. Vos droits
 
-## 8. Contactez-Nous
+En vertu du RGPD et du CCPA, vous avez le droit de :
 
-Pour toute demande concernant la confidentialité, contactez notre Délégué à la Protection des Données à : **support@digitalheirloom.app**
+- Accéder à vos données personnelles
+- Rectifier les données inexactes
+- Demander la suppression de vos données (« Droit à l'oubli »)
+- Demander la portabilité des données
+- Vous désinscrire des communications marketing
+
+## 8. Services tiers
+
+SoloBoard s'intègre avec des services tiers (Google Analytics, Stripe, Shopify, etc.). Lorsque vous connectez ces services, vous nous autorisez à accéder aux données conformément à leurs politiques de confidentialité respectives. Nous vous recommandons de consulter leurs politiques.
+
+## 9. Modifications de cette politique
+
+Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique sur cette page et en mettant à jour la « Date d'entrée en vigueur ».
+
+## 10. Nous contacter
+
+Pour toute question concernant la confidentialité, contactez-nous à : **support@soloboard.app**
