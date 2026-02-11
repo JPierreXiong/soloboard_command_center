@@ -2,15 +2,15 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Afterglow",
+      "title": "SoloBoard",
       "url": "/"
     },
     "nav": {
       "items": [
         {
-          "title": "数字遗产",
-          "url": "/digital-heirloom/dashboard",
-          "icon": "Shield"
+          "title": "指挥中心",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
         },
         {
           "title": "价格",
@@ -26,9 +26,9 @@
       "show_sign_out": true,
       "items": [
         {
-          "title": "数字遗产",
-          "url": "/digital-heirloom/dashboard",
-          "icon": "Shield"
+          "title": "指挥中心",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
         },
         {
           "title": "账单",
@@ -48,28 +48,28 @@
   },
   "hero": {
     "id": "hero",
-    "title": "守护您的数字遗产",
-    "highlight_text": "",
-    "description": "确保您所爱的人在需要时能够访问您的数字资产。密码、加密货币钱包和个人消息——在合适的时机之前都受到保护。",
+    "title": "独立创业者的一站式仪表盘",
+    "highlight_text": "多站点监控",
+    "description": "告别10个浏览器标签。在一个统一的仪表盘中监控所有 SaaS 产品的流量、收入和站点健康状况。零延迟概览，AI 驱动的可操作洞察。",
     "announcement": {
-      "badge": "安全",
-      "title": "🔒 零知识加密",
-      "url": "#zero-knowledge-security"
+      "badge": "效率",
+      "title": "🚀 全能仪表盘",
+      "url": "#how-it-works"
     },
-    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">无需信用卡</span>",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">最多 2 个站点永久免费</span>",
     "buttons": [
       {
         "title": "免费开始",
-        "icon": "Shield",
+        "icon": "LayoutDashboard",
         "url": "/sign-up",
         "target": "_self",
         "variant": "default",
         "className": ""
       },
       {
-        "title": "了解更多",
-        "icon": "Info",
-        "url": "/blog",
+        "title": "查看演示",
+        "icon": "Play",
+        "url": "/soloboard",
         "target": "_self",
         "variant": "outline",
         "className": ""
@@ -88,7 +88,7 @@
     }
   },
   "logos": {
-    "title": "Digital Heirloom 使用以下技术栈构建",
+    "title": "SoloBoard 基于强大的技术栈构建",
     "items": [
       {
         "title": "Next.js",
@@ -129,17 +129,17 @@
   },
   "introduce": {
     "id": "introduce",
-    "title": "Digital Heirloom 是什么？",
-    "label": "产品简介",
-    "description": "Digital Heirloom 是专为 AI SaaS 创业项目打造的 NextJS 脚手架，包括丰富模板、组件及文档。",
+    "title": "什么是 SoloBoard",
+    "label": "产品介绍",
+    "description": "SoloBoard 是一个全能监控指挥中心，专为独立创业者设计。在一个仪表盘中追踪所有 SaaS 产品的流量、收入和站点健康状况，零延迟概览，AI 驱动洞察。",
     "image": {
       "src": "/imgs/features/landing-page.png",
       "alt": "introduce"
     },
     "items": [
       {
-        "title": "开箱即用的模板",
-        "description": "从数十款生产级 AI SaaS 模板中选择，快速开启你的项目。",
+        "title": "即用型模板",
+        "description": "从数十个生产就绪的 AI SaaS 模板中选择，快速启动您的项目。",
         "icon": "RiNextjsFill",
         "image": {
           "src": "/imgs/features/1.png",
@@ -147,8 +147,8 @@
         }
       },
       {
-        "title": "基础设施搭建",
-        "description": "内置最佳实践，即刻拥有可扩展的基础设施。",
+        "title": "基础设施设置",
+        "description": "即时访问可扩展的基础设施，内置最佳实践。",
         "icon": "RiDatabase2Line",
         "image": {
           "src": "/imgs/features/2.png",
@@ -156,8 +156,8 @@
         }
       },
       {
-        "title": "极速部署",
-        "description": "AI SaaS 产品快速上线，助力小时级交付。",
+        "title": "快速部署",
+        "description": "在几小时内将您的 AI SaaS 应用程序部署到生产环境，而不是几天。",
         "icon": "RiCloudyFill",
         "image": {
           "src": "/imgs/features/3.png",
@@ -166,7 +166,7 @@
       },
       {
         "title": "AI 集成",
-        "description": "通过内置的 AI SDK，轻松为你的项目集成 AI 能力。",
+        "description": "使用我们内置的 AI SDK 轻松将 AI 集成到您的项目中。",
         "icon": "RiRobot2Line",
         "image": {
           "src": "/imgs/features/4.png",
@@ -177,13 +177,13 @@
   },
   "benefits": {
     "id": "benefits",
-    "title": "为何选择 Digital Heirloom",
+    "title": "为何选择 SoloBoard",
     "label": "产品优势",
-    "description": "你获得一切 AI 创业所需——从开箱即用的模板到专业技术支持。",
+    "description": "获得启动 AI 创业所需的一切——从即用型模板到技术支持。",
     "items": [
       {
-        "title": "全栈解决方案",
-        "description": "基于 Next.js，集成认证、支付、AI，一站式开箱即用。",
+        "title": "完整框架",
+        "description": "基于 Next.js 构建，集成身份验证、支付和 AI——一切开箱即用。",
         "icon": "RiNextjsFill",
         "image": {
           "src": "/imgs/features/user-billing.png",
@@ -191,8 +191,8 @@
         }
       },
       {
-        "title": "丰富模板库",
-        "description": "多样的 AI SaaS 模板，点击即用，涵盖聊天、图像生成等多场景。",
+        "title": "丰富的模板库",
+        "description": "从各种 AI SaaS 模板中选择以启动您的项目——聊天机器人、图像生成等。",
         "icon": "RiClapperboardAiLine",
         "image": {
           "src": "/imgs/features/admin-settings.png",
@@ -200,8 +200,8 @@
         }
       },
       {
-        "title": "专属技术指导",
-        "description": "享受专属技术支持与开发者社区，为你的成功保驾护航。",
+        "title": "技术指导",
+        "description": "获得专门的支持并加入我们的开发者社区，确保您的成功启动。",
         "icon": "RiCodeFill",
         "image": {
           "src": "/imgs/features/landing-page.png",
@@ -212,8 +212,8 @@
   },
   "usage": {
     "id": "usage",
-    "title": "三步使用 Digital Heirloom 极速上线",
-    "description": "只需三步，快速开启你的 AI SaaS 创业之路：",
+    "title": "如何使用 SoloBoard 启动",
+    "description": "通过三个简单步骤启动您的 AI SaaS 创业：",
     "image": {
       "src": "/imgs/features/1.png",
       "alt": "usage"
@@ -222,32 +222,32 @@
     "text_align": "center",
     "items": [
       {
-        "title": "获取 Digital Heirloom",
-        "description": "一次性购买 Digital Heirloom，查收邮件获取代码与文档。",
+        "title": "获取 SoloBoard",
+        "description": "一次性付款购买 SoloBoard。查看您的电子邮件获取代码和文档。",
         "image": {
           "src": "/imgs/features/5.png",
           "alt": "usage"
         }
       },
       {
-        "title": "启动你的项目",
-        "description": "阅读说明文档，克隆 Digital Heirloom 代码，开始开发你的 AI SaaS 项目。",
+        "title": "启动您的项目",
+        "description": "阅读文档并克隆 SoloBoard 的代码。开始构建您的 AI SaaS 创业项目。",
         "image": {
           "src": "/imgs/features/6.png",
           "alt": "usage"
         }
       },
       {
-        "title": "个性化定制",
-        "description": "根据需求修改模板内容和数据，配置专属 AI 能力。",
+        "title": "定制您的项目",
+        "description": "使用您的数据和内容修改模板。特定的 AI 功能需求。",
         "image": {
           "src": "/imgs/features/7.png",
           "alt": "usage"
         }
       },
       {
-        "title": "部署上线",
-        "description": "简单几步将你的项目推向生产环境，立刻为客户提供服务。",
+        "title": "部署到生产环境",
+        "description": "通过几个步骤将您的项目部署到生产环境，立即开始为客户提供服务。",
         "image": {
           "src": "/imgs/features/8.png",
           "alt": "usage"
@@ -255,130 +255,130 @@
       }
     ]
   },
-  "features": {
-    "id": "features",
-    "title": "Digital Heirloom 核心功能",
-    "description": "一切你需要的工具，助力 AI SaaS 项目高效上线。",
-    "items": [
-      {
-        "title": "Next.js 项目模板",
-        "description": "生产就绪、支持 SEO 与多语言的 Next.js 脚手架。",
-        "icon": "RiNextjsFill"
-      },
-      {
-        "title": "身份认证与支付",
-        "description": "集成谷歌 OAuth、一键登录，以及 Stripe 支付。",
-        "icon": "RiKey2Fill"
-      },
-      {
-        "title": "数据基础设施",
-        "description": "内置 Supabase，稳定可靠的数据存储。",
-        "icon": "RiDatabase2Line"
-      },
-      {
-        "title": "一键部署",
-        "description": "自动化部署到 Vercel 或 Cloudflare，极速上线。",
-        "icon": "RiCloudy2Fill"
-      },
-      {
-        "title": "商业分析",
-        "description": "集成 Google Analytics、Search Console，助力业务增长。",
-        "icon": "RiBarChart2Line"
-      },
-      {
-        "title": "AI 原生基础设施",
-        "description": "预置 AI 集成、积分系统和 API 售卖能力。",
-        "icon": "RiRobot2Line"
-      }
-    ]
-  },
   "how-it-works": {
     "id": "how-it-works",
     "title": "工作原理",
-    "description": "简单、安全的系统，保护您最珍贵的数字资产",
+    "description": "一个简单而强大的系统，监控您的所有业务",
     "items": [
       {
-        "title": "加密保险箱",
-        "description": "使用军用级加密存储密码、加密货币密钥和个人笔记，即使我们也无法读取。",
-        "icon": "Lock"
+        "title": "连接您的平台",
+        "description": "通过只读 API 访问集成 Google Analytics、Stripe、Shopify 等。军用级 AES-256 加密保护您的凭据安全。",
+        "icon": "Plug"
       },
       {
-        "title": "死信开关",
-        "description": "定期打卡确认您的安全。如果错过打卡，系统会自动通知您指定的联系人。",
-        "icon": "Clock"
+        "title": "统一仪表盘",
+        "description": "在单个网格中查看 3-10+ 个网站的流量、收入和站点健康状况。无需在管理面板之间切换上下文。",
+        "icon": "LayoutDashboard"
       },
       {
-        "title": "可信受益人",
-        "description": "指定家庭成员、朋友或律师，让他们在需要时接收您保险箱中的特定物品。",
-        "icon": "Users"
+        "title": "AI 驱动的洞察",
+        "description": "基于跨站点性能分析获得可操作的建议。了解哪些站点需要关注，哪些正在蓬勃发展。",
+        "icon": "Sparkles"
       }
     ]
   },
   "zero-knowledge-security": {
     "id": "zero-knowledge-security",
-    "title": "零知识安全架构",
-    "description": "您的数据在到达我们的服务器之前就在您的设备上加密。我们永远看不到您的密码或秘密——在您希望之前，任何人都看不到。",
+    "title": "隐私优先的安全性",
+    "description": "您的 API 凭据在存储前使用 AES-256 加密。我们使用对您平台的只读访问，确保您的数据永远不会被泄露，我们永远无法修改您的设置。",
     "items": [
       {
-        "title": "端到端加密",
+        "title": "只读 API 访问",
+        "description": "",
+        "icon": "Eye"
+      },
+      {
+        "title": "AES-256 加密",
         "description": "",
         "icon": "Shield"
       },
       {
-        "title": "无后门或主密钥",
+        "title": "无服务器架构",
         "description": "",
-        "icon": "Key"
+        "icon": "Cloud"
       },
       {
-        "title": "定期安全审计",
+        "title": "零数据保留",
         "description": "",
-        "icon": "Search"
+        "icon": "Trash2"
       },
       {
-        "title": "客户端密钥生成",
-        "description": "",
-        "icon": "Cpu"
-      },
-      {
-        "title": "开源加密算法",
-        "description": "",
-        "icon": "Code"
-      },
-      {
-        "title": "符合 GDPR 和 CCPA 规范",
+        "title": "SOC 2 合规",
         "description": "",
         "icon": "FileCheck"
+      },
+      {
+        "title": "GDPR 和 CCPA 就绪",
+        "description": "",
+        "icon": "Globe"
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "SoloBoard 的核心功能",
+    "description": "快速高效启动 AI SaaS 创业所需的一切。",
+    "items": [
+      {
+        "title": "Next.js 样板",
+        "description": "生产就绪的 Next.js 模板，具有 SEO 友好的结构和 i18n 支持。",
+        "icon": "RiNextjsFill"
+      },
+      {
+        "title": "身份验证和支付",
+        "description": "集成 Google OAuth、一键登录和 Stripe 支付处理。",
+        "icon": "RiKey2Fill"
+      },
+      {
+        "title": "数据基础设施",
+        "description": "内置 Supabase 集成，提供可靠且可扩展的数据存储。",
+        "icon": "RiDatabase2Line"
+      },
+      {
+        "title": "一键部署",
+        "description": "通过自动化设置无缝部署到 Vercel 或 Cloudflare。",
+        "icon": "RiCloudy2Fill"
+      },
+      {
+        "title": "业务分析",
+        "description": "集成 Google Analytics 和 Search Console 以跟踪增长。",
+        "icon": "RiBarChart2Line"
+      },
+      {
+        "title": "AI 就绪基础设施",
+        "description": "预配置的 AI 集成，内置积分系统和 API 销售。",
+        "icon": "RiRobot2Line"
       }
     ]
   },
   "stats": {
     "id": "stats",
-    "title": "用户喜爱 Digital Heirloom",
-    "description": "因其易用且上线飞快。",
+    "title": "人们喜爱 SoloBoard",
+    "description": "因为它易于使用且快速交付。",
     "items": [
       {
         "title": "999+",
-        "description": "位用户"
+        "description": "客户"
       },
       {
         "title": "200+",
-        "description": "组件块"
+        "description": "区块"
       },
       {
         "title": "50+",
-        "description": "专业模板"
+        "description": "模板"
       }
     ]
   },
   "testimonials": {
     "id": "testimonials",
-    "title": "用户对 Digital Heirloom 的评价",
-    "description": "听听内容创作者和企业如何用 Digital Heirloom 改变他们的视频内容。",
+    "title": "用户对 SoloBoard 的评价",
+    "description": "听听内容创作者和企业如何使用 SoloBoard 转变他们的视频内容。",
     "items": [
       {
         "name": "David Chen",
         "role": "YouTube 内容创作者",
-        "quote": "Digital Heirloom 改变了我的 YouTube 频道！现在我可以为全球观众提供 12 种语言的准确字幕。添加多语言字幕后，我的观看量增长了 300%。",
+        "quote": "SoloBoard 改变了我的 YouTube 频道！我现在可以用 12 种语言的准确字幕接触全球观众。添加多语言字幕后，我的观看次数增加了 300%。",
         "image": {
           "src": "/imgs/avatars/1.png",
           "alt": "david"
@@ -386,8 +386,8 @@
       },
       {
         "name": "Rachel Kim",
-        "role": "TikTok 网红",
-        "quote": "一键字幕提取和翻译每周为我节省数小时。我的 TikTok 视频现在可以连接全球观众，参与度大幅提升！",
+        "role": "TikTok 影响者",
+        "quote": "一键字幕提取和翻译每周为我节省了数小时。我的 TikTok 视频现在与全球观众建立联系，我的参与度飙升！",
         "image": {
           "src": "/imgs/avatars/2.png",
           "alt": "rachel"
@@ -395,8 +395,8 @@
       },
       {
         "name": "Marcus Thompson",
-        "role": "视频制作机构负责人",
-        "quote": "作为小型机构，Digital Heirloom 以极低成本为我们提供了企业级的字幕能力。我们每月处理数百个视频，准确度完美。",
+        "role": "视频制作机构所有者",
+        "quote": "作为一家小型机构，SoloBoard 以极低的成本为我们提供了企业级字幕功能。我们每月处理数百个视频，准确度完美。",
         "image": {
           "src": "/imgs/avatars/3.png",
           "alt": "marcus"
@@ -404,8 +404,8 @@
       },
       {
         "name": "Sofia Garcia",
-        "role": "在线教育平台经理",
-        "quote": "Digital Heirloom 让我们的教育内容走向全球。来自 50 多个国家的学生现在可以通过准确的翻译学习我们的课程。改变游戏规则！",
+        "role": "在线学习平台经理",
+        "quote": "SoloBoard 使我们的教育内容在全球范围内可访问。来自 50 多个国家的学生现在可以通过准确的翻译学习我们的课程。改变游戏规则！",
         "image": {
           "src": "/imgs/avatars/4.png",
           "alt": "sofia"
@@ -414,7 +414,7 @@
       {
         "name": "James Wilson",
         "role": "营销总监",
-        "quote": "AI 驱动的翻译准确度极高。我们可以在几分钟内为不同市场本地化营销视频，而不是几天。投资回报率超高！",
+        "quote": "AI 驱动的翻译非常准确。我们在几分钟内为不同市场本地化营销视频，而不是几天。投资回报率非常高！",
         "image": {
           "src": "/imgs/avatars/5.png",
           "alt": "james"
@@ -423,7 +423,7 @@
       {
         "name": "Anna Zhang",
         "role": "内容策略师",
-        "quote": "Digital Heirloom 的一键解决方案将我们的 YouTube 和 TikTok 内容变成了全球力量。我们的国际观众在短短 3 个月内增长了 500%！",
+        "quote": "SoloBoard 的一键解决方案将我们的 YouTube 和 TikTok 内容变成了全球强国。我们的国际观众在短短 3 个月内增长了 500%！",
         "image": {
           "src": "/imgs/avatars/6.png",
           "alt": "anna"
@@ -431,92 +431,149 @@
       }
     ]
   },
+  "about": {
+    "id": "about",
+    "title": "为独立军队而建",
+    "label": "关于我们",
+    "description": "SoloBoard 源于一个简单的挫折：管理 10 个 SaaS 产品不应该像一件苦差事。",
+    "story": "作为一名连续创业者，我发现自己每周浪费数小时手动检查不同的管理面板。我意识到，随着我的投资组合增长，我的注意力消失了。我不需要更复杂的分析；我需要一个脉搏监视器。",
+    "mission": "SoloBoard 是我们对混乱的回答。建立在 Neon 和 ShipAny 等强大技术之上，我们为独立创始人提供扩展所需的清晰度。我们不仅仅是一个仪表盘；我们是您的数字指挥中心，帮助您减少监控时间，增加构建时间。",
+    "values": [
+      {
+        "title": "创始人优先设计",
+        "description": "每个功能都考虑到独立创业者的工作流程而设计。没有臃肿，没有复杂性——只有您需要的。",
+        "icon": "User"
+      },
+      {
+        "title": "透明度",
+        "description": "我们公开构建。在 Twitter/X 上关注我们的旅程，看看我们如何根据真实用户反馈不断改进。",
+        "icon": "Eye"
+      },
+      {
+        "title": "默认安全",
+        "description": "您的数据安全不是事后考虑——它是我们的基础。AES-256 加密和只读访问确保您的业务保持安全。",
+        "icon": "Shield"
+      }
+    ]
+  },
+  "contact": {
+    "id": "contact",
+    "title": "让我们谈谈业务",
+    "label": "联系我们",
+    "description": "有功能请求、要报告的错误，或只是想聊聊独立创业者的生活？我们一直在倾听。",
+    "channels": [
+      {
+        "title": "直接支持",
+        "description": "响应时间：通常在 12 小时内",
+        "email": "support@soloboard.app",
+        "icon": "Mail"
+      },
+      {
+        "title": "公开构建",
+        "description": "关注我们的旅程并获取实时更新",
+        "url": "https://twitter.com/SoloBoardApp",
+        "handle": "@SoloBoardApp",
+        "icon": "Twitter"
+      },
+      {
+        "title": "合作伙伴关系",
+        "description": "用于协作或代理查询",
+        "email": "partners@soloboard.app",
+        "icon": "Handshake"
+      }
+    ],
+    "location": "基于云端，为全球创始人服务 🌍"
+  },
   "faq": {
     "id": "faq",
     "title": "常见问题",
-    "description": "还有其他问题？请通过邮件联系我们。",
-    "tip": "没有找到想要的答案？请联系 <a href='mailto:support@digitalheirloom.app' class='text-primary font-medium hover:underline'>我们的客服团队</a>",
+    "description": "关于 SoloBoard 您需要了解的一切",
+    "tip": "找不到您要找的内容？联系我们的<a href='mailto:support@soloboard.app' class='text-primary font-medium hover:underline'>客户支持团队</a>",
     "items": [
       {
-        "question": "ShipAny 寄送的包裹里有我的 U 盘和数据吗？",
-        "answer": "不包含。为了极致安全，我们从不寄送 U 盘。包裹内仅含有一份高强度物理加密凭证（Recovery Kit）。资产始终以加密状态安全存在于云端，物理凭证是解锁它们的唯一\"钥匙\"。"
+        "question": "SoloBoard 如何连接到我的网站？",
+        "answer": "我们使用安全的 API 连接（OAuth 和 API 密钥）从 Google Analytics 4、Stripe 和 Shopify 等提供商获取数据。同步新站点只需不到 2 分钟。"
       },
       {
-        "question": "如果 DigitalHeirloom 的数据库被黑客攻击了怎么办？",
-        "answer": "这正是我们架构的精妙之处。即便黑客搬走了整个数据库，他们也无法读取任何信息。因为解密所需的关键因子并不在服务器上，而是在寄送给受益人的物理凭证中。由于采用了高级保密算法，破解难度等同于在宇宙中寻找一颗特定的原子。"
+        "question": "分享我的 API 密钥安全吗？",
+        "answer": "是的。我们将安全放在首位。所有密钥都使用 AES-256 加密并存储在安全的 Neon 数据库中。我们只请求只读权限，因此您的资金和配置永远不会面临风险。"
       },
       {
-        "question": "平台会保证我的文件内容不丢失或损坏吗？",
-        "answer": "我们承诺通过全球分布式存储保证您加密数据块的物理完整性与安全性。但作为\"零知识\"平台，我们无法感知也无法保证数据内部的内容质量（如文件是否损坏或密码是否正确）。我们是保险箱的制造者，而非内容的审计者。"
+        "question": "SoloBoard 会降低我网站的性能吗？",
+        "answer": "完全不会。SoloBoard 直接与平台 API（如 Stripe 的服务器）通信。我们不会在您的实际网站上加载任何脚本，确保您的页面速度保持 100% 不受影响。"
       },
       {
-        "question": "受益人拿到物理凭证后，还需要输入我的主密码吗？",
-        "answer": "不需要。Pro 用户的物理凭证集成了\"自解析引导\"技术。受益人扫描凭证上的加密二维码后，系统将通过物理媒介直接验证身份，自动跳过繁琐的密码环节，实现\"零门槛\"资产恢复。"
+        "question": "我可以管理超过 10 个网站吗？",
+        "answer": "当然可以。虽然我们的标准 Pro 计划涵盖最多 10 个站点，但我们的 Studio 计划为更大的投资组合和代理提供无限监控。"
       },
       {
-        "question": "为什么你们强调\"物理凭证\"比纯数字密码更安全？",
-        "answer": "数字密码可以通过暴力破解、钓鱼或暴力测试获取。而我们的物理凭证具有\"不可复制性\"。这种将数字遗产与物理物流（ShipAny）绑定的双重校验，确保了黑客即便跨越了网络防线，也无法跨越物理空间的阻隔。"
+        "question": "为什么选择 SoloBoard 而不是免费替代品？",
+        "answer": "虽然您可以免费单独检查这些平台，但 SoloBoard 为您节省了最宝贵的资产：时间。我们将所有内容整合到一个高性能、移动就绪的仪表盘中，这是单个浏览器标签无法比拟的。"
       },
       {
-        "question": "解密 2GB 的大型资产需要很长时间吗？",
-        "answer": "解密时间取决于受益人的本地设备性能，而非网络带宽。一旦物理凭证激活了解密通道，系统将利用 Vercel 边缘计算能力进行流式解密。2GB 的资产通常在几分钟内即可完成物理还原。"
+        "question": "你们支持哪些平台？",
+        "answer": "我们目前支持用于流量分析的 Google Analytics 4 (GA4)、用于支付处理的 Stripe 和 Lemon Squeezy、用于电子商务的 Shopify 以及自定义正常运行时间监控。根据用户请求定期添加更多集成。"
+      },
+      {
+        "question": "数据多久刷新一次？",
+        "answer": "免费计划用户每小时更新一次。Pro 计划用户享受近实时同步（每 5-10 分钟），确保您永远不会错过业务指标的关键变化。"
+      },
+      {
+        "question": "我可以随时取消订阅吗？",
+        "answer": "是的，当然可以。您可以通过计费门户一键取消订阅。没有隐藏费用，没有暗模式，不问任何问题。"
       }
     ]
   },
   "technical-architecture": {
     "id": "technical-architecture",
-    "title": "技术架构与合规性",
-    "description": "了解更多：技术架构与合规性",
+    "title": "技术架构和集成",
+    "description": "了解更多：技术架构和集成",
     "items": [
       {
-        "title": "核心技术：BIP39 与 AES-256-GCM",
-        "description": "Afterglow 的基础建立在 BIP39 助记词标准之上，这是领先的加密货币钱包使用的相同协议。系统生成一个 24 词的\"恢复包\"来保护您的主密码备份。每个数据片段都使用 AES-256-GCM 加密，提供商业用途中最高级别的加密安全性。",
+        "title": "核心技术：Next.js 16 和 Neon PostgreSQL",
+        "description": "SoloBoard 建立在 Next.js 16 和 React 19 之上，提供闪电般快速的性能和无缝的用户体验。数据存储在 Neon 的无服务器 PostgreSQL 数据库中，具有自动扩展和 99.99% 的正常运行时间保证。",
+        "icon": "Code"
+      },
+      {
+        "title": "平台集成：GA4、Stripe、Shopify 等",
+        "description": "我们支持独立创业者最流行的平台：用于流量跟踪的 Google Analytics 4、用于支付处理的 Stripe 和 Lemon Squeezy、用于电子商务的 Shopify，以及您使用的任何其他服务的自定义 API 端点。",
+        "icon": "Plug"
+      },
+      {
+        "title": "为什么升级到 Pro 计划？",
+        "description": "对于管理多个高流量站点的用户，Pro 计划提供实时数据同步（每隔几分钟）、AI 驱动的业务洞察、无限站点、自定义警报和优先支持。非常适合连续创业者和代理所有者。",
+        "icon": "Zap"
+      },
+      {
+        "title": "数据隐私和合规性",
+        "description": "SoloBoard 符合 GDPR 和 CCPA。我们使用只读 API 访问和 AES-256 加密所有凭据。您的数据永远不会与第三方共享，您可以随时导出或删除它。我们是 SOC 2 Type II 认证的。",
         "icon": "Shield"
-      },
-      {
-        "title": "物理-数字桥梁：由 ShipAny 驱动",
-        "description": "我们通过与 ShipAny（全球物流编排平台）的深度集成，弥合了数字数据与物理遗产之间的差距。自动化触发：通过高性能边缘函数进行实时监控。人工介入（HITL）：为防止不可逆的寄送错误，每个 Pro 级别的物理寄送都需要 Afterglow 管理后台的手动二次授权。隐私优先物流：受益人的寄送地址在我们的数据库中保持加密状态，仅在生成寄送标签时才解密。",
-        "icon": "Package"
-      },
-      {
-        "title": "为什么升级到 Pro 家庭计划？",
-        "description": "对于管理高价值资产的用户——如私钥、敏感法律文件或珍贵的家庭档案——Pro 计划提供\"交付确定性\"：全渠道警报：避免仅依赖电子邮件通知的单点故障风险。物流结算引擎：集成的 Creem 网关允许受益人一键结算寄送费用。无限受益人：非常适合复杂的遗产规划和家庭信托结构。",
-        "icon": "ArrowUpCircle"
-      },
-      {
-        "title": "法律免责声明与最佳实践",
-        "description": "虽然 Afterglow 提供最先进的技术安全性，但我们强烈建议用户打印其恢复包并将其存储在安全、防火的位置。我们的服务作为您遗产计划的技术补充，不能替代您当地司法管辖区定义的具有法律约束力的遗嘱或遗书。请咨询法律专业人士以进行全面的遗产规划。",
-        "icon": "FileText"
       }
     ]
   },
   "cta": {
     "id": "cta",
-    "title": "发布你的第一个 AI SaaS 项目",
-    "description": "从这里出发，用 Digital Heirloom 极速交付。",
+    "title": "今天开始监控您的投资组合",
+    "description": "加入数千名信任 SoloBoard 从一个统一仪表盘监控其商业帝国的独立创业者。",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">最多 2 个站点永久免费</span>",
     "buttons": [
       {
-        "title": "获取 Digital Heirloom",
-        "url": "https://www.subtitletk.app",
-        "target": "_blank",
-        "icon": "Zap"
-      },
-      {
-        "title": "阅读文档",
-        "url": "/docs",
-        "target": "_blank",
-        "variant": "outline",
-        "icon": "BookOpenText"
+        "title": "免费开始",
+        "url": "/sign-up",
+        "target": "_self",
+        "icon": "LayoutDashboard",
+        "variant": "default",
+        "className": ""
       }
     ]
   },
   "subscribe": {
     "id": "subscribe",
-    "title": "订阅我们的邮件通知",
-    "description": "获取 Digital Heirloom 最新资讯与产品动态。",
+    "title": "订阅我们的新闻通讯",
+    "description": "获取 SoloBoard 的最新新闻和更新。",
     "submit": {
       "input": {
-        "placeholder": "输入邮箱"
+        "placeholder": "输入您的电子邮件"
       },
       "button": {
         "title": "订阅"
@@ -527,14 +584,35 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "Digital Heirloom",
-      "description": "Digital Heirloom is a high-performance digital toolkit designed to extract and translate subtitles from YouTube and TikTok videos. We believe in simple, transparent pricing.",
+      "title": "SoloBoard",
+      "description": "SoloBoard 是独立创业者的全能监控指挥中心。在一个统一的仪表盘中追踪所有 SaaS 产品的流量、收入和站点健康状况，零延迟概览和 AI 驱动的洞察。",
       "url": "/"
     },
+    "copyright": "SoloBoard - 独立创业者的一站式仪表盘",
     "nav": {
       "items": [
         {
-          "title": "关于我们",
+          "title": "产品",
+          "children": [
+            {
+              "title": "指挥中心",
+              "url": "/soloboard",
+              "target": "_self"
+            },
+            {
+              "title": "价格",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "集成",
+              "url": "/integrations",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "公司",
           "children": [
             {
               "title": "关于我们",
@@ -547,29 +625,29 @@
               "target": "_self"
             },
             {
-              "title": "价格",
-              "url": "/pricing",
+              "title": "博客",
+              "url": "/blog",
               "target": "_self"
             }
           ]
         },
         {
-          "title": "合作伙伴",
+          "title": "资源",
           "children": [
             {
-              "title": "Creem",
-              "url": "https://www.creem.io",
-              "target": "_blank"
+              "title": "文档",
+              "url": "/docs",
+              "target": "_self"
             },
             {
-              "title": "ShipAny",
-              "url": "https://www.shipany.io",
-              "target": "_blank"
+              "title": "API 参考",
+              "url": "/api-docs",
+              "target": "_self"
             },
             {
-              "title": "Resend",
-              "url": "https://resend.com",
-              "target": "_blank"
+              "title": "支持",
+              "url": "mailto:support@soloboard.app",
+              "target": "_self"
             }
           ]
         }
@@ -578,10 +656,16 @@
     "social": {
       "items": [
         {
-          "title": "邮箱",
+          "title": "电子邮件",
           "icon": "Mail",
-          "url": "mailto:support@digitalheirloom.app",
+          "url": "mailto:support@soloboard.app",
           "target": "_self"
+        },
+        {
+          "title": "Twitter",
+          "icon": "Twitter",
+          "url": "https://twitter.com/soloboard",
+          "target": "_blank"
         }
       ]
     },
@@ -596,12 +680,11 @@
           "url": "/terms-of-service"
         },
         {
-          "title": "免责声明",
-          "url": "/disclaimer"
+          "title": "Cookie 政策",
+          "url": "/cookie-policy"
         }
       ]
     },
-    "copyright": "Digital Heirloom 是独立产品，与 Google (YouTube) 或 ByteDance (TikTok) 无关联。",
     "show_theme": true,
     "show_locale": true
   }

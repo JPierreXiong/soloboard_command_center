@@ -2,15 +2,15 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Afterglow",
+      "title": "SoloBoard",
       "url": "/"
     },
     "nav": {
       "items": [
         {
-          "title": "Héritage Numérique",
-          "url": "/digital-heirloom/dashboard",
-          "icon": "Shield"
+          "title": "Centre de Commande",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
         },
         {
           "title": "Tarification",
@@ -26,9 +26,9 @@
       "show_sign_out": true,
       "items": [
         {
-          "title": "Héritage Numérique",
-          "url": "/digital-heirloom/dashboard",
-          "icon": "Shield"
+          "title": "Centre de Commande",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
         },
         {
           "title": "Facturation",
@@ -48,28 +48,28 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Sécurisez votre héritage numérique",
-    "highlight_text": "",
-    "description": "Assurez-vous que vos proches puissent accéder à vos actifs numériques quand ils en ont le plus besoin. Mots de passe, portefeuilles cryptographiques et messages personnels — protégés jusqu'au bon moment.",
+    "title": "Le Tableau de Bord Unique pour Solopreneurs",
+    "highlight_text": "Surveillance Multi-Sites",
+    "description": "Éliminez le besoin de 10 onglets de navigateur. Surveillez le trafic, les revenus et la santé des sites pour tous vos produits SaaS dans un tableau de bord unifié. Vue d'ensemble à latence zéro avec des insights IA exploitables.",
     "announcement": {
-      "badge": "Sécurité",
-      "title": "🔒 Chiffrement Zero-Knowledge",
-      "url": "#zero-knowledge-security"
+      "badge": "Efficacité",
+      "title": "🚀 Tableau de Bord Tout-en-Un",
+      "url": "#how-it-works"
     },
-    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Aucune carte de crédit requise</span>",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Gratuit pour toujours jusqu'à 2 sites</span>",
     "buttons": [
       {
-        "title": "Commencer gratuitement",
-        "icon": "Shield",
+        "title": "Commencer Gratuitement",
+        "icon": "LayoutDashboard",
         "url": "/sign-up",
         "target": "_self",
         "variant": "default",
         "className": ""
       },
       {
-        "title": "En savoir plus",
-        "icon": "Info",
-        "url": "/blog",
+        "title": "Voir la Démo",
+        "icon": "Play",
+        "url": "/soloboard",
         "target": "_self",
         "variant": "outline",
         "className": ""
@@ -88,7 +88,7 @@
     }
   },
   "logos": {
-    "title": "Digital Heirloom est construit sur les épaules de géants",
+    "title": "SoloBoard est construit sur des technologies robustes",
     "items": [
       {
         "title": "Next.js",
@@ -129,9 +129,9 @@
   },
   "introduce": {
     "id": "introduce",
-    "title": "Qu'est-ce que Digital Heirloom",
+    "title": "Qu'est-ce que SoloBoard",
     "label": "Introduction",
-    "description": "Digital Heirloom est un modèle NextJS pour créer des startups SaaS IA, incluant des modèles, des composants et de la documentation.",
+    "description": "SoloBoard est un centre de commande de surveillance tout-en-un pour les solopreneurs. Suivez le trafic, les revenus et la santé des sites pour tous vos produits SaaS dans un tableau de bord unifié avec une vue d'ensemble à latence zéro et des insights alimentés par l'IA.",
     "image": {
       "src": "/imgs/features/landing-page.png",
       "alt": "introduce"
@@ -177,7 +177,7 @@
   },
   "benefits": {
     "id": "benefits",
-    "title": "Pourquoi choisir Digital Heirloom",
+    "title": "Pourquoi choisir SoloBoard",
     "label": "Avantages",
     "description": "Obtenez tout ce dont vous avez besoin pour lancer votre startup IA - des modèles prêts à l'emploi au support technique.",
     "items": [
@@ -212,7 +212,7 @@
   },
   "usage": {
     "id": "usage",
-    "title": "Comment lancer avec Digital Heirloom",
+    "title": "Comment lancer avec SoloBoard",
     "description": "Mettez votre startup SaaS IA en marche en trois étapes simples :",
     "image": {
       "src": "/imgs/features/1.png",
@@ -222,8 +222,8 @@
     "text_align": "center",
     "items": [
       {
-        "title": "Obtenir Digital Heirloom",
-        "description": "Achetez Digital Heirloom avec un paiement unique. Vérifiez votre e-mail pour le code et la documentation.",
+        "title": "Obtenir SoloBoard",
+        "description": "Achetez SoloBoard avec un paiement unique. Vérifiez votre e-mail pour le code et la documentation.",
         "image": {
           "src": "/imgs/features/5.png",
           "alt": "usage"
@@ -231,7 +231,7 @@
       },
       {
         "title": "Démarrer votre projet",
-        "description": "Lisez la documentation et clonez le code de Digital Heirloom. Commencez à construire votre startup SaaS IA.",
+        "description": "Lisez la documentation et clonez le code de SoloBoard. Commencez à construire votre startup SaaS IA.",
         "image": {
           "src": "/imgs/features/6.png",
           "alt": "usage"
@@ -257,7 +257,7 @@
   },
   "features": {
     "id": "features",
-    "title": "Fonctionnalités clés de Digital Heirloom",
+    "title": "Fonctionnalités clés de SoloBoard",
     "description": "Tout ce dont vous avez besoin pour lancer votre startup SaaS IA rapidement et efficacement.",
     "items": [
       {
@@ -295,65 +295,65 @@
   "how-it-works": {
     "id": "how-it-works",
     "title": "Comment ça fonctionne",
-    "description": "Un système simple et sécurisé pour protéger ce qui compte le plus",
+    "description": "Un système simple et puissant pour surveiller toutes vos entreprises",
     "items": [
       {
-        "title": "Coffre-fort chiffré",
-        "description": "Stockez des mots de passe, des clés cryptographiques et des notes personnelles avec un chiffrement de niveau militaire que même nous ne pouvons pas lire.",
-        "icon": "Lock"
+        "title": "Connectez vos plateformes",
+        "description": "Intégrez Google Analytics, Stripe, Shopify et plus avec un accès API en lecture seule. Le chiffrement AES-256 de niveau militaire protège vos identifiants.",
+        "icon": "Plug"
       },
       {
-        "title": "Interrupteur mort",
-        "description": "Des vérifications régulières confirment que vous allez bien. Si vous les manquez, vos contacts désignés sont automatiquement notifiés.",
-        "icon": "Clock"
+        "title": "Tableau de bord unifié",
+        "description": "Visualisez le trafic, les revenus et la santé des sites pour 3 à 10+ sites web dans une seule grille. Plus besoin de basculer entre les panneaux d'administration.",
+        "icon": "LayoutDashboard"
       },
       {
-        "title": "Bénéficiaires de confiance",
-        "description": "Désignez des membres de la famille, des amis ou des avocats pour recevoir des éléments spécifiques de votre coffre-fort.",
-        "icon": "Users"
+        "title": "Insights alimentés par l'IA",
+        "description": "Obtenez des recommandations exploitables basées sur l'analyse des performances inter-sites. Sachez quels sites nécessitent de l'attention et lesquels prospèrent.",
+        "icon": "Sparkles"
       }
     ]
   },
   "zero-knowledge-security": {
     "id": "zero-knowledge-security",
-    "title": "Sécurité Zero-Knowledge",
-    "description": "Vos données sont chiffrées sur votre appareil avant d'atteindre nos serveurs. Nous ne voyons jamais vos mots de passe ou secrets — et personne d'autre non plus jusqu'à ce que vous le souhaitiez.",
+    "title": "Sécurité Axée sur la Confidentialité",
+    "description": "Vos identifiants API sont chiffrés avec AES-256 avant le stockage. Nous utilisons un accès en lecture seule à vos plateformes, garantissant que vos données ne sont jamais compromises et que nous ne pouvons jamais modifier vos paramètres.",
     "items": [
       {
-        "title": "Chiffrement de bout en bout",
+        "title": "Accès API en lecture seule",
+        "description": "",
+        "icon": "Eye"
+      },
+      {
+        "title": "Chiffrement AES-256",
         "description": "",
         "icon": "Shield"
       },
       {
-        "title": "Aucune porte dérobée ou clé maîtresse",
+        "title": "Architecture sans serveur",
         "description": "",
-        "icon": "Key"
+        "icon": "Cloud"
       },
       {
-        "title": "Audits de sécurité réguliers",
+        "title": "Zéro rétention de données",
         "description": "",
-        "icon": "Search"
+        "icon": "Trash2"
       },
       {
-        "title": "Génération de clés côté client",
-        "description": "",
-        "icon": "Cpu"
-      },
-      {
-        "title": "Cryptographie open source",
-        "description": "",
-        "icon": "Code"
-      },
-      {
-        "title": "Conforme GDPR et CCPA",
+        "title": "Conforme SOC 2",
         "description": "",
         "icon": "FileCheck"
+      },
+      {
+        "title": "Prêt GDPR et CCPA",
+        "description": "",
+        "icon": "Globe"
       }
     ]
   },
   "stats": {
     "id": "stats",
-    "title": "Les gens adorent Digital Heirloom",
+    "title": "Les gens adorent SoloBoard",
     "description": "car c'est facile à utiliser et rapide à déployer.",
     "items": [
       {
@@ -372,13 +372,13 @@
   },
   "testimonials": {
     "id": "testimonials",
-    "title": "Ce que les utilisateurs disent de Digital Heirloom",
-    "description": "Écoutez les créateurs de contenu et les entreprises qui ont transformé leur contenu vidéo avec Digital Heirloom.",
+    "title": "Ce que les utilisateurs disent de SoloBoard",
+    "description": "Écoutez les créateurs de contenu et les entreprises qui ont transformé leur contenu vidéo avec SoloBoard.",
     "items": [
       {
         "name": "David Chen",
         "role": "Créateur de contenu YouTube",
-        "quote": "Digital Heirloom a transformé ma chaîne YouTube ! Je peux maintenant toucher un public mondial avec des sous-titres précis en 12 langues. Mes vues ont augmenté de 300% après avoir ajouté des sous-titres multilingues.",
+        "quote": "SoloBoard a transformé ma chaîne YouTube ! Je peux maintenant toucher un public mondial avec des sous-titres précis en 12 langues. Mes vues ont augmenté de 300% après avoir ajouté des sous-titres multilingues.",
         "image": {
           "src": "/imgs/avatars/1.png",
           "alt": "david"
@@ -396,7 +396,7 @@
       {
         "name": "Marcus Thompson",
         "role": "Propriétaire d'agence de production vidéo",
-        "quote": "En tant que petite agence, Digital Heirloom nous donne des capacités de sous-titrage de niveau entreprise à une fraction du coût. Nous traitons des centaines de vidéos mensuellement avec une précision parfaite.",
+        "quote": "En tant que petite agence, SoloBoard nous donne des capacités de sous-titrage de niveau entreprise à une fraction du coût. Nous traitons des centaines de vidéos mensuellement avec une précision parfaite.",
         "image": {
           "src": "/imgs/avatars/3.png",
           "alt": "marcus"
@@ -405,7 +405,7 @@
       {
         "name": "Sofia Garcia",
         "role": "Gestionnaire de plateforme e-learning",
-        "quote": "Digital Heirloom a rendu notre contenu éducatif accessible mondialement. Les étudiants de plus de 50 pays peuvent maintenant apprendre de nos cours avec des traductions précises. Changement de jeu !",
+        "quote": "SoloBoard a rendu notre contenu éducatif accessible mondialement. Les étudiants de plus de 50 pays peuvent maintenant apprendre de nos cours avec des traductions précises. Changement de jeu !",
         "image": {
           "src": "/imgs/avatars/4.png",
           "alt": "sofia"
@@ -423,7 +423,7 @@
       {
         "name": "Anna Zhang",
         "role": "Stratège de contenu",
-        "quote": "La solution en un clic de Digital Heirloom a transformé notre contenu YouTube et TikTok en une puissance mondiale. Notre public international a augmenté de 500% en seulement 3 mois !",
+        "quote": "La solution en un clic de SoloBoard a transformé notre contenu YouTube et TikTok en une puissance mondiale. Notre public international a augmenté de 500% en seulement 3 mois !",
         "image": {
           "src": "/imgs/avatars/6.png",
           "alt": "anna"
@@ -431,7 +431,31 @@
       }
     ]
   },
-  "faq": {
+  "about": {
+    "id": "about",
+    "title": "Construit pour l'Armée d'Un",
+    "label": "À Propos de Nous",
+    "description": "SoloBoard est né d'une simple frustration : Gérer 10 produits SaaS ne devrait pas ressembler à une corvée.",
+    "story": "En tant qu'entrepreneur en série, je me suis retrouvé à perdre des heures chaque semaine à vérifier manuellement différents panneaux d'administration. J'ai réalisé qu'à mesure que mon portefeuille grandissait, ma concentration disparaissait. Je n'avais pas besoin d'analyses plus complexes ; j'avais besoin d'un moniteur de pouls.",
+    "mission": "SoloBoard est notre réponse au chaos. Construit sur des technologies robustes comme Neon et ShipAny, nous fournissons aux fondateurs indépendants la clarté dont ils ont besoin pour évoluer. Nous ne sommes pas seulement un tableau de bord ; nous sommes votre centre de commande numérique, vous aidant à passer moins de temps à surveiller et plus de temps à construire.",
+    "values": [
+      {
+        "title": "Design Axé sur le Fondateur",
+        "description": "Chaque fonctionnalité est conçue en pensant au flux de travail du solopreneur. Pas de superflu, pas de complexité—juste ce dont vous avez besoin.",
+        "icon": "User"
+      },
+      {
+        "title": "Transparence",
+        "description": "Nous construisons en public. Suivez notre parcours sur Twitter/X et voyez comment nous nous améliorons constamment en fonction des retours réels des utilisateurs.",
+        "icon": "Eye"
+      },
+      {
+        "title": "Sécurité par Défaut",
+        "description": "La sécurité de vos données n'est pas une réflexion après coup—c'est notre fondation. Le chiffrement AES-256 et l'accès en lecture seule garantissent la sécurité de votre entreprise.",
+        "icon": "Shield"
+      }
+    ]
+  },
     "id": "faq",
     "title": "Questions fréquemment posées",
     "description": "Vous avez une autre question ? Contactez-nous par e-mail.",
@@ -465,55 +489,51 @@
   },
   "technical-architecture": {
     "id": "technical-architecture",
-    "title": "Architecture Technique et Conformité",
-    "description": "En savoir plus : Architecture Technique et Conformité",
+    "title": "Architecture Technique et Intégrations",
+    "description": "En savoir plus : Architecture Technique et Intégrations",
     "items": [
       {
-        "title": "Technologie de Base : BIP39 et AES-256-GCM",
-        "description": "La fondation d'Afterglow est construite sur la norme mnémonique BIP39, le même protocole utilisé par les portefeuilles de cryptomonnaies leaders. Le système génère un \"Kit de Récupération\" de 24 mots pour protéger votre sauvegarde de mot de passe principal. Chaque donnée est chiffrée à l'aide d'AES-256-GCM, offrant le plus haut niveau de sécurité cryptographique disponible pour un usage commercial.",
+        "title": "Technologie de Base : Next.js 16 et Neon PostgreSQL",
+        "description": "SoloBoard est construit sur Next.js 16 avec React 19, offrant des performances ultra-rapides et une expérience utilisateur fluide. Les données sont stockées dans la base de données PostgreSQL sans serveur de Neon avec mise à l'échelle automatique et garantie de disponibilité de 99,99%.",
+        "icon": "Code"
+      },
+      {
+        "title": "Intégrations de Plateformes : GA4, Stripe, Shopify et Plus",
+        "description": "Nous supportons les plateformes les plus populaires pour les solopreneurs : Google Analytics 4 pour le suivi du trafic, Stripe et Lemon Squeezy pour le traitement des paiements, Shopify pour le commerce électronique, et des points de terminaison API personnalisés pour tout autre service que vous utilisez.",
+        "icon": "Plug"
+      },
+      {
+        "title": "Pourquoi Passer au Plan Pro ?",
+        "description": "Pour les utilisateurs gérant plusieurs sites à fort trafic, le Plan Pro offre une synchronisation des données en temps réel (toutes les quelques minutes), des insights commerciaux alimentés par l'IA, des sites illimités, des alertes personnalisées et un support prioritaire. Parfait pour les entrepreneurs en série et les propriétaires d'agence.",
+        "icon": "Zap"
+      },
+      {
+        "title": "Confidentialité des Données et Conformité",
+        "description": "SoloBoard est conforme GDPR et CCPA. Nous utilisons un accès API en lecture seule et un chiffrement AES-256 pour toutes les informations d'identification. Vos données ne sont jamais partagées avec des tiers, et vous pouvez les exporter ou les supprimer à tout moment. Nous sommes certifiés SOC 2 Type II.",
         "icon": "Shield"
-      },
-      {
-        "title": "Pont Physique-Numérique : Alimenté par ShipAny",
-        "description": "Nous avons comblé le fossé entre les données numériques et les héritages physiques grâce à une intégration approfondie avec ShipAny, une plateforme d'orchestration logistique mondiale. Déclencheurs Automatisés : Surveillance en temps réel via des fonctions Edge haute performance. Humain dans la Boucle (HITL) : Pour éviter les erreurs d'expédition irréversibles, chaque expédition physique de niveau Pro nécessite une autorisation secondaire manuelle depuis le tableau de bord administratif d'Afterglow. Logistique Prioritaire à la Confidentialité : Les adresses d'expédition des bénéficiaires restent chiffrées dans notre base de données et ne sont déchiffrées qu'au moment de la génération de l'étiquette d'expédition.",
-        "icon": "Package"
-      },
-      {
-        "title": "Pourquoi Passer au Plan Familial Pro ?",
-        "description": "Pour les utilisateurs gérant des actifs de grande valeur—tels que les clés privées, les documents juridiques sensibles ou les archives familiales inestimables—le Plan Pro offre une \"Certitude de Livraison\" : Alertes Omnicanales : Évitez les risques de point de défaillance unique associés aux notifications par e-mail uniquement. Moteur de Règlement Logistique : La passerelle Creem intégrée permet aux bénéficiaires de régler les frais d'expédition en un seul clic. Bénéficiaires Illimités : Parfait pour la planification successorale complexe et les structures de fiducie familiale.",
-        "icon": "ArrowUpCircle"
-      },
-      {
-        "title": "Avertissement Juridique et Meilleures Pratiques",
-        "description": "Bien qu'Afterglow fournisse une sécurité technique de pointe, nous recommandons fortement aux utilisateurs d'imprimer leur Kit de Récupération et de le stocker dans un endroit sûr et ignifuge. Notre service sert de complément technologique à votre plan successoral et ne remplace pas un testament ou une disposition testamentaire légalement contraignant tel que défini par votre juridiction locale. Veuillez consulter un professionnel juridique pour une planification successorale complète.",
-        "icon": "FileText"
       }
     ]
   },
   "cta": {
     "id": "cta",
-    "title": "Déployez votre première startup SaaS IA",
-    "description": "Commencez ici, déployez avec Digital Heirloom.",
+    "title": "Commencez à Surveiller Votre Portefeuille Aujourd'hui",
+    "description": "Rejoignez des milliers de solopreneurs qui font confiance à SoloBoard pour surveiller leur empire commercial depuis un tableau de bord unifié.",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Gratuit pour toujours jusqu'à 2 sites</span>",
     "buttons": [
       {
-        "title": "Obtenir Digital Heirloom",
-        "url": "https://www.subtitletk.app",
-        "target": "_blank",
-        "icon": "Zap"
-      },
-      {
-        "title": "Lire la documentation",
-        "url": "/docs",
-        "target": "_blank",
-        "variant": "outline",
-        "icon": "BookOpenText"
+        "title": "Commencer Gratuitement",
+        "url": "/sign-up",
+        "target": "_self",
+        "icon": "LayoutDashboard",
+        "variant": "default",
+        "className": ""
       }
     ]
   },
   "subscribe": {
     "id": "subscribe",
     "title": "Abonnez-vous à notre newsletter",
-    "description": "Recevez les dernières nouvelles et mises à jour de Digital Heirloom.",
+    "description": "Recevez les dernières nouvelles et mises à jour de SoloBoard.",
     "submit": {
       "input": {
         "placeholder": "Entrez votre e-mail"
@@ -527,17 +547,38 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "Digital Heirloom",
-      "description": "Digital Heirloom is a high-performance digital toolkit designed to extract and translate subtitles from YouTube and TikTok videos. We believe in simple, transparent pricing.",
+      "title": "SoloBoard",
+      "description": "SoloBoard est un centre de commande de surveillance tout-en-un pour les solopreneurs. Suivez le trafic, les revenus et la santé des sites pour tous vos produits SaaS dans un tableau de bord unifié avec une vue d'ensemble à latence zéro et des insights alimentés par l'IA.",
       "url": "/"
     },
+    "copyright": "SoloBoard - Le Tableau de Bord Unique pour Solopreneurs",
     "nav": {
       "items": [
         {
-          "title": "À propos",
+          "title": "Produit",
           "children": [
             {
-              "title": "À propos",
+              "title": "Centre de Commande",
+              "url": "/soloboard",
+              "target": "_self"
+            },
+            {
+              "title": "Tarification",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "Intégrations",
+              "url": "/integrations",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Entreprise",
+          "children": [
+            {
+              "title": "À Propos",
               "url": "/about",
               "target": "_self"
             },
@@ -547,29 +588,29 @@
               "target": "_self"
             },
             {
-              "title": "Tarification",
-              "url": "/pricing",
+              "title": "Blog",
+              "url": "/blog",
               "target": "_self"
             }
           ]
         },
         {
-          "title": "Amis",
+          "title": "Ressources",
           "children": [
             {
-              "title": "Creem",
-              "url": "https://www.creem.io",
-              "target": "_blank"
+              "title": "Documentation",
+              "url": "/docs",
+              "target": "_self"
             },
             {
-              "title": "ShipAny",
-              "url": "https://www.shipany.io",
-              "target": "_blank"
+              "title": "Référence API",
+              "url": "/api-docs",
+              "target": "_self"
             },
             {
-              "title": "Resend",
-              "url": "https://resend.com",
-              "target": "_blank"
+              "title": "Support",
+              "url": "mailto:support@soloboard.app",
+              "target": "_self"
             }
           ]
         }
@@ -580,8 +621,14 @@
         {
           "title": "Email",
           "icon": "Mail",
-          "url": "mailto:support@digitalheirloom.app",
+          "url": "mailto:support@soloboard.app",
           "target": "_self"
+        },
+        {
+          "title": "Twitter",
+          "icon": "Twitter",
+          "url": "https://twitter.com/soloboard",
+          "target": "_blank"
         }
       ]
     },
@@ -596,12 +643,11 @@
           "url": "/terms-of-service"
         },
         {
-          "title": "Avertissement",
-          "url": "/disclaimer"
+          "title": "Politique de cookies",
+          "url": "/cookie-policy"
         }
       ]
     },
-    "copyright": "Digital Heirloom est un produit indépendant et n'est pas affilié à Google (YouTube) ou ByteDance (TikTok).",
     "show_theme": true,
     "show_locale": true
   }
