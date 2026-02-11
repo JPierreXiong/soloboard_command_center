@@ -10,6 +10,7 @@ import { getAdsService } from '@/shared/services/ads';
 import { getAffiliateService } from '@/shared/services/affiliate';
 import { getAnalyticsService } from '@/shared/services/analytics';
 import { getCustomerService } from '@/shared/services/customer_service';
+import { WebsiteStructuredData, OrganizationStructuredData } from '@/shared/components/seo/structured-data';
 
 const notoSansMono = Noto_Sans_Mono({
   subsets: ['latin'],
@@ -105,7 +106,9 @@ export default async function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#6466F1" />
 
         {/* inject locales */}
         {locales ? (
@@ -146,6 +149,10 @@ export default async function RootLayout({
         {customerServiceMetaTags}
         {/* inject customer service head scripts */}
         {customerServiceHeadScripts}
+
+        {/* SEO: Structured Data */}
+        <WebsiteStructuredData />
+        <OrganizationStructuredData />
       </head>
       <body suppressHydrationWarning className="overflow-x-hidden">
         <NextTopLoader

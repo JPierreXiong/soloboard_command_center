@@ -11,16 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/pricing',
     '/about',
     '/contact',
+    '/faq',
+    '/soloboard',
     '/blog',
     '/privacy-policy',
     '/terms-of-service',
     '/disclaimer',
-  ];
-
-  // Known blog posts (add more as you create them)
-  const blogPosts = [
-    'how-decryption-works',
-    // Add more blog post slugs here as you create them
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
@@ -35,32 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       sitemapEntries.push({
         url,
         lastModified: new Date(),
-        changeFrequency: route === '/blog' ? 'daily' : 'weekly',
-        priority: route === '' ? 1.0 : route === '/pricing' ? 0.9 : 0.8,
+        changeFrequency: route === '/blog' ? 'daily' : route === '' ? 'weekly' : 'monthly',
+        priority: route === '' ? 1.0 : route === '/pricing' ? 0.9 : route === '/soloboard' ? 0.9 : 0.7,
       });
     });
-
-    // Add blog posts for each locale
-    blogPosts.forEach((postSlug) => {
-      const blogUrl = locale === 'en'
-        ? `${baseUrl}/blog/${postSlug}`
-        : `${baseUrl}/${locale}/blog/${postSlug}`;
-      
-      sitemapEntries.push({
-        url: blogUrl,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.9, // High priority for blog posts
-      });
-    });
-  });
-
-  // Add ads.txt entry (optional, but helps with some crawlers)
-  sitemapEntries.push({
-    url: `${baseUrl}/ads.txt`,
-    lastModified: new Date(),
-    priority: 0.1,
-    changeFrequency: 'monthly',
   });
 
   return sitemapEntries;
