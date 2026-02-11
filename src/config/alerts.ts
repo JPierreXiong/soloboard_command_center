@@ -59,3 +59,4 @@ export const ALERT_COOLDOWN_MINUTES: Record<string, number> = {
   api_quota_warning: 240, // 4 小时
 };
 
+

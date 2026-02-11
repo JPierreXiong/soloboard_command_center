@@ -64,7 +64,7 @@ export async function sendAlert(alertData: AlertData): Promise<boolean> {
         )
       )
       .limit(1)
-      .then((rows) => rows[0]);
+      .then((rows: any[]) => rows[0]);
     
     if (recentAlert) {
       console.log(`Alert in cooldown period: ${alertData.alertType}`);
@@ -79,7 +79,7 @@ export async function sendAlert(alertData: AlertData): Promise<boolean> {
         .from(monitoredSites)
         .where(eq(monitoredSites.id, alertData.siteId))
         .limit(1)
-        .then((rows) => rows[0]);
+        .then((rows: any[]) => rows[0]);
       
       if (site) {
         siteName = site.name;
@@ -221,7 +221,7 @@ export async function checkSiteHealthAndAlert(siteId: string, userId: string) {
       .from(monitoredSites)
       .where(eq(monitoredSites.id, siteId))
       .limit(1)
-      .then((rows) => rows[0]);
+      .then((rows: any[]) => rows[0]);
     
     if (!site) return;
     

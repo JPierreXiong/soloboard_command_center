@@ -80,7 +80,7 @@ async function updateDailyStats(
         )
       )
       .limit(1)
-      .then((rows) => rows[0]);
+      .then((rows: any[]) => rows[0]);
     
     if (existing) {
       // 更新现有记录
@@ -144,7 +144,7 @@ async function checkQuotaWarning(userId: string, platform: string): Promise<void
         )
       )
       .limit(1)
-      .then((rows) => rows[0]);
+      .then((rows: any[]) => rows[0]);
     
     if (!stats) return;
     
@@ -219,4 +219,5 @@ export async function getPlatformUsageStats(platform: string, date: string) {
     return null;
   }
 }
+
 
