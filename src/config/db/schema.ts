@@ -17,11 +17,7 @@ export const user = pgTable(
     emailVerified: boolean('email_verified').default(false).notNull(),
     image: text('image'),
     // Plan management fields
-    planType: text('plan_type').default('starter'), // starter, base, pro
-    planStatus: text('plan_status').default('active'), // active, canceled, expired
-    subscriptionId: text('subscription_id'), // Creem subscription ID
-    subscriptionStartDate: timestamp('subscription_start_date'),
-    subscriptionEndDate: timestamp('subscription_end_date'),
+    planType: text('plan_type').default('free'), // free, base, pro, on_demand
     freeTrialUsed: integer('free_trial_used').default(0), // Free trial count used
     lastCheckinDate: text('last_checkin_date'), // Last check-in date (YYYY-MM-DD)
     createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -473,324 +469,6 @@ export const userRole = pgTable(
 );
 
 // ============================================
-// SoloBoard - 多站点监控系统表
-// ============================================
-
-/**
- * 报警规则表
- * 存储用户配置的报警规则
- */
-export const alertRules = pgTable(
-  'alert_rules',
-  {
-    id: text('id').primaryKey(),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    siteId: text('site_id')
-      .notNull()
-      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
-    // 报警类型
-    alertType: text('alert_type').notNull(), // 'downtime', 'slow_response', 'revenue_drop', 'traffic_spike'
-    // 阈值配置
-    threshold: jsonb('threshold').notNull().$type<{
-      responseTime?: number; // 响应时间（毫秒）
-      downtime?: number; // 宕机时长（秒）
-      revenueDropPercent?: number; // 收入下降百分比
-      trafficSpikePercent?: number; // 流量激增百分比
-    }>(),
-    // 通知渠道
-    channels: jsonb('channels').notNull().$type<string[]>(), // ['email', 'telegram', 'webhook']
-    // 冷却期（秒）
-    cooldown: integer('cooldown').default(300), // 5分钟
-    // 最后触发时间
-    lastTriggeredAt: timestamp('last_triggered_at'),
-    // 状态
-    enabled: boolean('enabled').default(true),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at')
-      .defaultNow()
-      .$onUpdate(() => new Date())
-      .notNull(),
-  },
-  (table) => [
-    index('idx_alert_rule_site').on(table.siteId),
-    index('idx_alert_rule_user').on(table.userId),
-  ]
-);
-
-/**
- * 报警历史表
- * 记录所有触发的报警
- */
-export const alertHistory = pgTable(
-  'alert_history',
-  {
-    id: text('id').primaryKey(),
-    ruleId: text('rule_id')
-      .notNull()
-      .references(() => alertRules.id, { onDelete: 'cascade' }),
-    siteId: text('site_id')
-      .notNull()
-      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
-    // 报警详情
-    alertType: text('alert_type').notNull(),
-    message: text('message').notNull(),
-    severity: text('severity').notNull(), // 'info', 'warning', 'critical'
-    // 触发数据
-    triggerData: jsonb('trigger_data').$type<Record<string, any>>(),
-    // 通知状态
-    notificationStatus: jsonb('notification_status').$type<{
-      email?: 'sent' | 'failed';
-      telegram?: 'sent' | 'failed';
-      webhook?: 'sent' | 'failed';
-    }>(),
-    // 是否已解决
-    resolved: boolean('resolved').default(false),
-    resolvedAt: timestamp('resolved_at'),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-  },
-  (table) => [
-    index('idx_alert_history_site').on(table.siteId),
-    index('idx_alert_history_rule').on(table.ruleId),
-    index('idx_alert_history_created').on(table.createdAt),
-  ]
-);
-
-/**
- * 团队表
- * 支持团队协作功能
- */
-export const teams = pgTable(
-  'teams',
-  {
-    id: text('id').primaryKey(),
-    name: text('name').notNull(),
-    ownerId: text('owner_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    description: text('description'),
-    // 团队设置
-    settings: jsonb('settings').$type<{
-      maxMembers?: number;
-      allowGuestAccess?: boolean;
-    }>(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at')
-      .defaultNow()
-      .$onUpdate(() => new Date())
-      .notNull(),
-  },
-  (table) => [
-    index('idx_team_owner').on(table.ownerId),
-  ]
-);
-
-/**
- * 团队成员表
- * 管理团队成员和权限
- */
-export const teamMembers = pgTable(
-  'team_members',
-  {
-    id: text('id').primaryKey(),
-    teamId: text('team_id')
-      .notNull()
-      .references(() => teams.id, { onDelete: 'cascade' }),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    // 角色
-    role: text('role').notNull(), // 'owner', 'admin', 'editor', 'viewer'
-    // 权限
-    permissions: jsonb('permissions').$type<{
-      canAddSites?: boolean;
-      canEditSites?: boolean;
-      canDeleteSites?: boolean;
-      canManageMembers?: boolean;
-      canViewReports?: boolean;
-    }>(),
-    joinedAt: timestamp('joined_at').defaultNow().notNull(),
-    invitedBy: text('invited_by').references(() => user.id),
-  },
-  (table) => [
-    index('idx_team_member_team').on(table.teamId),
-    index('idx_team_member_user').on(table.userId),
-  ]
-);
-
-/**
- * 团队站点表
- * 管理团队共享的站点
- */
-export const teamSites = pgTable(
-  'team_sites',
-  {
-    id: text('id').primaryKey(),
-    teamId: text('team_id')
-      .notNull()
-      .references(() => teams.id, { onDelete: 'cascade' }),
-    siteId: text('site_id')
-      .notNull()
-      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
-    sharedBy: text('shared_by')
-      .notNull()
-      .references(() => user.id),
-    sharedAt: timestamp('shared_at').defaultNow().notNull(),
-  },
-  (table) => [
-    index('idx_team_site_team').on(table.teamId),
-    index('idx_team_site_site').on(table.siteId),
-  ]
-);
-
-/**
- * AI 报告表
- * 存储 AI 生成的智能周报
- */
-export const aiReports = pgTable(
-  'ai_reports',
-  {
-    id: text('id').primaryKey(),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    // 报告类型
-    reportType: text('report_type').notNull(), // 'daily', 'weekly', 'monthly'
-    // 时间范围
-    startDate: timestamp('start_date').notNull(),
-    endDate: timestamp('end_date').notNull(),
-    // 报告内容
-    summary: text('summary').notNull(), // AI 生成的摘要
-    insights: jsonb('insights').notNull().$type<string[]>(), // 洞察列表
-    recommendations: jsonb('recommendations').notNull().$type<string[]>(), // 建议列表
-    // 数据快照
-    metricsSnapshot: jsonb('metrics_snapshot').$type<Record<string, any>>(),
-    // 生成状态
-    status: text('status').default('generated'), // 'generating', 'generated', 'failed'
-    // 是否已发送
-    sent: boolean('sent').default(false),
-    sentAt: timestamp('sent_at'),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-  },
-  (table) => [
-    index('idx_ai_report_user').on(table.userId),
-    index('idx_ai_report_created').on(table.createdAt),
-  ]
-);
-
-// ============================================
-// SoloBoard - 多站点监控系统表
-// ============================================
-
-/**
- * 监控站点表
- * 存储用户添加的网站及其 API 配置（加密存储）
- */
-export const monitoredSites = pgTable(
-  'monitored_sites',
-  {
-    id: text('id').primaryKey(),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    // 站点基本信息
-    name: text('name').notNull(), // 网站名称（如 "我的 AI 工具"）
-    url: text('url').notNull(), // 网站地址
-    platform: text('platform').notNull(), // 'GA4', 'STRIPE', 'LEMON_SQUEEZY', 'SHOPIFY', 'UPTIME'
-    // 加密的 API 配置（使用 AES-256-CBC 加密）
-    encryptedConfig: text('encrypted_config').notNull(), // 加密后的 JSON 字符串
-    // 缓存最后一次抓取的数据快照（实现秒开）
-    lastSnapshot: jsonb('last_snapshot').$type<{
-      metrics: Record<string, any>; // 指标数据
-      updatedAt: string; // 更新时间
-    }>(),
-    // 站点状态
-    status: text('status').default('active').notNull(), // 'active', 'error', 'paused'
-    healthStatus: text('health_status').default('unknown'), // 'online', 'offline', 'unknown'
-    lastSyncAt: timestamp('last_sync_at'), // 最后同步时间
-    lastErrorAt: timestamp('last_error_at'), // 最后错误时间
-    lastErrorMessage: text('last_error_message'), // 最后错误信息
-    // 显示顺序
-    displayOrder: integer('display_order').default(0),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at')
-      .defaultNow()
-      .$onUpdate(() => new Date())
-      .notNull(),
-  },
-  (table) => [
-    // 查询用户的站点
-    index('idx_monitored_site_user').on(table.userId),
-    // 按状态查询
-    index('idx_monitored_site_status').on(table.status),
-    // 按平台类型查询
-    index('idx_monitored_site_platform').on(table.platform),
-    // 按显示顺序排序
-    index('idx_monitored_site_order').on(table.userId, table.displayOrder),
-  ]
-);
-
-/**
- * 站点指标历史表
- * 存储站点的历史指标数据，用于趋势图表
- */
-export const siteMetricsHistory = pgTable(
-  'site_metrics_history',
-  {
-    id: text('id').primaryKey(),
-    siteId: text('site_id')
-      .notNull()
-      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
-    // 指标数据（JSON 格式）
-    metrics: jsonb('metrics').notNull().$type<{
-      // GA4 指标
-      activeUsers?: number;
-      pageViews?: number;
-      sessions?: number;
-      // Stripe 指标
-      revenue?: number;
-      transactions?: number;
-      // Uptime 指标
-      responseTime?: number;
-      isOnline?: boolean;
-    }>(),
-    // 时间戳（按小时聚合）
-    recordedAt: timestamp('recorded_at').notNull(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-  },
-  (table) => [
-    // 查询站点的历史数据
-    index('idx_metrics_site_time').on(table.siteId, table.recordedAt),
-  ]
-);
-
-/**
- * 同步任务日志表
- * 记录每次数据同步的执行情况
- */
-export const syncLogs = pgTable(
-  'sync_logs',
-  {
-    id: text('id').primaryKey(),
-    siteId: text('site_id')
-      .notNull()
-      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
-    status: text('status').notNull(), // 'success', 'failed', 'partial'
-    duration: integer('duration'), // 执行时长（毫秒）
-    errorMessage: text('error_message'),
-    syncedMetrics: jsonb('synced_metrics'), // 同步的指标数据
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-  },
-  (table) => [
-    // 查询站点的同步日志
-    index('idx_sync_log_site').on(table.siteId),
-    // 按时间排序
-    index('idx_sync_log_created').on(table.createdAt),
-  ]
-);
-
-// ============================================
 // ⚠️ 已删除 - Digital Heirloom 项目不需要
 // 以下表定义已删除：
 // - aiTask (AI 任务表)
@@ -819,107 +497,67 @@ export const dailyCheckins = pgTable(
 );
 
 // ============================================
-// ⚠️ 已删除 - 不需要的功能表
+// ⚠️ 已删除 - Digital Heirloom 项目不需要
 // 以下表定义已删除：
-// - aiTask (AI 任务表) - 删除日期: 2025-01-15
-// - chat (AI 聊天表) - 删除日期: 2025-01-15
-// - chatMessage (AI 聊天消息表) - 删除日期: 2025-01-15
-// - mediaTasks (媒体任务表) - 删除日期: 2025-01-15
-// - testimonial (用户评价表) - 删除日期: 2025-01-15
-// - videoCache (视频缓存表) - 删除日期: 2025-01-15
-// - digitalVaults (数字保险箱) - 删除日期: 2026-02-07
-// - beneficiaries (受益人) - 删除日期: 2026-02-07
-// - heartbeatLogs (心跳日志) - 删除日期: 2026-02-07
-// - deadManSwitchEvents (死信开关事件) - 删除日期: 2026-02-07
-// - shippingLogs (物流记录) - 删除日期: 2026-02-07
-// - emailNotifications (邮件通知) - 删除日期: 2026-02-07
-// - adminAuditLogs (管理员审计) - 删除日期: 2026-02-07
-// - systemAlerts (系统报警) - 删除日期: 2026-02-07
-// 原因: SoloBoard 项目专注于多站点监控，不需要这些功能
+// - testimonial (用户评价表)
+// - videoCache (视频缓存表)
+// 删除日期: 2025-01-15
+// 原因: 项目转向 Digital Heirloom，不再需要这些功能
 // ============================================
 
 // ============================================
-// SoloBoard - 告警系统表
+// Digital Heirloom - 数字遗产管理表
 // ============================================
 
 /**
- * 告警日志表
- * 记录所有发送的告警
+ * 数字保险箱主表
+ * 存储用户的加密数字资产
  */
-export const alertLogs = pgTable(
-  'alert_logs',
+export const digitalVaults = pgTable(
+  'digital_vaults',
   {
     id: text('id').primaryKey(),
     userId: text('user_id')
       .notNull()
       .references(() => user.id, { onDelete: 'cascade' }),
-    siteId: text('site_id')
-      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
-    alertType: text('alert_type').notNull(), // 'site_down', 'high_error_rate', 'revenue_drop', 'api_quota_warning'
-    severity: text('severity').notNull(), // 'info', 'warning', 'critical'
-    message: text('message').notNull(),
-    metadata: jsonb('metadata').$type<Record<string, any>>(), // Additional context
-    sentAt: timestamp('sent_at'),
-    acknowledged: boolean('acknowledged').default(false),
-    acknowledgedAt: timestamp('acknowledged_at'),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-  },
-  (table) => [
-    index('idx_alert_user_date').on(table.userId, table.createdAt),
-    index('idx_alert_site').on(table.siteId),
-    index('idx_alert_type').on(table.alertType),
-  ]
-);
-
-// ============================================
-// SoloBoard - API 使用追踪表
-// ============================================
-
-/**
- * API 使用日志表
- * 记录每次 API 调用的详细信息
- */
-export const apiUsageLogs = pgTable(
-  'api_usage_logs',
-  {
-    id: text('id').primaryKey(),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    siteId: text('site_id')
-      .notNull()
-      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
-    platform: text('platform').notNull(), // 'GA4', 'STRIPE', 'UPTIME', 'LEMON_SQUEEZY', 'SHOPIFY'
-    apiCallCount: integer('api_call_count').default(1).notNull(),
-    success: boolean('success').default(true).notNull(),
-    errorMessage: text('error_message'),
-    responseTime: integer('response_time'), // milliseconds
-    timestamp: timestamp('timestamp').defaultNow().notNull(),
-  },
-  (table) => [
-    index('idx_api_usage_user_date').on(table.userId, table.timestamp),
-    index('idx_api_usage_site').on(table.siteId),
-    index('idx_api_usage_platform').on(table.platform),
-  ]
-);
-
-/**
- * API 使用统计表
- * 按天聚合的 API 使用统计
- */
-export const apiUsageStats = pgTable(
-  'api_usage_stats',
-  {
-    id: text('id').primaryKey(),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    date: text('date').notNull(), // YYYY-MM-DD
-    platform: text('platform').notNull(),
-    totalCalls: integer('total_calls').default(0).notNull(),
-    successfulCalls: integer('successful_calls').default(0).notNull(),
-    failedCalls: integer('failed_calls').default(0).notNull(),
-    averageResponseTime: integer('average_response_time'), // milliseconds
+    // 加密数据（AES-256-GCM 加密后的 JSON 字符串）
+    encryptedData: text('encrypted_data'),
+    // 加密盐值（Base64）
+    encryptionSalt: text('encryption_salt'),
+    // 加密初始向量（Base64）
+    encryptionIv: text('encryption_iv'),
+    // 密码提示（可选，不包含密码本身）
+    encryptionHint: text('encryption_hint'),
+    // 恢复包：加密的主密码备份（使用助记词加密）
+    recoveryBackupToken: text('recovery_backup_token'),
+    recoveryBackupSalt: text('recovery_backup_salt'),
+    recoveryBackupIv: text('recovery_backup_iv'),
+    // 心跳频率（天数，默认90天）
+    heartbeatFrequency: integer('heartbeat_frequency').default(90).notNull(),
+    // 宽限期（天数，默认7天）
+    gracePeriod: integer('grace_period').default(7).notNull(),
+    // 最后活跃时间
+    lastSeenAt: timestamp('last_seen_at').defaultNow().notNull(),
+    // 死信开关是否启用
+    deadManSwitchEnabled: boolean('dead_man_switch_enabled').default(false).notNull(),
+    // 死信开关激活时间
+    deadManSwitchActivatedAt: timestamp('dead_man_switch_activated_at'),
+    // 状态：active, warning, activated, released, pending, triggered, completed
+    status: text('status').default('active').notNull(),
+    // 验证令牌（用于邮件确认链接）
+    verificationToken: text('verification_token').unique(),
+    // 验证令牌过期时间
+    verificationTokenExpiresAt: timestamp('verification_token_expires_at'),
+    // 预警邮件发送时间（防止重复发送）
+    warningEmailSentAt: timestamp('warning_email_sent_at'),
+    // 预警邮件发送次数
+    warningEmailCount: integer('warning_email_count').default(0),
+    // 二次提醒邮件发送时间
+    reminderEmailSentAt: timestamp('reminder_email_sent_at'),
+    // 订阅管理字段（Digital Heirloom 专用）
+    currentPeriodEnd: timestamp('current_period_end'), // 订阅结束日期
+    bonusDays: integer('bonus_days').default(0), // 赠送的天数（累计）
+    planLevel: text('plan_level').default('free'), // 'free' | 'base' | 'pro'
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt: timestamp('updated_at')
       .defaultNow()
@@ -927,10 +565,282 @@ export const apiUsageStats = pgTable(
       .notNull(),
   },
   (table) => [
-    index('idx_api_stats_user_date').on(table.userId, table.date),
-    index('idx_api_stats_platform').on(table.platform),
-    // Unique constraint: one record per user per day per platform
-    index('idx_api_stats_unique').on(table.userId, table.date, table.platform),
+    // 查询用户的保险箱
+    index('idx_vault_user_status').on(table.userId, table.status),
+    // 失联检测查询（按最后活跃时间）
+    index('idx_vault_last_seen_status').on(table.lastSeenAt, table.status),
   ]
 );
 
+/**
+ * 受益人表
+ * 存储受益人信息和物流地址（预留 ShipAny 接口）
+ */
+export const beneficiaries = pgTable(
+  'beneficiaries',
+  {
+    id: text('id').primaryKey(),
+    vaultId: text('vault_id')
+      .notNull()
+      .references(() => digitalVaults.id, { onDelete: 'cascade' }),
+    // 受益人信息
+    name: text('name').notNull(),
+    email: text('email').notNull(),
+    relationship: text('relationship'), // spouse, child, parent, friend等
+    language: text('language').default('en'), // 偏好语言（en, zh, fr）
+    phone: text('phone'),
+    // ShipAny 物流预留字段（暂时不使用，但保留）
+    receiverName: text('receiver_name'),
+    addressLine1: text('address_line1'),
+    city: text('city'),
+    zipCode: text('zip_code'),
+    countryCode: text('country_code').default('HKG'),
+    // 物理资产相关（Pro 版）
+    physicalAssetDescription: text('physical_asset_description'), // 物理资产描述（U盘、信件等）
+    physicalAssetPhotoUrl: text('physical_asset_photo_url'), // 物理资产照片URL
+    // 资产释放相关
+    releaseToken: text('release_token'), // 临时访问令牌
+    releaseTokenExpiresAt: timestamp('release_token_expires_at'), // 令牌过期时间
+    releasedAt: timestamp('released_at'), // 资产释放时间
+    // 受益人延迟解锁机制（二次保险）
+    unlockRequestedAt: timestamp('unlock_requested_at'), // 受益人请求解锁的时间
+    unlockDelayUntil: timestamp('unlock_delay_until'), // 延迟解锁截止时间（unlock_requested_at + 24小时）
+    unlockNotificationSent: boolean('unlock_notification_sent').default(false), // 是否已向原用户发送通知
+    // 解密次数管理（Digital Heirloom 专用）
+    decryptionCount: integer('decryption_count').default(0), // 当前解密次数
+    decryptionLimit: integer('decryption_limit').default(1), // 默认解密限制
+    bonusDecryptionCount: integer('bonus_decryption_count').default(0), // 管理员赠送次数
+    lastDecryptionAt: timestamp('last_decryption_at'), // 最后解密时间
+    // 解密审计日志
+    decryptionHistory: jsonb('decryption_history').default([]), // 解密尝试记录
+    // 物理恢复包管理
+    isPhysicalVerificationEnabled: boolean('is_physical_verification_enabled').default(false), // 是否启用物理验证
+    physicalKitMailed: boolean('physical_kit_mailed').default(false), // 物理恢复包是否已寄送
+    trackingNumber: text('tracking_number'), // 物流单号
+    // 状态：pending, notified, unlock_requested, released
+    status: text('status').default('pending').notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    // 查询保险箱的受益人
+    index('idx_beneficiary_vault').on(table.vaultId),
+    // 查询待释放的受益人
+    index('idx_beneficiary_status').on(table.status),
+    // Token 查询（用于资产提取）
+    index('idx_beneficiary_token').on(table.releaseToken),
+  ]
+);
+
+/**
+ * 心跳日志表
+ * 记录用户的心跳确认记录
+ */
+export const heartbeatLogs = pgTable(
+  'heartbeat_logs',
+  {
+    id: text('id').primaryKey(),
+    vaultId: text('vault_id')
+      .notNull()
+      .references(() => digitalVaults.id, { onDelete: 'cascade' }),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    checkinDate: text('checkin_date').notNull(), // YYYY-MM-DD格式
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // 查询保险箱的心跳记录
+    index('idx_heartbeat_vault_date').on(table.vaultId, table.checkinDate),
+    // 查询用户的心跳记录
+    index('idx_heartbeat_user_date').on(table.userId, table.checkinDate),
+  ]
+);
+
+/**
+ * 死信开关事件日志表
+ * 记录死信开关的所有事件
+ */
+export const deadManSwitchEvents = pgTable(
+  'dead_man_switch_events',
+  {
+    id: text('id').primaryKey(),
+    vaultId: text('vault_id')
+      .notNull()
+      .references(() => digitalVaults.id, { onDelete: 'cascade' }),
+    // 事件类型：warning_sent, grace_period_started, assets_released
+    eventType: text('event_type').notNull(),
+    // 事件详情（JSON格式）
+    eventData: text('event_data'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // 查询保险箱的事件日志
+    index('idx_dms_event_vault').on(table.vaultId),
+    // 按事件类型查询
+    index('idx_dms_event_type').on(table.eventType),
+  ]
+);
+
+/**
+ * 物理资产物流表
+ * 记录 Pro 版用户的物理资产交付流程
+ */
+export const shippingLogs = pgTable(
+  'shipping_logs',
+  {
+    id: text('id').primaryKey(),
+    vaultId: text('vault_id')
+      .notNull()
+      .references(() => digitalVaults.id, { onDelete: 'cascade' }),
+    beneficiaryId: text('beneficiary_id')
+      .notNull()
+      .references(() => beneficiaries.id, { onDelete: 'cascade' }),
+    // 物流信息
+    receiverName: text('receiver_name').notNull(),
+    receiverPhone: text('receiver_phone'),
+    addressLine1: text('address_line1').notNull(),
+    city: text('city').notNull(),
+    zipCode: text('zip_code'),
+    countryCode: text('country_code').default('HKG'),
+    // 运费相关
+    shippingFeeStatus: text('shipping_fee_status').default('not_required'), // not_required, pending_payment, paid, waived
+    estimatedAmount: integer('estimated_amount'), // 预估运费（单位：分）
+    finalAmount: integer('final_amount'), // 最终运费（单位：分）
+    creemPaymentLink: text('creem_payment_link'), // Creem 支付链接
+    creemCheckoutId: text('creem_checkout_id'), // Creem Checkout Session ID
+    // 物流状态
+    status: text('status').default('pending_review'), // pending_review, waiting_payment, ready_to_ship, shipped, delivered, cancelled
+    trackingNumber: text('tracking_number'), // 物流单号
+    carrier: text('carrier'), // 承运商 (SF, FedEx, DHL等)
+    // 时间戳
+    requestedAt: timestamp('requested_at').defaultNow(), // 请求时间（死信开关触发时）
+    reviewedAt: timestamp('reviewed_at'), // 管理员审核时间
+    paymentRequestedAt: timestamp('payment_requested_at'), // 发送支付链接时间
+    paidAt: timestamp('paid_at'), // 支付完成时间
+    shippedAt: timestamp('shipped_at'), // 发货时间
+    deliveredAt: timestamp('delivered_at'), // 送达时间
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    // 查询保险箱的物流记录
+    index('idx_shipping_vault').on(table.vaultId),
+    // 查询受益人的物流记录
+    index('idx_shipping_beneficiary').on(table.beneficiaryId),
+    // 按状态查询
+    index('idx_shipping_status').on(table.status),
+    // 按运费状态查询
+    index('idx_shipping_fee_status').on(table.shippingFeeStatus),
+    // 按 Creem Checkout ID 查询
+    index('idx_shipping_creem_checkout').on(table.creemCheckoutId),
+  ]
+);
+
+/**
+ * 邮件通知日志表
+ * 记录所有发送给用户和受益人的邮件
+ */
+export const emailNotifications = pgTable(
+  'email_notifications',
+  {
+    id: text('id').primaryKey(),
+    vaultId: text('vault_id')
+      .notNull()
+      .references(() => digitalVaults.id, { onDelete: 'cascade' }),
+    recipientEmail: text('recipient_email').notNull(),
+    recipientType: text('recipient_type').notNull(), // 'user' | 'beneficiary'
+    emailType: text('email_type').notNull(), // 'heartbeat_warning' | 'heartbeat_reminder' | 'inheritance_notice'
+    subject: text('subject').notNull(),
+    sentAt: timestamp('sent_at').defaultNow().notNull(),
+    openedAt: timestamp('opened_at'), // 邮件打开时间（通过 Resend 追踪）
+    clickedAt: timestamp('clicked_at'), // 链接点击时间
+    status: text('status').default('pending').notNull(), // 'pending' | 'sent' | 'delivered' | 'opened' | 'clicked' | 'failed'
+    errorMessage: text('error_message'),
+    resendMessageId: text('resend_message_id'), // Resend API 返回的 message_id
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // 查询保险箱的邮件记录
+    index('idx_email_vault').on(table.vaultId),
+    // 按邮件类型查询
+    index('idx_email_type').on(table.emailType),
+    // 按状态查询
+    index('idx_email_status').on(table.status),
+    // 按收件人查询
+    index('idx_email_recipient').on(table.recipientEmail),
+  ]
+);
+
+/**
+ * 管理员审计日志表
+ * 记录所有管理员操作，确保可追溯性和安全性
+ */
+export const adminAuditLogs = pgTable(
+  'admin_audit_logs',
+  {
+    id: text('id').primaryKey().default('gen_random_uuid()'),
+    adminId: text('admin_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    actionType: text('action_type').notNull(), // 'EXTEND_SUBSCRIPTION', 'RESET_DECRYPTION_COUNT', 'ADD_DECRYPTION_COUNT', 'ADD_BONUS_DECRYPTION_COUNT', 'PAUSE', 'RESET_HEARTBEAT', 'TRIGGER_NOW'
+    vaultId: text('vault_id').references(() => digitalVaults.id, { onDelete: 'set null' }),
+    beneficiaryId: text('beneficiary_id').references(() => beneficiaries.id, { onDelete: 'set null' }),
+    actionData: jsonb('action_data').default({}), // 操作详情（补偿天数、次数等）
+    reason: text('reason'), // 操作原因（必填）
+    beforeState: jsonb('before_state').default({}), // 操作前状态快照
+    afterState: jsonb('after_state').default({}), // 操作后状态快照
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // 查询管理员的操作记录
+    index('idx_admin_audit_admin').on(table.adminId),
+    // 查询保险箱的操作记录
+    index('idx_admin_audit_vault').on(table.vaultId),
+    // 按时间排序
+    index('idx_admin_audit_created').on(table.createdAt),
+    // 按操作类型查询
+    index('idx_admin_audit_action').on(table.actionType),
+    // 查询受益人的操作记录
+    index('idx_admin_audit_beneficiary').on(table.beneficiaryId),
+  ]
+);
+
+/**
+ * 系统报警历史记录表
+ * 记录所有系统报警事件
+ */
+export const systemAlerts = pgTable(
+  'system_alerts',
+  {
+    id: text('id').primaryKey().default('gen_random_uuid()'),
+    level: text('level').notNull(), // 'info' | 'warning' | 'critical'
+    type: text('type').notNull(), // 'business' | 'resource' | 'cost'
+    category: text('category').notNull(), // 'triggered_spike', 'email_limit', 'email_failure_rate', 'storage_limit', 'shipping_limit'
+    message: text('message').notNull(),
+    alertData: jsonb('alert_data').default({}), // 报警数据详情
+    resolved: boolean('resolved').default(false), // 是否已解决
+    resolvedAt: timestamp('resolved_at'), // 解决时间
+    resolvedBy: text('resolved_by').references(() => user.id, { onDelete: 'set null' }), // 解决人
+    resolvedNote: text('resolved_note'), // 解决备注
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // 查询未解决的报警
+    index('idx_alert_resolved').on(table.resolved),
+    // 按时间排序
+    index('idx_alert_created').on(table.createdAt),
+    // 按级别查询
+    index('idx_alert_level').on(table.level),
+    // 按类型查询
+    index('idx_alert_type').on(table.type),
+    // 按类别查询
+    index('idx_alert_category').on(table.category),
+  ]
+);

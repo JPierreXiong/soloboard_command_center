@@ -2,15 +2,15 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "SoloBoard",
+      "title": "Afterglow",
       "url": "/"
     },
     "nav": {
       "items": [
         {
-          "title": "Command Center",
-          "url": "/soloboard",
-          "icon": "LayoutDashboard"
+          "title": "Digital Heirloom",
+          "url": "/digital-heirloom/dashboard",
+          "icon": "Shield"
         },
         {
           "title": "Pricing",
@@ -26,9 +26,9 @@
       "show_sign_out": true,
       "items": [
         {
-          "title": "Command Center",
-          "url": "/soloboard",
-          "icon": "LayoutDashboard"
+          "title": "Digital Heirloom",
+          "url": "/digital-heirloom/dashboard",
+          "icon": "Shield"
         },
         {
           "title": "Billing",
@@ -48,28 +48,28 @@
   },
   "hero": {
     "id": "hero",
-    "title": "The One-Pane-of-Glass for Solopreneurs",
-    "highlight_text": "Multi-Site Monitoring",
-    "description": "Eliminate the need for 10 browser tabs. Monitor traffic, revenue, and site health for all your SaaS products in one unified dashboard. Zero-latency overview with actionable AI insights.",
+    "title": "Secure Your Digital Legacy",
+    "highlight_text": "",
+    "description": "Ensure your loved ones can access your digital assets when they need them most. Passwords, crypto wallets, and personal messages — protected until the right moment.",
     "announcement": {
-      "badge": "Efficiency",
-      "title": "🚀 All-in-One Dashboard",
-      "url": "#how-it-works"
+      "badge": "Security",
+      "title": "🔒 Zero-Knowledge Encryption",
+      "url": "#zero-knowledge-security"
     },
-    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Free forever for up to 2 sites</span>",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">No credit card required</span>",
     "buttons": [
       {
         "title": "Start for Free",
-        "icon": "LayoutDashboard",
+        "icon": "Shield",
         "url": "/sign-up",
         "target": "_self",
         "variant": "default",
         "className": ""
       },
       {
-        "title": "View Demo",
-        "icon": "Play",
-        "url": "/soloboard",
+        "title": "Learn More",
+        "icon": "Info",
+        "url": "/blog",
         "target": "_self",
         "variant": "outline",
         "className": ""
@@ -258,59 +258,59 @@
   "how-it-works": {
     "id": "how-it-works",
     "title": "How It Works",
-    "description": "A simple, powerful system to monitor all your businesses",
+    "description": "A simple, secure system to protect what matters most",
     "items": [
       {
-        "title": "Connect Your Platforms",
-        "description": "Integrate Google Analytics, Stripe, Shopify, and more with read-only API access. Military-grade AES-256 encryption keeps your credentials safe.",
-        "icon": "Plug"
+        "title": "Encrypted Vault",
+        "description": "Store passwords, crypto keys, and personal notes with military-grade encryption that even we can't read.",
+        "icon": "Lock"
       },
       {
-        "title": "Unified Dashboard",
-        "description": "View traffic, revenue, and site health for 3-10+ websites in a single grid. No more context-switching between admin panels.",
-        "icon": "LayoutDashboard"
+        "title": "Dead Man's Switch",
+        "description": "Regular check-ins confirm you're okay. Miss them, and your designated contacts are notified automatically.",
+        "icon": "Clock"
       },
       {
-        "title": "AI-Powered Insights",
-        "description": "Get actionable recommendations based on cross-site performance analysis. Know which sites need attention and which are thriving.",
-        "icon": "Sparkles"
+        "title": "Trusted Beneficiaries",
+        "description": "Designate family members, friends, or attorneys to receive specific items from your vault.",
+        "icon": "Users"
       }
     ]
   },
   "zero-knowledge-security": {
     "id": "zero-knowledge-security",
-    "title": "Privacy-First Security",
-    "description": "Your API credentials are encrypted with AES-256 before storage. We use read-only access to your platforms, ensuring your data is never compromised and we can never modify your settings.",
+    "title": "Zero-Knowledge Security",
+    "description": "Your data is encrypted on your device before it ever reaches our servers. We never see your passwords or secrets — and neither does anyone else until you want them to.",
     "items": [
       {
-        "title": "Read-only API access",
-        "description": "",
-        "icon": "Eye"
-      },
-      {
-        "title": "AES-256 encryption",
+        "title": "End-to-end encryption",
         "description": "",
         "icon": "Shield"
       },
       {
-        "title": "Serverless architecture",
+        "title": "No backdoors or master keys",
         "description": "",
-        "icon": "Cloud"
+        "icon": "Key"
       },
       {
-        "title": "Zero data retention",
+        "title": "Regular security audits",
         "description": "",
-        "icon": "Trash2"
+        "icon": "Search"
       },
       {
-        "title": "SOC 2 compliant",
+        "title": "Client-side key generation",
+        "description": "",
+        "icon": "Cpu"
+      },
+      {
+        "title": "Open-source cryptography",
+        "description": "",
+        "icon": "Code"
+      },
+      {
+        "title": "GDPR & CCPA compliant",
         "description": "",
         "icon": "FileCheck"
-      },
-      {
-        "title": "GDPR & CCPA ready",
-        "description": "",
-        "icon": "Globe"
       }
     ]
   },
@@ -431,137 +431,76 @@
       }
     ]
   },
-  "about": {
-    "id": "about",
-    "title": "Built for the Army of One",
-    "label": "About Us",
-    "description": "SoloBoard was born out of a simple frustration: Managing 10 SaaS products shouldn't feel like a chore.",
-    "story": "As a serial entrepreneur, I found myself wasting hours every week manually checking different admin panels. I realized that as my portfolio grew, my focus vanished. I didn't need more complex analytics; I needed a Pulse Monitor.",
-    "mission": "SoloBoard is our answer to the chaos. Built on top of robust technologies like Neon and ShipAny, we provide independent founders with the clarity they need to scale. We aren't just a dashboard; we are your digital command center, helping you spend less time monitoring and more time building.",
-    "values": [
-      {
-        "title": "Founder-First Design",
-        "description": "Every feature is designed with the solopreneur's workflow in mind. No bloat, no complexity—just what you need.",
-        "icon": "User"
-      },
-      {
-        "title": "Transparency",
-        "description": "We build in public. Follow our journey on Twitter/X and see how we're constantly improving based on real user feedback.",
-        "icon": "Eye"
-      },
-      {
-        "title": "Security by Default",
-        "description": "Your data security isn't an afterthought—it's our foundation. AES-256 encryption and read-only access ensure your business stays safe.",
-        "icon": "Shield"
-      }
-    ]
-  },
-  "contact": {
-    "id": "contact",
-    "title": "Let's Talk Shop",
-    "label": "Contact Us",
-    "description": "Have a feature request, a bug to report, or just want to chat about the solopreneur life? We're always listening.",
-    "channels": [
-      {
-        "title": "Direct Support",
-        "description": "Response time: Usually under 12 hours",
-        "email": "support@soloboard.app",
-        "icon": "Mail"
-      },
-      {
-        "title": "Build in Public",
-        "description": "Follow our journey and get real-time updates",
-        "url": "https://twitter.com/SoloBoardApp",
-        "handle": "@SoloBoardApp",
-        "icon": "Twitter"
-      },
-      {
-        "title": "Partnerships",
-        "description": "For collaborations or agency inquiries",
-        "email": "partners@soloboard.app",
-        "icon": "Handshake"
-      }
-    ],
-    "location": "Based in the cloud, serving founders worldwide 🌍"
-  },
   "faq": {
     "id": "faq",
     "title": "Frequently Asked Questions",
-    "description": "Everything you need to know about SoloBoard",
-    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@soloboard.app' class='text-primary font-medium hover:underline'>customer support team</a>",
+    "description": "Have another question? Contact us by email.",
+    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@digitalheirloom.app' class='text-primary font-medium hover:underline'>customer support team</a>",
     "items": [
       {
-        "question": "How does SoloBoard connect to my websites?",
-        "answer": "We use secure API connections (OAuth and API Keys) to fetch data from providers like Google Analytics 4, Stripe, and Shopify. It takes less than 2 minutes to sync a new site."
+        "question": "Does the ShipAny package contain a USB drive or my actual data?",
+        "answer": "No. For ultimate security, we never ship USB drives. The package contains only a high-strength physical encrypted credential (Recovery Kit). Your assets remain encrypted in the cloud; the physical credential is the sole \"key\" to unlock them."
       },
       {
-        "question": "Is it safe to share my API keys?",
-        "answer": "Yes. We prioritize security above all else. All keys are encrypted using AES-256 and stored in a secure Neon database. We only request Read-Only permissions, so your funds and configurations are never at risk."
+        "question": "What happens if DigitalHeirloom's database is hacked?",
+        "answer": "This is the brilliance of our architecture. Even if hackers exfiltrated the entire database, they could read nothing. The critical decryption factors are not on our servers; they reside in the physical credentials sent to your beneficiaries. The algorithmic complexity makes cracking as difficult as finding a specific atom in the universe."
       },
       {
-        "question": "Does SoloBoard slow down my website's performance?",
-        "answer": "Not at all. SoloBoard communicates directly with the platform APIs (like Stripe's servers). We do not load any scripts on your actual website, ensuring your page speed remains 100% unaffected."
+        "question": "Does the platform guarantee the quality or integrity of my file content?",
+        "answer": "We guarantee the physical integrity and security of your encrypted data blocks via globally distributed storage. However, as a \"Zero-Knowledge\" platform, we do not audit or guarantee the internal content quality. We are the vault manufacturers, not content auditors."
       },
       {
-        "question": "Can I manage more than 10 websites?",
-        "answer": "Absolutely. While our standard Pro plan covers up to 10 sites, our Studio plan offers unlimited monitoring for larger portfolios and agencies."
+        "question": "Will my beneficiary still need my Master Password after receiving the physical credential?",
+        "answer": "No. Pro credentials feature \"Auto-Parsing\" technology. Once the beneficiary scans the encrypted QR code, the system validates identity via the physical medium, automatically bypassing the password input for a friction-less recovery."
       },
       {
-        "question": "Why choose SoloBoard over free alternatives?",
-        "answer": "While you can check these platforms individually for free, SoloBoard saves you the most valuable asset you have: Time. We consolidate everything into a high-performance, mobile-ready dashboard that a single browser tab simply can't match."
+        "question": "Why emphasize \"Physical Credentials\" over pure digital passwords?",
+        "answer": "Digital passwords can be compromised via brute force or phishing. Our physical credentials are \"non-replicable.\" This dual-validation—binding digital legacy with physical logistics (ShipAny)—ensures that even if a hacker breaches your network, they cannot cross physical space."
       },
       {
-        "question": "What platforms do you support?",
-        "answer": "We currently support Google Analytics 4 (GA4) for traffic analytics, Stripe and Lemon Squeezy for payment processing, Shopify for e-commerce, and custom uptime monitoring. More integrations are added regularly based on user requests."
-      },
-      {
-        "question": "How often does the data refresh?",
-        "answer": "Free plan users get hourly updates. Pro plan users enjoy near real-time synchronization (every 5-10 minutes) to ensure you never miss critical changes in your business metrics."
-      },
-      {
-        "question": "Can I cancel my subscription anytime?",
-        "answer": "Yes, absolutely. You can cancel your subscription with one click through your billing portal. No hidden fees, no dark patterns, no questions asked."
+        "question": "Does decrypting a 2GB asset take a long time?",
+        "answer": "Decryption time depends on the beneficiary's local hardware, not bandwidth. Once the physical credential activates the channel, the system uses Vercel Edge computing for streaming decryption. A 2GB archive can typically be restored within minutes."
       }
     ]
   },
   "technical-architecture": {
     "id": "technical-architecture",
-    "title": "Technical Architecture & Integrations",
-    "description": "Learn More: Technical Architecture & Integrations",
+    "title": "Technical Architecture & Compliance",
+    "description": "Learn More: Technical Architecture & Compliance",
     "items": [
       {
-        "title": "Core Technology: Next.js 16 & Neon PostgreSQL",
-        "description": "SoloBoard is built on Next.js 16 with React 19, providing lightning-fast performance and seamless user experience. Data is stored in Neon's serverless PostgreSQL database with automatic scaling and 99.99% uptime guarantee.",
-        "icon": "Code"
-      },
-      {
-        "title": "Platform Integrations: GA4, Stripe, Shopify & More",
-        "description": "We support the most popular platforms for solopreneurs: Google Analytics 4 for traffic tracking, Stripe and Lemon Squeezy for payment processing, Shopify for e-commerce, and custom API endpoints for any other service you use.",
-        "icon": "Plug"
-      },
-      {
-        "title": "Why Upgrade to Pro Plan?",
-        "description": "For users managing multiple high-traffic sites, the Pro Plan offers real-time data synchronization (every few minutes), AI-powered business insights, unlimited sites, custom alerts, and priority support. Perfect for serial entrepreneurs and agency owners.",
-        "icon": "Zap"
-      },
-      {
-        "title": "Data Privacy & Compliance",
-        "description": "SoloBoard is GDPR and CCPA compliant. We use read-only API access and AES-256 encryption for all credentials. Your data is never shared with third parties, and you can export or delete it at any time. We are SOC 2 Type II certified.",
+        "title": "Core Technology: BIP39 & AES-256-GCM",
+        "description": "Afterglow's foundation is built upon the BIP39 Mnemonic standard, the same protocol used by leading cryptocurrency wallets. The system generates a 24-word \"Recovery Kit\" to protect your Master Password backup. Every piece of data is encrypted using AES-256-GCM, providing the highest level of cryptographic security available for commercial use.",
         "icon": "Shield"
+      },
+      {
+        "title": "Physical-Digital Bridge: Powered by ShipAny",
+        "description": "We have bridged the gap between digital data and physical heirlooms through deep integration with ShipAny, a global logistics orchestration platform. Automated Triggers: Real-time monitoring via high-performance Edge Functions. Human-in-the-Loop (HITL): To prevent irreversible shipping errors, every Pro-tier physical dispatch requires manual secondary authorization from the Afterglow administrative dashboard. Privacy-First Logistics: Beneficiary shipping addresses remain encrypted in our database and are only decrypted at the moment the shipping label is generated.",
+        "icon": "Package"
+      },
+      {
+        "title": "Why Upgrade to Pro Family Plan?",
+        "description": "For users managing high-value assets—such as private keys, sensitive legal documents, or priceless family archives—the Pro Plan offers \"Certainty of Delivery\": Omni-channel Alerts: Avoid single-point-of-failure risks associated with email-only notifications. Logistics Settlement Engine: Integrated Creem gateway allows beneficiaries to settle shipping fees with a single click. Unlimited Beneficiaries: Perfect for complex estate planning and family trust structures.",
+        "icon": "ArrowUpCircle"
+      },
+      {
+        "title": "Legal Disclaimer & Best Practices",
+        "description": "While Afterglow provides state-of-the-art technical security, we strongly recommend that users print their Recovery Kit and store it in a secure, fireproof location. Our service serves as a technological supplement to your estate plan and does not replace a legally binding will or testament as defined by your local jurisdiction. Please consult with a legal professional for comprehensive estate planning.",
+        "icon": "FileText"
       }
     ]
   },
   "cta": {
     "id": "cta",
-    "title": "Start Monitoring Your Portfolio Today",
-    "description": "Join thousands of solopreneurs who trust SoloBoard to monitor their business empire from one unified dashboard.",
-    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Free forever for up to 2 sites</span>",
+    "title": "Start Protecting Your Digital Legacy Today",
+    "description": "Join thousands of users who trust Afterglow to secure their most important digital assets.",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">No credit card required</span>",
     "buttons": [
       {
         "title": "Start for Free",
         "url": "/sign-up",
         "target": "_self",
-        "icon": "LayoutDashboard",
+        "icon": "Shield",
         "variant": "default",
         "className": ""
       }
@@ -570,7 +509,7 @@
   "subscribe": {
     "id": "subscribe",
     "title": "Subscribe to our newsletter",
-    "description": "Get the latest news and updates from SoloBoard.",
+    "description": "Get the latest news and updates from Digital Heirloom.",
     "submit": {
       "input": {
         "placeholder": "Enter your email"
@@ -584,35 +523,15 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "SoloBoard",
-      "description": "SoloBoard is an all-in-one monitoring command center for solopreneurs. Track traffic, revenue, and site health for all your SaaS products in one unified dashboard with zero-latency overview and AI-powered insights.",
+      "title": "Afterglow",
+      "description": "Afterglow is a high-security digital asset custody and automated distribution platform. We protect your digital legacy with zero-knowledge encryption, ensuring your loved ones can access your digital assets when they need them most.",
       "url": "/"
     },
-    "copyright": "SoloBoard - The One-Pane-of-Glass for Solopreneurs",
+    "copyright": "Afterglow - Secure Your Digital Legacy",
     "nav": {
       "items": [
         {
-          "title": "Product",
-          "children": [
-            {
-              "title": "Command Center",
-              "url": "/soloboard",
-              "target": "_self"
-            },
-            {
-              "title": "Pricing",
-              "url": "/pricing",
-              "target": "_self"
-            },
-            {
-              "title": "Integrations",
-              "url": "/integrations",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "Company",
+          "title": "About",
           "children": [
             {
               "title": "About Us",
@@ -625,29 +544,29 @@
               "target": "_self"
             },
             {
-              "title": "Blog",
-              "url": "/blog",
+              "title": "Pricing",
+              "url": "/pricing",
               "target": "_self"
             }
           ]
         },
         {
-          "title": "Resources",
+          "title": "Friends",
           "children": [
             {
-              "title": "Documentation",
-              "url": "/docs",
-              "target": "_self"
+              "title": "Creem",
+              "url": "https://www.creem.io",
+              "target": "_blank"
             },
             {
-              "title": "API Reference",
-              "url": "/api-docs",
-              "target": "_self"
+              "title": "ShipAny",
+              "url": "https://www.shipany.io",
+              "target": "_blank"
             },
             {
-              "title": "Support",
-              "url": "mailto:support@soloboard.app",
-              "target": "_self"
+              "title": "Resend",
+              "url": "https://resend.com",
+              "target": "_blank"
             }
           ]
         }
@@ -658,14 +577,8 @@
         {
           "title": "Email",
           "icon": "Mail",
-          "url": "mailto:support@soloboard.app",
+          "url": "mailto:support@digitalheirloom.app",
           "target": "_self"
-        },
-        {
-          "title": "Twitter",
-          "icon": "Twitter",
-          "url": "https://twitter.com/soloboard",
-          "target": "_blank"
         }
       ]
     },
@@ -680,8 +593,8 @@
           "url": "/terms-of-service"
         },
         {
-          "title": "Cookie Policy",
-          "url": "/cookie-policy"
+          "title": "Disclaimer",
+          "url": "/disclaimer"
         }
       ]
     },

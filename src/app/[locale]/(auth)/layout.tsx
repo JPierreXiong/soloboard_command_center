@@ -15,7 +15,7 @@ export default function AuthLayout({
       <div className="absolute top-4 left-4">
         <BrandLogo
           brand={{
-            title: 'SoloBoard',
+            title: 'Digital Heirloom',
             logo: undefined, // Remove logo
             url: '/',
             target: '_self',
