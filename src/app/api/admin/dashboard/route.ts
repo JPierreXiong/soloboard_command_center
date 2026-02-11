@@ -142,28 +142,28 @@ export async function GET(req: NextRequest) {
         activeSubscriptions: activeSubscriptions[0]?.count || 0,
       },
       
-      usersByPlan: usersByPlan.map(item => ({
+      usersByPlan: usersByPlan.map((item: any) => ({
         plan: item.planType || 'free',
         count: Number(item.count),
       })),
       
-      subscriptionsByPlan: subscriptionsByPlan.map(item => ({
+      subscriptionsByPlan: subscriptionsByPlan.map((item: any) => ({
         plan: item.planType || 'free',
         count: Number(item.count),
       })),
       
       revenue: {
-        total: totalRevenue.map(item => ({
+        total: totalRevenue.map((item: any) => ({
           amount: Number(item.total) / 100, // 转换为主货币单位
           currency: item.currency || 'USD',
         })),
-        monthly: monthlyRevenue.map(item => ({
+        monthly: monthlyRevenue.map((item: any) => ({
           amount: Number(item.total) / 100,
           currency: item.currency || 'USD',
         })),
       },
       
-      recentOrders: recentOrders.map(item => ({
+      recentOrders: recentOrders.map((item: any) => ({
         ...item,
         amount: item.amount ? Number(item.amount) / 100 : 0,
       })),

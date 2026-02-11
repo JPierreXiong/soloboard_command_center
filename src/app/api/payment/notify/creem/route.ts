@@ -185,7 +185,7 @@ async function handleSubscriptionCanceled(paymentEvent: any) {
   if (!subInfo) return;
 
   // 更新订阅状态
-  await db.update(subscription)
+  await db().update(subscription)
     .set({
       status: 'canceled',
       canceledAt: subInfo.canceledAt,

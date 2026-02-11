@@ -88,10 +88,10 @@ export async function GET(
     
     // 4. 计算统计数据
     const totalSpent = userOrders
-      .filter(o => o.status === 'paid')
-      .reduce((sum, o) => sum + (Number(o.paymentAmount) || 0), 0) / 100;
+      .filter((o: any) => o.status === 'paid')
+      .reduce((sum: number, o: any) => sum + (Number(o.paymentAmount) || 0), 0) / 100;
     
-    const activeSubscription = userSubscriptions.find(s => s.status === 'active');
+    const activeSubscription = userSubscriptions.find((s: any) => s.status === 'active');
     
     // 5. 返回完整信息
     return NextResponse.json({
@@ -107,19 +107,19 @@ export async function GET(
       
       statistics: {
         totalOrders: userOrders.length,
-        paidOrders: userOrders.filter(o => o.status === 'paid').length,
+        paidOrders: userOrders.filter((o: any) => o.status === 'paid').length,
         totalSpent,
-        activeSubscriptions: userSubscriptions.filter(s => s.status === 'active').length,
+        activeSubscriptions: userSubscriptions.filter((s: any) => s.status === 'active').length,
         hasActiveSubscription: !!activeSubscription,
       },
       
-      orders: userOrders.map(o => ({
+      orders: userOrders.map((o: any) => ({
         ...o,
         amount: o.amount ? Number(o.amount) / 100 : 0,
         paymentAmount: o.paymentAmount ? Number(o.paymentAmount) / 100 : 0,
       })),
       
-      subscriptions: userSubscriptions.map(s => ({
+      subscriptions: userSubscriptions.map((s: any) => ({
         ...s,
         amount: s.amount ? Number(s.amount) / 100 : 0,
       })),
