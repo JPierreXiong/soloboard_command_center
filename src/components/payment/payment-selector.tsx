@@ -29,6 +29,23 @@ import { toast } from 'sonner';
 // 支付方式配置
 const PAYMENT_METHODS = [
   {
+    id: 'creem',
+    name: 'Creem',
+    icon: CreditCard,
+    color: 'from-emerald-500 to-teal-500',
+    description: '信用卡、借记卡支付',
+    features: [
+      '支持全球支付',
+      '安全快速结账',
+      '订阅管理',
+      'PCI DSS 认证'
+    ],
+    currencies: ['USD', 'CNY', 'EUR', 'GBP', 'JPY'],
+    fee: '2.9% + $0.30',
+    popular: true,
+    recommended: true
+  },
+  {
     id: 'stripe',
     name: 'Stripe',
     icon: CreditCard,
@@ -43,7 +60,7 @@ const PAYMENT_METHODS = [
     currencies: ['USD', 'CNY', 'EUR', 'GBP', 'JPY'],
     fee: '2.9% + $0.30',
     popular: true,
-    recommended: true
+    recommended: false
   },
   {
     id: 'paypal',
@@ -84,15 +101,19 @@ const PAYMENT_METHODS = [
 interface PaymentSelectorProps {
   amount: number;
   currency: string;
+  productId?: string;
+  planName?: string;
   onPaymentSelect?: (provider: string) => void;
 }
 
 export function PaymentSelector({ 
   amount, 
   currency = 'USD',
+  productId,
+  planName,
   onPaymentSelect 
 }: PaymentSelectorProps) {
-  const [selectedMethod, setSelectedMethod] = useState<string>('stripe');
+  const [selectedMethod, setSelectedMethod] = useState<string>('creem');
   const [loading, setLoading] = useState(false);
 
   // 过滤支持当前货币的支付方式
@@ -104,16 +125,27 @@ export function PaymentSelector({
     setLoading(true);
 
     try {
+      const payload: any = {
+        amount,
+        currency: currency.toLowerCase(),
+        provider: selectedMethod,
+        type: 'subscription'
+      };
+
+      // 如果使用 Creem，添加产品 ID
+      if (selectedMethod === 'creem' && productId) {
+        payload.productId = productId;
+        payload.plan = {
+          name: planName || 'SoloBoard Subscription'
+        };
+      }
+
       const response = await fetch('/api/payment/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          amount,
-          currency: currency.toLowerCase(),
-          provider: selectedMethod
-        })
+        body: JSON.stringify(payload)
       });
 
       const data = await response.json();

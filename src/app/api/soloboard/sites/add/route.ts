@@ -8,7 +8,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/core/db';
-import { monitoredSites } from '@/config/db/schema';
+import { monitoredSites, user as userTable } from '@/config/db/schema';
 import { eq, count } from 'drizzle-orm';
 import { nanoid } from 'nanoid';
 import { auth } from '@/core/auth';
@@ -16,6 +16,7 @@ import { encryptSiteConfigObject, type SiteApiConfig } from '@/shared/lib/site-c
 import { validateGA4Config } from '@/shared/services/soloboard/ga4-fetcher';
 import { validateStripeConfig } from '@/shared/services/soloboard/stripe-fetcher';
 import { validateUptimeConfig } from '@/shared/services/soloboard/uptime-fetcher';
+import { getPlanLimits, type PlanType } from '@/config/plans';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

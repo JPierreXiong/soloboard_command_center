@@ -69,9 +69,9 @@
           "Advanced Analytics"
         ],
         "interval": "month",
-        "amount": 1900,
+        "amount": 1990,
         "currency": "USD",
-        "price": "$19",
+        "price": "$19.9",
         "original_price": "",
         "unit": "/ month",
         "is_featured": true,
@@ -83,6 +83,7 @@
         },
         "product_id": "soloboard-base-monthly",
         "product_name": "SoloBoard Base (Monthly)",
+        "payment_product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
         "group": "monthly",
         "plan_name": "Base"
       },
@@ -133,9 +134,9 @@
           "Dedicated Support"
         ],
         "interval": "month",
-        "amount": 3900,
+        "amount": 3990,
         "currency": "USD",
-        "price": "$39",
+        "price": "$39.9",
         "original_price": "",
         "unit": "/ month",
         "is_featured": false,
@@ -147,6 +148,7 @@
         },
         "product_id": "soloboard-pro-monthly",
         "product_name": "SoloBoard Pro (Monthly)",
+        "payment_product_id": "prod_n1rGx5cxwauihvqwWRHxi",
         "group": "monthly",
         "plan_name": "Pro"
       },

@@ -17,7 +17,11 @@ export const user = pgTable(
     emailVerified: boolean('email_verified').default(false).notNull(),
     image: text('image'),
     // Plan management fields
-    planType: text('plan_type').default('free'), // free, base, pro, on_demand
+    planType: text('plan_type').default('starter'), // starter, base, pro
+    planStatus: text('plan_status').default('active'), // active, canceled, expired
+    subscriptionId: text('subscription_id'), // Creem subscription ID
+    subscriptionStartDate: timestamp('subscription_start_date'),
+    subscriptionEndDate: timestamp('subscription_end_date'),
     freeTrialUsed: integer('free_trial_used').default(0), // Free trial count used
     lastCheckinDate: text('last_checkin_date'), // Last check-in date (YYYY-MM-DD)
     createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -833,3 +837,100 @@ export const dailyCheckins = pgTable(
 // - systemAlerts (系统报警) - 删除日期: 2026-02-07
 // 原因: SoloBoard 项目专注于多站点监控，不需要这些功能
 // ============================================
+
+// ============================================
+// SoloBoard - 告警系统表
+// ============================================
+
+/**
+ * 告警日志表
+ * 记录所有发送的告警
+ */
+export const alertLogs = pgTable(
+  'alert_logs',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    siteId: text('site_id')
+      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
+    alertType: text('alert_type').notNull(), // 'site_down', 'high_error_rate', 'revenue_drop', 'api_quota_warning'
+    severity: text('severity').notNull(), // 'info', 'warning', 'critical'
+    message: text('message').notNull(),
+    metadata: jsonb('metadata').$type<Record<string, any>>(), // Additional context
+    sentAt: timestamp('sent_at'),
+    acknowledged: boolean('acknowledged').default(false),
+    acknowledgedAt: timestamp('acknowledged_at'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    index('idx_alert_user_date').on(table.userId, table.createdAt),
+    index('idx_alert_site').on(table.siteId),
+    index('idx_alert_type').on(table.alertType),
+  ]
+);
+
+// ============================================
+// SoloBoard - API 使用追踪表
+// ============================================
+
+/**
+ * API 使用日志表
+ * 记录每次 API 调用的详细信息
+ */
+export const apiUsageLogs = pgTable(
+  'api_usage_logs',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    siteId: text('site_id')
+      .notNull()
+      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
+    platform: text('platform').notNull(), // 'GA4', 'STRIPE', 'UPTIME', 'LEMON_SQUEEZY', 'SHOPIFY'
+    apiCallCount: integer('api_call_count').default(1).notNull(),
+    success: boolean('success').default(true).notNull(),
+    errorMessage: text('error_message'),
+    responseTime: integer('response_time'), // milliseconds
+    timestamp: timestamp('timestamp').defaultNow().notNull(),
+  },
+  (table) => [
+    index('idx_api_usage_user_date').on(table.userId, table.timestamp),
+    index('idx_api_usage_site').on(table.siteId),
+    index('idx_api_usage_platform').on(table.platform),
+  ]
+);
+
+/**
+ * API 使用统计表
+ * 按天聚合的 API 使用统计
+ */
+export const apiUsageStats = pgTable(
+  'api_usage_stats',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    date: text('date').notNull(), // YYYY-MM-DD
+    platform: text('platform').notNull(),
+    totalCalls: integer('total_calls').default(0).notNull(),
+    successfulCalls: integer('successful_calls').default(0).notNull(),
+    failedCalls: integer('failed_calls').default(0).notNull(),
+    averageResponseTime: integer('average_response_time'), // milliseconds
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    index('idx_api_stats_user_date').on(table.userId, table.date),
+    index('idx_api_stats_platform').on(table.platform),
+    // Unique constraint: one record per user per day per platform
+    index('idx_api_stats_unique').on(table.userId, table.date, table.platform),
+  ]
+);
+

@@ -10,11 +10,22 @@ import {
   PaymentInterval,
   createStripeProvider,
   createPayPalProvider,
-  createAlipayProvider
+  createAlipayProvider,
+  createCreemProvider
 } from '@/extensions/payment';
 
 // 初始化支付提供商
 function initializePaymentProviders() {
+  // Creem (优先使用)
+  if (process.env.CREEM_API_KEY) {
+    const creemProvider = createCreemProvider({
+      apiKey: process.env.CREEM_API_KEY,
+      signingSecret: process.env.CREEM_SIGNING_SECRET,
+      environment: (process.env.CREEM_ENVIRONMENT as 'sandbox' | 'production') || 'sandbox'
+    });
+    paymentManager.addProvider(creemProvider, true);
+  }
+
   // Stripe
   if (process.env.STRIPE_SECRET_KEY) {
     const stripeProvider = createStripeProvider({
@@ -23,7 +34,7 @@ function initializePaymentProviders() {
       signingSecret: process.env.STRIPE_WEBHOOK_SECRET,
       allowedPaymentMethods: ['card', 'wechat_pay', 'alipay']
     });
-    paymentManager.addProvider(stripeProvider, true);
+    paymentManager.addProvider(stripeProvider, !process.env.CREEM_API_KEY);
   }
 
   // PayPal
@@ -58,26 +69,19 @@ export async function POST(req: NextRequest) {
     const { 
       amount, 
       currency, 
-      provider = 'stripe',
-      type = 'one-time',
+      provider = 'creem',
+      type = 'subscription',
       description,
       metadata,
-      plan
+      plan,
+      productId
     } = body;
 
-    // 验证必填参数
-    if (!amount || !currency) {
+    // 如果使用 Creem，productId 是必需的
+    if (provider === 'creem' && !productId) {
       return Response.json({
         success: false,
-        error: 'amount and currency are required'
-      }, { status: 400 });
-    }
-
-    // 验证金额
-    if (amount <= 0) {
-      return Response.json({
-        success: false,
-        error: 'amount must be greater than 0'
+        error: 'productId is required for Creem payments'
       }, { status: 400 });
     }
 
@@ -92,11 +96,9 @@ export async function POST(req: NextRequest) {
     // 构建订单
     const order: any = {
       type: type === 'subscription' ? PaymentType.SUBSCRIPTION : PaymentType.ONE_TIME,
-      price: {
-        amount: Math.round(amount), // 确保是整数
-        currency: currency.toLowerCase()
-      },
-      description: description || '购买积分',
+      productId: productId, // Creem 需要
+      requestId: `${user.id}_${Date.now()}`, // 唯一请求 ID
+      description: description || 'SoloBoard Subscription',
       customer: {
         id: user.id,
         email: user.email,
@@ -106,19 +108,35 @@ export async function POST(req: NextRequest) {
       cancelUrl: `${process.env.NEXT_PUBLIC_APP_URL}/payment/cancel`,
       metadata: {
         userId: user.id,
+        planName: plan?.name,
         ...metadata
       }
     };
 
-    // 如果是订阅支付，添加计划信息
-    if (type === 'subscription' && plan) {
-      order.plan = {
-        name: plan.name || 'Subscription Plan',
-        description: plan.description,
-        interval: plan.interval || PaymentInterval.MONTH,
-        intervalCount: plan.intervalCount || 1,
-        trialPeriodDays: plan.trialPeriodDays
+    // 如果不是 Creem，添加价格信息
+    if (provider !== 'creem') {
+      if (!amount || !currency) {
+        return Response.json({
+          success: false,
+          error: 'amount and currency are required'
+        }, { status: 400 });
+      }
+
+      order.price = {
+        amount: Math.round(amount),
+        currency: currency.toLowerCase()
       };
+
+      // 如果是订阅支付，添加计划信息
+      if (type === 'subscription' && plan) {
+        order.plan = {
+          name: plan.name || 'Subscription Plan',
+          description: plan.description,
+          interval: plan.interval || PaymentInterval.MONTH,
+          intervalCount: plan.intervalCount || 1,
+          trialPeriodDays: plan.trialPeriodDays
+        };
+      }
     }
 
     // 创建支付会话
