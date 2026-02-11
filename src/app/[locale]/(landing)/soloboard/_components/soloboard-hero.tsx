@@ -56,11 +56,22 @@ export function SoloBoardHero() {
   // 使用 SWR 实现实时数据刷新
   const { data, error, mutate, isLoading } = useSWR<SitesResponse>(
     '/api/soloboard/sites',
-    fetcher,
+    async (url: string) => {
+      const res = await fetch(url);
+      // 如果是 401 未授权，返回空数据而不是错误
+      if (res.status === 401) {
+        return { success: true, sites: [], total: 0 };
+      }
+      if (!res.ok) {
+        throw new Error('Failed to fetch');
+      }
+      return res.json();
+    },
     {
       refreshInterval: 30000, // 每 30 秒自动刷新
       revalidateOnFocus: true, // 窗口获得焦点时刷新
       revalidateOnReconnect: true, // 网络重连时刷新
+      shouldRetryOnError: false, // 不自动重试错误
     }
   );
 
