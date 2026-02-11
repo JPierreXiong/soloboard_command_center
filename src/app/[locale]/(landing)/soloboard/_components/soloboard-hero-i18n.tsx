@@ -1,7 +1,7 @@
 /**
- * SoloBoard Hero Component
+ * SoloBoard Hero Component with i18n
  * 
- * Main SoloBoard dashboard content with i18n support
+ * Main SoloBoard dashboard content with internationalization support
  * Placed in Hero area, using ShipAny standard layout
  */
 
@@ -53,18 +53,16 @@ export function SoloBoardHero() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>('overview');
 
-  // 使用 SWR 实现实时数据刷新
   const { data, error, mutate, isLoading } = useSWR<SitesResponse>(
     '/api/soloboard/sites',
     fetcher,
     {
-      refreshInterval: 30000, // 每 30 秒自动刷新
-      revalidateOnFocus: true, // 窗口获得焦点时刷新
-      revalidateOnReconnect: true, // 网络重连时刷新
+      refreshInterval: 30000,
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true,
     }
   );
 
-  // 手动刷新
   const handleRefresh = async () => {
     setIsRefreshing(true);
     try {
@@ -77,13 +75,11 @@ export function SoloBoardHero() {
     }
   };
 
-  // 添加站点成功后刷新列表
   const handleSiteAdded = () => {
     mutate();
     setIsAddDialogOpen(false);
   };
 
-  // View mode icons
   const viewIcons = {
     overview: LayoutDashboard,
     analytics: TrendingUp,
@@ -93,7 +89,6 @@ export function SoloBoardHero() {
 
   const ViewIcon = viewIcons[viewMode];
 
-  // 加载状态
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -102,7 +97,6 @@ export function SoloBoardHero() {
     );
   }
 
-  // 错误状态
   if (error) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -125,7 +119,6 @@ export function SoloBoardHero() {
   return (
     <div className="py-12">
       <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 页面标题 */}
         <div className="mb-8">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
@@ -140,7 +133,6 @@ export function SoloBoardHero() {
               </p>
             </div>
             <div className="flex items-center space-x-3">
-              {/* Command Center 下拉选择 */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center space-x-2">
@@ -181,7 +173,6 @@ export function SoloBoardHero() {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              {/* 刷新按钮 */}
               <button
                 onClick={handleRefresh}
                 disabled={isRefreshing}
@@ -191,7 +182,6 @@ export function SoloBoardHero() {
                 <span className="hidden sm:inline">{t('refresh')}</span>
               </button>
 
-              {/* 添加站点按钮 */}
               <button
                 onClick={() => setIsAddDialogOpen(true)}
                 className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl flex items-center space-x-2"
@@ -203,9 +193,7 @@ export function SoloBoardHero() {
           </div>
         </div>
 
-        {/* 统计卡片 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {/* 总站点数 */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
@@ -222,7 +210,6 @@ export function SoloBoardHero() {
             </div>
           </div>
 
-          {/* 在线站点 */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
@@ -239,7 +226,6 @@ export function SoloBoardHero() {
             </div>
           </div>
 
-          {/* 最后同步 */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
@@ -262,7 +248,6 @@ export function SoloBoardHero() {
           </div>
         </div>
 
-        {/* 九宫格站点监控 */}
         {sites.length === 0 ? (
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-12 text-center border border-gray-100 dark:border-gray-700">
             <div className="max-w-md mx-auto">
@@ -288,7 +273,6 @@ export function SoloBoardHero() {
         )}
       </div>
 
-      {/* 添加站点对话框 */}
       <AddSiteDialog
         open={isAddDialogOpen}
         onClose={() => setIsAddDialogOpen(false)}
@@ -297,3 +281,4 @@ export function SoloBoardHero() {
     </div>
   );
 }
+

@@ -1,117 +1,184 @@
 {
   "metadata": {
-    "title": "Pricing",
-    "description": "Choose your Digital Heirloom plan"
+    "title": "Pricing - SoloBoard",
+    "description": "Simple pricing for indie empires. No success tax. Monitor all your SaaS products from one dashboard."
   },
   "pricing": {
     "id": "pricing",
-    "sr_only_title": "Digital Heirloom Pricing",
-    "title": "Pricing",
-    "description": "Secure your digital legacy with our tiered plans. Start free, upgrade when ready.",
+    "sr_only_title": "SoloBoard Pricing",
+    "title": "Choose Your Plan",
+    "description": "Simple pricing for indie empires. No success tax.",
     "groups": [
+      {
+        "name": "monthly",
+        "title": "Monthly",
+        "is_featured": true,
+        "label": "Most Flexible"
+      },
       {
         "name": "annual",
         "title": "Annual",
-        "is_featured": true,
-        "label": "Recommended"
+        "is_featured": false,
+        "label": "Save 17%"
       }
     ],
     "items": [
       {
-        "title": "Free",
-        "description": "Try it out with basic backup",
-        "label": "Get Started",
+        "title": "Starter",
+        "description": "Discovery",
+        "label": "Free Forever",
         "features_title": "Includes",
         "features": [
-          "Text-only storage (10KB)",
-          "1 beneficiary",
-          "Fixed heartbeat (180 days)",
-          "Email notifications only",
-          "Basic PDF recovery kit",
-          "❌ Dead Man's Switch (manual export only)"
+          "1 Project",
+          "3 Data Sources (GA4/Stripe/Uptime)",
+          "48h Auto-refresh",
+          "7-day Data Cache",
+          "Basic Dashboard",
+          "Community Support"
         ],
-        "interval": "year",
+        "interval": "month",
         "amount": 0,
         "currency": "USD",
         "price": "$0",
         "original_price": "",
         "unit": "/ forever",
         "is_featured": false,
-        "tip": "Perfect for trying out the service!",
+        "tip": "Perfect for trying out SoloBoard",
         "button": {
-          "title": "Start Free",
-          "url": "/digital-heirloom/setup/step-1-master-password",
-          "icon": "RiFlashlightFill"
+          "title": "Get Started",
+          "url": "/sign-up",
+          "icon": "LayoutDashboard"
         },
-        "product_id": "digital-heirloom-free",
-        "product_name": "Digital Heirloom Free",
-        "group": "annual",
-        "plan_name": "Free"
+        "product_id": "soloboard-starter",
+        "product_name": "SoloBoard Starter",
+        "group": "monthly",
+        "plan_name": "Starter"
       },
       {
         "title": "Base",
-        "description": "Core digital asset inheritance",
-        "label": "Popular",
-        "features_title": "Everything in Free, plus",
+        "description": "Indie Hackers",
+        "label": "Most Popular",
+        "features_title": "Everything in Starter, plus",
         "features": [
-          "50MB storage (small attachments/images)",
-          "✅ Automatic Dead Man's Switch",
-          "Up to 3 beneficiaries",
-          "Adjustable heartbeat (30-365 days)",
-          "Email + SMS notifications (global)",
-          "Basic PDF recovery kit",
-          "Priority support"
+          "5 Projects",
+          "All Data Sources (Shopify/Lemon Squeezy)",
+          "6h Auto-refresh",
+          "1-year History",
+          "Email Alerts",
+          "Priority Support",
+          "Advanced Analytics"
+        ],
+        "interval": "month",
+        "amount": 1900,
+        "currency": "USD",
+        "price": "$19",
+        "original_price": "",
+        "unit": "/ month",
+        "is_featured": true,
+        "tip": "Best for growing solopreneurs",
+        "button": {
+          "title": "Go Pro",
+          "url": "/sign-up",
+          "icon": "Zap"
+        },
+        "product_id": "soloboard-base-monthly",
+        "product_name": "SoloBoard Base (Monthly)",
+        "group": "monthly",
+        "plan_name": "Base"
+      },
+      {
+        "title": "Base",
+        "description": "Indie Hackers",
+        "label": "Save $38/year",
+        "features_title": "Everything in Starter, plus",
+        "features": [
+          "5 Projects",
+          "All Data Sources (Shopify/Lemon Squeezy)",
+          "6h Auto-refresh",
+          "1-year History",
+          "Email Alerts",
+          "Priority Support",
+          "Advanced Analytics"
         ],
         "interval": "year",
-        "amount": 4900,
+        "amount": 19000,
         "currency": "USD",
-        "price": "$49",
-        "original_price": "",
+        "price": "$190",
+        "original_price": "$228",
         "unit": "/ year",
         "is_featured": true,
-        "tip": "Best for personal digital legacy!",
+        "tip": "2 months free with annual billing",
         "button": {
-          "title": "Get Base",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
+          "title": "Go Pro",
+          "url": "/sign-up",
+          "icon": "Zap"
         },
-        "product_id": "digital-heirloom-base-annual",
-        "product_name": "Digital Heirloom Base (Annual)",
-        "payment_product_id": "prod_4oN2BFtSPSpAnYcvUN0uoi",
+        "product_id": "soloboard-base-annual",
+        "product_name": "SoloBoard Base (Annual)",
         "group": "annual",
         "plan_name": "Base"
       },
       {
         "title": "Pro",
-        "description": "Deep legacy planning with physical integration",
+        "description": "Portfolio Management",
         "label": "Premium",
         "features_title": "Everything in Base, plus",
         "features": [
-          "2GB storage (videos/important documents)",
-          "✅ Priority Dead Man's Switch + instant alerts",
-          "Unlimited beneficiaries (family trust mode)",
-          "Granular heartbeat (1 day - 10 years)",
-          "Email + SMS + human verification",
-          "✅ ShipAny logistics auto-trigger",
-          "Physical backup card mailing (extra fee)",
-          "24/7 priority support"
+          "10 Projects",
+          "60-min Real-time Sync",
+          "White-label (Custom Domain)",
+          "Permanent History",
+          "Team Collaboration",
+          "API Access",
+          "Dedicated Support"
+        ],
+        "interval": "month",
+        "amount": 3900,
+        "currency": "USD",
+        "price": "$39",
+        "original_price": "",
+        "unit": "/ month",
+        "is_featured": false,
+        "tip": "Perfect for agencies and portfolios",
+        "button": {
+          "title": "Contact Sales",
+          "url": "/contact",
+          "icon": "Mail"
+        },
+        "product_id": "soloboard-pro-monthly",
+        "product_name": "SoloBoard Pro (Monthly)",
+        "group": "monthly",
+        "plan_name": "Pro"
+      },
+      {
+        "title": "Pro",
+        "description": "Portfolio Management",
+        "label": "Save $78/year",
+        "features_title": "Everything in Base, plus",
+        "features": [
+          "10 Projects",
+          "60-min Real-time Sync",
+          "White-label (Custom Domain)",
+          "Permanent History",
+          "Team Collaboration",
+          "API Access",
+          "Dedicated Support"
         ],
         "interval": "year",
-        "amount": 14900,
+        "amount": 39000,
         "currency": "USD",
-        "price": "$149",
-        "original_price": "",
+        "price": "$390",
+        "original_price": "$468",
         "unit": "/ year",
         "is_featured": false,
-        "tip": "Perfect for families and estates!",
+        "tip": "2 months free with annual billing",
         "button": {
-          "title": "Get Pro",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
+          "title": "Contact Sales",
+          "url": "/contact",
+          "icon": "Mail"
         },
-        "product_id": "digital-heirloom-pro-annual",
-        "product_name": "Digital Heirloom Pro (Annual)",
-        "payment_product_id": "prod_4epepOcgUjSjPoWmAnBaFt",
+        "product_id": "soloboard-pro-annual",
+        "product_name": "SoloBoard Pro (Annual)",
         "group": "annual",
         "plan_name": "Pro"
       }

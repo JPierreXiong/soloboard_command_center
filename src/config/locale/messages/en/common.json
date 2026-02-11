@@ -42,5 +42,36 @@
   "locale_detector": {
     "title": "We detected your browser language is {locale}. Switch to it?",
     "switch_to": "Switch to {locale}"
+  },
+  "soloboard": {
+    "title": "Command Center",
+    "subtitle": "Monitor {count} sites at a glance, more time for coffee ☕",
+    "subtitle_empty": "Your unified dashboard for all SaaS products",
+    "refresh": "Refresh",
+    "add_site": "Add Site",
+    "command_center": "Command Center",
+    "select_view": "Select View",
+    "stats": {
+      "monitored_sites": "Monitored Sites",
+      "online_status": "Online Status",
+      "last_sync": "Last Sync",
+      "not_synced": "Not Synced"
+    },
+    "views": {
+      "overview": "Overview Dashboard",
+      "analytics": "Analytics Hub",
+      "revenue": "Revenue Tracker",
+      "health": "Health Monitor"
+    },
+    "empty": {
+      "title": "No Sites Yet",
+      "description": "Click 'Add Site' to start monitoring your first website",
+      "button": "Add Your First Site"
+    },
+    "loading": "Loading...",
+    "error": {
+      "load_failed": "Failed to Load",
+      "retry": "Retry"
+    }
   }
 }

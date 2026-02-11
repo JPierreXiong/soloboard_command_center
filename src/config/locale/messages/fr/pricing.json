@@ -1,124 +1,192 @@
 {
   "metadata": {
-    "title": "Tarification",
-    "description": "Choisissez votre plan Digital Heirloom"
+    "title": "Tarification - SoloBoard",
+    "description": "Des prix simples pour les independants. Pas de taxe sur le succes. Surveillez tous vos produits SaaS depuis un seul tableau de bord."
   },
   "pricing": {
     "id": "pricing",
-    "sr_only_title": "Tarification Digital Heirloom",
-    "title": "Tarification",
-    "description": "Sécurisez votre héritage numérique avec nos plans à plusieurs niveaux. Commencez gratuitement, mettez à niveau quand vous êtes prêt.",
+    "sr_only_title": "Tarification SoloBoard",
+    "title": "Choisissez votre forfait",
+    "description": "Des prix simples pour les independants. Pas de taxe sur le succes.",
     "groups": [
+      {
+        "name": "monthly",
+        "title": "Mensuel",
+        "is_featured": true,
+        "label": "Plus Flexible"
+      },
       {
         "name": "annual",
         "title": "Annuel",
-        "is_featured": true,
-        "label": "Recommandé"
+        "is_featured": false,
+        "label": "Economisez 17%"
       }
     ],
     "items": [
       {
-        "title": "Gratuit",
-        "description": "Essayez avec sauvegarde de base",
-        "label": "Commencer",
+        "title": "Starter",
+        "description": "Decouverte",
+        "label": "Gratuit pour toujours",
         "features_title": "Inclus",
         "features": [
-          "Stockage texte uniquement (10KB)",
-          "1 bénéficiaire",
-          "Rythme cardiaque fixe (180 jours)",
-          "Notifications par e-mail uniquement",
-          "Kit de récupération PDF de base",
-          "❌ Interrupteur mort-vivant (exportation manuelle uniquement)"
+          "1 Projet",
+          "3 Sources de donnees (GA4/Stripe/Uptime)",
+          "Rafraichissement 48h",
+          "Cache de 7 jours",
+          "Dashboard de base",
+          "Support communautaire"
         ],
-        "interval": "year",
+        "interval": "month",
         "amount": 0,
         "currency": "USD",
-        "price": "Gratuit",
+        "price": "$0",
         "original_price": "",
-        "unit": "/ pour toujours",
+        "unit": "/ toujours",
         "is_featured": false,
-        "tip": "Parfait pour essayer le service !",
+        "tip": "Parfait pour essayer SoloBoard",
         "button": {
-          "title": "Commencer gratuitement",
-          "url": "/digital-heirloom/setup/step-1-master-password",
-          "icon": "RiFlashlightFill"
+          "title": "Demarrer",
+          "url": "/sign-up",
+          "icon": "LayoutDashboard"
         },
-        "product_id": "digital-heirloom-free",
-        "product_name": "Digital Heirloom Gratuit",
-        "group": "annual",
-        "plan_name": "Gratuit"
+        "product_id": "soloboard-starter",
+        "product_name": "SoloBoard Starter",
+        "group": "monthly",
+        "plan_name": "Starter"
       },
       {
         "title": "Base",
-        "description": "Héritage d'actifs numériques essentiels",
-        "label": "Populaire",
-        "features_title": "Tout dans Gratuit, plus",
+        "description": "Indie Hackers",
+        "label": "Le plus populaire",
+        "features_title": "Tout dans Starter, plus",
         "features": [
-          "Stockage 50MB (petites pièces jointes/images)",
-          "✅ Interrupteur mort-vivant automatique",
-          "Jusqu'à 3 bénéficiaires",
-          "Rythme cardiaque ajustable (30-365 jours)",
-          "Notifications par e-mail + SMS (mondial)",
-          "Kit de récupération PDF de base",
-          "Support prioritaire"
+          "5 Projets",
+          "Toutes les sources (Shopify/Lemon Squeezy)",
+          "Rafraichissement 6h",
+          "Historique 1 an",
+          "Alertes Email",
+          "Support Prioritaire",
+          "Analyses avancees"
+        ],
+        "interval": "month",
+        "amount": 1900,
+        "currency": "USD",
+        "price": "$19",
+        "original_price": "",
+        "unit": "/ mois",
+        "is_featured": true,
+        "tip": "Ideal pour les solopreneurs en croissance",
+        "button": {
+          "title": "Passer Pro",
+          "url": "/sign-up",
+          "icon": "Zap"
+        },
+        "product_id": "soloboard-base-monthly",
+        "product_name": "SoloBoard Base (Mensuel)",
+        "group": "monthly",
+        "plan_name": "Base"
+      },
+      {
+        "title": "Base",
+        "description": "Indie Hackers",
+        "label": "Economisez $38/an",
+        "features_title": "Tout dans Starter, plus",
+        "features": [
+          "5 Projets",
+          "Toutes les sources (Shopify/Lemon Squeezy)",
+          "Rafraichissement 6h",
+          "Historique 1 an",
+          "Alertes Email",
+          "Support Prioritaire",
+          "Analyses avancees"
         ],
         "interval": "year",
-        "amount": 4900,
+        "amount": 19000,
         "currency": "USD",
-        "price": "$49",
-        "original_price": "",
+        "price": "$190",
+        "original_price": "$228",
         "unit": "/ an",
         "is_featured": true,
-        "tip": "Idéal pour l'héritage numérique personnel !",
+        "tip": "2 mois gratuits avec facturation annuelle",
         "button": {
-          "title": "Obtenir Base",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
+          "title": "Passer Pro",
+          "url": "/sign-up",
+          "icon": "Zap"
         },
-        "product_id": "digital-heirloom-base-annual",
-        "product_name": "Digital Heirloom Base (Annuel)",
-        "payment_product_id": "prod_4oN2BFtSPSpAnYcvUN0uoi",
+        "product_id": "soloboard-base-annual",
+        "product_name": "SoloBoard Base (Annuel)",
         "group": "annual",
         "plan_name": "Base"
       },
       {
         "title": "Pro",
-        "description": "Planification approfondie de l'héritage avec intégration physique",
+        "description": "Gestion de Portfolio",
         "label": "Premium",
         "features_title": "Tout dans Base, plus",
         "features": [
-          "Stockage 2GB (vidéos/documents importants)",
-          "✅ Interrupteur mort-vivant prioritaire + alertes instantanées",
-          "Bénéficiaires illimités (mode fiducie familiale)",
-          "Rythme cardiaque granulaire (1 jour - 10 ans)",
-          "E-mail + SMS + vérification humaine",
-          "✅ Déclenchement automatique de la logistique ShipAny",
-          "Envoi de carte de sauvegarde physique (frais supplémentaires)",
-          "Support prioritaire 24/7"
+          "10 Projets",
+          "Sync temps reel 60 min",
+          "Marque Blanche (Domaine Perso)",
+          "Historique Permanent",
+          "Collaboration d'Equipe",
+          "Acces API",
+          "Support Dedie"
+        ],
+        "interval": "month",
+        "amount": 3900,
+        "currency": "USD",
+        "price": "$39",
+        "original_price": "",
+        "unit": "/ mois",
+        "is_featured": false,
+        "tip": "Parfait pour les agences et portfolios",
+        "button": {
+          "title": "Contactez-nous",
+          "url": "/contact",
+          "icon": "Mail"
+        },
+        "product_id": "soloboard-pro-monthly",
+        "product_name": "SoloBoard Pro (Mensuel)",
+        "group": "monthly",
+        "plan_name": "Pro"
+      },
+      {
+        "title": "Pro",
+        "description": "Gestion de Portfolio",
+        "label": "Economisez $78/an",
+        "features_title": "Tout dans Base, plus",
+        "features": [
+          "10 Projets",
+          "Sync temps reel 60 min",
+          "Marque Blanche (Domaine Perso)",
+          "Historique Permanent",
+          "Collaboration d'Equipe",
+          "Acces API",
+          "Support Dedie"
         ],
         "interval": "year",
-        "amount": 14900,
+        "amount": 39000,
         "currency": "USD",
-        "price": "$149",
-        "original_price": "",
+        "price": "$390",
+        "original_price": "$468",
         "unit": "/ an",
         "is_featured": false,
-        "tip": "Parfait pour les familles et les successions !",
+        "tip": "2 mois gratuits avec facturation annuelle",
         "button": {
-          "title": "Obtenir Pro",
-          "url": "/#pricing",
-          "icon": "RiFlashlightFill"
+          "title": "Contactez-nous",
+          "url": "/contact",
+          "icon": "Mail"
         },
-        "product_id": "digital-heirloom-pro-annual",
-        "product_name": "Digital Heirloom Pro (Annuel)",
-        "payment_product_id": "prod_4epepOcgUjSjPoWmAnBaFt",
+        "product_id": "soloboard-pro-annual",
+        "product_name": "SoloBoard Pro (Annuel)",
         "group": "annual",
         "plan_name": "Pro"
       }
     ]
   },
   "page": {
-    "current_plan": "Plan actuel",
-    "processing": "Traitement en cours"
+    "current_plan": "Forfait Actuel",
+    "processing": "Traitement"
   }
 }
+

@@ -42,5 +42,37 @@
   "locale_detector": {
     "title": "检测到浏览器语言是: {locale}，是否切换？",
     "switch_to": "切换到{locale}"
+  },
+  "soloboard": {
+    "title": "指挥中心",
+    "subtitle": "一屏看透 {count} 个站，把时间还给咖啡 ☕",
+    "subtitle_empty": "您所有 SaaS 产品的统一仪表盘",
+    "refresh": "刷新",
+    "add_site": "添加站点",
+    "command_center": "指挥中心",
+    "select_view": "选择视图",
+    "stats": {
+      "monitored_sites": "监控站点",
+      "online_status": "在线状态",
+      "last_sync": "最后同步",
+      "not_synced": "未同步"
+    },
+    "views": {
+      "overview": "总览仪表盘",
+      "analytics": "分析中心",
+      "revenue": "收入追踪",
+      "health": "健康监控"
+    },
+    "empty": {
+      "title": "还没有监控站点",
+      "description": "点击添加站点按钮，开始监控您的第一个网站",
+      "button": "添加第一个站点"
+    },
+    "loading": "加载中...",
+    "error": {
+      "load_failed": "加载失败",
+      "retry": "重试"
+    }
   }
 }
+

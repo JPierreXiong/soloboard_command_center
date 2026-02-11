@@ -42,5 +42,36 @@
   "locale_detector": {
     "title": "Nous avons détecté que la langue de votre navigateur est {locale}. Voulez-vous changer ?",
     "switch_to": "Passer à {locale}"
+  },
+  "soloboard": {
+    "title": "Centre de Commande",
+    "subtitle": "Surveillez {count} sites en un coup d'œil, plus de temps pour le café ☕",
+    "subtitle_empty": "Votre tableau de bord unifié pour tous les produits SaaS",
+    "refresh": "Actualiser",
+    "add_site": "Ajouter un Site",
+    "command_center": "Centre de Commande",
+    "select_view": "Sélectionner la Vue",
+    "stats": {
+      "monitored_sites": "Sites Surveillés",
+      "online_status": "État en Ligne",
+      "last_sync": "Dernière Synchro",
+      "not_synced": "Non Synchronisé"
+    },
+    "views": {
+      "overview": "Tableau de Bord Général",
+      "analytics": "Centre d'Analyse",
+      "revenue": "Suivi des Revenus",
+      "health": "Moniteur de Santé"
+    },
+    "empty": {
+      "title": "Aucun Site Encore",
+      "description": "Cliquez sur 'Ajouter un Site' pour commencer à surveiller votre premier site web",
+      "button": "Ajouter Votre Premier Site"
+    },
+    "loading": "Chargement...",
+    "error": {
+      "load_failed": "Échec du Chargement",
+      "retry": "Réessayer"
+    }
   }
 }
