@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Digital Heirloom Template Two",
-    "description": "Digital Heirloom est un modèle NextJS pour créer des startups SaaS IA. Déployez rapidement avec une variété de modèles et de composants.",
-    "keywords": "digital heirloom, digital-heirloom, digital-heirloom-demo"
+    "title": "SoloBoard - Surveillez tous vos sites sur un seul écran",
+    "description": "Suivez les analyses GA4, les revenus Stripe et la disponibilité de jusqu'à 10 sites dans un seul tableau de bord magnifique. Conçu pour les entrepreneurs solo. Économisez 2 heures par jour.",
+    "keywords": "surveillance de site web, tableau de bord ga4, analyses stripe, surveillance en ligne, tableau de bord multi-sites, outils entrepreneur solo, analyses de site web, suivi des revenus, surveillance de site"
   },
   "sign": {
     "sign_in_title": "Se connecter",
@@ -10,15 +10,15 @@
     "sign_up_title": "S'inscrire",
     "sign_up_description": "Créer un compte",
     "email_title": "E-mail",
-    "email_placeholder": "Entrez votre e-mail ici",
+    "email_placeholder": "Entrez votre e-mail",
     "password_title": "Mot de passe",
-    "password_placeholder": "Entrez votre mot de passe ici",
+    "password_placeholder": "Entrez votre mot de passe",
     "forgot_password": "Mot de passe oublié ?",
     "or": "Ou",
     "continue": "Continuer",
     "no_account": "Vous n'avez pas de compte ?",
     "already_have_account": "Vous avez déjà un compte ?",
-    "email_sign_in": "Se connecter avec l'e-mail",
+    "email_sign_in": "Se connecter avec e-mail",
     "google_sign_in_title": "Se connecter avec Google",
     "github_sign_in_title": "Se connecter avec GitHub",
     "close_title": "Fermer",
@@ -26,9 +26,9 @@
     "sign_out_title": "Se déconnecter",
     "billing_title": "Facturation",
     "name_title": "Nom",
-    "name_placeholder": "Entrez votre nom ici",
+    "name_placeholder": "Entrez votre nom",
     "admin_title": "Système d'administration",
-    "credits_title": "Crédits : {credits}",
+    "credits_title": "Crédits: {credits}",
     "email_already_registered": "Cet e-mail est déjà enregistré",
     "redirecting_to_signin": "Redirection vers la page de connexion...",
     "password_requirements_error": "Le mot de passe doit contenir au moins 8 caractères",
@@ -42,5 +42,25 @@
   "locale_detector": {
     "title": "Nous avons détecté que la langue de votre navigateur est {locale}. Voulez-vous changer ?",
     "switch_to": "Passer à {locale}"
+  },
+  "soloboard": {
+    "title": "Tableau de bord SoloBoard",
+    "description": "Surveillez tous vos sites en un seul endroit. Suivez les analyses GA4, les revenus de paiement et l'état en ligne.",
+    "enter_dashboard": "Accéder au tableau de bord",
+    "view_pricing": "Voir les tarifs",
+    "features": {
+      "ga4": {
+        "title": "Analyses GA4",
+        "description": "Suivez les visiteurs, les pages vues et le comportement des utilisateurs en temps réel"
+      },
+      "revenue": {
+        "title": "Revenus de paiement",
+        "description": "Surveillez les ventes du jour, le MRR et le nombre de transactions depuis Stripe, Creem, Alipay, PayPal"
+      },
+      "uptime": {
+        "title": "Surveillance de disponibilité",
+        "description": "Recevez des alertes instantanées lorsque vos sites tombent en panne"
+      }
+    }
   }
 }

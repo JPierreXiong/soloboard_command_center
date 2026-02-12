@@ -41,3 +41,4 @@ export function hasAdminPermission(email: string, permission: string): boolean {
   return ADMIN_CONFIG.permissions.includes(permission);
 }
 
+

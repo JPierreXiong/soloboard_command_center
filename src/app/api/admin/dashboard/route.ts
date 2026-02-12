@@ -4,22 +4,30 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@/core/auth';
 import { db } from '@/core/db';
 import { user, order, subscription } from '@/config/db/schema';
-import { isAdmin } from '@/config/admin';
 import { eq, gte, sql, and } from 'drizzle-orm';
+import { PERMISSIONS } from '@/core/rbac';
+import { getSignUser } from '@/shared/models/user';
+import { hasPermission } from '@/shared/services/rbac';
 
 export async function GET(req: NextRequest) {
   try {
     // 1. 验证管理员身份
-    const session = await auth.api.getSession({
-      headers: req.headers,
-    });
-
-    if (!session?.user || !isAdmin(session.user.email)) {
+    const signUser = await getSignUser();
+    
+    if (!signUser) {
       return NextResponse.json(
-        { error: 'Unauthorized - Admin access required' },
+        { error: 'Unauthorized - Please sign in' },
+        { status: 401 }
+      );
+    }
+
+    const isAdmin = await hasPermission(signUser.id, PERMISSIONS.ADMIN_ACCESS);
+    
+    if (!isAdmin) {
+      return NextResponse.json(
+        { error: 'Forbidden - Admin access required' },
         { status: 403 }
       );
     }

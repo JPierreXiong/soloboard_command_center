@@ -50,7 +50,7 @@
     "id": "hero",
     "title": "一屏监控所有网站",
     "highlight_text": "",
-    "description": "不再频繁切换标签页。在一个漂亮的仪表盘中追踪最多 10 个网站的 GA4 分析、Stripe 收入和在线状态。专为独立创业者打造。",
+    "description": "不再频繁切换标签页。在一个漂亮的仪表盘中追踪最多 10 个网站的 GA4 分析、支付收入（Stripe、Creem、支付宝、PayPal）和在线状态。专为独立创业者打造。",
     "announcement": {
       "badge": "效率",
       "title": "⚡ 每天节省 2 小时",
@@ -112,8 +112,8 @@
         "icon": "BarChart3"
       },
       {
-        "title": "Stripe 收入",
-        "description": "无需打开 Stripe 仪表盘即可监控今日销售、MRR 和交易数量。",
+        "title": "支付收入",
+        "description": "无需打开多个仪表盘即可监控来自 Stripe、Creem、支付宝、PayPal 的今日销售、MRR 和交易数量。",
         "icon": "DollarSign"
       },
       {
@@ -185,6 +185,20 @@
         "className": ""
       }
     ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "订阅我们的新闻通讯",
+    "description": "获取 SoloBoard 的生产力技巧和产品更新。",
+    "submit": {
+      "input": {
+        "placeholder": "输入您的邮箱"
+      },
+      "button": {
+        "title": "订阅"
+      },
+      "action": "/api/subscribe"
+    }
   },
   "subscribe": {
     "id": "subscribe",

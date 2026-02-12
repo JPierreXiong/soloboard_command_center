@@ -42,5 +42,25 @@
   "locale_detector": {
     "title": "We detected your browser language is {locale}. Switch to it?",
     "switch_to": "Switch to {locale}"
+  },
+  "soloboard": {
+    "title": "SoloBoard Dashboard",
+    "description": "Monitor all your sites in one place. Track GA4 analytics, payment revenue, and uptime status.",
+    "enter_dashboard": "Enter Dashboard",
+    "view_pricing": "View Pricing",
+    "features": {
+      "ga4": {
+        "title": "GA4 Analytics",
+        "description": "Track visitors, page views, and user behavior in real-time"
+      },
+      "revenue": {
+        "title": "Payment Revenue",
+        "description": "Monitor today's sales, MRR, and transaction counts from Stripe, Creem, Alipay, PayPal"
+      },
+      "uptime": {
+        "title": "Uptime Monitoring",
+        "description": "Get instant alerts when your sites go down"
+      }
+    }
   }
 }

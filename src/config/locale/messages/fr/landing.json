@@ -50,7 +50,7 @@
     "id": "hero",
     "title": "Surveillez tous vos sites sur un seul écran",
     "highlight_text": "",
-    "description": "Arrêtez de changer d'onglets. Suivez les analyses GA4, les revenus Stripe et la disponibilité de jusqu'à 10 sites dans un seul tableau de bord magnifique. Conçu pour les entrepreneurs solo.",
+    "description": "Arrêtez de changer d'onglets. Suivez les analyses GA4, les revenus de paiement (Stripe, Creem, Alipay, PayPal) et la disponibilité de jusqu'à 10 sites dans un seul tableau de bord magnifique. Conçu pour les entrepreneurs solo.",
     "announcement": {
       "badge": "Efficacité",
       "title": "⚡ Économisez 2 heures par jour",
@@ -112,8 +112,8 @@
         "icon": "BarChart3"
       },
       {
-        "title": "Revenus Stripe",
-        "description": "Surveillez les ventes d'aujourd'hui, le MRR et le nombre de transactions sans ouvrir le tableau de bord Stripe.",
+        "title": "Revenus de paiement",
+        "description": "Surveillez les ventes d'aujourd'hui, le MRR et le nombre de transactions depuis Stripe, Creem, Alipay, PayPal sans ouvrir plusieurs tableaux de bord.",
         "icon": "DollarSign"
       },
       {

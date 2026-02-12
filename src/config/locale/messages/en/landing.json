@@ -50,7 +50,7 @@
     "id": "hero",
     "title": "Monitor All Your Sites in One Dashboard",
     "highlight_text": "",
-    "description": "Stop switching between tabs. Track GA4 analytics, Stripe revenue, and uptime status for up to 10 websites in a single, beautiful dashboard. Built for solo entrepreneurs.",
+    "description": "Stop switching between tabs. Track GA4 analytics, payment revenue (Stripe, Creem, Alipay, PayPal), and uptime status for up to 10 websites in a single, beautiful dashboard. Built for solo entrepreneurs.",
     "announcement": {
       "badge": "Productivity",
       "title": "⚡ Save 2 Hours Daily",
@@ -120,8 +120,8 @@
         "icon": "BarChart3"
       },
       {
-        "title": "Stripe Revenue",
-        "description": "Monitor today's sales, MRR, and transaction counts without opening Stripe dashboard.",
+        "title": "Payment Revenue",
+        "description": "Monitor today's sales, MRR, and transaction counts from Stripe, Creem, Alipay, PayPal without opening multiple dashboards.",
         "icon": "DollarSign"
       },
       {

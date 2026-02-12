@@ -29,13 +29,11 @@ export default async function LandingPage({
     introduce: undefined,
     benefits: undefined,
     usage: undefined,
-    features: undefined,
     stats: undefined,
     
-    // Digital Heirloom: 新增部分
+    // SoloBoard: 显示功能区块
     'how-it-works': t.raw('how-it-works'),
-    'zero-knowledge-security': t.raw('zero-knowledge-security'),
-    'technical-architecture': t.raw('technical-architecture'),
+    features: t.raw('features'),
     
     // 隐藏用户评价
     testimonials: undefined,
