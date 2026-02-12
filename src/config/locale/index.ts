@@ -2,11 +2,13 @@ import { envConfigs } from '..';
 
 export const localeNames: any = {
   en: 'English',
+  zh: '中文',
+  fr: 'Français',
 };
 
-export const locales = ['en'];
+export const locales = ['en', 'zh', 'fr'];
 
-export const defaultLocale = 'en';
+export const defaultLocale = envConfigs.locale;
 
 export const localePrefix = 'always';
 
@@ -21,7 +23,6 @@ export const localeMessagesPaths = [
   'blog',
   'pricing',
   'digital-heirloom',
-  'dashboard',
   'settings/sidebar',
   'settings/profile',
   'settings/security',

@@ -67,4 +67,3 @@ const filePath = path.join('D:', 'AIsoftware', 'soloboard', 'src', 'config', 'lo
 fs.writeFileSync(filePath, JSON.stringify(zhAbout, null, 2), 'utf8');
 console.log('zh/about.json created successfully');
 
-

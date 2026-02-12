@@ -55,36 +55,16 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.error || 'Failed to add site');
+        throw new Error(result.error || '添加失败');
       }
 
-      toast.success('Site added successfully!');
+      toast.success('站点添加成功！');
       resetForm();
       onSuccess();
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Failed to add site');
+      toast.error(error instanceof Error ? error.message : '添加失败');
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  // 验证配置是否完整
-  const isConfigValid = () => {
-    if (!name || !url) return false;
-    
-    switch (platform) {
-      case 'GA4':
-        return !!config.propertyId && !!config.credentials;
-      case 'STRIPE':
-        return !!config.secretKey;
-      case 'UPTIME':
-        return true; // 只需要 URL
-      case 'LEMON_SQUEEZY':
-        return !!config.apiKey && !!config.storeId;
-      case 'SHOPIFY':
-        return !!config.shopDomain && !!config.accessToken;
-      default:
-        return false;
     }
   };
 
@@ -92,18 +72,12 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
   const buildConfig = () => {
     switch (platform) {
       case 'GA4':
-        // 验证 JSON 格式
-        try {
-          const credentials = JSON.parse(config.credentials);
-          return {
-            ga4: {
-              propertyId: config.propertyId,
-              credentials: credentials,
-            },
-          };
-        } catch (e) {
-          throw new Error('Invalid Service Account JSON format');
-        }
+        return {
+          ga4: {
+            propertyId: config.propertyId,
+            credentials: config.credentials,
+          },
+        };
       case 'STRIPE':
         return {
           stripe: {
@@ -140,15 +114,15 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
   const renderPlatformSelect = () => (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-        Select Platform
+        选择平台
       </h3>
       <div className="grid grid-cols-2 gap-4">
         {[
-          { id: 'UPTIME', name: 'Uptime Monitoring', icon: '🟢', desc: 'Website online status' },
-          { id: 'GA4', name: 'Google Analytics', icon: '📊', desc: 'Website traffic analysis' },
-          { id: 'STRIPE', name: 'Stripe', icon: '💳', desc: 'Payment and revenue' },
-          { id: 'LEMON_SQUEEZY', name: 'Lemon Squeezy', icon: '🍋', desc: 'Digital product sales' },
-          { id: 'SHOPIFY', name: 'Shopify', icon: '🛍️', desc: 'E-commerce platform' },
+          { id: 'UPTIME', name: 'Uptime 监控', icon: '🟢', desc: '网站在线状态' },
+          { id: 'GA4', name: 'Google Analytics', icon: '📊', desc: '网站流量分析' },
+          { id: 'STRIPE', name: 'Stripe', icon: '💳', desc: '支付和收入' },
+          { id: 'LEMON_SQUEEZY', name: 'Lemon Squeezy', icon: '🍋', desc: '数字产品销售' },
+          { id: 'SHOPIFY', name: 'Shopify', icon: '🛍️', desc: '电商平台' },
         ].map((p) => (
           <button
             key={p.id}
@@ -169,7 +143,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
         onClick={() => setStep(2)}
         className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
       >
-        Next
+        下一步
       </button>
     </div>
   );
@@ -178,26 +152,26 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
   const renderConfigForm = () => (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-        Configure Site
+        配置站点
       </h3>
 
       {/* 基本信息 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Site Name
+          站点名称
         </label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="e.g., My AI Tool"
+          placeholder="例如：我的 AI 工具"
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          Website URL
+          网站地址
         </label>
         <input
           type="url"
@@ -211,17 +185,6 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
       {/* 平台特定配置 */}
       {platform === 'GA4' && (
         <>
-          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg mb-3">
-            <p className="text-xs text-yellow-800 dark:text-yellow-200 mb-2">
-              <strong>How to get GA4 credentials:</strong>
-            </p>
-            <ol className="text-xs text-yellow-700 dark:text-yellow-300 space-y-1 list-decimal list-inside">
-              <li>Go to Google Cloud Console → Create Service Account</li>
-              <li>Enable Google Analytics Data API</li>
-              <li>Download JSON key file</li>
-              <li>In GA4, add service account email to property users</li>
-            </ol>
-          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Property ID
@@ -233,7 +196,6 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
               placeholder="123456789"
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             />
-            <p className="text-xs text-gray-500 mt-1">Find in GA4: Admin → Property Settings → Property ID</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -242,49 +204,37 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
             <textarea
               value={config.credentials || ''}
               onChange={(e) => setConfig({ ...config, credentials: e.target.value })}
-              placeholder='{"type": "service_account", "project_id": "...", "private_key": "..."}'
+              placeholder='{"type": "service_account", ...}'
               rows={4}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white font-mono text-xs"
             />
-            <p className="text-xs text-gray-500 mt-1">Paste the entire JSON content from downloaded key file</p>
           </div>
         </>
       )}
 
       {platform === 'STRIPE' && (
         <>
-          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg mb-3">
-            <p className="text-xs text-yellow-800 dark:text-yellow-200 mb-2">
-              <strong>How to get Stripe API keys:</strong>
-            </p>
-            <ol className="text-xs text-yellow-700 dark:text-yellow-300 space-y-1 list-decimal list-inside">
-              <li>Go to Stripe Dashboard → Developers → API keys</li>
-              <li>Copy "Secret key" (starts with sk_live_ or sk_test_)</li>
-              <li>Optionally copy "Publishable key" for additional features</li>
-            </ol>
-          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Secret Key <span className="text-red-500">*</span>
+              Secret Key
             </label>
             <input
               type="password"
               value={config.secretKey || ''}
               onChange={(e) => setConfig({ ...config, secretKey: e.target.value })}
-              placeholder="sk_test_... or sk_live_..."
+              placeholder="sk_test_..."
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             />
-            <p className="text-xs text-gray-500 mt-1">Required to fetch payment data</p>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Publishable Key (Optional)
+              Publishable Key (可选)
             </label>
             <input
               type="text"
               value={config.publishableKey || ''}
               onChange={(e) => setConfig({ ...config, publishableKey: e.target.value })}
-              placeholder="pk_test_... or pk_live_..."
+              placeholder="pk_test_..."
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             />
           </div>
@@ -292,94 +242,11 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
       )}
 
       {platform === 'UPTIME' && (
-        <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-          <p className="text-sm text-green-800 dark:text-green-200 font-medium mb-2">
-            ✅ Simple Setup - No API Keys Required!
-          </p>
-          <p className="text-xs text-green-700 dark:text-green-300">
-            Uptime monitoring only needs your website URL. We'll check if your site is online every few minutes and alert you if it goes down.
+        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Uptime 监控只需要网站地址，无需额外配置。
           </p>
         </div>
-      )}
-
-      {platform === 'LEMON_SQUEEZY' && (
-        <>
-          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg mb-3">
-            <p className="text-xs text-yellow-800 dark:text-yellow-200 mb-2">
-              <strong>How to get Lemon Squeezy credentials:</strong>
-            </p>
-            <ol className="text-xs text-yellow-700 dark:text-yellow-300 space-y-1 list-decimal list-inside">
-              <li>Go to Lemon Squeezy → Settings → API</li>
-              <li>Create a new API key</li>
-              <li>Find your Store ID in Settings → Stores</li>
-            </ol>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              API Key <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              value={config.apiKey || ''}
-              onChange={(e) => setConfig({ ...config, apiKey: e.target.value })}
-              placeholder="Your Lemon Squeezy API key"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Store ID <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              value={config.storeId || ''}
-              onChange={(e) => setConfig({ ...config, storeId: e.target.value })}
-              placeholder="12345"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-        </>
-      )}
-
-      {platform === 'SHOPIFY' && (
-        <>
-          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg mb-3">
-            <p className="text-xs text-yellow-800 dark:text-yellow-200 mb-2">
-              <strong>How to get Shopify credentials:</strong>
-            </p>
-            <ol className="text-xs text-yellow-700 dark:text-yellow-300 space-y-1 list-decimal list-inside">
-              <li>Go to Shopify Admin → Apps → Develop apps</li>
-              <li>Create a custom app with Admin API access</li>
-              <li>Enable "read_orders" and "read_products" permissions</li>
-              <li>Copy the Admin API access token</li>
-            </ol>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Shop Domain <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              value={config.shopDomain || ''}
-              onChange={(e) => setConfig({ ...config, shopDomain: e.target.value })}
-              placeholder="your-store.myshopify.com"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-            />
-            <p className="text-xs text-gray-500 mt-1">Your Shopify store domain (e.g., mystore.myshopify.com)</p>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Admin API Access Token <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              value={config.accessToken || ''}
-              onChange={(e) => setConfig({ ...config, accessToken: e.target.value })}
-              placeholder="shpat_..."
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-        </>
       )}
 
       {/* 按钮 */}
@@ -388,20 +255,20 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
           onClick={() => setStep(1)}
           className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
-          Back
+          上一步
         </button>
         <button
           onClick={handleSubmit}
-          disabled={isSubmitting || !isConfigValid()}
+          disabled={isSubmitting || !name || !url}
           className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
         >
           {isSubmitting ? (
             <>
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Adding...
+              添加中...
             </>
           ) : (
-            'Add Site'
+            '添加站点'
           )}
         </button>
       </div>
@@ -414,7 +281,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
         {/* 头部 */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Add Monitoring Site
+            添加监控站点
           </h2>
           <button
             onClick={() => {
