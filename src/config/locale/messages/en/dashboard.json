@@ -1,0 +1,24 @@
+{
+  "title": "SoloBoard",
+  "subtitle": "Monitor {count} sites, time back to coffee ☕",
+  "refresh": "Refresh",
+  "add_site": "Add Site",
+  "stats": {
+    "monitored_sites": "Monitored Sites",
+    "online_status": "Online Status",
+    "last_sync": "Last Sync",
+    "not_synced": "Not Synced"
+  },
+  "empty": {
+    "title": "No monitored sites yet",
+    "description": "Click 'Add Site' button to start monitoring your first website",
+    "add_first": "Add First Site"
+  },
+  "errors": {
+    "load_failed": "Load failed",
+    "retry": "Retry",
+    "refresh_success": "Data refreshed",
+    "refresh_failed": "Refresh failed"
+  }
+}
+

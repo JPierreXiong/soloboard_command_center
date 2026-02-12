@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { Plus, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 import useSWR from 'swr';
+import { useTranslations } from 'next-intl';
 import { SiteGrid } from './_components/site-grid';
 import { AddSiteDialog } from './_components/add-site-dialog';
 
@@ -40,6 +41,7 @@ interface SitesResponse {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function SoloBoardDashboardPage() {
+  const t = useTranslations('dashboard');
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
@@ -59,9 +61,9 @@ export default function SoloBoardDashboardPage() {
     setIsRefreshing(true);
     try {
       await mutate();
-      toast.success('数据已刷新');
+      toast.success(t('errors.refresh_success'));
     } catch (error) {
-      toast.error('刷新失败');
+      toast.error(t('errors.refresh_failed'));
     } finally {
       setIsRefreshing(false);
     }
@@ -87,12 +89,12 @@ export default function SoloBoardDashboardPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <p className="text-red-600 mb-4">加载失败</p>
+          <p className="text-red-600 mb-4">{t('errors.load_failed')}</p>
           <button
             onClick={handleRefresh}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
           >
-            重试
+            {t('errors.retry')}
           </button>
         </div>
       </div>
@@ -110,10 +112,10 @@ export default function SoloBoardDashboardPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                SoloBoard
+                {t('title')}
               </h1>
               <p className="mt-2 text-gray-600 dark:text-gray-400">
-                一屏看透 {totalSites} 个站，把时间还给咖啡 ☕
+                {t('subtitle', { count: totalSites })}
               </p>
             </div>
             <div className="flex items-center space-x-3">
@@ -124,7 +126,7 @@ export default function SoloBoardDashboardPage() {
                 className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center space-x-2 disabled:opacity-50"
               >
                 <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                <span>刷新</span>
+                <span>{t('refresh')}</span>
               </button>
 
               {/* 添加站点按钮 */}
@@ -133,7 +135,7 @@ export default function SoloBoardDashboardPage() {
                 className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl flex items-center space-x-2"
               >
                 <Plus className="w-4 h-4" />
-                <span>添加站点</span>
+                <span>{t('add_site')}</span>
               </button>
             </div>
           </div>
@@ -146,7 +148,7 @@ export default function SoloBoardDashboardPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-                  监控站点
+                  {t('stats.monitored_sites')}
                 </p>
                 <p className="text-3xl font-bold text-gray-900 dark:text-white">
                   {totalSites}
@@ -163,7 +165,7 @@ export default function SoloBoardDashboardPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-                  在线状态
+                  {t('stats.online_status')}
                 </p>
                 <p className="text-3xl font-bold text-green-600 dark:text-green-400">
                   {sites.filter((s) => s.healthStatus === 'online').length}
@@ -180,15 +182,15 @@ export default function SoloBoardDashboardPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-                  最后同步
+                  {t('stats.last_sync')}
                 </p>
                 <p className="text-lg font-semibold text-gray-900 dark:text-white">
                   {sites.length > 0 && sites[0].lastSyncAt
-                    ? new Date(sites[0].lastSyncAt).toLocaleTimeString('zh-CN', {
+                    ? new Date(sites[0].lastSyncAt).toLocaleTimeString(undefined, {
                         hour: '2-digit',
                         minute: '2-digit',
                       })
-                    : '未同步'}
+                    : t('stats.not_synced')}
                 </p>
               </div>
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
@@ -206,16 +208,16 @@ export default function SoloBoardDashboardPage() {
                 <Plus className="w-10 h-10 text-blue-600 dark:text-blue-400" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                还没有监控站点
+                {t('empty.title')}
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
-                点击"添加站点"按钮，开始监控您的第一个网站
+                {t('empty.description')}
               </p>
               <button
                 onClick={() => setIsAddDialogOpen(true)}
                 className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
               >
-                添加第一个站点
+                {t('empty.add_first')}
               </button>
             </div>
           </div>

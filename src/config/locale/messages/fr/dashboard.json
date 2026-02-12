@@ -1,0 +1,24 @@
+{
+  "title": "SoloBoard",
+  "subtitle": "Surveillez {count} sites, temps pour le café ☕",
+  "refresh": "Actualiser",
+  "add_site": "Ajouter un site",
+  "stats": {
+    "monitored_sites": "Sites surveillés",
+    "online_status": "État en ligne",
+    "last_sync": "Dernière synchro",
+    "not_synced": "Non synchronisé"
+  },
+  "empty": {
+    "title": "Aucun site surveillé",
+    "description": "Cliquez sur 'Ajouter un site' pour commencer à surveiller votre premier site web",
+    "add_first": "Ajouter le premier site"
+  },
+  "errors": {
+    "load_failed": "Échec du chargement",
+    "retry": "Réessayer",
+    "refresh_success": "Données actualisées",
+    "refresh_failed": "Échec de l'actualisation"
+  }
+}
+
