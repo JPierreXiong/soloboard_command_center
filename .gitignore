@@ -126,3 +126,4 @@ src/config/db/migrations
 docs/*.md
 scripts/*.md
 supabase/functions/*/README.md
+.vercel
