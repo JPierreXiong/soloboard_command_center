@@ -48,6 +48,39 @@
     "description": "Surveillez tous vos sites en un seul endroit. Suivez les analyses GA4, les revenus de paiement et l'état en ligne.",
     "enter_dashboard": "Accéder au tableau de bord",
     "view_pricing": "Voir les tarifs",
+    "page": {
+      "title": "Surveillez tous vos sites",
+      "subtitle": "Suivez les revenus, le trafic et l'état en ligne de tous vos sites web en un seul endroit"
+    },
+    "empty_state": {
+      "title": "Aucun site web pour le moment",
+      "description": "Ajoutez votre premier site web pour commencer à surveiller les revenus, le trafic et l'état en ligne.",
+      "add_button": "Ajouter votre premier site web"
+    },
+    "add_button": "Ajouter un site",
+    "site_card": {
+      "today_revenue": "Revenus d'aujourd'hui",
+      "today_visitors": "Visiteurs d'aujourd'hui",
+      "status": "Statut",
+      "view_details": "Voir les détails"
+    },
+    "status": {
+      "online": "En ligne",
+      "offline": "Hors ligne",
+      "warning": "Avertissement",
+      "checking": "Vérification..."
+    },
+    "alerts": {
+      "offline": "Le site web est hors ligne",
+      "no_sales": "Aucune vente aujourd'hui (a généralement des ventes)",
+      "low_traffic": "Le trafic est 30% inférieur à la moyenne"
+    },
+    "summary": {
+      "total_sites": "Total des sites",
+      "total_revenue": "Revenus totaux aujourd'hui",
+      "total_visitors": "Visiteurs totaux aujourd'hui",
+      "sites_online": "Sites en ligne"
+    },
     "features": {
       "ga4": {
         "title": "Analyses GA4",

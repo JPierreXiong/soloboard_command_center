@@ -48,6 +48,39 @@
     "description": "Monitor all your sites in one place. Track GA4 analytics, payment revenue, and uptime status.",
     "enter_dashboard": "Enter Dashboard",
     "view_pricing": "View Pricing",
+    "page": {
+      "title": "Monitor All Your Sites",
+      "subtitle": "Track revenue, traffic, and uptime status for all your websites in one place"
+    },
+    "empty_state": {
+      "title": "No websites yet",
+      "description": "Add your first website to start monitoring revenue, traffic, and uptime status.",
+      "add_button": "Add Your First Website"
+    },
+    "add_button": "Add Website",
+    "site_card": {
+      "today_revenue": "Today's Revenue",
+      "today_visitors": "Today's Visitors",
+      "status": "Status",
+      "view_details": "View Details"
+    },
+    "status": {
+      "online": "Online",
+      "offline": "Offline",
+      "warning": "Warning",
+      "checking": "Checking..."
+    },
+    "alerts": {
+      "offline": "Website is offline",
+      "no_sales": "No sales today (usually has sales)",
+      "low_traffic": "Traffic is 30% below average"
+    },
+    "summary": {
+      "total_sites": "Total Sites",
+      "total_revenue": "Total Revenue Today",
+      "total_visitors": "Total Visitors Today",
+      "sites_online": "Sites Online"
+    },
     "features": {
       "ga4": {
         "title": "GA4 Analytics",

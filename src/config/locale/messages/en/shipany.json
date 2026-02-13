@@ -1,0 +1,91 @@
+{
+  "page": {
+    "title": "Add Monitoring Site",
+    "description": "Choose a platform to start monitoring your business metrics"
+  },
+  "steps": {
+    "select_platform": "Select Platform",
+    "configure": "Configure",
+    "confirm": "Confirm"
+  },
+  "platforms": {
+    "uptime": {
+      "name": "Uptime Monitoring",
+      "description": "Website online status monitoring",
+      "features": {
+        "status": "Website online status",
+        "response": "Response time monitoring",
+        "ssl": "SSL certificate check",
+        "seo": "SEO score analysis",
+        "tech": "Technology stack detection",
+        "performance": "Performance monitoring"
+      }
+    },
+    "ga4": {
+      "name": "Google Analytics",
+      "description": "Website traffic analysis",
+      "features": {
+        "realtime": "Real-time active users",
+        "visits": "Daily visit statistics",
+        "pageviews": "Page view count",
+        "sessions": "Session tracking",
+        "sources": "User source analysis",
+        "conversion": "Conversion rate monitoring"
+      }
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "Payment and revenue tracking",
+      "features": {
+        "today": "Today's revenue statistics",
+        "monthly": "Monthly revenue statistics",
+        "transactions": "Transaction count tracking",
+        "pending": "Pending amount",
+        "currency": "Multi-currency support",
+        "trends": "Revenue trend chart"
+      }
+    },
+    "lemon": {
+      "name": "Lemon Squeezy",
+      "description": "Digital product sales",
+      "features": {
+        "sales": "Sales tracking",
+        "revenue": "Revenue statistics",
+        "orders": "Order management",
+        "customers": "Customer analytics",
+        "products": "Product performance",
+        "subscriptions": "Subscription tracking"
+      }
+    },
+    "shopify": {
+      "name": "Shopify",
+      "description": "E-commerce platform",
+      "features": {
+        "orders": "Order tracking",
+        "revenue": "Revenue statistics",
+        "products": "Product management",
+        "customers": "Customer data",
+        "inventory": "Inventory monitoring",
+        "analytics": "Store analytics"
+      }
+    }
+  },
+  "actions": {
+    "next": "Next",
+    "back": "Back",
+    "cancel": "Cancel",
+    "add": "Add Site",
+    "close": "Close"
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Advanced"
+  },
+  "labels": {
+    "free": "Free",
+    "setup_time": "Setup time",
+    "more_features": "+{count} more features"
+  }
+}
+

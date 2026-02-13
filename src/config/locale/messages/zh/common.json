@@ -48,6 +48,39 @@
     "description": "在一个地方监控所有网站。追踪 GA4 分析、支付收入和在线状态。",
     "enter_dashboard": "进入仪表盘",
     "view_pricing": "查看定价",
+    "page": {
+      "title": "监控所有网站",
+      "subtitle": "在一个地方追踪所有网站的收入、流量和在线状态"
+    },
+    "empty_state": {
+      "title": "还没有网站",
+      "description": "添加您的第一个网站，开始监控收入、流量和在线状态。",
+      "add_button": "添加第一个网站"
+    },
+    "add_button": "添加网站",
+    "site_card": {
+      "today_revenue": "今日收入",
+      "today_visitors": "今日访客",
+      "status": "状态",
+      "view_details": "查看详情"
+    },
+    "status": {
+      "online": "在线",
+      "offline": "离线",
+      "warning": "警告",
+      "checking": "检查中..."
+    },
+    "alerts": {
+      "offline": "网站离线",
+      "no_sales": "今日无销售（通常有销售）",
+      "low_traffic": "流量比平均值低 30%"
+    },
+    "summary": {
+      "total_sites": "总站点数",
+      "total_revenue": "今日总收入",
+      "total_visitors": "今日总访客",
+      "sites_online": "在线站点"
+    },
     "features": {
       "ga4": {
         "title": "GA4 分析",
@@ -64,5 +97,3 @@
     }
   }
 }
-
-

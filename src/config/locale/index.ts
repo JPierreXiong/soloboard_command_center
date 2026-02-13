@@ -23,6 +23,7 @@ export const localeMessagesPaths = [
   'blog',
   'pricing',
   'digital-heirloom',
+  'dashboard',
   'settings/sidebar',
   'settings/profile',
   'settings/security',

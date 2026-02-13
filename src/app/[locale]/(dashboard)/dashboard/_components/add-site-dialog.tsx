@@ -9,6 +9,7 @@
 import { useState } from 'react';
 import { X, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 
 interface AddSiteDialogProps {
   open: boolean;
@@ -19,6 +20,7 @@ interface AddSiteDialogProps {
 type Platform = 'GA4' | 'STRIPE' | 'UPTIME' | 'LEMON_SQUEEZY' | 'SHOPIFY';
 
 export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) {
+  const t = useTranslations('dashboard.add_dialog');
   const [step, setStep] = useState(1);
   const [platform, setPlatform] = useState<Platform>('UPTIME');
   const [name, setName] = useState('');
@@ -55,14 +57,14 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.error || '添加失败');
+        throw new Error(result.error || 'Failed to add site');
       }
 
-      toast.success('站点添加成功！');
+      toast.success(t('success'));
       resetForm();
       onSuccess();
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : '添加失败');
+      toast.error(error instanceof Error ? error.message : t('error'));
     } finally {
       setIsSubmitting(false);
     }
@@ -111,73 +113,84 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
   };
 
   // 渲染平台选择
-  const renderPlatformSelect = () => (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-        选择平台
-      </h3>
-      <div className="grid grid-cols-2 gap-4">
-        {[
-          { id: 'UPTIME', name: 'Uptime 监控', icon: '🟢', desc: '网站在线状态' },
-          { id: 'GA4', name: 'Google Analytics', icon: '📊', desc: '网站流量分析' },
-          { id: 'STRIPE', name: 'Stripe', icon: '💳', desc: '支付和收入' },
-          { id: 'LEMON_SQUEEZY', name: 'Lemon Squeezy', icon: '🍋', desc: '数字产品销售' },
-          { id: 'SHOPIFY', name: 'Shopify', icon: '🛍️', desc: '电商平台' },
-        ].map((p) => (
-          <button
-            key={p.id}
-            onClick={() => setPlatform(p.id as Platform)}
-            className={`p-4 rounded-lg border-2 transition-all text-left ${
-              platform === p.id
-                ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
-                : 'border-gray-200 dark:border-gray-700 hover:border-gray-300'
-            }`}
-          >
-            <div className="text-2xl mb-2">{p.icon}</div>
-            <div className="font-medium text-gray-900 dark:text-white">{p.name}</div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{p.desc}</div>
-          </button>
-        ))}
+  const renderPlatformSelect = () => {
+    const platforms = [
+      { id: 'UPTIME', icon: '🟢', key: 'uptime' },
+      { id: 'GA4', icon: '📊', key: 'ga4' },
+      { id: 'STRIPE', icon: '💳', key: 'stripe' },
+      { id: 'LEMON_SQUEEZY', icon: '🍋', key: 'lemon_squeezy' },
+      { id: 'SHOPIFY', icon: '🛍️', key: 'shopify' },
+    ];
+
+    return (
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+          {t('platform_label')}
+        </h3>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          {t('platform_description')}
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          {platforms.map((p) => (
+            <button
+              key={p.id}
+              onClick={() => setPlatform(p.id as Platform)}
+              className={`p-4 rounded-lg border-2 transition-all text-left ${
+                platform === p.id
+                  ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
+                  : 'border-gray-200 dark:border-gray-700 hover:border-gray-300'
+              }`}
+            >
+              <div className="text-2xl mb-2">{p.icon}</div>
+              <div className="font-medium text-gray-900 dark:text-white">
+                {t(`platforms.${p.key}.title`)}
+              </div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                {t(`platforms.${p.key}.description`)}
+              </div>
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={() => setStep(2)}
+          className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          {t('next')}
+        </button>
       </div>
-      <button
-        onClick={() => setStep(2)}
-        className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-      >
-        下一步
-      </button>
-    </div>
-  );
+    );
+  };
 
   // 渲染配置表单
   const renderConfigForm = () => (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-        配置站点
+        {t('title')}
       </h3>
 
       {/* 基本信息 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          站点名称
+          {t('site_name')}
         </label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="例如：我的 AI 工具"
+          placeholder={t('site_name_placeholder')}
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-          网站地址
+          {t('site_url')}
         </label>
         <input
           type="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://example.com"
+          placeholder={t('site_url_placeholder')}
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
         />
       </div>
@@ -228,7 +241,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Publishable Key (可选)
+              Publishable Key (Optional)
             </label>
             <input
               type="text"
@@ -244,7 +257,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
       {platform === 'UPTIME' && (
         <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            Uptime 监控只需要网站地址，无需额外配置。
+            Uptime monitoring only requires the website URL, no additional configuration needed.
           </p>
         </div>
       )}
@@ -255,7 +268,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
           onClick={() => setStep(1)}
           className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
         >
-          上一步
+          {t('back')}
         </button>
         <button
           onClick={handleSubmit}
@@ -265,10 +278,10 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
           {isSubmitting ? (
             <>
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              添加中...
+              {t('submitting')}
             </>
           ) : (
-            '添加站点'
+            t('submit')
           )}
         </button>
       </div>
@@ -281,7 +294,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
         {/* 头部 */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            添加监控站点
+            {t('title')}
           </h2>
           <button
             onClick={() => {

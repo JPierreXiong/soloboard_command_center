@@ -112,3 +112,5 @@ fs.writeFileSync(termsPath, JSON.stringify(zhTerms, null, 2), 'utf8');
 
 console.log('zh/disclaimer.json and zh/terms.json created successfully');
 
+
+

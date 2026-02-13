@@ -24,6 +24,7 @@ import {
 } from '@dnd-kit/sortable';
 import { SiteCard } from './site-card';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 
 interface Site {
   id: string;
@@ -46,6 +47,7 @@ interface SiteGridProps {
 }
 
 export function SiteGrid({ sites: initialSites, onRefresh }: SiteGridProps) {
+  const t = useTranslations('dashboard');
   const [sites, setSites] = useState(initialSites);
 
   // 配置拖拽传感器
@@ -84,9 +86,9 @@ export function SiteGrid({ sites: initialSites, onRefresh }: SiteGridProps) {
       //     siteIds: newSites.map((s) => s.id),
       //   }),
       // });
-      toast.success('排序已保存');
+      toast.success(t('reorder_success'));
     } catch (error) {
-      toast.error('保存排序失败');
+      toast.error(t('reorder_failed'));
       // 恢复原来的顺序
       setSites(initialSites);
     }

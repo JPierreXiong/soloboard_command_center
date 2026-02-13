@@ -162,3 +162,5 @@ if ($runMigration -ne "n" -and $runMigration -ne "N") {
     Write-Host "现在可以启动服务器: pnpm dev" -ForegroundColor Yellow
 }
 
+
+

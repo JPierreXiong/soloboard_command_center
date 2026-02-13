@@ -1,0 +1,91 @@
+{
+  "page": {
+    "title": "添加监控站点",
+    "description": "选择平台开始监控您的业务指标"
+  },
+  "steps": {
+    "select_platform": "选择平台",
+    "configure": "配置信息",
+    "confirm": "确认添加"
+  },
+  "platforms": {
+    "uptime": {
+      "name": "Uptime 监控",
+      "description": "网站在线状态监控",
+      "features": {
+        "status": "网站在线状态",
+        "response": "响应时间监控",
+        "ssl": "SSL 证书检查",
+        "seo": "SEO 分数分析",
+        "tech": "技术栈检测",
+        "performance": "性能监控"
+      }
+    },
+    "ga4": {
+      "name": "Google Analytics",
+      "description": "网站流量分析",
+      "features": {
+        "realtime": "实时活跃用户",
+        "visits": "今日访问统计",
+        "pageviews": "页面浏览量",
+        "sessions": "会话数追踪",
+        "sources": "用户来源分析",
+        "conversion": "转化率监控"
+      }
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "支付和收入追踪",
+      "features": {
+        "today": "今日收入统计",
+        "monthly": "本月收入统计",
+        "transactions": "交易数量追踪",
+        "pending": "待处理金额",
+        "currency": "多币种支持",
+        "trends": "收入趋势图"
+      }
+    },
+    "lemon": {
+      "name": "Lemon Squeezy",
+      "description": "数字产品销售",
+      "features": {
+        "sales": "销售追踪",
+        "revenue": "收入统计",
+        "orders": "订单管理",
+        "customers": "客户分析",
+        "products": "产品表现",
+        "subscriptions": "订阅追踪"
+      }
+    },
+    "shopify": {
+      "name": "Shopify",
+      "description": "电商平台",
+      "features": {
+        "orders": "订单追踪",
+        "revenue": "收入统计",
+        "products": "产品管理",
+        "customers": "客户数据",
+        "inventory": "库存监控",
+        "analytics": "店铺分析"
+      }
+    }
+  },
+  "actions": {
+    "next": "下一步",
+    "back": "返回",
+    "cancel": "取消",
+    "add": "添加站点",
+    "close": "关闭"
+  },
+  "difficulty": {
+    "easy": "简单",
+    "medium": "中等",
+    "hard": "复杂"
+  },
+  "labels": {
+    "free": "免费",
+    "setup_time": "设置时间",
+    "more_features": "+{count} 更多功能"
+  }
+}
+

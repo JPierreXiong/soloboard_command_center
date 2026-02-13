@@ -22,6 +22,7 @@ import {
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { MetricsChart } from './metrics-chart';
+import { useTranslations } from 'next-intl';
 
 interface Site {
   id: string;
@@ -44,6 +45,7 @@ interface SiteCardProps {
 }
 
 export function SiteCard({ site, onRefresh }: SiteCardProps) {
+  const t = useTranslations('dashboard.site');
   const [showMenu, setShowMenu] = useState(false);
   const [showChart, setShowChart] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -92,7 +94,7 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
   // 格式化指标
   const formatMetrics = () => {
     if (!site.lastSnapshot?.metrics) {
-      return { primary: '暂无数据', secondary: '' };
+      return { primary: t('metrics.no_data'), secondary: '' };
     }
 
     const metrics = site.lastSnapshot.metrics;
@@ -100,24 +102,24 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
     switch (site.platform) {
       case 'GA4':
         return {
-          primary: `${metrics.activeUsers || 0} 在线`,
-          secondary: `${metrics.pageViews || 0} 浏览`,
+          primary: `${metrics.activeUsers || 0} ${t('metrics.online')}`,
+          secondary: `${metrics.pageViews || 0} ${t('metrics.views')}`,
           icon: <Eye className="w-4 h-4" />,
         };
       case 'STRIPE':
         return {
           primary: `$${((metrics.todayRevenue || 0) / 100).toFixed(2)}`,
-          secondary: `${metrics.todayTransactions || 0} 笔交易`,
+          secondary: `${metrics.todayTransactions || 0} ${t('metrics.transactions')}`,
           icon: <DollarSign className="w-4 h-4" />,
         };
       case 'UPTIME':
         return {
-          primary: metrics.isOnline ? '在线' : '离线',
+          primary: metrics.isOnline ? t('status.online') : t('status.offline'),
           secondary: `${metrics.responseTime || 0}ms`,
           icon: <Activity className="w-4 h-4" />,
         };
       default:
-        return { primary: '暂无数据', secondary: '' };
+        return { primary: t('metrics.no_data'), secondary: '' };
     }
   };
 
@@ -125,7 +127,7 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
 
   // 删除站点
   const handleDelete = async () => {
-    if (!confirm(`确定要删除站点 "${site.name}" 吗？`)) {
+    if (!confirm(t('actions.delete_confirm', { name: site.name }))) {
       return;
     }
 
@@ -139,10 +141,10 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
         throw new Error('删除失败');
       }
 
-      toast.success('站点已删除');
+      toast.success(t('actions.delete_success'));
       onRefresh();
     } catch (error) {
-      toast.error('删除失败');
+      toast.error(t('actions.delete_failed'));
     } finally {
       setIsDeleting(false);
       setShowMenu(false);
@@ -189,14 +191,14 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
                 className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2"
               >
                 <TrendingUp className="w-4 h-4" />
-                <span>查看趋势</span>
+                <span>{t('actions.view_details')}</span>
               </button>
               <button
                 onClick={() => setShowMenu(false)}
                 className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2"
               >
                 <Settings className="w-4 h-4" />
-                <span>设置</span>
+                <span>{t('actions.edit')}</span>
               </button>
               <button
                 onClick={handleDelete}
@@ -204,7 +206,7 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
                 className="w-full px-4 py-2 text-left text-sm hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 flex items-center space-x-2"
               >
                 <Trash2 className="w-4 h-4" />
-                <span>{isDeleting ? '删除中...' : '删除'}</span>
+                <span>{isDeleting ? t('actions.deleting') : t('actions.delete')}</span>
               </button>
             </div>
           )}
@@ -236,7 +238,7 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
                 {icon}
-                <span className="text-sm">主要指标</span>
+                <span className="text-sm">{t('metrics.primary')}</span>
               </div>
               <span className="text-2xl font-bold text-gray-900 dark:text-white">
                 {primary}
@@ -252,14 +254,14 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
           {/* 最后更新时间 */}
           <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
             <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-              <span>最后更新</span>
+              <span>{t('last_updated')}</span>
               <span>
                 {site.lastSyncAt
-                  ? new Date(site.lastSyncAt).toLocaleTimeString('zh-CN', {
+                  ? new Date(site.lastSyncAt).toLocaleTimeString(undefined, {
                       hour: '2-digit',
                       minute: '2-digit',
                     })
-                  : '未同步'}
+                  : t('not_synced')}
               </span>
             </div>
           </div>
@@ -268,7 +270,7 @@ export function SiteCard({ site, onRefresh }: SiteCardProps) {
           {site.status === 'error' && (
             <div className="mt-3 p-2 bg-red-50 dark:bg-red-900/20 rounded-lg flex items-center space-x-2">
               <AlertCircle className="w-4 h-4 text-red-600" />
-              <span className="text-xs text-red-600">同步失败</span>
+              <span className="text-xs text-red-600">{t('sync_failed')}</span>
             </div>
           )}
         </div>
