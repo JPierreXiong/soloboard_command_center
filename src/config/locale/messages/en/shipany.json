@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Add Your Website to Monitor",
-    "description": "3 minutes to monitor your entire indie empire"
+    "title": "Add Your Website",
+    "description": "3 minutes to start monitoring your website"
   },
   "steps": {
     "select_platform": "Select Platform",
@@ -11,8 +11,14 @@
   "flow": {
     "verified": "Verified",
     "step1": {
-      "title": "What's your website URL?",
-      "description": "Enter your domain to start monitoring",
+      "title": "Add Your Website",
+      "description": "Enter your website URL and basic information",
+      "site_name_label": "Website Name",
+      "site_name_placeholder": "My Awesome Site",
+      "site_url_label": "Website URL",
+      "site_url_placeholder": "https://yourwebsite.com",
+      "site_description_label": "Description (Optional)",
+      "site_description_placeholder": "What does your website do?",
       "checking": "Checking...",
       "we_will_monitor": "We will monitor",
       "monitor_revenue": "Revenue situation",
@@ -20,12 +26,15 @@
       "monitor_uptime": "Website uptime status"
     },
     "step2": {
-      "title": "How does this site make money?",
+      "title": "How do you receive payments?",
       "description": "Select your payment platforms (optional)",
       "security_title": "AES-256 Military Grade Encryption",
       "security_description": "We only read data, never perform any operations",
       "how_to_get_key": "How to get API key",
-      "no_revenue": "No revenue yet (just monitoring uptime)"
+      "no_revenue": "No revenue yet (just monitoring uptime)",
+      "other_platform": "Other payment platform",
+      "other_platform_name": "Platform name",
+      "other_platform_placeholder": "e.g., PayPal, Alipay, WeChat Pay"
     },
     "step3": {
       "title": "Monitor website traffic?",

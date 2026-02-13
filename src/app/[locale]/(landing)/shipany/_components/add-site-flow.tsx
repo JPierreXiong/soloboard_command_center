@@ -50,6 +50,15 @@ interface PlatformConfig {
 
 const PAYMENT_PLATFORMS: PlatformConfig[] = [
   {
+    id: 'creem',
+    name: 'Creem',
+    icon: CreditCard,
+    color: 'from-blue-500 to-indigo-500',
+    apiKeyLabel: 'Creem API Key',
+    apiKeyPlaceholder: 'creem_...',
+    helpUrl: 'https://creem.io/docs',
+  },
+  {
     id: 'stripe',
     name: 'Stripe',
     icon: CreditCard,
@@ -86,13 +95,16 @@ export function AddSiteFlow() {
   const [isProbing, setIsProbing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Step 1: Domain
+  // Step 1: Domain and basic info
+  const [siteName, setSiteName] = useState('');
   const [domain, setDomain] = useState('');
+  const [siteDescription, setSiteDescription] = useState('');
   const [probeResult, setProbeResult] = useState<ProbeResult | null>(null);
   
   // Step 2: Payment platforms
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [apiKeys, setApiKeys] = useState<Record<string, string>>({});
+  const [otherPlatform, setOtherPlatform] = useState('');
   
   // Step 3: Analytics
   const [enableGA4, setEnableGA4] = useState(false);
@@ -135,21 +147,29 @@ export function AddSiteFlow() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          name: siteName || probeResult?.domain,
           domain: probeResult?.domain,
+          description: siteDescription,
           logoUrl: probeResult?.logoUrl,
           platforms: selectedPlatforms,
           apiKeys,
+          otherPlatform,
           enableGA4,
           ga4PropertyId,
         }),
       });
 
       if (response.ok) {
+        const data = await response.json();
         setStep(4); // 完成页
+        // 2秒后跳转到 Dashboard
         setTimeout(() => router.push('/soloboard'), 2000);
+      } else {
+        throw new Error('Failed to add site');
       }
     } catch (error) {
       console.error('Submit failed:', error);
+      alert('Failed to add website. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -166,7 +186,7 @@ export function AddSiteFlow() {
       </div>
 
       <AnimatePresence mode="wait">
-        {/* Step 1: 输入域名 */}
+        {/* Step 1: 输入域名和基本信息 */}
         {step === 1 && (
           <motion.div
             key="step1"
@@ -185,15 +205,47 @@ export function AddSiteFlow() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
+                {/* 网站名称 */}
                 <div className="space-y-2">
+                  <Label className="text-sm font-medium">
+                    {t('flow.step1.site_name_label')}
+                  </Label>
                   <Input
                     type="text"
-                    placeholder="https://yourwebsite.com"
+                    placeholder={t('flow.step1.site_name_placeholder')}
+                    value={siteName}
+                    onChange={(e) => setSiteName(e.target.value)}
+                    className="h-12"
+                  />
+                </div>
+
+                {/* 网站 URL */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">
+                    {t('flow.step1.site_url_label')}
+                  </Label>
+                  <Input
+                    type="text"
+                    placeholder={t('flow.step1.site_url_placeholder')}
                     value={domain}
                     onChange={(e) => setDomain(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleDomainProbe()}
                     className="text-lg h-14"
                     disabled={isProbing}
+                  />
+                </div>
+
+                {/* 网站描述（可选） */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">
+                    {t('flow.step1.site_description_label')}
+                  </Label>
+                  <Input
+                    type="text"
+                    placeholder={t('flow.step1.site_description_placeholder')}
+                    value={siteDescription}
+                    onChange={(e) => setSiteDescription(e.target.value)}
+                    className="h-12"
                   />
                 </div>
 
@@ -362,6 +414,24 @@ export function AddSiteFlow() {
                     <div className="flex items-center gap-3">
                       <Checkbox checked={selectedPlatforms.length === 0} />
                       <span className="font-semibold">{t('flow.step2.no_revenue')}</span>
+                    </div>
+                  </div>
+
+                  {/* 其他支付平台 */}
+                  <div className="space-y-3">
+                    <div className="p-4 border-2 border-dashed rounded-lg">
+                      <Label className="text-sm font-medium mb-2 block">
+                        {t('flow.step2.other_platform')}
+                      </Label>
+                      <Input
+                        placeholder={t('flow.step2.other_platform_placeholder')}
+                        value={otherPlatform}
+                        onChange={(e) => setOtherPlatform(e.target.value)}
+                        className="h-10"
+                      />
+                      <p className="text-xs text-muted-foreground mt-2">
+                        {t('flow.step2.other_platform_name')}
+                      </p>
                     </div>
                   </div>
                 </div>

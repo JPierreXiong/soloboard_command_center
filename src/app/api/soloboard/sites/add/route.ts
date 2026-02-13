@@ -11,6 +11,7 @@ import { db } from '@/core/db';
 import { monitoredSites } from '@/config/db/schema';
 import { auth } from '@/core/auth';
 import { nanoid } from 'nanoid';
+import { eq } from 'drizzle-orm';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -34,32 +35,34 @@ export async function POST(request: NextRequest) {
     
     // 2. 解析请求体
     const body = await request.json();
-    const { name, url, platform, config } = body;
+    const { 
+      name, 
+      domain, 
+      description,
+      logoUrl,
+      platforms = [], 
+      apiKeys = {},
+      otherPlatform,
+      enableGA4,
+      ga4PropertyId,
+    } = body;
     
     // 3. 验证必填字段
-    if (!name || !url || !platform) {
+    if (!domain) {
       return NextResponse.json(
-        { error: 'Missing required fields: name, url, platform' },
+        { error: 'Missing required field: domain' },
         { status: 400 }
       );
     }
     
-    // 4. 验证平台类型
-    const validPlatforms = ['GA4', 'STRIPE', 'UPTIME', 'LEMON_SQUEEZY', 'SHOPIFY'];
-    if (!validPlatforms.includes(platform)) {
-      return NextResponse.json(
-        { error: `Invalid platform. Must be one of: ${validPlatforms.join(', ')}` },
-        { status: 400 }
-      );
-    }
-    
-    // 5. 检查用户站点数量限制（免费用户最多 3 个站点）
-    const existingSites = await db().query.monitoredSites.findMany({
-      where: (sites, { eq }) => eq(sites.userId, session.user.id),
-    });
+    // 4. 检查用户站点数量限制
+    const existingSites = await db()
+      .select()
+      .from(monitoredSites)
+      .where(eq(monitoredSites.userId, session.user.id));
     
     // TODO: 根据用户订阅计划调整限制
-    const maxSites = 10; // 临时设置为 10
+    const maxSites = 10;
     if (existingSites.length >= maxSites) {
       return NextResponse.json(
         { error: `You have reached the maximum number of sites (${maxSites})` },
@@ -67,33 +70,50 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // 6. 创建新站点
-    const newSite = {
-      id: nanoid(),
-      userId: session.user.id,
-      name,
-      url,
-      platform,
-      config: config || {},
-      status: 'active' as const,
-      healthStatus: 'unknown' as const,
-      displayOrder: existingSites.length,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+    // 5. 构建 API 配置（加密存储）
+    const apiConfig: any = {
+      platforms: platforms,
+      apiKeys: apiKeys, // TODO: 使用 AES-256 加密
+      otherPlatform: otherPlatform || null,
     };
     
-    await db().insert(monitoredSites).values(newSite);
+    if (enableGA4 && ga4PropertyId) {
+      apiConfig.ga4 = {
+        propertyId: ga4PropertyId,
+      };
+    }
+    
+    // 6. 创建新站点记录
+    const siteId = nanoid();
+    const siteName = name || domain;
+    
+    await db().insert(monitoredSites).values({
+      id: siteId,
+      userId: session.user.id,
+      name: siteName,
+      domain: domain,
+      logoUrl: logoUrl || null,
+      platform: platforms.length > 0 ? platforms[0] : 'uptime', // 主平台
+      url: `https://${domain}`,
+      apiConfig: apiConfig,
+      status: 'active',
+      lastSyncAt: null,
+      lastSyncStatus: null,
+      lastSyncError: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
     
     // 7. 返回成功响应
     return NextResponse.json({
       success: true,
       site: {
-        id: newSite.id,
-        name: newSite.name,
-        url: newSite.url,
-        platform: newSite.platform,
-        status: newSite.status,
-        healthStatus: newSite.healthStatus,
+        id: siteId,
+        name: siteName,
+        domain: domain,
+        logoUrl: logoUrl,
+        platforms: platforms,
+        status: 'active',
       },
     });
   } catch (error) {

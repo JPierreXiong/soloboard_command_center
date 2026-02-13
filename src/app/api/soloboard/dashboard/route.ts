@@ -4,65 +4,59 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getAuth } from '@/core/auth';
+import { auth } from '@/core/auth';
+import { db } from '@/core/db';
+import { monitoredSites } from '@/config/db/schema';
+import { eq } from 'drizzle-orm';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
-    const { user } = await getAuth();
+    // 验证用户身份
+    const session = await auth.api.getSession({
+      headers: request.headers,
+    });
 
-    if (!user) {
+    if (!session?.user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // TODO: Fetch sites from database
-    // const sites = await db.query.monitoredSites.findMany({
-    //   where: (sites, { eq }) => eq(sites.userId, user.id),
-    // });
+    // 从数据库获取用户的所有站点
+    const userSites = await db()
+      .select()
+      .from(monitoredSites)
+      .where(eq(monitoredSites.userId, session.user.id));
 
-    // Mock data for now - matches the dashboard display
-    const mockSites = [
-      {
-        id: '1',
-        name: 'Example Shop',
-        domain: 'example-shop.com',
-        status: 'offline',
-        todayRevenue: 0,
-        todayVisitors: 0,
-        avgRevenue7d: 450,
-        platforms: ['stripe', 'ga4'],
-      },
-      {
-        id: '2',
-        name: 'My SaaS',
-        domain: 'my-saas.com',
-        status: 'warning',
-        todayRevenue: 0,
-        todayVisitors: 234,
-        avgRevenue7d: 890,
-        platforms: ['stripe'],
-      },
-      {
-        id: '3',
-        name: 'Blog Site',
-        domain: 'blog-site.com',
-        status: 'online',
-        todayRevenue: 156,
-        todayVisitors: 1203,
-        avgRevenue7d: 120,
-        platforms: ['ga4'],
-      },
-    ];
+    // 转换为前端需要的格式
+    const sites = userSites.map(site => {
+      const apiConfig = site.apiConfig as any || {};
+      const platforms = apiConfig.platforms || [];
+      
+      return {
+        id: site.id,
+        name: site.name,
+        domain: site.domain,
+        logoUrl: site.logoUrl,
+        status: site.status === 'active' ? 'online' : 'offline',
+        todayRevenue: 0, // TODO: 从实际 API 获取
+        todayVisitors: 0, // TODO: 从实际 API 获取
+        avgRevenue7d: 0, // TODO: 从历史数据计算
+        platforms: platforms,
+      };
+    });
 
-    // Calculate summary
+    // 计算汇总数据
     const summary = {
-      totalSites: mockSites.length,
-      totalRevenue: mockSites.reduce((sum, site) => sum + site.todayRevenue, 0),
-      totalVisitors: mockSites.reduce((sum, site) => sum + site.todayVisitors, 0),
-      sitesOnline: mockSites.filter(site => site.status === 'online').length,
+      totalSites: sites.length,
+      totalRevenue: sites.reduce((sum, site) => sum + site.todayRevenue, 0),
+      totalVisitors: sites.reduce((sum, site) => sum + site.todayVisitors, 0),
+      sitesOnline: sites.filter(site => site.status === 'online').length,
     };
 
     return NextResponse.json({
-      sites: mockSites,
+      sites,
       summary,
       lastUpdated: new Date().toISOString(),
     });
