@@ -1,5 +1,6 @@
 /**
  * ShipAny - 添加监控站点页面
+ * 融合版：3步流程 (域名 → 收入源 → 流量)
  * 
  * 使用 ShipAny 标准布局（Header + Hero + Footer）
  */
@@ -7,7 +8,7 @@
 import { getTranslations } from 'next-intl/server';
 import { envConfigs } from '@/config';
 import { defaultLocale } from '@/config/locale';
-import { PlatformSelector } from './_components/platform-selector';
+import { AddSiteFlow } from './_components/add-site-flow';
 
 export async function generateMetadata({
   params,
@@ -33,10 +34,10 @@ export default async function ShipAnyPage() {
   const t = await getTranslations('shipany.page');
   
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-16 mt-8">
       {/* Hero Section */}
-      <div className="text-center mb-16 space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <div className="text-center mb-12 space-y-4">
+        <h1 className="text-4xl md:text-5xl font-bold">
           {t('title')}
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -44,8 +45,8 @@ export default async function ShipAnyPage() {
         </p>
       </div>
 
-      {/* Platform Selector */}
-      <PlatformSelector />
+      {/* 3-Step Flow */}
+      <AddSiteFlow />
     </div>
   );
 }

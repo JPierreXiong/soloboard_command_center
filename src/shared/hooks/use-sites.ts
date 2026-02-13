@@ -11,6 +11,7 @@ interface Site {
   id: string;
   name: string;
   domain: string;
+  logoUrl?: string;
   status: 'online' | 'offline' | 'warning';
   todayRevenue: number;
   todayVisitors: number;

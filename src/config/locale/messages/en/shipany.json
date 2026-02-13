@@ -1,12 +1,51 @@
 {
   "page": {
-    "title": "Add Monitoring Site",
-    "description": "Choose a platform to start monitoring your business metrics"
+    "title": "Add Your Website to Monitor",
+    "description": "3 minutes to monitor your entire indie empire"
   },
   "steps": {
     "select_platform": "Select Platform",
     "configure": "Configure",
     "confirm": "Confirm"
+  },
+  "flow": {
+    "verified": "Verified",
+    "step1": {
+      "title": "What's your website URL?",
+      "description": "Enter your domain to start monitoring",
+      "checking": "Checking...",
+      "we_will_monitor": "We will monitor",
+      "monitor_revenue": "Revenue situation",
+      "monitor_traffic": "Traffic volume",
+      "monitor_uptime": "Website uptime status"
+    },
+    "step2": {
+      "title": "How does this site make money?",
+      "description": "Select your payment platforms (optional)",
+      "security_title": "AES-256 Military Grade Encryption",
+      "security_description": "We only read data, never perform any operations",
+      "how_to_get_key": "How to get API key",
+      "no_revenue": "No revenue yet (just monitoring uptime)"
+    },
+    "step3": {
+      "title": "Monitor website traffic?",
+      "description": "Connect Google Analytics to track visitors",
+      "enable_ga4": "Yes, connect Google Analytics",
+      "skip": "No, I don't need traffic data",
+      "submitting": "Setting up...",
+      "complete": "Complete Setup"
+    },
+    "step4": {
+      "title": "Your website is now being monitored",
+      "subtitle": "We'll automatically track everything for you",
+      "monitoring": "Monitoring active",
+      "we_will": "We will automatically",
+      "monitor_uptime": "Monitor if website is accessible",
+      "monitor_revenue": "Track daily revenue",
+      "monitor_traffic": "Track daily visitors",
+      "alert_issues": "Alert you immediately if issues occur",
+      "view_dashboard": "View Dashboard"
+    }
   },
   "platforms": {
     "uptime": {

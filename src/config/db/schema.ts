@@ -509,6 +509,7 @@ export const monitoredSites = pgTable(
       .references(() => user.id, { onDelete: 'cascade' }),
     name: text('name').notNull(),
     domain: text('domain').notNull(),
+    logoUrl: text('logo_url'), // Website logo/favicon URL
     platform: text('platform').notNull(), // uptime, ga4, stripe, lemon, shopify
     url: text('url'),
     apiConfig: jsonb('api_config'), // Encrypted API keys and config

@@ -1,6 +1,11 @@
 /**
  * SoloBoard - Website Monitoring Dashboard
  * The Pulse: Exception-driven website list
+ * 
+ * 核心改进：
+ * 1. 异常状态优先排序（红 → 黄 → 绿）
+ * 2. 显示网站 Logo
+ * 3. 优化视觉层次
  */
 
 'use client';
@@ -20,6 +25,7 @@ interface Site {
   id: string;
   domain: string;
   name: string;
+  logoUrl?: string;
   status: SiteStatus;
   todayRevenue: number;
   todayVisitors: number;
@@ -30,7 +36,8 @@ export function SoloBoardDashboard() {
   const t = useTranslations('common.soloboard');
   const { sites, summary, isLoading, error, refetch } = useSites();
   
-  // Sort sites by status priority: offline > warning > online
+  // 🎯 核心改进：异常状态优先排序
+  // 排序规则：offline (红) → warning (黄) → online (绿)
   const sortedSites = [...sites].sort((a, b) => {
     const priority = { offline: 0, warning: 1, online: 2 };
     return priority[a.status] - priority[b.status];
@@ -178,17 +185,19 @@ function SummaryCard({
   );
 }
 
-// Site Card Component
+// Site Card Component - 优化版：显示 Logo
 function SiteCard({ site, t }: { site: Site; t: any }) {
   const statusConfig = {
     offline: {
       color: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300',
       badge: 'destructive',
+      borderColor: 'border-red-500',
       alert: t('alerts.offline'),
     },
     warning: {
       color: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300',
       badge: 'warning',
+      borderColor: 'border-yellow-500',
       alert: site.avgRevenue7d > 0 && site.todayRevenue === 0 
         ? t('alerts.no_sales') 
         : t('alerts.low_traffic'),
@@ -196,6 +205,7 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
     online: {
       color: 'bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300',
       badge: 'success',
+      borderColor: '',
       alert: null,
     },
   };
@@ -203,17 +213,24 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
   const config = statusConfig[site.status];
 
   return (
-    <Card className={`${site.status !== 'online' ? 'border-2' : ''} ${
-      site.status === 'offline' ? 'border-red-500' : 
-      site.status === 'warning' ? 'border-yellow-500' : ''
-    }`}>
+    <Card className={`${site.status !== 'online' ? 'border-2' : ''} ${config.borderColor}`}>
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
-          {/* Left: Site Info */}
+          {/* Left: Site Info with Logo */}
           <div className="flex items-center gap-4 flex-1">
-            <div className={`w-12 h-12 rounded-lg ${config.color} flex items-center justify-center font-bold text-lg`}>
-              {site.name.charAt(0).toUpperCase()}
-            </div>
+            {/* 🎯 显示网站 Logo */}
+            {site.logoUrl ? (
+              <img 
+                src={site.logoUrl} 
+                alt={site.name}
+                className="w-12 h-12 rounded-lg object-cover border"
+              />
+            ) : (
+              <div className={`w-12 h-12 rounded-lg ${config.color} flex items-center justify-center font-bold text-lg`}>
+                {site.name.charAt(0).toUpperCase()}
+              </div>
+            )}
+            
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-lg">{site.name}</h3>
