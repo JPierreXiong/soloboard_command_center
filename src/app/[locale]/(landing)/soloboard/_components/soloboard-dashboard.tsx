@@ -71,7 +71,7 @@ export function SoloBoardDashboard() {
   const sitesOnline = MOCK_SITES.filter(site => site.status === 'online').length;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-8">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
@@ -79,7 +79,7 @@ export function SoloBoardDashboard() {
           <p className="text-muted-foreground">{t('page.subtitle')}</p>
         </div>
         <Link href="/shipany">
-          <Button size="lg" className="gap-2">
+          <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-all">
             <Plus className="h-5 w-5" />
             {t('add_button')}
           </Button>
@@ -238,7 +238,7 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
                 {site.todayVisitors.toLocaleString()}
               </p>
             </div>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="hover:bg-accent transition-colors">
               {t('site_card.view_details')}
             </Button>
           </div>
@@ -261,7 +261,7 @@ function EmptyState({ t }: { t: any }) {
           {t('empty_state.description')}
         </p>
         <Link href="/shipany">
-          <Button size="lg" className="gap-2">
+          <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-all">
             <Plus className="h-5 w-5" />
             {t('empty_state.add_button')}
           </Button>
