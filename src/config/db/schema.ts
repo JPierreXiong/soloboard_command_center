@@ -551,6 +551,27 @@ export const siteMetricsHistory = pgTable(
   ]
 );
 
+// Daily metrics snapshot for Base/Pro users (historical data storage)
+export const siteMetricsDaily = pgTable(
+  'site_metrics_daily',
+  {
+    id: text('id').primaryKey(),
+    siteId: text('site_id')
+      .notNull()
+      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
+    date: timestamp('date').notNull(), // Snapshot date
+    revenue: integer('revenue').default(0), // Total revenue in cents
+    visitors: integer('visitors').default(0), // Total visitors
+    uptimePercentage: integer('uptime_percentage').default(100), // Uptime %
+    responseTime: integer('response_time').default(0), // Response time in ms
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // Query metrics for a site by date range
+    index('idx_site_metrics_daily_site_date').on(table.siteId, table.date),
+  ]
+);
+
 export const syncLogs = pgTable(
   'sync_logs',
   {
@@ -570,4 +591,11 @@ export const syncLogs = pgTable(
     index('idx_sync_logs_created').on(table.createdAt),
   ]
 );
+
+// Export aliases for compatibility
+export const users = user;
+export { user as userTable };
+export { session as sessionTable };
+export { account as accountTable };
+export { verification as verificationTable };
 

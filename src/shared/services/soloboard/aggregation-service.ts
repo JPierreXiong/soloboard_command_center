@@ -8,6 +8,7 @@ import { fetchStripeMetrics } from './stripe-fetcher';
 import { fetchGA4Metrics } from './ga4-fetcher';
 import { fetchShopifyMetrics } from './shopify-fetcher';
 import { fetchLemonSqueezyMetrics } from './lemonsqueezy-fetcher';
+import { fetchCreemMetrics } from './creem-fetcher';
 
 interface SiteConfig {
   id: string;
@@ -17,6 +18,7 @@ interface SiteConfig {
     shopify?: { apiKey: string; shopDomain: string; accessToken: string };
     ga4?: { propertyId: string; credentials: string };
     lemonSqueezy?: { apiKey: string; storeId: string };
+    creem?: { apiKey: string; environment?: 'sandbox' | 'production' };
   };
 }
 
@@ -58,6 +60,19 @@ export async function aggregateSiteData(
 async function fetchRevenueData(config: SiteConfig) {
   const sources: Record<string, number> = {};
   let total = 0;
+
+  // Fetch from Creem (优先级最高，因为是主推平台)
+  if (config.platforms.creem) {
+    try {
+      const creemData = await fetchCreemMetrics(config.platforms.creem);
+      const creemRevenue = creemData.todayRevenue / 100; // Convert cents to dollars
+      sources.creem = creemRevenue;
+      total += creemRevenue;
+    } catch (error) {
+      console.error('Creem fetch error:', error);
+      sources.creem = 0;
+    }
+  }
 
   // Fetch from Stripe
   if (config.platforms.stripe) {

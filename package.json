@@ -41,7 +41,9 @@
     "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf:upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv src/shared/types/cloudflare.d.ts",
-    "test:simple": "tsx scripts/simple-test.ts"
+    "test:simple": "tsx scripts/simple-test.ts",
+    "check-env": "node check-env.js",
+    "predeploy": "pnpm run check-env && pnpm run build"
   },
   "dependencies": {
     "@ai-sdk/react": "^2.0.89",

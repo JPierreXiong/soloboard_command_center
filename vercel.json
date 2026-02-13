@@ -28,5 +28,11 @@
     "src/app/api/cron/**/*.ts": {
       "maxDuration": 60
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/store-metrics",
+      "schedule": "0 0 * * *"
+    }
+  ]
 }
