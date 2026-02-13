@@ -6,43 +6,13 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Plus, TrendingUp, Users, Globe, AlertCircle } from 'lucide-react';
+import { Plus, TrendingUp, Users, Globe, AlertCircle, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
 import { Button } from '@/shared/components/ui/button';
 import { Badge } from '@/shared/components/ui/badge';
 import { motion } from 'framer-motion';
-
-// Mock data - will be replaced with real API calls
-const MOCK_SITES = [
-  {
-    id: '1',
-    domain: 'example-shop.com',
-    name: 'Example Shop',
-    status: 'offline',
-    todayRevenue: 0,
-    todayVisitors: 0,
-    avgRevenue7d: 450,
-  },
-  {
-    id: '2',
-    domain: 'my-saas.com',
-    name: 'My SaaS',
-    status: 'warning',
-    todayRevenue: 0,
-    todayVisitors: 234,
-    avgRevenue7d: 890,
-  },
-  {
-    id: '3',
-    domain: 'blog-site.com',
-    name: 'Blog Site',
-    status: 'online',
-    todayRevenue: 156,
-    todayVisitors: 1203,
-    avgRevenue7d: 120,
-  },
-];
+import { useSites } from '@/shared/hooks/use-sites';
 
 type SiteStatus = 'online' | 'offline' | 'warning';
 
@@ -58,17 +28,13 @@ interface Site {
 
 export function SoloBoardDashboard() {
   const t = useTranslations('common.soloboard');
+  const { sites, summary, isLoading, error, refetch } = useSites();
   
   // Sort sites by status priority: offline > warning > online
-  const sortedSites = [...MOCK_SITES].sort((a, b) => {
+  const sortedSites = [...sites].sort((a, b) => {
     const priority = { offline: 0, warning: 1, online: 2 };
     return priority[a.status] - priority[b.status];
   });
-
-  // Calculate summary stats
-  const totalRevenue = MOCK_SITES.reduce((sum, site) => sum + site.todayRevenue, 0);
-  const totalVisitors = MOCK_SITES.reduce((sum, site) => sum + site.todayVisitors, 0);
-  const sitesOnline = MOCK_SITES.filter(site => site.status === 'online').length;
 
   return (
     <div className="container mx-auto px-4 py-8 mt-8">
@@ -78,12 +44,24 @@ export function SoloBoardDashboard() {
           <h1 className="text-3xl font-bold mb-2">{t('page.title')}</h1>
           <p className="text-muted-foreground">{t('page.subtitle')}</p>
         </div>
-        <Link href="/shipany">
-          <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-all">
-            <Plus className="h-5 w-5" />
-            {t('add_button')}
+        <div className="flex items-center gap-3">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            onClick={refetch}
+            disabled={isLoading}
+            className="gap-2"
+          >
+            <RefreshCw className={`h-5 w-5 ${isLoading ? 'animate-spin' : ''}`} />
+            {t('refresh')}
           </Button>
-        </Link>
+          <Link href="/shipany">
+            <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-all">
+              <Plus className="h-5 w-5" />
+              {t('add_button')}
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Summary Cards */}
@@ -91,45 +69,74 @@ export function SoloBoardDashboard() {
         <SummaryCard
           icon={Globe}
           label={t('summary.total_sites')}
-          value={MOCK_SITES.length.toString()}
+          value={summary.totalSites.toString()}
           color="blue"
         />
         <SummaryCard
           icon={TrendingUp}
           label={t('summary.total_revenue')}
-          value={`$${totalRevenue.toLocaleString()}`}
+          value={`$${summary.totalRevenue.toLocaleString()}`}
           color="green"
         />
         <SummaryCard
           icon={Users}
           label={t('summary.total_visitors')}
-          value={totalVisitors.toLocaleString()}
+          value={summary.totalVisitors.toLocaleString()}
           color="purple"
         />
         <SummaryCard
           icon={AlertCircle}
           label={t('summary.sites_online')}
-          value={`${sitesOnline}/${MOCK_SITES.length}`}
-          color={sitesOnline === MOCK_SITES.length ? 'green' : 'red'}
+          value={`${summary.sitesOnline}/${summary.totalSites}`}
+          color={summary.sitesOnline === summary.totalSites ? 'green' : 'red'}
         />
       </div>
 
-      {/* Sites List */}
-      {sortedSites.length === 0 ? (
-        <EmptyState t={t} />
-      ) : (
-        <div className="space-y-4">
-          {sortedSites.map((site, index) => (
-            <motion.div
-              key={site.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <SiteCard site={site} t={t} />
-            </motion.div>
-          ))}
+      {/* Loading State */}
+      {isLoading && (
+        <div className="flex items-center justify-center py-16">
+          <div className="flex flex-col items-center gap-4">
+            <RefreshCw className="h-8 w-8 animate-spin text-primary" />
+            <p className="text-muted-foreground">{t('loading')}</p>
+          </div>
         </div>
+      )}
+
+      {/* Error State */}
+      {error && !isLoading && (
+        <Card className="border-destructive">
+          <CardContent className="flex flex-col items-center justify-center py-16">
+            <AlertCircle className="h-12 w-12 text-destructive mb-4" />
+            <h3 className="text-xl font-semibold mb-2">{t('error.title')}</h3>
+            <p className="text-muted-foreground mb-6">{error}</p>
+            <Button onClick={refetch} className="gap-2">
+              <RefreshCw className="h-4 w-4" />
+              {t('error.retry')}
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Sites List */}
+      {!isLoading && !error && (
+        <>
+          {sortedSites.length === 0 ? (
+            <EmptyState t={t} />
+          ) : (
+            <div className="space-y-4">
+              {sortedSites.map((site, index) => (
+                <motion.div
+                  key={site.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <SiteCard site={site} t={t} />
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

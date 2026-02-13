@@ -52,6 +52,12 @@
       "title": "监控所有网站",
       "subtitle": "在一个地方追踪所有网站的收入、流量和在线状态"
     },
+    "refresh": "刷新",
+    "loading": "加载中...",
+    "error": {
+      "title": "加载失败",
+      "retry": "重试"
+    },
     "empty_state": {
       "title": "还没有网站",
       "description": "添加您的第一个网站，开始监控收入、流量和在线状态。",

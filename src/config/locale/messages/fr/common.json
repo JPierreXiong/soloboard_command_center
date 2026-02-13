@@ -52,6 +52,12 @@
       "title": "Surveillez tous vos sites",
       "subtitle": "Suivez les revenus, le trafic et l'état en ligne de tous vos sites web en un seul endroit"
     },
+    "refresh": "Actualiser",
+    "loading": "Chargement...",
+    "error": {
+      "title": "Échec du chargement",
+      "retry": "Réessayer"
+    },
     "empty_state": {
       "title": "Aucun site web pour le moment",
       "description": "Ajoutez votre premier site web pour commencer à surveiller les revenus, le trafic et l'état en ligne.",

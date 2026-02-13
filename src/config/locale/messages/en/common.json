@@ -52,6 +52,12 @@
       "title": "Monitor All Your Sites",
       "subtitle": "Track revenue, traffic, and uptime status for all your websites in one place"
     },
+    "refresh": "Refresh",
+    "loading": "Loading sites...",
+    "error": {
+      "title": "Failed to Load Sites",
+      "retry": "Try Again"
+    },
     "empty_state": {
       "title": "No websites yet",
       "description": "Add your first website to start monitoring revenue, traffic, and uptime status.",
