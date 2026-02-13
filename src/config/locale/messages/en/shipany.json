@@ -46,31 +46,11 @@
   },
   "actions": {
     "next": "Next",
-    "back": "Back"
+    "back": "Back",
+    "cancel": "Cancel",
+    "add": "Add Site",
+    "close": "Close"
   },
-  "platforms": {
-    "uptime": {
-      "name": "Uptime Monitoring",
-      "description": "Website online status monitoring"
-    },
-    "ga4": {
-      "name": "Google Analytics",
-      "description": "Website traffic analysis"
-    },
-    "stripe": {
-      "name": "Stripe",
-      "description": "Payment and revenue tracking"
-    },
-    "lemon": {
-      "name": "Lemon Squeezy",
-      "description": "Digital product sales"
-    },
-    "shopify": {
-      "name": "Shopify",
-      "description": "E-commerce platform"
-    }
-  }
-}
   "platforms": {
     "uptime": {
       "name": "Uptime Monitoring",
@@ -133,13 +113,6 @@
       }
     }
   },
-  "actions": {
-    "next": "Next",
-    "back": "Back",
-    "cancel": "Cancel",
-    "add": "Add Site",
-    "close": "Close"
-  },
   "difficulty": {
     "easy": "Easy",
     "medium": "Medium",
@@ -151,4 +124,3 @@
     "more_features": "+{count} more features"
   }
 }
-
