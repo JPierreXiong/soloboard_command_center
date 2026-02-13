@@ -496,3 +496,77 @@ export const dailyCheckins = pgTable(
   ]
 );
 
+// ============================================
+// SoloBoard - Website Monitoring Tables
+// ============================================
+
+export const monitoredSites = pgTable(
+  'monitored_sites',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    name: text('name').notNull(),
+    domain: text('domain').notNull(),
+    platform: text('platform').notNull(), // uptime, ga4, stripe, lemon, shopify
+    url: text('url'),
+    apiConfig: jsonb('api_config'), // Encrypted API keys and config
+    status: text('status').notNull().default('active'), // active, paused, error
+    lastSyncAt: timestamp('last_sync_at'),
+    lastSyncStatus: text('last_sync_status'), // success, error
+    lastSyncError: text('last_sync_error'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+  },
+  (table) => [
+    // Query user's sites
+    index('idx_monitored_sites_user').on(table.userId),
+    // Query sites by status
+    index('idx_monitored_sites_status').on(table.status),
+  ]
+);
+
+export const siteMetricsHistory = pgTable(
+  'site_metrics_history',
+  {
+    id: text('id').primaryKey(),
+    siteId: text('site_id')
+      .notNull()
+      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
+    date: text('date').notNull(), // YYYY-MM-DD
+    revenue: integer('revenue').default(0), // in cents
+    visitors: integer('visitors').default(0),
+    orders: integer('orders').default(0),
+    uptimePercentage: integer('uptime_percentage').default(100),
+    metrics: jsonb('metrics'), // Additional platform-specific metrics
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // Query metrics for a site
+    index('idx_site_metrics_site_date').on(table.siteId, table.date),
+  ]
+);
+
+export const syncLogs = pgTable(
+  'sync_logs',
+  {
+    id: text('id').primaryKey(),
+    siteId: text('site_id')
+      .notNull()
+      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
+    status: text('status').notNull(), // success, error
+    message: text('message'),
+    duration: integer('duration'), // in milliseconds
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    // Query sync logs for a site
+    index('idx_sync_logs_site').on(table.siteId),
+    // Query recent sync logs
+    index('idx_sync_logs_created').on(table.createdAt),
+  ]
+);
+
