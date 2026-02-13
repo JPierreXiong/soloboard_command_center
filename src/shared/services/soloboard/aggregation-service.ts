@@ -4,14 +4,19 @@
  */
 
 import { checkUptime } from './uptime-service';
+import { fetchStripeMetrics } from './stripe-fetcher';
+import { fetchGA4Metrics } from './ga4-fetcher';
+import { fetchShopifyMetrics } from './shopify-fetcher';
+import { fetchLemonSqueezyMetrics } from './lemonsqueezy-fetcher';
 
 interface SiteConfig {
   id: string;
   domain: string;
   platforms: {
-    stripe?: { apiKey: string };
-    shopify?: { apiKey: string; shopDomain: string };
-    ga4?: { propertyId: string; credentials: any };
+    stripe?: { secretKey: string };
+    shopify?: { apiKey: string; shopDomain: string; accessToken: string };
+    ga4?: { propertyId: string; credentials: string };
+    lemonSqueezy?: { apiKey: string; storeId: string };
   };
 }
 
@@ -57,8 +62,8 @@ async function fetchRevenueData(config: SiteConfig) {
   // Fetch from Stripe
   if (config.platforms.stripe) {
     try {
-      // TODO: Implement Stripe API call
-      const stripeRevenue = 0; // await fetchStripeRevenue(config.platforms.stripe.apiKey);
+      const stripeData = await fetchStripeMetrics(config.platforms.stripe);
+      const stripeRevenue = stripeData.todayRevenue / 100; // Convert cents to dollars
       sources.stripe = stripeRevenue;
       total += stripeRevenue;
     } catch (error) {
@@ -70,13 +75,26 @@ async function fetchRevenueData(config: SiteConfig) {
   // Fetch from Shopify
   if (config.platforms.shopify) {
     try {
-      // TODO: Implement Shopify API call
-      const shopifyRevenue = 0; // await fetchShopifyRevenue(config.platforms.shopify);
+      const shopifyData = await fetchShopifyMetrics(config.platforms.shopify);
+      const shopifyRevenue = shopifyData.todayRevenue / 100; // Convert cents to dollars
       sources.shopify = shopifyRevenue;
       total += shopifyRevenue;
     } catch (error) {
       console.error('Shopify fetch error:', error);
       sources.shopify = 0;
+    }
+  }
+
+  // Fetch from Lemon Squeezy
+  if (config.platforms.lemonSqueezy) {
+    try {
+      const lemonData = await fetchLemonSqueezyMetrics(config.platforms.lemonSqueezy);
+      const lemonRevenue = lemonData.todayRevenue / 100; // Convert cents to dollars
+      sources.lemonSqueezy = lemonRevenue;
+      total += lemonRevenue;
+    } catch (error) {
+      console.error('Lemon Squeezy fetch error:', error);
+      sources.lemonSqueezy = 0;
     }
   }
 
@@ -93,8 +111,8 @@ async function fetchVisitorData(config: SiteConfig) {
   // Fetch from GA4
   if (config.platforms.ga4) {
     try {
-      // TODO: Implement GA4 API call
-      const ga4Visitors = 0; // await fetchGA4Visitors(config.platforms.ga4);
+      const ga4Data = await fetchGA4Metrics(config.platforms.ga4);
+      const ga4Visitors = ga4Data.pageViews; // Use page views as visitor metric
       sources.ga4 = ga4Visitors;
       total += ga4Visitors;
     } catch (error) {
