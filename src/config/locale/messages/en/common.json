@@ -81,6 +81,21 @@
       "total_visitors": "Total Visitors Today",
       "sites_online": "Sites Online"
     },
+    "site_details": {
+      "title": "Site Details",
+      "description": "View detailed metrics and history for your website",
+      "back": "Back to Dashboard",
+      "settings": "Settings",
+      "avg_revenue": "Avg Revenue (7d)",
+      "trend": "Trend",
+      "history": "History",
+      "export": "Export",
+      "date": "Date",
+      "revenue": "Revenue",
+      "visitors": "Visitors",
+      "avg_order": "Avg Order Value",
+      "platforms": "Connected Platforms"
+    },
     "features": {
       "ga4": {
         "title": "GA4 Analytics",

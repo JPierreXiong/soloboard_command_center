@@ -238,9 +238,11 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
                 {site.todayVisitors.toLocaleString()}
               </p>
             </div>
-            <Button variant="outline" size="sm" className="hover:bg-accent transition-colors">
-              {t('site_card.view_details')}
-            </Button>
+            <Link href={`/soloboard/${site.id}`}>
+              <Button variant="outline" size="sm" className="hover:bg-accent transition-colors">
+                {t('site_card.view_details')}
+              </Button>
+            </Link>
           </div>
         </div>
       </CardContent>

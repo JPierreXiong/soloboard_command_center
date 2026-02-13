@@ -81,6 +81,21 @@
       "total_visitors": "Visiteurs totaux aujourd'hui",
       "sites_online": "Sites en ligne"
     },
+    "site_details": {
+      "title": "Détails du site",
+      "description": "Voir les métriques détaillées et l'historique de votre site web",
+      "back": "Retour au tableau de bord",
+      "settings": "Paramètres",
+      "avg_revenue": "Revenu moyen (7j)",
+      "trend": "Tendance",
+      "history": "Historique",
+      "export": "Exporter",
+      "date": "Date",
+      "revenue": "Revenu",
+      "visitors": "Visiteurs",
+      "avg_order": "Valeur moyenne de commande",
+      "platforms": "Plateformes connectées"
+    },
     "features": {
       "ga4": {
         "title": "Analyses GA4",

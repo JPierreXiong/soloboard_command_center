@@ -81,6 +81,21 @@
       "total_visitors": "今日总访客",
       "sites_online": "在线站点"
     },
+    "site_details": {
+      "title": "站点详情",
+      "description": "查看网站的详细指标和历史数据",
+      "back": "返回仪表盘",
+      "settings": "设置",
+      "avg_revenue": "平均收入（7天）",
+      "trend": "趋势",
+      "history": "历史记录",
+      "export": "导出",
+      "date": "日期",
+      "revenue": "收入",
+      "visitors": "访客",
+      "avg_order": "平均订单价值",
+      "platforms": "已连接平台"
+    },
     "features": {
       "ga4": {
         "title": "GA4 分析",
