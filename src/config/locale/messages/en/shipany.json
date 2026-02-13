@@ -1,61 +1,76 @@
 {
   "page": {
     "title": "Add Your Website",
-    "description": "3 minutes to start monitoring your website"
+    "description": "3 minutes to start monitoring"
   },
-  "steps": {
-    "select_platform": "Select Platform",
-    "configure": "Configure",
-    "confirm": "Confirm"
+  "setup_time": "Setup Time: < 2 mins",
+  "verified": "Verified",
+  "step1": {
+    "title": "Enter Your Website URL",
+    "description": "We'll automatically detect your site and start monitoring",
+    "url_placeholder": "https://yourwebsite.com",
+    "checking": "Checking...",
+    "we_will_monitor": "We will monitor",
+    "monitor_revenue": "Revenue situation",
+    "monitor_traffic": "Traffic volume",
+    "monitor_uptime": "Website uptime status"
   },
-  "flow": {
-    "verified": "Verified",
-    "step1": {
-      "title": "Add Your Website",
-      "description": "Enter your website URL and basic information",
-      "site_name_label": "Website Name",
-      "site_name_placeholder": "My Awesome Site",
-      "site_url_label": "Website URL",
-      "site_url_placeholder": "https://yourwebsite.com",
-      "site_description_label": "Description (Optional)",
-      "site_description_placeholder": "What does your website do?",
-      "checking": "Checking...",
-      "we_will_monitor": "We will monitor",
-      "monitor_revenue": "Revenue situation",
-      "monitor_traffic": "Traffic volume",
-      "monitor_uptime": "Website uptime status"
+  "step2": {
+    "title": "How do you receive payments?",
+    "description": "Select your payment platforms (optional)",
+    "security_title": "AES-256 Military Grade Encryption",
+    "security_description": "We only read data, never perform any operations",
+    "how_to_get_key": "How to get API key",
+    "no_revenue": "No revenue yet (just monitoring uptime)",
+    "other_platform_placeholder": "e.g., PayPal, Alipay, WeChat Pay",
+    "other_platform_name": "Platform name"
+  },
+  "step3": {
+    "title": "Monitor website traffic?",
+    "description": "Connect Google Analytics to track visitors",
+    "enable_ga4": "Yes, connect Google Analytics",
+    "skip": "No, I don't need traffic data",
+    "submitting": "Setting up...",
+    "complete": "Complete Setup"
+  },
+  "step4": {
+    "title": "Your website is now being monitored",
+    "subtitle": "We'll automatically track everything for you",
+    "monitoring": "Monitoring active",
+    "we_will": "We will automatically",
+    "monitor_uptime": "Monitor if website is accessible",
+    "monitor_revenue": "Track daily revenue",
+    "monitor_traffic": "Track daily visitors",
+    "alert_issues": "Alert you immediately if issues occur",
+    "view_dashboard": "View Dashboard"
+  },
+  "actions": {
+    "next": "Next",
+    "back": "Back"
+  },
+  "platforms": {
+    "uptime": {
+      "name": "Uptime Monitoring",
+      "description": "Website online status monitoring"
     },
-    "step2": {
-      "title": "How do you receive payments?",
-      "description": "Select your payment platforms (optional)",
-      "security_title": "AES-256 Military Grade Encryption",
-      "security_description": "We only read data, never perform any operations",
-      "how_to_get_key": "How to get API key",
-      "no_revenue": "No revenue yet (just monitoring uptime)",
-      "other_platform": "Other payment platform",
-      "other_platform_name": "Platform name",
-      "other_platform_placeholder": "e.g., PayPal, Alipay, WeChat Pay"
+    "ga4": {
+      "name": "Google Analytics",
+      "description": "Website traffic analysis"
     },
-    "step3": {
-      "title": "Monitor website traffic?",
-      "description": "Connect Google Analytics to track visitors",
-      "enable_ga4": "Yes, connect Google Analytics",
-      "skip": "No, I don't need traffic data",
-      "submitting": "Setting up...",
-      "complete": "Complete Setup"
+    "stripe": {
+      "name": "Stripe",
+      "description": "Payment and revenue tracking"
     },
-    "step4": {
-      "title": "Your website is now being monitored",
-      "subtitle": "We'll automatically track everything for you",
-      "monitoring": "Monitoring active",
-      "we_will": "We will automatically",
-      "monitor_uptime": "Monitor if website is accessible",
-      "monitor_revenue": "Track daily revenue",
-      "monitor_traffic": "Track daily visitors",
-      "alert_issues": "Alert you immediately if issues occur",
-      "view_dashboard": "View Dashboard"
+    "lemon": {
+      "name": "Lemon Squeezy",
+      "description": "Digital product sales"
+    },
+    "shopify": {
+      "name": "Shopify",
+      "description": "E-commerce platform"
     }
-  },
+  }
+}
   "platforms": {
     "uptime": {
       "name": "Uptime Monitoring",

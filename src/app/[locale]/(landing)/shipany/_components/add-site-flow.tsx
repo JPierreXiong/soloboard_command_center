@@ -95,10 +95,8 @@ export function AddSiteFlow() {
   const [isProbing, setIsProbing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Step 1: Domain and basic info
-  const [siteName, setSiteName] = useState('');
+  // Step 1: Domain only (simplified)
   const [domain, setDomain] = useState('');
-  const [siteDescription, setSiteDescription] = useState('');
   const [probeResult, setProbeResult] = useState<ProbeResult | null>(null);
   
   // Step 2: Payment platforms
@@ -147,9 +145,8 @@ export function AddSiteFlow() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: siteName || probeResult?.domain,
+          name: probeResult?.domain, // 使用域名作为名称
           domain: probeResult?.domain,
-          description: siteDescription,
           logoUrl: probeResult?.logoUrl,
           platforms: selectedPlatforms,
           apiKeys,
@@ -165,11 +162,12 @@ export function AddSiteFlow() {
         // 2秒后跳转到 Dashboard
         setTimeout(() => router.push('/soloboard'), 2000);
       } else {
-        throw new Error('Failed to add site');
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to add site');
       }
     } catch (error) {
       console.error('Submit failed:', error);
-      alert('Failed to add website. Please try again.');
+      alert(`Failed to add website: ${error instanceof Error ? error.message : 'Please try again'}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -181,12 +179,12 @@ export function AddSiteFlow() {
       <div className="mb-8 flex items-center justify-center gap-2">
         <Badge variant={step >= 1 ? 'default' : 'outline'} className="gap-1">
           <Zap className="h-3 w-3" />
-          Setup Time: &lt; 2 mins
+          {t('setup_time')}
         </Badge>
       </div>
 
       <AnimatePresence mode="wait">
-        {/* Step 1: 输入域名和基本信息 */}
+        {/* Step 1: 输入域名（简化版 - 只要 URL） */}
         {step === 1 && (
           <motion.div
             key="step1"
@@ -198,54 +196,23 @@ export function AddSiteFlow() {
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-2">
                   <Globe className="h-6 w-6" />
-                  {t('flow.step1.title')}
+                  {t('step1.title')}
                 </CardTitle>
                 <CardDescription className="text-base">
-                  {t('flow.step1.description')}
+                  {t('step1.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* 网站名称 */}
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">
-                    {t('flow.step1.site_name_label')}
-                  </Label>
-                  <Input
-                    type="text"
-                    placeholder={t('flow.step1.site_name_placeholder')}
-                    value={siteName}
-                    onChange={(e) => setSiteName(e.target.value)}
-                    className="h-12"
-                  />
-                </div>
-
                 {/* 网站 URL */}
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium">
-                    {t('flow.step1.site_url_label')}
-                  </Label>
                   <Input
                     type="text"
-                    placeholder={t('flow.step1.site_url_placeholder')}
+                    placeholder={t('step1.url_placeholder')}
                     value={domain}
                     onChange={(e) => setDomain(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleDomainProbe()}
                     className="text-lg h-14"
                     disabled={isProbing}
-                  />
-                </div>
-
-                {/* 网站描述（可选） */}
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium">
-                    {t('flow.step1.site_description_label')}
-                  </Label>
-                  <Input
-                    type="text"
-                    placeholder={t('flow.step1.site_description_placeholder')}
-                    value={siteDescription}
-                    onChange={(e) => setSiteDescription(e.target.value)}
-                    className="h-12"
                   />
                 </div>
 
@@ -278,11 +245,11 @@ export function AddSiteFlow() {
                 )}
 
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <p className="font-medium text-foreground">{t('flow.step1.we_will_monitor')}:</p>
+                  <p className="font-medium text-foreground">{t('step1.we_will_monitor')}:</p>
                   <ul className="space-y-1 ml-4">
-                    <li>• {t('flow.step1.monitor_revenue')}</li>
-                    <li>• {t('flow.step1.monitor_traffic')}</li>
-                    <li>• {t('flow.step1.monitor_uptime')}</li>
+                    <li>• {t('step1.monitor_revenue')}</li>
+                    <li>• {t('step1.monitor_traffic')}</li>
+                    <li>• {t('step1.monitor_uptime')}</li>
                   </ul>
                 </div>
 
@@ -295,7 +262,7 @@ export function AddSiteFlow() {
                   {isProbing ? (
                     <>
                       <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      {t('flow.step1.checking')}
+                      {t('step1.checking')}
                     </>
                   ) : (
                     <>
@@ -326,12 +293,12 @@ export function AddSiteFlow() {
                   <span className="font-semibold">{probeResult?.domain}</span>
                   <Badge variant="outline" className="ml-auto">
                     <CheckCircle2 className="h-3 w-3 mr-1" />
-                    {t('flow.verified')}
+                    {t('verified')}
                   </Badge>
                 </div>
-                <CardTitle className="text-2xl">{t('flow.step2.title')}</CardTitle>
+                <CardTitle className="text-2xl">{t('step2.title')}</CardTitle>
                 <CardDescription className="text-base">
-                  {t('flow.step2.description')}
+                  {t('step2.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -340,11 +307,11 @@ export function AddSiteFlow() {
                   <div className="flex items-start gap-2 mb-2">
                     <Lock className="h-4 w-4 text-blue-600 mt-0.5" />
                     <p className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-                      🔒 {t('flow.step2.security_title')}
+                      🔒 {t('step2.security_title')}
                     </p>
                   </div>
                   <p className="text-xs text-blue-600 dark:text-blue-400 ml-6">
-                    {t('flow.step2.security_description')}
+                    {t('step2.security_description')}
                   </p>
                 </div>
 
@@ -394,7 +361,7 @@ export function AddSiteFlow() {
                               rel="noopener noreferrer"
                               className="text-xs text-primary hover:underline inline-block"
                             >
-                              {t('flow.step2.how_to_get_key')} →
+                              {t('step2.how_to_get_key')} →
                             </a>
                           </motion.div>
                         )}
@@ -413,7 +380,7 @@ export function AddSiteFlow() {
                   >
                     <div className="flex items-center gap-3">
                       <Checkbox checked={selectedPlatforms.length === 0} />
-                      <span className="font-semibold">{t('flow.step2.no_revenue')}</span>
+                      <span className="font-semibold">{t('step2.no_revenue')}</span>
                     </div>
                   </div>
 
@@ -421,17 +388,14 @@ export function AddSiteFlow() {
                   <div className="space-y-3">
                     <div className="p-4 border-2 border-dashed rounded-lg">
                       <Label className="text-sm font-medium mb-2 block">
-                        {t('flow.step2.other_platform')}
+                        {t('step2.other_platform_name')}
                       </Label>
                       <Input
-                        placeholder={t('flow.step2.other_platform_placeholder')}
+                        placeholder={t('step2.other_platform_placeholder')}
                         value={otherPlatform}
                         onChange={(e) => setOtherPlatform(e.target.value)}
                         className="h-10"
                       />
-                      <p className="text-xs text-muted-foreground mt-2">
-                        {t('flow.step2.other_platform_name')}
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -463,10 +427,10 @@ export function AddSiteFlow() {
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-2">
                   <BarChart3 className="h-6 w-6" />
-                  {t('flow.step3.title')}
+                  {t('step3.title')}
                 </CardTitle>
                 <CardDescription className="text-base">
-                  {t('flow.step3.description')}
+                  {t('step3.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -482,7 +446,7 @@ export function AddSiteFlow() {
                     <div className="flex items-center gap-3">
                       <Checkbox checked={enableGA4} />
                       <BarChart3 className="h-5 w-5" />
-                      <span className="font-semibold">{t('flow.step3.enable_ga4')}</span>
+                      <span className="font-semibold">{t('step3.enable_ga4')}</span>
                     </div>
                   </div>
 
@@ -511,7 +475,7 @@ export function AddSiteFlow() {
                   >
                     <div className="flex items-center gap-3">
                       <Checkbox checked={!enableGA4} />
-                      <span className="font-semibold">{t('flow.step3.skip')}</span>
+                      <span className="font-semibold">{t('step3.skip')}</span>
                     </div>
                   </div>
                 </div>
@@ -529,11 +493,11 @@ export function AddSiteFlow() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        {t('flow.step3.submitting')}
+                        {t('step3.submitting')}
                       </>
                     ) : (
                       <>
-                        {t('flow.step3.complete')}
+                        {t('step3.complete')}
                         <CheckCircle2 className="ml-2 h-4 w-4" />
                       </>
                     )}
@@ -562,8 +526,8 @@ export function AddSiteFlow() {
                 </motion.div>
                 
                 <div>
-                  <h2 className="text-3xl font-bold mb-2">🎉 {t('flow.step4.title')}</h2>
-                  <p className="text-muted-foreground">{t('flow.step4.subtitle')}</p>
+                  <h2 className="text-3xl font-bold mb-2">🎉 {t('step4.title')}</h2>
+                  <p className="text-muted-foreground">{t('step4.subtitle')}</p>
                 </div>
 
                 {probeResult?.logoUrl && (
@@ -571,23 +535,23 @@ export function AddSiteFlow() {
                     <img src={probeResult.logoUrl} className="w-12 h-12 rounded-lg" alt="Logo" />
                     <div className="text-left">
                       <p className="font-semibold">{probeResult.domain}</p>
-                      <p className="text-sm text-muted-foreground">{t('flow.step4.monitoring')}</p>
+                      <p className="text-sm text-muted-foreground">{t('step4.monitoring')}</p>
                     </div>
                   </div>
                 )}
 
                 <div className="space-y-2 text-sm text-muted-foreground max-w-md mx-auto">
-                  <p className="font-medium text-foreground">{t('flow.step4.we_will')}:</p>
+                  <p className="font-medium text-foreground">{t('step4.we_will')}:</p>
                   <ul className="space-y-1">
-                    <li>✓ {t('flow.step4.monitor_uptime')}</li>
-                    <li>✓ {t('flow.step4.monitor_revenue')}</li>
-                    <li>✓ {t('flow.step4.monitor_traffic')}</li>
-                    <li>✓ {t('flow.step4.alert_issues')}</li>
+                    <li>✓ {t('step4.monitor_uptime')}</li>
+                    <li>✓ {t('step4.monitor_revenue')}</li>
+                    <li>✓ {t('step4.monitor_traffic')}</li>
+                    <li>✓ {t('step4.alert_issues')}</li>
                   </ul>
                 </div>
 
                 <Button size="lg" className="w-full max-w-sm" onClick={() => router.push('/soloboard')}>
-                  {t('flow.step4.view_dashboard')}
+                  {t('step4.view_dashboard')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </CardContent>
