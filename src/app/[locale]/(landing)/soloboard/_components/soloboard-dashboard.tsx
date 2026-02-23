@@ -44,9 +44,9 @@ export function SoloBoardDashboard() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-8">
+    <div className="container mx-auto px-4 py-8 mt-16">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-16">
         <div>
           <h1 className="text-3xl font-bold mb-2">{t('page.title')}</h1>
           <p className="text-muted-foreground">{t('page.subtitle')}</p>
