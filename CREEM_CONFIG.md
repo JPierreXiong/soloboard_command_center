@@ -18,9 +18,11 @@ CREEM_API_KEY=creem_test_5JeYAJ7l8MEVmScHKMLnHZ
 CREEM_ENVIRONMENT=sandbox
 ```
 
-### 3. Creem Signing Secret (用于 webhook 验证)
+### 3. Creem Webhook 配置
 ```
-CREEM_SIGNING_SECRET=你的signing_secret
+CREEM_WEBHOOK_URL=https://soloboard-command-center-b.vercel.app/api/webhooks/creem
+CREEM_WEBHOOK_SECRET=whsec_6MzmusMOCJe420udLkejHe
+CREEM_SIGNING_SECRET=whsec_6MzmusMOCJe420udLkejHe
 ```
 
 ### 4. Creem Product IDs Mapping
@@ -57,9 +59,16 @@ vercel env add CREEM_API_KEY production
 vercel env add CREEM_ENVIRONMENT production
 # 输入: sandbox
 
+# Creem Webhook Configuration
+vercel env add CREEM_WEBHOOK_URL production
+# 输入: https://soloboard-command-center-b.vercel.app/api/webhooks/creem
+
+vercel env add CREEM_WEBHOOK_SECRET production
+# 输入: whsec_6MzmusMOCJe420udLkejHe
+
 # Creem Signing Secret
 vercel env add CREEM_SIGNING_SECRET production
-# 输入: 你的signing_secret
+# 输入: whsec_6MzmusMOCJe420udLkejHe
 
 # Base Plan Product ID
 vercel env add CREEM_PRODUCT_ID_BASE production

@@ -19,6 +19,8 @@ export const envConfigs = {
   creem_api_key: process.env.CREEM_API_KEY ?? '',
   creem_environment: process.env.CREEM_ENVIRONMENT ?? 'sandbox',
   creem_signing_secret: process.env.CREEM_SIGNING_SECRET ?? '',
+  creem_webhook_secret: process.env.CREEM_WEBHOOK_SECRET ?? '',
+  creem_webhook_url: process.env.CREEM_WEBHOOK_URL ?? '',
   creem_product_id_base: process.env.CREEM_PRODUCT_ID_BASE ?? '',
   creem_product_id_pro: process.env.CREEM_PRODUCT_ID_PRO ?? '',
   creem_enabled: process.env.CREEM_ENABLED ?? 'true',
