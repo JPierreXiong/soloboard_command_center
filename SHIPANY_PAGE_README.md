@@ -68,3 +68,6 @@ src/app/[locale]/(landing)/shipany/
 - next-intl (国际化)
 - shadcn/ui (UI 组件)
 
+
+
+

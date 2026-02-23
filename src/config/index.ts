@@ -15,4 +15,13 @@ export const envConfigs = {
   db_singleton_enabled: process.env.DB_SINGLETON_ENABLED || 'false',
   auth_url: process.env.AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || '',
   auth_secret: process.env.AUTH_SECRET ?? '', // openssl rand -base64 32
+  // Creem Payment Configuration
+  creem_api_key: process.env.CREEM_API_KEY ?? '',
+  creem_environment: process.env.CREEM_ENVIRONMENT ?? 'sandbox',
+  creem_signing_secret: process.env.CREEM_SIGNING_SECRET ?? '',
+  creem_product_id_base: process.env.CREEM_PRODUCT_ID_BASE ?? '',
+  creem_product_id_pro: process.env.CREEM_PRODUCT_ID_PRO ?? '',
+  creem_enabled: process.env.CREEM_ENABLED ?? 'true',
+  default_payment_provider: process.env.DEFAULT_PAYMENT_PROVIDER ?? 'creem',
+  creem_product_ids: process.env.CREEM_PRODUCT_IDS ?? '',
 };
