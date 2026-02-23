@@ -32,11 +32,6 @@
   "top_nav": {
     "items": [
       {
-        "title": "Activité",
-        "url": "/activity",
-        "icon": "Activity"
-      },
-      {
         "title": "Paramètres",
         "url": "/settings",
         "icon": "Settings"

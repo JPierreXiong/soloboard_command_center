@@ -71,8 +71,15 @@ async function handleCheckoutSuccess(paymentEvent: any) {
   const userId = metadata.userId;
   const orderId = metadata.orderId;
 
+  console.log('Processing checkout success:', {
+    userId,
+    orderId,
+    hasSubscriptionInfo: !!session.subscriptionInfo,
+    amount: session.paymentInfo?.amount,
+  });
+
   if (!userId || !orderId) {
-    console.error('Missing userId or orderId in metadata');
+    console.error('Missing userId or orderId in metadata:', metadata);
     return;
   }
 
@@ -95,46 +102,67 @@ async function handleCheckoutSuccess(paymentEvent: any) {
     })
     .where(eq(order.id, orderId));
 
+  console.log('Order updated to paid:', orderId);
+
   // 如果有订阅信息，创建订阅记录
   if (session.subscriptionInfo) {
     const subInfo = session.subscriptionInfo;
     const subscriptionNo = `SUB-${Date.now()}-${orderId.substring(0, 8)}`;
+    const planType = determinePlanType(subInfo.amount);
 
-    await db().insert(subscription).values({
-      id: session.subscriptionId,
-      subscriptionNo,
-      userId,
-      userEmail: session.paymentInfo.paymentEmail,
-      status: subInfo.status,
-      paymentProvider: 'creem',
+    console.log('Creating subscription:', {
       subscriptionId: session.subscriptionId,
-      subscriptionResult: JSON.stringify(session.subscriptionResult),
-      productId: subInfo.productId,
-      description: subInfo.description,
       amount: subInfo.amount,
-      currency: subInfo.currency,
-      interval: subInfo.interval,
-      intervalCount: subInfo.intervalCount,
-      currentPeriodStart: subInfo.currentPeriodStart,
-      currentPeriodEnd: subInfo.currentPeriodEnd,
-      planType: determinePlanType(subInfo.amount),
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      planType,
+      status: subInfo.status,
     });
 
-    // 更新用户的计划类型
-    await db().update(user)
-      .set({
-        planType: determinePlanType(subInfo.amount),
+    try {
+      await db().insert(subscription).values({
+        id: session.subscriptionId,
+        subscriptionNo,
+        userId,
+        userEmail: session.paymentInfo.paymentEmail,
+        status: subInfo.status,
+        paymentProvider: 'creem',
+        paymentUserId: session.paymentInfo.paymentUserId,
+        subscriptionId: session.subscriptionId,
+        subscriptionResult: JSON.stringify(session.subscriptionResult),
+        productId: subInfo.productId,
+        description: subInfo.description,
+        amount: subInfo.amount,
+        currency: subInfo.currency,
+        interval: subInfo.interval,
+        intervalCount: subInfo.intervalCount,
+        currentPeriodStart: subInfo.currentPeriodStart,
+        currentPeriodEnd: subInfo.currentPeriodEnd,
+        planType: planType,
+        planName: planType === 'base' ? 'Base Plan' : 'Pro Plan',
+        createdAt: new Date(),
         updatedAt: new Date(),
-      })
-      .where(eq(user.id, userId));
+      });
 
-    console.log('Subscription created and user upgraded:', {
-      userId,
-      subscriptionId: session.subscriptionId,
-      planType: determinePlanType(subInfo.amount),
-    });
+      console.log('Subscription created successfully');
+
+      // 更新用户的计划类型
+      await db().update(user)
+        .set({
+          planType: planType,
+          updatedAt: new Date(),
+        })
+        .where(eq(user.id, userId));
+
+      console.log('User upgraded successfully:', {
+        userId,
+        subscriptionId: session.subscriptionId,
+        planType,
+      });
+    } catch (error: any) {
+      console.error('Failed to create subscription:', error.message);
+      throw error;
+    }
+  } else {
+    console.warn('No subscription info in payment session');
   }
 }
 
@@ -216,10 +244,12 @@ async function handleSubscriptionCanceled(paymentEvent: any) {
   }
 }
 
-// 根据金额判断计划类型
+// 根据金额判断计划类型（金额单位：分）
 function determinePlanType(amount: number): string {
   if (amount === 0) return 'free';
-  if (amount < 5000) return 'base'; // < $50
-  return 'pro'; // >= $50
+  // Base Plan: $19.9 = 1990 cents
+  // Pro Plan: $39.9 = 3990 cents
+  if (amount <= 2000) return 'base'; // <= $20
+  return 'pro'; // > $20
 }
 
