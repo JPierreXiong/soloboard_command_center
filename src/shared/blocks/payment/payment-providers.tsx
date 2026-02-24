@@ -101,10 +101,29 @@ export function PaymentProviders({
   if (configs.paypal_enabled === 'true' && isProviderAllowed('paypal')) {
     providers.push({
       name: 'paypal',
-      title: 'Paypal',
+      title: 'PayPal',
       icon_url: '/imgs/icons/paypal.svg',
       onClick: () => handlePayment({ provider: 'paypal' }),
     });
+  }
+
+  if (configs.alipay_enabled === 'true' && isProviderAllowed('alipay')) {
+    providers.push({
+      name: 'alipay',
+      title: 'Alipay (支付宝)',
+      icon_url: '/imgs/icons/alipay.svg',
+      onClick: () => handlePayment({ provider: 'alipay' }),
+    });
+  }
+
+  // 如果没有可用的支付方式，显示提示
+  if (providers.length === 0) {
+    return (
+      <div className="text-center py-8 text-muted-foreground">
+        <p className="mb-2">No payment methods available</p>
+        <p className="text-sm">Please contact administrator to configure payment options</p>
+      </div>
+    );
   }
 
   return (

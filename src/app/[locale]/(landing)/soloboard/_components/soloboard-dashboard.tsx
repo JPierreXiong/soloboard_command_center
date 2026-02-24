@@ -21,7 +21,7 @@ import { Badge } from '@/shared/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/components/ui/dialog';
 import { motion } from 'framer-motion';
 import { useSites } from '@/shared/hooks/use-sites';
-import { SimpleAddWizard } from '@/components/soloboard/simple-add-wizard';
+import { SimpleAddSiteDialog } from '@/components/soloboard/simple-add-site-dialog';
 import { toast } from 'sonner';
 
 type SiteStatus = 'online' | 'offline' | 'warning';
@@ -161,13 +161,10 @@ export function SoloBoardDashboard() {
         </>
       )}
 
-      {/* 添加站点对话框 - 使用简化的 3 步向导 */}
+      {/* 添加站点对话框 - 简化版 */}
       <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-2xl">Add Website</DialogTitle>
-          </DialogHeader>
-          <SimpleAddWizard onSuccess={handleAddSuccess} />
+        <DialogContent className="max-w-md">
+          <SimpleAddSiteDialog onSuccess={handleAddSuccess} />
         </DialogContent>
       </Dialog>
     </div>

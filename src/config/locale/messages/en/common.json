@@ -43,6 +43,12 @@
     "title": "We detected your browser language is {locale}. Switch to it?",
     "switch_to": "Switch to {locale}"
   },
+  "shipany": {
+    "page": {
+      "title": "Add Website",
+      "subtitle": "Monitor your website"
+    }
+  },
   "soloboard": {
     "title": "SoloBoard Dashboard",
     "description": "Monitor all your sites in one place. Track GA4 analytics, payment revenue, and uptime status.",
