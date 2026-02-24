@@ -99,8 +99,8 @@ export function SignIn({
           if (processedCallbackUrl && processedCallbackUrl !== '/') {
             window.location.href = processedCallbackUrl;
           } else {
-            // 默认跳转到 dashboard
-            window.location.href = '/digital-heirloom/dashboard';
+            // 默认跳转到 SoloBoard dashboard
+            window.location.href = '/soloboard';
           }
         },
         onError: (e: any) => {
