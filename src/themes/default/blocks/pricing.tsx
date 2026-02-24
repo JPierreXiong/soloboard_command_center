@@ -293,6 +293,7 @@ export function Pricing({
         body: JSON.stringify(params),
       });
 
+      // 处理未授权
       if (response.status === 401) {
         setIsLoading(false);
         setProductId(null);
@@ -301,42 +302,62 @@ export function Pricing({
         return;
       }
 
+      // 解析响应
+      const result = await response.json();
+
+      // 检查业务逻辑错误（code !== 0）
+      if (result.code !== 0) {
+        throw new Error(result.message || 'Checkout failed');
+      }
+
+      // 检查 HTTP 错误
       if (!response.ok) {
-        throw new Error(`request failed with status ${response.status}`);
+        throw new Error(result.message || `Request failed with status ${response.status}`);
       }
 
-      const { code, message, data } = await response.json();
-      if (code !== 0) {
-        throw new Error(message);
-      }
-
-      const { checkoutUrl } = data;
+      const { data } = result;
+      const { checkoutUrl } = data || {};
+      
       if (!checkoutUrl) {
-        throw new Error('checkout url not found');
+        throw new Error('Checkout URL not found. Please try again.');
       }
 
+      // 跳转到支付页面
       window.location.href = checkoutUrl;
     } catch (e: any) {
-      console.log('checkout failed: ', e);
+      console.error('Checkout error:', e);
       
-      // Improve error message display
+      // 改进错误消息展示
       let errorMessage = e.message || 'Unknown error occurred';
       
-      // Check for common error patterns and provide helpful messages
-      if (errorMessage.includes('no payment provider configured') || 
-          errorMessage.includes('No payment provider configured')) {
-        errorMessage = 'Payment provider not configured. Please contact administrator to set up payment options.';
-      } else if (errorMessage.includes('no auth')) {
-        errorMessage = 'Please sign in to continue with checkout.';
-      } else if (errorMessage.includes('product_id')) {
-        errorMessage = 'Invalid product selected. Please try again.';
-      } else if (errorMessage.includes('checkout failed')) {
-        // Extract the actual error message after "checkout failed: "
-        const actualError = errorMessage.replace(/^checkout failed:\s*/i, '');
-        errorMessage = actualError || 'Checkout failed. Please try again or contact support.';
+      // 清理和优化错误消息
+      if (errorMessage.includes('checkout failed:')) {
+        // 移除 "checkout failed:" 前缀，只显示实际错误
+        errorMessage = errorMessage.replace(/^checkout failed:\s*/i, '');
       }
       
-      toast.error(errorMessage);
+      // 检查常见错误模式并提供友好提示
+      if (errorMessage.includes('no payment provider configured') || 
+          errorMessage.includes('Payment provider not configured') ||
+          errorMessage.includes('Payment system not configured')) {
+        errorMessage = '⚠️ Payment system not configured. Please contact administrator.';
+      } else if (errorMessage.includes('no auth') || errorMessage.includes('sign in')) {
+        errorMessage = '🔐 Please sign in to continue with checkout.';
+      } else if (errorMessage.includes('product_id') || errorMessage.includes('Product not found')) {
+        errorMessage = '❌ Invalid product selected. Please refresh and try again.';
+      } else if (errorMessage.includes('Payment configuration error') || 
+                 errorMessage.includes('configuration error')) {
+        errorMessage = '⚠️ Payment configuration error. Please contact support.';
+      } else if (errorMessage.includes('Creem') || errorMessage.includes('product')) {
+        // Creem 特定错误，保持原始消息
+        errorMessage = `⚠️ ${errorMessage}`;
+      } else if (!errorMessage || errorMessage === 'Unknown error occurred') {
+        errorMessage = '❌ Checkout failed. Please try again or contact support.';
+      }
+      
+      toast.error(errorMessage, {
+        duration: 5000, // 显示 5 秒，让用户有时间阅读
+      });
 
       setIsLoading(false);
       setProductId(null);

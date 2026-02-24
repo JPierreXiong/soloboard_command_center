@@ -21,8 +21,16 @@ import { PricingCurrency } from '@/shared/types/blocks/pricing';
 
 export async function POST(req: Request) {
   try {
-    const { product_id, currency, locale, payment_provider, metadata } =
-      await req.json();
+    // 1. 解析请求体，添加错误捕获
+    let body;
+    try {
+      body = await req.json();
+    } catch (jsonError) {
+      console.error('Invalid JSON in request body:', jsonError);
+      return respErr('Invalid request format');
+    }
+
+    const { product_id, currency, locale, payment_provider, metadata } = body;
     if (!product_id) {
       return respErr('product_id is required');
     }
@@ -264,7 +272,31 @@ export async function POST(req: Request) {
       paymentProductId = paymentProductId.trim();
     }
 
-    let callbackBaseUrl = `${configs.app_url}`;
+    // 2. 确保 URL 格式正确，防止 Creem API 400 错误
+    let appUrl = configs.app_url || process.env.NEXT_PUBLIC_APP_URL || '';
+    
+    // 确保 URL 包含协议头
+    if (appUrl && !appUrl.startsWith('http://') && !appUrl.startsWith('https://')) {
+      appUrl = `https://${appUrl}`;
+    }
+    
+    // 移除末尾的斜杠
+    appUrl = appUrl.replace(/\/$/, '');
+    
+    // 验证 URL 格式
+    if (!appUrl) {
+      console.error('❌ app_url not configured in environment');
+      return respErr('Payment system not configured. Please contact administrator.');
+    }
+    
+    try {
+      new URL(appUrl); // 验证 URL 格式
+    } catch (urlError) {
+      console.error('❌ Invalid app_url format:', appUrl);
+      return respErr('Payment system configuration error. Please contact administrator.');
+    }
+
+    let callbackBaseUrl = appUrl;
     if (locale && locale !== configs.default_locale) {
       callbackBaseUrl += `/${locale}`;
     }
@@ -288,7 +320,7 @@ export async function POST(req: Request) {
         user_id: user.id,
         ...(metadata || {}),
       },
-      successUrl: `${configs.app_url}/api/payment/callback?order_no=${orderNo}`,
+      successUrl: `${appUrl}/api/payment/callback?order_no=${orderNo}`,
       cancelUrl: `${callbackBaseUrl}/pricing`,
     };
 
@@ -339,7 +371,7 @@ export async function POST(req: Request) {
     await createOrder(order);
 
     try {
-      // create payment
+      // create payment - 核心拦截点，捕获 Creem API 错误
       const result = await paymentProvider.createPayment({
         order: checkoutOrder,
       });
@@ -355,18 +387,56 @@ export async function POST(req: Request) {
       });
 
       return respData(result.checkoutInfo);
-    } catch (e: any) {
+    } catch (paymentError: any) {
+      console.error('❌ Payment provider error:', {
+        provider: paymentProvider.name,
+        error: paymentError.message,
+        stack: paymentError.stack,
+      });
+
       // update order status to completed, means checkout failed
       await updateOrderByOrderNo(orderNo, {
         status: OrderStatus.COMPLETED, // means checkout failed
         checkoutInfo: JSON.stringify(checkoutOrder),
       });
 
-      return respErr('checkout failed: ' + e.message);
+      // 提供更友好的错误信息
+      let errorMessage = paymentError.message || 'Payment creation failed';
+      
+      // 检测常见的 Creem API 错误
+      if (errorMessage.includes('400') || errorMessage.includes('Bad Request')) {
+        errorMessage = 'Payment configuration error. Please check your payment URLs or contact support.';
+      } else if (errorMessage.includes('401') || errorMessage.includes('Unauthorized')) {
+        errorMessage = 'Payment provider authentication failed. Please contact administrator.';
+      } else if (errorMessage.includes('product') || errorMessage.includes('Product')) {
+        errorMessage = `Payment product not found. ${errorMessage}`;
+      }
+
+      return respErr(errorMessage);
     }
   } catch (e: any) {
-    console.log('checkout failed:', e);
-    return respErr('checkout failed: ' + e.message);
+    console.error('❌ Checkout route error:', {
+      error: e.message,
+      stack: e.stack,
+    });
+    
+    // 防止 Server Component 崩溃，返回友好的错误信息
+    let errorMessage = 'Checkout failed. Please try again or contact support.';
+    
+    if (e.message) {
+      // 清理错误信息，避免暴露敏感信息
+      if (e.message.includes('no auth') || e.message.includes('Unauthorized')) {
+        errorMessage = 'Please sign in to continue.';
+      } else if (e.message.includes('not found')) {
+        errorMessage = 'Product not found. Please refresh and try again.';
+      } else if (e.message.includes('config')) {
+        errorMessage = 'Payment system not configured. Please contact administrator.';
+      } else {
+        errorMessage = `Checkout failed: ${e.message}`;
+      }
+    }
+    
+    return respErr(errorMessage);
   }
 }
 
