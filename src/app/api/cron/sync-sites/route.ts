@@ -1,13 +1,22 @@
 /**
- * SoloBoard - Cron Job: 数据同步
+ * SoloBoard - Cron Job: 数据同步 + 邮件告警
  * 
  * 定时任务：每 15 分钟同步一次所有站点数据
+ * 功能：
+ * 1. 同步站点数据
+ * 2. 检测异常（宕机、无销售、流量骤降）
+ * 3. 发送邮件告警
  * 
  * Vercel Cron 配置在 vercel.json 中
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { syncAllSites } from '@/shared/services/soloboard/sync-service';
+import { db } from '@/core/db';
+import { monitoredSites, siteMetricsDaily, user } from '@/config/db/schema';
+import { eq, and, gte, desc } from 'drizzle-orm';
+import { detectAnomaly, calculateHistoricalAverage } from '@/shared/services/soloboard/anomaly-detection';
+import { sendAlert } from '@/shared/services/soloboard/email-alert-service';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -49,17 +58,21 @@ export async function GET(request: NextRequest) {
       );
     }
     
-    console.log('🚀 [Cron] Starting site data sync...');
+    console.log('🚀 [Cron] Starting site data sync and alert check...');
     
-    // 执行同步
-    const result = await syncAllSites();
+    // 1. 执行同步
+    const syncResult = await syncAllSites();
+    console.log('✅ [Cron] Sync completed:', syncResult);
     
-    console.log('✅ [Cron] Sync completed:', result);
+    // 2. 检查所有站点的异常并发送告警
+    const alertsResult = await checkAndSendAlerts();
+    console.log('✅ [Cron] Alerts check completed:', alertsResult);
     
     return NextResponse.json({
       success: true,
-      message: 'Site data sync completed',
-      result,
+      message: 'Site data sync and alerts completed',
+      sync: syncResult,
+      alerts: alertsResult,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
@@ -76,5 +89,126 @@ export async function GET(request: NextRequest) {
   }
 }
 
-
-
+/**
+ * 检查所有站点的异常并发送告警
+ */
+async function checkAndSendAlerts() {
+  try {
+    // 获取所有活跃站点
+    const sites = await db()
+      .select()
+      .from(monitoredSites)
+      .where(eq(monitoredSites.status, 'active'));
+    
+    const alertsSent = {
+      downtime: 0,
+      noSales: 0,
+      trafficDrop: 0,
+      total: 0,
+    };
+    
+    // 获取7天前的日期
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    
+    // 检查每个站点
+    for (const site of sites) {
+      try {
+        // 获取用户信息
+        const [siteUser] = await db()
+          .select()
+          .from(user)
+          .where(eq(user.id, site.userId))
+          .limit(1);
+        
+        if (!siteUser || !siteUser.email) {
+          console.log(`⚠️ [Alert] No user email for site ${site.name}`);
+          continue;
+        }
+        
+        // 获取历史数据
+        const historyData = await db()
+          .select()
+          .from(siteMetricsDaily)
+          .where(
+            and(
+              eq(siteMetricsDaily.siteId, site.id),
+              gte(siteMetricsDaily.date, sevenDaysAgo)
+            )
+          )
+          .orderBy(desc(siteMetricsDaily.date));
+        
+        // 计算历史平均值
+        const historical = calculateHistoricalAverage(
+          historyData.map(d => ({
+            revenue: d.revenue || 0,
+            visitors: d.visitors || 0,
+          }))
+        );
+        
+        // 获取今日数据（从 lastSnapshot 或最新的 metrics）
+        const todayData = site.lastSnapshot as any || {};
+        const todayRevenue = todayData.revenue?.today || 0;
+        const todayVisitors = todayData.visitors?.today || 0;
+        const uptimeStatus = site.lastSyncStatus === 'success' ? 'up' : 'down';
+        
+        // 检测异常
+        const anomaly = detectAnomaly(
+          {
+            revenue: todayRevenue,
+            visitors: todayVisitors,
+            uptimeStatus: uptimeStatus as 'up' | 'down',
+          },
+          historical
+        );
+        
+        // 发送告警
+        if (anomaly.alert) {
+          const alertConfig = {
+            userId: site.userId,
+            userEmail: siteUser.email,
+            userName: siteUser.name || undefined,
+            siteName: site.name,
+            siteUrl: site.url || `https://${site.domain}`,
+            alertType: anomaly.alert.type,
+            details: {
+              lastChecked: site.lastSyncAt?.toISOString(),
+              errorMessage: site.lastSyncError || undefined,
+              avgRevenue7d: historical.avgRevenue7d,
+              todayVisitors: todayVisitors,
+              avgVisitors7d: historical.avgVisitors7d,
+              dropPercentage: anomaly.alert.type === 'low_traffic' 
+                ? Math.round(((historical.avgVisitors7d - todayVisitors) / historical.avgVisitors7d) * 100)
+                : undefined,
+            },
+          };
+          
+          const result = await sendAlert(alertConfig);
+          
+          if (result.success) {
+            alertsSent.total++;
+            if (anomaly.alert.type === 'site_down') alertsSent.downtime++;
+            if (anomaly.alert.type === 'no_sales') alertsSent.noSales++;
+            if (anomaly.alert.type === 'low_traffic') alertsSent.trafficDrop++;
+            
+            console.log(`✅ [Alert] Sent ${anomaly.alert.type} alert for ${site.name}`);
+          }
+        }
+      } catch (error) {
+        console.error(`❌ [Alert] Failed to check site ${site.name}:`, error);
+      }
+    }
+    
+    return {
+      sitesChecked: sites.length,
+      alertsSent,
+    };
+  } catch (error) {
+    console.error('❌ [Alert] Failed to check alerts:', error);
+    return {
+      sitesChecked: 0,
+      alertsSent: { downtime: 0, noSales: 0, trafficDrop: 0, total: 0 },
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+}

@@ -6,18 +6,23 @@
  * 1. 异常状态优先排序（红 → 黄 → 绿）
  * 2. 显示网站 Logo
  * 3. 优化视觉层次
+ * 4. 集成简化的 3 步添加向导
  */
 
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Plus, TrendingUp, Users, Globe, AlertCircle, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
 import { Button } from '@/shared/components/ui/button';
 import { Badge } from '@/shared/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/components/ui/dialog';
 import { motion } from 'framer-motion';
 import { useSites } from '@/shared/hooks/use-sites';
+import { SimpleAddWizard } from '@/components/soloboard/simple-add-wizard';
+import { toast } from 'sonner';
 
 type SiteStatus = 'online' | 'offline' | 'warning';
 
@@ -35,6 +40,7 @@ interface Site {
 export function SoloBoardDashboard() {
   const t = useTranslations('common.soloboard');
   const { sites, summary, isLoading, error, refetch } = useSites();
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   
   // 🎯 核心改进：异常状态优先排序
   // 排序规则：offline (红) → warning (黄) → online (绿)
@@ -42,6 +48,13 @@ export function SoloBoardDashboard() {
     const priority = { offline: 0, warning: 1, online: 2 };
     return priority[a.status] - priority[b.status];
   });
+
+  // 处理添加站点成功
+  const handleAddSuccess = () => {
+    setIsAddDialogOpen(false);
+    refetch();
+    toast.success('Website added successfully!');
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 mt-16">
@@ -62,12 +75,14 @@ export function SoloBoardDashboard() {
             <RefreshCw className={`h-5 w-5 ${isLoading ? 'animate-spin' : ''}`} />
             {t('refresh')}
           </Button>
-          <Link href="/shipany">
-            <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-all">
-              <Plus className="h-5 w-5" />
-              {t('add_button')}
-            </Button>
-          </Link>
+          <Button 
+            size="lg" 
+            className="gap-2 shadow-lg hover:shadow-xl transition-all"
+            onClick={() => setIsAddDialogOpen(true)}
+          >
+            <Plus className="h-5 w-5" />
+            {t('add_button')}
+          </Button>
         </div>
       </div>
 
@@ -145,6 +160,16 @@ export function SoloBoardDashboard() {
           )}
         </>
       )}
+
+      {/* 添加站点对话框 - 使用简化的 3 步向导 */}
+      <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">Add Website</DialogTitle>
+          </DialogHeader>
+          <SimpleAddWizard onSuccess={handleAddSuccess} />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
@@ -286,12 +311,14 @@ function EmptyState({ t }: { t: any }) {
         <p className="text-muted-foreground mb-6 text-center max-w-md">
           {t('empty_state.description')}
         </p>
-        <Link href="/shipany">
-          <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-all">
-            <Plus className="h-5 w-5" />
-            {t('empty_state.add_button')}
-          </Button>
-        </Link>
+        <Button 
+          size="lg" 
+          className="gap-2 shadow-lg hover:shadow-xl transition-all"
+          onClick={() => setIsAddDialogOpen(true)}
+        >
+          <Plus className="h-5 w-5" />
+          {t('empty_state.add_button')}
+        </Button>
       </CardContent>
     </Card>
   );
