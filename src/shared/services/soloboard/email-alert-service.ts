@@ -3,9 +3,25 @@
  * 邮件告警服务 - 网站宕机、无销售、流量骤降
  */
 
-import { Resend } from 'resend';
+// 动态导入 Resend，避免构建时初始化
+let ResendClass: any = null;
+let resend: any = null;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+async function getResend() {
+  if (!resend && process.env.RESEND_API_KEY) {
+    try {
+      if (!ResendClass) {
+        const { Resend } = await import('resend');
+        ResendClass = Resend;
+      }
+      resend = new ResendClass(process.env.RESEND_API_KEY);
+    } catch (error) {
+      console.error('Failed to initialize Resend:', error);
+      return null;
+    }
+  }
+  return resend;
+}
 
 export interface AlertConfig {
   userId: string;
@@ -36,8 +52,14 @@ export interface AlertConfig {
 export async function sendDowntimeAlert(config: AlertConfig) {
   const { userEmail, userName, siteName, siteUrl, details } = config;
   
+  const resendClient = await getResend();
+  if (!resendClient) {
+    console.warn('⚠️ Resend API key not configured, skipping email alert');
+    return { success: false, error: 'Resend not configured' };
+  }
+  
   try {
-    await resend.emails.send({
+    await resendClient.emails.send({
       from: 'SoloBoard Alerts <alerts@soloboard.com>',
       to: userEmail,
       subject: `🚨 ${siteName} is DOWN!`,
@@ -102,8 +124,14 @@ export async function sendDowntimeAlert(config: AlertConfig) {
 export async function sendNoSalesAlert(config: AlertConfig) {
   const { userEmail, userName, siteName, siteUrl, details } = config;
   
+  const resendClient = await getResend();
+  if (!resendClient) {
+    console.warn('⚠️ Resend API key not configured, skipping email alert');
+    return { success: false, error: 'Resend not configured' };
+  }
+  
   try {
-    await resend.emails.send({
+    await resendClient.emails.send({
       from: 'SoloBoard Alerts <alerts@soloboard.com>',
       to: userEmail,
       subject: `⚠️ No sales today on ${siteName}`,
@@ -167,8 +195,14 @@ export async function sendNoSalesAlert(config: AlertConfig) {
 export async function sendTrafficDropAlert(config: AlertConfig) {
   const { userEmail, userName, siteName, siteUrl, details } = config;
   
+  const resendClient = await getResend();
+  if (!resendClient) {
+    console.warn('⚠️ Resend API key not configured, skipping email alert');
+    return { success: false, error: 'Resend not configured' };
+  }
+  
   try {
-    await resend.emails.send({
+    await resendClient.emails.send({
       from: 'SoloBoard Alerts <alerts@soloboard.com>',
       to: userEmail,
       subject: `📉 Traffic drop detected on ${siteName}`,
