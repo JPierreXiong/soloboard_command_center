@@ -1,6 +1,8 @@
 /**
  * API: Get All Sites with Metrics
  * 获取用户所有站点及其实时指标
+ * 
+ * 🔧 优化版：简化错误处理，优雅降级
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -26,10 +28,40 @@ export async function GET(request: NextRequest) {
     }
 
     // 从数据库获取用户的所有站点
-    const userSites = await db()
-      .select()
-      .from(monitoredSites)
-      .where(eq(monitoredSites.userId, session.user.id));
+    let userSites = [];
+    try {
+      userSites = await db()
+        .select()
+        .from(monitoredSites)
+        .where(eq(monitoredSites.userId, session.user.id));
+    } catch (dbError) {
+      console.error('Database error:', dbError);
+      // 返回空数据而不是错误，让前端显示空状态
+      return NextResponse.json({
+        sites: [],
+        summary: {
+          totalSites: 0,
+          totalRevenue: 0,
+          totalVisitors: 0,
+          sitesOnline: 0,
+        },
+        lastUpdated: new Date().toISOString(),
+      });
+    }
+
+    // 如果没有站点，直接返回空数据
+    if (userSites.length === 0) {
+      return NextResponse.json({
+        sites: [],
+        summary: {
+          totalSites: 0,
+          totalRevenue: 0,
+          totalVisitors: 0,
+          sitesOnline: 0,
+        },
+        lastUpdated: new Date().toISOString(),
+      });
+    }
 
     // 获取7天前的日期
     const sevenDaysAgo = new Date();
@@ -41,34 +73,41 @@ export async function GET(request: NextRequest) {
         const apiConfig = site.apiConfig as any || {};
         const platforms = apiConfig.platforms || {};
 
-        // 1. 获取实时数据（调用聚合服务）
+        // 1. 获取实时数据（调用聚合服务）- 优雅降级
         let liveMetrics = {
           revenue: { today: 0, sources: {} },
-          traffic: { today: 0 },
+          visitors: { today: 0, sources: {} },
           uptime: { status: 'up' as 'up' | 'down', responseTime: 0 },
         };
 
         try {
           liveMetrics = await aggregateSiteData({
             id: site.id,
-            domain: site.domain,
+            domain: site.domain || site.url?.replace(/^https?:\/\//, '') || 'unknown',
             platforms,
           });
         } catch (error) {
-          console.error(`Error fetching live metrics for ${site.domain}:`, error);
+          console.error(`Error fetching live metrics for ${site.domain || site.url}:`, error);
+          // 继续使用默认值
         }
 
-        // 2. 获取历史数据（最近7天）
-        const historyData = await db()
-          .select()
-          .from(siteMetricsDaily)
-          .where(
-            and(
-              eq(siteMetricsDaily.siteId, site.id),
-              gte(siteMetricsDaily.date, sevenDaysAgo)
+        // 2. 获取历史数据（最近7天）- 优雅降级
+        let historyData: any[] = [];
+        try {
+          historyData = await db()
+            .select()
+            .from(siteMetricsDaily)
+            .where(
+              and(
+                eq(siteMetricsDaily.siteId, site.id),
+                gte(siteMetricsDaily.date, sevenDaysAgo)
+              )
             )
-          )
-          .orderBy(desc(siteMetricsDaily.date));
+            .orderBy(desc(siteMetricsDaily.date));
+        } catch (error) {
+          console.error(`Error fetching history for ${site.domain || site.url}:`, error);
+          // 继续使用空数组
+        }
 
         // 3. 计算历史平均值
         const historical = calculateHistoricalAverage(
@@ -82,7 +121,7 @@ export async function GET(request: NextRequest) {
         const anomaly = detectAnomaly(
           {
             revenue: liveMetrics.revenue.today,
-            visitors: liveMetrics.traffic.today,
+            visitors: liveMetrics.visitors.today,
             uptimeStatus: liveMetrics.uptime.status,
           },
           historical
@@ -91,12 +130,12 @@ export async function GET(request: NextRequest) {
         return {
           id: site.id,
           name: site.name,
-          domain: site.domain,
+          domain: site.domain || site.url?.replace(/^https?:\/\//, '') || 'Unknown Site',
           logoUrl: site.logoUrl,
           status: anomaly.status,
           alert: anomaly.alert,
           todayRevenue: liveMetrics.revenue.today,
-          todayVisitors: liveMetrics.traffic.today,
+          todayVisitors: liveMetrics.visitors.today,
           avgRevenue7d: historical.avgRevenue7d,
           avgVisitors7d: historical.avgVisitors7d,
           platforms: Object.keys(platforms),
@@ -120,8 +159,20 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error fetching sites:', error);
+    
+    // 返回详细错误信息用于调试
     return NextResponse.json(
-      { error: 'Failed to fetch sites' },
+      { 
+        error: 'Failed to fetch sites',
+        details: error instanceof Error ? error.message : 'Unknown error',
+        sites: [],
+        summary: {
+          totalSites: 0,
+          totalRevenue: 0,
+          totalVisitors: 0,
+          sitesOnline: 0,
+        },
+      },
       { status: 500 }
     );
   }

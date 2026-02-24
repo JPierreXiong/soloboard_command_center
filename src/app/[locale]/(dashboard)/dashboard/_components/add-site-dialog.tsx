@@ -43,7 +43,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/soloboard/sites/add', {
+      const response = await fetch('/api/soloboard/sites', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -63,6 +63,7 @@ export function AddSiteDialog({ open, onClose, onSuccess }: AddSiteDialogProps) 
       toast.success(t('success'));
       resetForm();
       onSuccess();
+      onClose();
     } catch (error) {
       toast.error(error instanceof Error ? error.message : t('error'));
     } finally {

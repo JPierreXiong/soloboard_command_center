@@ -1,17 +1,60 @@
 {
   "page": {
-    "title": "添加监控站点",
-    "description": "选择平台开始监控您的业务指标"
+    "title": "监控你的网站",
+    "description": "在一个地方追踪收入、流量和运行状态"
   },
-  "steps": {
-    "select_platform": "选择平台",
-    "configure": "配置信息",
-    "confirm": "确认添加"
+  "setup_time": "不到 2 分钟",
+  "verified": "已验证",
+  "step1": {
+    "title": "你要监控哪个网站？",
+    "description": "输入网址，我们开始监控",
+    "url_placeholder": "https://你的网站.com",
+    "checking": "检查中...",
+    "we_will_monitor": "我们将帮你监控：",
+    "monitor_revenue": "💰 收入（来自你的支付平台）",
+    "monitor_traffic": "👀 流量（每天有多少人访问）",
+    "monitor_uptime": "🟢 运行状态（网站是否正常）"
+  },
+  "step2": {
+    "title": "这个网站通过什么方式收款？",
+    "description": "选择你的支付平台，我们只需要只读权限",
+    "security_title": "🔒 我们只读取数据，不会进行任何操作",
+    "security_description": "你的 API 密钥使用 AES-256 加密存储",
+    "how_to_get_key": "如何获取 API 密钥",
+    "no_revenue": "目前没有收入（只监控运行状态）",
+    "other_platform_placeholder": "例如：PayPal、支付宝、微信支付",
+    "other_platform_name": "平台名称"
+  },
+  "step3": {
+    "title": "是否监控网站访问量？",
+    "description": "连接 Google Analytics 来追踪每天的访客",
+    "enable_ga4": "✅ 是的，连接 Google Analytics",
+    "skip": "⏭️ 不需要，我不关心流量数据",
+    "submitting": "设置中...",
+    "complete": "开始监控！"
+  },
+  "step4": {
+    "title": "🎉 你的网站已经开始监控",
+    "subtitle": "我们会自动帮你追踪一切",
+    "monitoring": "监控中",
+    "we_will": "我们将自动：",
+    "monitor_uptime": "✓ 监控网站是否可以访问",
+    "monitor_revenue": "✓ 统计每天收入",
+    "monitor_traffic": "✓ 统计每天访客",
+    "alert_issues": "✓ 如有异常会第一时间通知你",
+    "view_dashboard": "查看仪表盘"
+  },
+  "actions": {
+    "next": "下一步 →",
+    "back": "← 返回",
+    "cancel": "取消",
+    "add": "添加站点",
+    "close": "关闭"
   },
   "platforms": {
     "uptime": {
-      "name": "Uptime 监控",
-      "description": "网站在线状态监控",
+      "name": "自动网站监控",
+      "description": "零配置，输入网址即可开始监控",
       "features": {
         "status": "网站在线状态",
         "response": "响应时间监控",
@@ -23,7 +66,7 @@
     },
     "ga4": {
       "name": "Google Analytics",
-      "description": "网站流量分析",
+      "description": "实时流量和用户行为分析",
       "features": {
         "realtime": "实时活跃用户",
         "visits": "今日访问统计",
@@ -34,8 +77,8 @@
       }
     },
     "stripe": {
-      "name": "Stripe",
-      "description": "支付和收入追踪",
+      "name": "Stripe 收入监控",
+      "description": "实时追踪 Stripe 支付和收入数据",
       "features": {
         "today": "今日收入统计",
         "monthly": "本月收入统计",
@@ -43,6 +86,18 @@
         "pending": "待处理金额",
         "currency": "多币种支持",
         "trends": "收入趋势图"
+      }
+    },
+    "creem": {
+      "name": "Creem 订阅管理",
+      "description": "监控 SaaS 订阅、MRR 和流失率",
+      "features": {
+        "mrr": "MRR 追踪",
+        "active": "活跃订阅数",
+        "new": "新增订阅统计",
+        "churn": "流失率分析",
+        "lifecycle": "订阅生命周期",
+        "forecast": "收入预测"
       }
     },
     "lemon": {
@@ -69,13 +124,6 @@
         "analytics": "店铺分析"
       }
     }
-  },
-  "actions": {
-    "next": "下一步",
-    "back": "返回",
-    "cancel": "取消",
-    "add": "添加站点",
-    "close": "关闭"
   },
   "difficulty": {
     "easy": "简单",

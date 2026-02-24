@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-
+import { redirect } from 'next/navigation';
+import { auth } from '@/core/auth';
 import { getThemePage } from '@/core/theme';
 import { Landing } from '@/shared/types/blocks/landing';
 
@@ -10,6 +11,12 @@ export default async function LandingPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  // 🎯 P1: 已登录用户直接进入 Dashboard
+  const session = await auth();
+  if (session?.user) {
+    redirect(`/${locale}/soloboard`);
+  }
 
   // load page data
   const t = await getTranslations('landing');
