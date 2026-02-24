@@ -164,6 +164,9 @@ export function SoloBoardDashboard() {
       {/* 添加站点对话框 - 简化版 */}
       <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
         <DialogContent className="max-w-md">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Add Website</DialogTitle>
+          </DialogHeader>
           <SimpleAddSiteDialog onSuccess={handleAddSuccess} />
         </DialogContent>
       </Dialog>

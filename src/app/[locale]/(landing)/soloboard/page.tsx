@@ -6,6 +6,9 @@
  */
 
 import { getTranslations } from 'next-intl/server';
+import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
+import { auth } from '@/core/auth';
 import { envConfigs } from '@/config';
 import { defaultLocale } from '@/config/locale';
 import { SoloBoardDashboard } from './_components/soloboard-dashboard';
@@ -30,6 +33,22 @@ export async function generateMetadata({
   };
 }
 
-export default async function SoloBoardPage() {
+export default async function SoloBoardPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  
+  // 🔒 检查用户登录状态
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  
+  // 未登录用户重定向到登录页
+  if (!session?.user) {
+    redirect(`/${locale}/sign-in?callbackUrl=/${locale}/soloboard`);
+  }
+  
   return <SoloBoardDashboard />;
 }
