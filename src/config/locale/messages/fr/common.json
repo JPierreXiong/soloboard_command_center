@@ -115,6 +115,61 @@
         "title": "Surveillance de disponibilité",
         "description": "Recevez des alertes instantanées lorsque vos sites tombent en panne"
       }
+    },
+    "upgrade_dialog": {
+      "title": "Mettre à niveau pour ajouter plus de sites",
+      "description": "Votre plan {plan} a atteint la limite de {limit} sites",
+      "current_limit": "Limite actuelle",
+      "usage": "Utilisé {current} / {limit} quota de sites",
+      "recommended": "Recommandé",
+      "most_powerful": "Le plus puissant",
+      "base_plan": {
+        "title": "Plan Base",
+        "description": "Parfait pour les petits projets et les développeurs indépendants",
+        "price": "19,9€",
+        "period": "/mois",
+        "billing": "Facturation mensuelle, annulation à tout moment",
+        "features": {
+          "sites": "Jusqu'à 5 sites",
+          "monitoring": "Surveillance et alertes en temps réel",
+          "email": "Notifications par e-mail",
+          "stats": "Statistiques de revenus et de trafic",
+          "credits": "1000 crédits/mois",
+          "history": "Historique de 7 jours"
+        }
+      },
+      "pro_plan": {
+        "title": "Plan Pro",
+        "description": "Parfait pour les professionnels et les équipes",
+        "price": "39,9€",
+        "period": "/mois",
+        "billing": "Facturation mensuelle, annulation à tout moment",
+        "features": {
+          "sites": "Sites illimités",
+          "all_base": "Toutes les fonctionnalités Base",
+          "advanced": "Analyses et rapports avancés",
+          "api": "Accès API",
+          "credits": "5000 crédits/mois",
+          "history": "Historique de 90 jours",
+          "support": "Support prioritaire"
+        }
+      },
+      "upgrade_now": "Mettre à niveau maintenant",
+      "comparison": {
+        "title": "Comparaison des fonctionnalités",
+        "feature": "Fonctionnalité",
+        "free": "Gratuit",
+        "base": "Base",
+        "pro": "Pro",
+        "sites": "Nombre de sites",
+        "email_alerts": "Alertes par e-mail",
+        "api_access": "Accès API",
+        "data_history": "Historique des données",
+        "days": "jours"
+      },
+      "footer": "💡 Tous les plans permettent l'annulation à tout moment, sans engagement à long terme",
+      "contact": "Des questions ?",
+      "contact_us": "Contactez-nous"
     }
   }
 }

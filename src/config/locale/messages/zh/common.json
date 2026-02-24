@@ -115,6 +115,61 @@
         "title": "在线监控",
         "description": "网站宕机时立即收到警报"
       }
+    },
+    "upgrade_dialog": {
+      "title": "升级以添加更多站点",
+      "description": "您的 {plan} 套餐已达到 {limit} 个站点的限制",
+      "current_limit": "当前限制",
+      "usage": "已使用 {current} / {limit} 个站点配额",
+      "recommended": "推荐",
+      "most_powerful": "最强大",
+      "base_plan": {
+        "title": "Base 套餐",
+        "description": "适合小型项目和个人开发者",
+        "price": "¥99",
+        "period": "/月",
+        "billing": "按月计费，随时取消",
+        "features": {
+          "sites": "最多 5 个站点",
+          "monitoring": "实时监控和告警",
+          "email": "邮件通知",
+          "stats": "收入和流量统计",
+          "credits": "1000 积分/月",
+          "history": "7天数据历史"
+        }
+      },
+      "pro_plan": {
+        "title": "Pro 套餐",
+        "description": "适合专业用户和团队",
+        "price": "¥199",
+        "period": "/月",
+        "billing": "按月计费，随时取消",
+        "features": {
+          "sites": "无限站点",
+          "all_base": "全部 Base 功能",
+          "advanced": "高级分析和报告",
+          "api": "API 访问权限",
+          "credits": "5000 积分/月",
+          "history": "90天数据历史",
+          "support": "优先技术支持"
+        }
+      },
+      "upgrade_now": "立即升级",
+      "comparison": {
+        "title": "功能对比",
+        "feature": "功能",
+        "free": "免费",
+        "base": "Base",
+        "pro": "Pro",
+        "sites": "站点数量",
+        "email_alerts": "邮件告警",
+        "api_access": "API 访问",
+        "data_history": "数据历史",
+        "days": "天"
+      },
+      "footer": "💡 所有套餐都支持随时取消，无需长期承诺",
+      "contact": "有问题？",
+      "contact_us": "联系我们"
     }
   }
 }

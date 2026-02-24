@@ -121,6 +121,61 @@
         "title": "Uptime Monitoring",
         "description": "Get instant alerts when your sites go down"
       }
+    },
+    "upgrade_dialog": {
+      "title": "Upgrade to Add More Sites",
+      "description": "Your {plan} plan has reached the limit of {limit} sites",
+      "current_limit": "Current Limit",
+      "usage": "Used {current} / {limit} site quota",
+      "recommended": "Recommended",
+      "most_powerful": "Most Powerful",
+      "base_plan": {
+        "title": "Base Plan",
+        "description": "Perfect for small projects and indie developers",
+        "price": "$19.9",
+        "period": "/month",
+        "billing": "Billed monthly, cancel anytime",
+        "features": {
+          "sites": "Up to 5 sites",
+          "monitoring": "Real-time monitoring and alerts",
+          "email": "Email notifications",
+          "stats": "Revenue and traffic statistics",
+          "credits": "1000 credits/month",
+          "history": "7-day data history"
+        }
+      },
+      "pro_plan": {
+        "title": "Pro Plan",
+        "description": "Perfect for professionals and teams",
+        "price": "$39.9",
+        "period": "/month",
+        "billing": "Billed monthly, cancel anytime",
+        "features": {
+          "sites": "Unlimited sites",
+          "all_base": "All Base features",
+          "advanced": "Advanced analytics and reports",
+          "api": "API access",
+          "credits": "5000 credits/month",
+          "history": "90-day data history",
+          "support": "Priority support"
+        }
+      },
+      "upgrade_now": "Upgrade Now",
+      "comparison": {
+        "title": "Feature Comparison",
+        "feature": "Feature",
+        "free": "Free",
+        "base": "Base",
+        "pro": "Pro",
+        "sites": "Number of Sites",
+        "email_alerts": "Email Alerts",
+        "api_access": "API Access",
+        "data_history": "Data History",
+        "days": "days"
+      },
+      "footer": "💡 All plans support cancellation anytime, no long-term commitment required",
+      "contact": "Questions?",
+      "contact_us": "Contact Us"
     }
   }
 }
