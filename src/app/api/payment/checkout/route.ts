@@ -306,6 +306,10 @@ export async function POST(req: Request) {
         ? `${callbackBaseUrl}/settings/billing`
         : `${callbackBaseUrl}/settings/payments`;
 
+    // 先生成 orderId，避免循环引用
+    const orderId = getUuid();
+    const currentTime = new Date();
+
     // build checkout order
     const checkoutOrder: PaymentOrder = {
       description: pricingItem.product_name,
@@ -317,10 +321,10 @@ export async function POST(req: Request) {
       metadata: {
         app_name: configs.app_name,
         order_no: orderNo,
-        orderId: order.id,  // 添加 orderId 用于 webhook
+        orderId: orderId,  // 使用预先生成的 orderId
         user_id: user.id,
-        userId: user.id,    // 添加 userId 用于 webhook
-        userEmail: user.email, // 添加邮箱用于查找用户
+        userId: user.id,
+        userEmail: user.email,
         ...(metadata || {}),
       },
       successUrl: `${appUrl}/api/payment/callback?order_no=${orderNo}`,
@@ -344,11 +348,9 @@ export async function POST(req: Request) {
       // one-time mode
     }
 
-    const currentTime = new Date();
-
     // build order info
-    const order: NewOrder = {
-      id: getUuid(),
+    const newOrder: NewOrder = {
+      id: orderId,  // 使用预先生成的 orderId
       orderNo: orderNo,
       userId: user.id,
       userEmail: user.email,
@@ -371,7 +373,7 @@ export async function POST(req: Request) {
     };
 
     // create order
-    await createOrder(order);
+    await createOrder(newOrder);
 
     try {
       // create payment - 核心拦截点，捕获 Creem API 错误
