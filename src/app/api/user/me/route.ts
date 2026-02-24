@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/core/auth';
 import { db } from '@/core/db';
-import { user } from '@/config/db/schema';
-import { eq } from 'drizzle-orm';
+import { user, subscription } from '@/config/db/schema';
+import { eq, desc, inArray } from 'drizzle-orm';
 
 export async function GET(req: NextRequest) {
   try {
@@ -33,6 +33,20 @@ export async function GET(req: NextRequest) {
 
     const userData = users[0];
 
+    // 查询用户的当前订阅（活跃、试用或待取消状态）
+    const subscriptions = await db().select()
+      .from(subscription)
+      .where(
+        eq(subscription.userId, session.user.id)
+      )
+      .orderBy(desc(subscription.createdAt))
+      .limit(1);
+
+    // 找到活跃的订阅
+    const activeSubscription = subscriptions.find(sub => 
+      sub.status === 'active' || sub.status === 'trialing' || sub.status === 'pending_cancel'
+    );
+
     return NextResponse.json({
       id: userData.id,
       name: userData.name,
@@ -40,6 +54,18 @@ export async function GET(req: NextRequest) {
       planType: userData.planType || 'free',
       createdAt: userData.createdAt,
       updatedAt: userData.updatedAt,
+      subscription: activeSubscription ? {
+        subscriptionNo: activeSubscription.subscriptionNo,
+        status: activeSubscription.status,
+        planName: activeSubscription.planName,
+        planType: activeSubscription.planType,
+        amount: activeSubscription.amount,
+        currency: activeSubscription.currency,
+        interval: activeSubscription.interval,
+        currentPeriodStart: activeSubscription.currentPeriodStart,
+        currentPeriodEnd: activeSubscription.currentPeriodEnd,
+        createdAt: activeSubscription.createdAt,
+      } : null,
     });
 
   } catch (error: any) {
