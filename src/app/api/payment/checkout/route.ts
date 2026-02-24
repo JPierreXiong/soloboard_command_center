@@ -317,7 +317,10 @@ export async function POST(req: Request) {
       metadata: {
         app_name: configs.app_name,
         order_no: orderNo,
+        orderId: order.id,  // 添加 orderId 用于 webhook
         user_id: user.id,
+        userId: user.id,    // 添加 userId 用于 webhook
+        userEmail: user.email, // 添加邮箱用于查找用户
         ...(metadata || {}),
       },
       successUrl: `${appUrl}/api/payment/callback?order_no=${orderNo}`,

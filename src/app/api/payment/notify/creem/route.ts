@@ -106,55 +106,114 @@ export async function POST(req: NextRequest) {
 async function handleCheckoutSuccess(paymentEvent: any) {
   const session = paymentEvent.paymentSession;
   const metadata = session.metadata || {};
-  const userId = metadata.userId || metadata.user_id;
-  const orderId = metadata.orderId || metadata.order_no;
+  let userId = metadata.userId || metadata.user_id;
+  let orderId = metadata.orderId || metadata.order_no;
+  const userEmail = metadata.userEmail || session.paymentInfo?.paymentEmail;
 
   console.log('💰 [CheckoutSuccess] Processing checkout success:', {
     userId,
     orderId,
+    userEmail,
     hasSubscriptionInfo: !!session.subscriptionInfo,
     amount: session.paymentInfo?.amount,
     currency: session.paymentInfo?.currency,
     metadata: metadata,
   });
 
-  if (!userId || !orderId) {
-    console.error('❌ [CheckoutSuccess] Missing userId or orderId in metadata:', metadata);
-    throw new Error('Missing userId or orderId in webhook metadata');
+  // 如果没有 userId 但有邮箱，尝试通过邮箱查找用户
+  if (!userId && userEmail) {
+    console.log('🔍 [CheckoutSuccess] No userId in metadata, searching by email:', userEmail);
+    try {
+      const users = await db().select()
+        .from(user)
+        .where(eq(user.email, userEmail))
+        .limit(1);
+      
+      if (users.length > 0) {
+        userId = users[0].id;
+        console.log('✅ [CheckoutSuccess] Found user by email:', { userId, email: userEmail });
+      } else {
+        console.warn('⚠️ [CheckoutSuccess] User not found by email, will create new user');
+        // 创建新用户
+        const newUserId = `user_${Date.now()}_${Math.random().toString(36).substring(7)}`;
+        const newUser = await db().insert(user).values({
+          id: newUserId,
+          email: userEmail,
+          name: session.paymentInfo?.paymentUserName || userEmail.split('@')[0],
+          emailVerified: false,
+          planType: 'free',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        }).returning();
+        
+        userId = newUser[0].id;
+        console.log('✅ [CheckoutSuccess] Created new user:', { userId, email: userEmail });
+      }
+    } catch (error: any) {
+      console.error('❌ [CheckoutSuccess] Error finding/creating user:', error);
+    }
+  }
+
+  // 如果没有 orderId，尝试通过其他信息查找订单
+  if (!orderId && session.paymentInfo?.transactionId) {
+    console.log('🔍 [CheckoutSuccess] No orderId in metadata, searching by transactionId');
+    try {
+      const orders = await db().select()
+        .from(order)
+        .where(eq(order.paymentSessionId, session.paymentInfo.transactionId))
+        .limit(1);
+      
+      if (orders.length > 0) {
+        orderId = orders[0].id;
+        console.log('✅ [CheckoutSuccess] Found order by transactionId:', orderId);
+      }
+    } catch (error: any) {
+      console.error('❌ [CheckoutSuccess] Error finding order:', error);
+    }
+  }
+
+  if (!userId) {
+    console.error('❌ [CheckoutSuccess] Cannot determine userId:', { metadata, userEmail });
+    throw new Error('Cannot determine userId from webhook data');
+  }
+
+  if (!orderId) {
+    console.warn('⚠️ [CheckoutSuccess] No orderId found, will create subscription without order');
   }
 
   try {
-    // 更新订单状态
-    console.log('📝 [CheckoutSuccess] Updating order status to paid...');
-    const updateResult = await db().update(order)
-      .set({
-        status: 'paid',
-        amount: session.paymentInfo.amount,
-        currency: session.paymentInfo.currency,
-        paymentAmount: session.paymentInfo.paymentAmount,
-        paymentCurrency: session.paymentInfo.paymentCurrency,
-        paymentEmail: session.paymentInfo.paymentEmail,
-        paymentUserName: session.paymentInfo.paymentUserName,
-        paymentUserId: session.paymentInfo.paymentUserId,
-        transactionId: session.paymentInfo.transactionId,
-        paidAt: session.paymentInfo.paidAt,
-        paymentResult: JSON.stringify(session.paymentResult),
-        subscriptionId: session.subscriptionId,
-        updatedAt: new Date(),
-      })
-      .where(eq(order.id, orderId))
-      .returning();
+    // 如果有订单ID，更新订单状态
+    if (orderId) {
+      console.log('📝 [CheckoutSuccess] Updating order status to paid...');
+      const updateResult = await db().update(order)
+        .set({
+          status: 'paid',
+          amount: session.paymentInfo.amount,
+          currency: session.paymentInfo.currency,
+          paymentAmount: session.paymentInfo.paymentAmount,
+          paymentCurrency: session.paymentInfo.paymentCurrency,
+          paymentEmail: session.paymentInfo.paymentEmail,
+          paymentUserName: session.paymentInfo.paymentUserName,
+          paymentUserId: session.paymentInfo.paymentUserId,
+          transactionId: session.paymentInfo.transactionId,
+          paidAt: session.paymentInfo.paidAt,
+          paymentResult: JSON.stringify(session.paymentResult),
+          subscriptionId: session.subscriptionId,
+          updatedAt: new Date(),
+        })
+        .where(eq(order.id, orderId))
+        .returning();
 
-    if (updateResult.length === 0) {
-      console.error('❌ [CheckoutSuccess] Order not found:', orderId);
-      throw new Error(`Order not found: ${orderId}`);
+      if (updateResult.length === 0) {
+        console.warn('⚠️ [CheckoutSuccess] Order not found, continuing without order update');
+      } else {
+        console.log('✅ [CheckoutSuccess] Order updated to paid:', {
+          orderId,
+          orderNo: updateResult[0].orderNo,
+          amount: updateResult[0].amount,
+        });
+      }
     }
-
-    console.log('✅ [CheckoutSuccess] Order updated to paid:', {
-      orderId,
-      orderNo: updateResult[0].orderNo,
-      amount: updateResult[0].amount,
-    });
 
     // 如果有订阅信息，创建订阅记录
     if (session.subscriptionInfo) {
